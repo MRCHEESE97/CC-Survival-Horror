@@ -40,13 +40,34 @@ namespace Creador_de_ciudades
 
         }
 
-        //Subsistema análogo
+        //Subsistema de dibujo
         //Objetivo: Dibujar los planos en todos los lienzos.
 
         List<PictureBox> Lienzos = new List<PictureBox>();
 
+        public struct datos
+        {
+            Point punto_origen;
+            int ancho;
+            int alto;
+        }
+
+        public List<datos> datos_forma = new List<datos>();
+
+        private void dibujar()
+        {
+                        
+            for(int recorrer_lienzos=0;recorrer_lienzos<ui_cantidad_pisos.Value;recorrer_lienzos++)
+            {
+                
 
 
 
+
+
+            }
+
+
+        }
     }
 }

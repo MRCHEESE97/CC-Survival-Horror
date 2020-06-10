@@ -14,4 +14,5 @@ Restaurar parte de la interfaz de usuario.
 06/06/20
 Desarrollar funcion para instanciar tab, dependiendo de la cantidad de pisos que asigne el usuario.
         https://docs.microsoft.com/en-us/dotnet/framework/winforms/controls/how-to-add-and-remove-tabs-with-the-windows-forms-tabcontrol
-Dibujar un rectangulo y definir el estandar de medidas.
+Añadir a la interfaz los elementos necesarios para dibujar al menos un objeto
+

@@ -56,7 +56,13 @@ namespace Creador_de_ciudades
 
         private void dibujar()
         {
-                        
+            
+            for (int generar_casas = 0; generar_casas < ui_cantidad_casas.Value; generar_casas++)
+            {
+
+
+            }   
+      
             for(int recorrer_lienzos=0;recorrer_lienzos<ui_cantidad_pisos.Value;recorrer_lienzos++)
             {
                 
@@ -64,10 +70,18 @@ namespace Creador_de_ciudades
 
 
 
-
             }
+        }
 
+        private void definir_tamanio_lienzo()
+        { 
+        
+        }
 
+        private void ui_construir_Click(object sender, EventArgs e)
+        {
+            definir_tamanio_lienzo();
+            dibujar();
         }
     }
 }

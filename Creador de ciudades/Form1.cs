@@ -40,10 +40,27 @@ namespace Creador_de_ciudades
 
         }
 
-        //Subsistema de dibujo
-        //Objetivo: Dibujar los planos en todos los lienzos.
+       
+        //Subsistema tamaño lienzos
+        //Objetivo: Definir tamaños de los lienzos
+
+        private int ancho_lienzo()
+        {
+            int multiplicador = 4; // el valor que agranda el lienzo con respecto al tamaño de las casas
+            int ancho = ((Convert.ToInt32(ui_max_ancho_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value)) * multiplicador;
+            return ancho;
+        }
+
+        private int alto_lienzo()
+        {
+            int multiplicador = 4; // el valor que agranda el lienzo con respecto al tamaño de las casas
+            int alto = ((Convert.ToInt32(ui_max_alto_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value)) * multiplicador;
+            return alto;
+        }
 
         List<PictureBox> Lienzos = new List<PictureBox>();
+
+        //Subsistema de datos para los Lienzos
 
         public struct datos
         {
@@ -53,6 +70,9 @@ namespace Creador_de_ciudades
         }
 
         public List<datos> datos_forma = new List<datos>();
+
+        //Subsistema de dibujo
+        //Objetivo: Dibujar los planos en todos los lienzos.
 
         private void dibujar()
         {
@@ -71,16 +91,13 @@ namespace Creador_de_ciudades
 
 
             }
+
         }
 
-        private void definir_tamanio_lienzo()
-        { 
         
-        }
 
         private void ui_construir_Click(object sender, EventArgs e)
-        {
-            definir_tamanio_lienzo();
+        {       
             dibujar();
         }
     }

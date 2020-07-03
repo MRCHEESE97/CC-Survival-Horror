@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Creador_de_ciudades
@@ -14,7 +9,7 @@ namespace Creador_de_ciudades
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
         
         //Subsistema TabControl
@@ -23,13 +18,19 @@ namespace Creador_de_ciudades
         decimal prevValue_ui_cantidad_pisos = 0;
 
         private void ui_cantidad_pisos_ValueChanged(object sender, EventArgs e)
-        {   
-           
+        {
+
             if (ui_cantidad_pisos.Value > prevValue_ui_cantidad_pisos)
             { 
                 string title = "Planta " + ((TabControl.TabCount - 1) + 1).ToString();
-                TabPage myTabPage = new TabPage(title);
+                TabPage myTabPage = TabControl.TabPages[0];
+                myTabPage.Text = title;
                 TabControl.TabPages.Add(myTabPage);
+
+                //Al ser la primera pagina una referencia para las otras, su valor es modificado por cada copia
+                //por eso en la siguiente linea, al final, establezco el nombre que le corresponde.
+
+                TabControl.TabPages[0].Text = "PB";
             }
             else if (ui_cantidad_pisos.Value < prevValue_ui_cantidad_pisos)
             {
@@ -94,11 +95,34 @@ namespace Creador_de_ciudades
 
         }
 
-        
+        private void crear_lienzos()
+        {
+            Lienzos.Clear();
 
+            int ancho = ancho_lienzo();
+            int alto = alto_lienzo();
+            
+            for (int i = 0; i < TabControl.TabCount; i++)
+            {
+                PictureBox nuevo_lienzo = new PictureBox();
+                nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
+                Lienzos.Add(nuevo_lienzo);           
+            }      
+        }
+
+        private void mostrar_lienzos() 
+        {
+            int numero_lienzo = TabControl.SelectedIndex;
+            TabControl.TabPages[numero_lienzo].Controls.Add(Lienzos[numero_lienzo]);
+        }
+              
         private void ui_construir_Click(object sender, EventArgs e)
-        {       
+        {
+            crear_lienzos();
+            mostrar_lienzos();
             dibujar();
         }
+
+        
     }
 }

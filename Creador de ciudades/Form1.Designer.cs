@@ -135,6 +135,7 @@
             // 
             // ui_max_alto_casa
             // 
+            this.ui_max_alto_casa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ui_max_alto_casa.Location = new System.Drawing.Point(135, 62);
             this.ui_max_alto_casa.Minimum = new decimal(new int[] {
             4,
@@ -152,6 +153,7 @@
             // 
             // ui_max_ancho_casa
             // 
+            this.ui_max_ancho_casa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ui_max_ancho_casa.Location = new System.Drawing.Point(135, 34);
             this.ui_max_ancho_casa.Minimum = new decimal(new int[] {
             4,
@@ -187,9 +189,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(132, 15);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(43, 13);
+            this.label8.Size = new System.Drawing.Size(49, 13);
             this.label8.TabIndex = 4;
             this.label8.Text = "Máximo";
             // 

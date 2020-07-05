@@ -1,6 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
+using System.Security.Principal;
 using System.Windows.Forms;
 
 namespace Creador_de_ciudades
@@ -19,25 +23,25 @@ namespace Creador_de_ciudades
 
         private void ui_cantidad_pisos_ValueChanged(object sender, EventArgs e)
         {
-
+            
             if (ui_cantidad_pisos.Value > prevValue_ui_cantidad_pisos)
             { 
-                string title = "Planta " + ((TabControl.TabCount - 1) + 1).ToString();
-                TabPage myTabPage = TabControl.TabPages[0];
-                myTabPage.Text = title;
-                TabControl.TabPages.Add(myTabPage);
-
-                //Al ser la primera pagina una referencia para las otras, su valor es modificado por cada copia
-                //por eso en la siguiente linea, al final, establezco el nombre que le corresponde.
-
-                TabControl.TabPages[0].Text = "PB";
+                string titulo = "Planta " + ((TabControl.TabCount - 1) + 1).ToString();
+                TabPage nueva_pagina = new TabPage(titulo);
+                nueva_pagina.AutoScroll = true;
+                nueva_pagina.BorderStyle = BorderStyle.Fixed3D;
+                nueva_pagina.BackColor = Color.White;
+                TabControl.TabPages.Add(nueva_pagina);  
             }
             else if (ui_cantidad_pisos.Value < prevValue_ui_cantidad_pisos)
-            {
-                TabControl.TabPages.RemoveAt(TabControl.TabCount - 1);
+            {     
+                TabControl.TabPages.RemoveAt(TabControl.TabCount-1);     
             }
 
             prevValue_ui_cantidad_pisos = ui_cantidad_pisos.Value;
+
+            crear_lienzos();
+            mostrar_lienzos();
 
         }
 
@@ -81,24 +85,18 @@ namespace Creador_de_ciudades
             for (int generar_casas = 0; generar_casas < ui_cantidad_casas.Value; generar_casas++)
             {
 
-
             }   
       
             for(int recorrer_lienzos=0;recorrer_lienzos<ui_cantidad_pisos.Value;recorrer_lienzos++)
-            {
-                
-
-
-
+            {             
 
             }
-
         }
 
         private void crear_lienzos()
         {
-            Lienzos.Clear();
-
+            Lienzos.Clear();   
+            
             int ancho = ancho_lienzo();
             int alto = alto_lienzo();
             
@@ -113,7 +111,7 @@ namespace Creador_de_ciudades
         private void mostrar_lienzos() 
         {
             int numero_lienzo = TabControl.SelectedIndex;
-            TabControl.TabPages[numero_lienzo].Controls.Add(Lienzos[numero_lienzo]);
+            TabControl.TabPages[numero_lienzo].Controls.Add(Lienzos[numero_lienzo]);          
         }
               
         private void ui_construir_Click(object sender, EventArgs e)
@@ -123,6 +121,9 @@ namespace Creador_de_ciudades
             dibujar();
         }
 
-        
+        private void TabControl_Selected(object sender, TabControlEventArgs e)
+        {
+            mostrar_lienzos();
+        }
     }
 }

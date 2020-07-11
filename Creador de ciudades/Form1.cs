@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Creador_de_ciudades.Clases;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Drawing2D;
@@ -6,6 +7,8 @@ using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.Security.Principal;
 using System.Windows.Forms;
+
+
 
 namespace Creador_de_ciudades
 {
@@ -67,27 +70,37 @@ namespace Creador_de_ciudades
 
         //Subsistema de datos para los Lienzos
 
-        public struct datos
+        struct datos_forma
         {
-            Point punto_origen;
-            int ancho;
-            int alto;
+           public Point punto_origen;
+           public int ancho;
+           public int alto;
         }
-
-        public List<datos> datos_forma = new List<datos>();
 
         //Subsistema de dibujo
         //Objetivo: Dibujar los planos en todos los lienzos.
 
         private void dibujar()
         {
-            
-            for (int generar_casas = 0; generar_casas < ui_cantidad_casas.Value; generar_casas++)
-            {
+            Random azar = new Random();
 
-            }   
-      
-            for(int recorrer_lienzos=0;recorrer_lienzos<ui_cantidad_pisos.Value;recorrer_lienzos++)
+            List<Point> cuadricula;
+            cuadricula= cuadriculas.cuadricula_normal(ancho_lienzo(),alto_lienzo());
+
+            List<datos_forma> datos_forma = new List<datos_forma>();
+
+            for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
+            {
+                datos_forma.Add(new datos_forma()
+                {
+                    punto_origen = new Point(), 
+                    ancho = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value),Convert.ToInt32(ui_max_ancho_casa.Value)), 
+                    alto = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value))
+                });
+                
+            }
+
+            for (int recorrer_lienzos=0;recorrer_lienzos<ui_cantidad_pisos.Value;recorrer_lienzos++)
             {             
 
             }

@@ -1,4 +1,5 @@
 ﻿using Creador_de_ciudades.Clases;
+using Creador_de_ciudades.Clases_estaticas;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -70,11 +71,14 @@ namespace Creador_de_ciudades
 
         //Subsistema de datos para los Lienzos
 
-        struct datos_forma
+        public struct datos_forma
         {
+           public int ancho_lienzo;
+           public int alto_lienzo;
            public Point punto_origen;
-           public int ancho;
-           public int alto;
+           public int ancho_forma;
+           public int alto_forma;
+           public int grosor_pared;
         }
 
         //Subsistema de dibujo
@@ -89,26 +93,34 @@ namespace Creador_de_ciudades
 
             List<datos_forma> datos_forma = new List<datos_forma>();
 
+            //llenar lista de datos
+
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {
                 datos_forma.Add(new datos_forma()
                 {
-                    punto_origen = new Point(), 
-                    ancho = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value),Convert.ToInt32(ui_max_ancho_casa.Value)), 
-                    alto = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value))
-                });
-                
+                    ancho_lienzo=ancho_lienzo(),
+                    alto_lienzo=alto_lienzo(),
+                    punto_origen = cuadricula[azar.Next(0,cuadricula.Count)], 
+                    ancho_forma = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value),Convert.ToInt32(ui_max_ancho_casa.Value)), 
+                    alto_forma = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
+                    grosor_pared = Convert.ToInt32(ui_grosor_pared.Value)
+                });         
             }
 
-            for (int recorrer_lienzos=0;recorrer_lienzos<ui_cantidad_pisos.Value;recorrer_lienzos++)
-            {             
+            //Pintar lienzos con los datos almacenados
 
+            for (int recorrer = 0; recorrer < ui_cantidad_pisos.Value; recorrer++)
+            {              
+                formas.forma(ui_forma_casa_rectangular, datos_forma[recorrer],Lienzos[recorrer]);
             }
+
+            
         }
 
         private void crear_lienzos()
         {
-            Lienzos.Clear();   
+            Lienzos.Clear();
             
             int ancho = ancho_lienzo();
             int alto = alto_lienzo();
@@ -132,11 +144,18 @@ namespace Creador_de_ciudades
             crear_lienzos();
             mostrar_lienzos();
             dibujar();
+            quitar_lienzos();
+            MessageBox.Show(Convert.ToString(Lienzos.Count));
         }
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
             mostrar_lienzos();
+        }
+
+        private void quitar_lienzos() 
+        { 
+            
         }
     }
 }

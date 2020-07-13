@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases estaticas\formas.cs" />
     <Compile Include="Clases estaticas\cuadriculas.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

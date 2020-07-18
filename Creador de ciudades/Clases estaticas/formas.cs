@@ -22,13 +22,14 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void rectangulo(datos_forma informacion, PictureBox pintura)
         {
             Pen pincel = new Pen(Color.Black,informacion.grosor_pared);
-            Bitmap bmp= new Bitmap(informacion.ancho_lienzo,informacion.alto_lienzo);
+            Bitmap bmp = (Bitmap)pintura.Image;
             Graphics g;
             g = Graphics.FromImage(bmp);
             Rectangle r = new Rectangle(informacion.punto_origen,new Size(informacion.ancho_forma * 100,informacion.alto_forma * 100));
             g.DrawRectangle(pincel,r);
             pintura.Image = bmp;
-           
+            pintura.Refresh();
+                   
         }
 
 

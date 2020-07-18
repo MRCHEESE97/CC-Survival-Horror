@@ -23,30 +23,10 @@ namespace Creador_de_ciudades
         //Subsistema TabControl
         //Objetivo: Esta parte del código instancia las paginas para el tabControl
 
-        decimal prevValue_ui_cantidad_pisos = 0;
 
         private void ui_cantidad_pisos_ValueChanged(object sender, EventArgs e)
         {
-            
-            if (ui_cantidad_pisos.Value > prevValue_ui_cantidad_pisos)
-            { 
-                string titulo = "Planta " + ((TabControl.TabCount - 1) + 1).ToString();
-                TabPage nueva_pagina = new TabPage(titulo);
-                nueva_pagina.AutoScroll = true;
-                nueva_pagina.BorderStyle = BorderStyle.Fixed3D;
-                nueva_pagina.BackColor = Color.White;
-                TabControl.TabPages.Add(nueva_pagina);  
-            }
-            else if (ui_cantidad_pisos.Value < prevValue_ui_cantidad_pisos)
-            {     
-                TabControl.TabPages.RemoveAt(TabControl.TabCount-1);     
-            }
-
-            prevValue_ui_cantidad_pisos = ui_cantidad_pisos.Value;
-
-            crear_lienzos();
-            mostrar_lienzos();
-
+            crear_pages();
         }
 
        
@@ -66,8 +46,6 @@ namespace Creador_de_ciudades
             int alto = ((Convert.ToInt32(ui_max_alto_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value)) * multiplicador;
             return alto;
         }
-
-        List<PictureBox> Lienzos = new List<PictureBox>();
 
         //Subsistema de datos para los Lienzos
 
@@ -108,54 +86,54 @@ namespace Creador_de_ciudades
                 });         
             }
 
+
             //Pintar lienzos con los datos almacenados
 
-            for (int recorrer = 0; recorrer < ui_cantidad_pisos.Value; recorrer++)
-            {              
-                formas.forma(ui_forma_casa_rectangular, datos_forma[recorrer],Lienzos[recorrer]);
-            }
-
-            
-        }
-
-        private void crear_lienzos()
-        {
-            Lienzos.Clear();
-            
-            int ancho = ancho_lienzo();
-            int alto = alto_lienzo();
-            
-            for (int i = 0; i < TabControl.TabCount; i++)
+            for (int i = 0; i < ui_cantidad_pisos.Value; i++)
             {
-                PictureBox nuevo_lienzo = new PictureBox();
-                nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
-                Lienzos.Add(nuevo_lienzo);           
-            }      
-        }
-
-        private void mostrar_lienzos() 
-        {
-            int numero_lienzo = TabControl.SelectedIndex;
-            TabControl.TabPages[numero_lienzo].Controls.Add(Lienzos[numero_lienzo]);          
+                for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
+                {
+                    string nombre_page = "Planta " + i;
+                    formas.forma(ui_forma_casa_rectangular, datos_forma[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                }
+            }    
         }
               
         private void ui_construir_Click(object sender, EventArgs e)
         {
-            crear_lienzos();
-            mostrar_lienzos();
+            crear_pages();
             dibujar();
-            quitar_lienzos();
-            MessageBox.Show(Convert.ToString(Lienzos.Count));
         }
 
         private void TabControl_Selected(object sender, TabControlEventArgs e)
         {
-            mostrar_lienzos();
+            //mostrar_lienzos();
         }
 
-        private void quitar_lienzos() 
-        { 
-            
+        private void crear_pages() 
+        {
+            TabControl.TabPages.Clear();
+
+            int ancho = ancho_lienzo();
+            int alto = alto_lienzo();
+
+            for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+            {
+                string titulo = "Planta " + (TabControl.TabCount).ToString();
+                TabPage nueva_pagina = new TabPage(titulo);
+                nueva_pagina.AutoScroll = true;
+                nueva_pagina.BorderStyle = BorderStyle.Fixed3D;
+                nueva_pagina.BackColor = Color.White;
+
+                PictureBox nuevo_lienzo = new PictureBox();
+                nuevo_lienzo.Name = "Planta "+ i;
+                nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
+                nuevo_lienzo.Image = new Bitmap(ancho, alto);
+                nueva_pagina.Controls.Add(nuevo_lienzo);
+
+                TabControl.TabPages.Add(nueva_pagina);
+            }           
+
         }
     }
 }

@@ -35,14 +35,14 @@ namespace Creador_de_ciudades
 
         private int ancho_lienzo()
         {
-            int multiplicador = 4; // el valor que agranda el lienzo con respecto al tamaño de las casas
+            int multiplicador = 2; // el valor que agranda el lienzo con respecto al tamaño de las casas
             int ancho = ((Convert.ToInt32(ui_max_ancho_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value)) * multiplicador;
             return ancho;
         }
 
         private int alto_lienzo()
         {
-            int multiplicador = 4; // el valor que agranda el lienzo con respecto al tamaño de las casas
+            int multiplicador = 2; // el valor que agranda el lienzo con respecto al tamaño de las casas
             int alto = ((Convert.ToInt32(ui_max_alto_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value)) * multiplicador;
             return alto;
         }

@@ -34,7 +34,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             Point punto_origen_suelo = new Point(informacion.punto_origen.X + informacion.grosor_pared,informacion.punto_origen.Y + informacion.grosor_pared);
             int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared * 2;
             int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared * 2;
-            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, ancho_suelo));
+            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
             Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209,209,135));
             g.FillRectangle(brocha_suelo, suelo);
 

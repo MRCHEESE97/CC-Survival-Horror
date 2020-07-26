@@ -38,8 +38,14 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBoxGeneral = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.ui_tipo_superposicion_normal = new System.Windows.Forms.RadioButton();
-            this.ui_superposicion_esc_dec = new System.Windows.Forms.RadioButton();
+            this.ui_superposicion_esc_var = new System.Windows.Forms.RadioButton();
+            this.ui_superposicion_esc_dec_var = new System.Windows.Forms.RadioButton();
+            this.ui_superposicion_esc_fija = new System.Windows.Forms.RadioButton();
+            this.ui_superposicion_esc_dec_cons = new System.Windows.Forms.RadioButton();
+            this.ui_groupBox_superposicion_modo = new System.Windows.Forms.GroupBox();
+            this.ui_superposicion_rad_valor_por_rango = new System.Windows.Forms.RadioButton();
+            this.ui_superposicion_rad_valor_fijo = new System.Windows.Forms.RadioButton();
+            this.ui_superposicion_valor_fijo = new System.Windows.Forms.NumericUpDown();
             this.ui_cantidad_pisos = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -68,16 +74,12 @@
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.groupBoxCasas = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ui_superposicion_esc_cre = new System.Windows.Forms.RadioButton();
-            this.ui_superposicion_esc_var = new System.Windows.Forms.RadioButton();
-            this.ui_superposicion_valor_esc_dec = new System.Windows.Forms.NumericUpDown();
-            this.ui_groupBox_superposicion_modo = new System.Windows.Forms.GroupBox();
-            this.ui_superposicion_valor_cons = new System.Windows.Forms.RadioButton();
-            this.ui_superposicion_valor_alea = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.ui_groupBox_superposicion_modo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_superposicion_valor_fijo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_pisos)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_casas)).BeginInit();
@@ -90,8 +92,6 @@
             this.groupBox3.SuspendLayout();
             this.groupBoxCasas.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_superposicion_valor_esc_dec)).BeginInit();
-            this.ui_groupBox_superposicion_modo.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -169,9 +169,9 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.ui_superposicion_esc_var);
-            this.groupBox4.Controls.Add(this.ui_superposicion_esc_cre);
-            this.groupBox4.Controls.Add(this.ui_tipo_superposicion_normal);
-            this.groupBox4.Controls.Add(this.ui_superposicion_esc_dec);
+            this.groupBox4.Controls.Add(this.ui_superposicion_esc_dec_var);
+            this.groupBox4.Controls.Add(this.ui_superposicion_esc_fija);
+            this.groupBox4.Controls.Add(this.ui_superposicion_esc_dec_cons);
             this.groupBox4.Controls.Add(this.ui_groupBox_superposicion_modo);
             this.groupBox4.Location = new System.Drawing.Point(200, 12);
             this.groupBox4.Name = "groupBox4";
@@ -180,27 +180,106 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Superposición de planos";
             // 
-            // ui_tipo_superposicion_normal
+            // ui_superposicion_esc_var
             // 
-            this.ui_tipo_superposicion_normal.AutoSize = true;
-            this.ui_tipo_superposicion_normal.Location = new System.Drawing.Point(6, 19);
-            this.ui_tipo_superposicion_normal.Name = "ui_tipo_superposicion_normal";
-            this.ui_tipo_superposicion_normal.Size = new System.Drawing.Size(58, 17);
-            this.ui_tipo_superposicion_normal.TabIndex = 1;
-            this.ui_tipo_superposicion_normal.TabStop = true;
-            this.ui_tipo_superposicion_normal.Text = "Normal";
-            this.ui_tipo_superposicion_normal.UseVisualStyleBackColor = true;
+            this.ui_superposicion_esc_var.AutoSize = true;
+            this.ui_superposicion_esc_var.Location = new System.Drawing.Point(6, 91);
+            this.ui_superposicion_esc_var.Name = "ui_superposicion_esc_var";
+            this.ui_superposicion_esc_var.Size = new System.Drawing.Size(97, 17);
+            this.ui_superposicion_esc_var.TabIndex = 3;
+            this.ui_superposicion_esc_var.Text = "Escala variable";
+            this.ui_superposicion_esc_var.UseVisualStyleBackColor = true;
             // 
-            // ui_superposicion_esc_dec
+            // ui_superposicion_esc_dec_var
             // 
-            this.ui_superposicion_esc_dec.AutoSize = true;
-            this.ui_superposicion_esc_dec.Location = new System.Drawing.Point(6, 42);
-            this.ui_superposicion_esc_dec.Name = "ui_superposicion_esc_dec";
-            this.ui_superposicion_esc_dec.Size = new System.Drawing.Size(116, 17);
-            this.ui_superposicion_esc_dec.TabIndex = 0;
-            this.ui_superposicion_esc_dec.TabStop = true;
-            this.ui_superposicion_esc_dec.Text = "Escala decreciente";
-            this.ui_superposicion_esc_dec.UseVisualStyleBackColor = true;
+            this.ui_superposicion_esc_dec_var.AutoSize = true;
+            this.ui_superposicion_esc_dec_var.Location = new System.Drawing.Point(6, 68);
+            this.ui_superposicion_esc_dec_var.Name = "ui_superposicion_esc_dec_var";
+            this.ui_superposicion_esc_dec_var.Size = new System.Drawing.Size(156, 17);
+            this.ui_superposicion_esc_dec_var.TabIndex = 2;
+            this.ui_superposicion_esc_dec_var.Text = "Escala decreciente variable";
+            this.ui_superposicion_esc_dec_var.UseVisualStyleBackColor = true;
+            // 
+            // ui_superposicion_esc_fija
+            // 
+            this.ui_superposicion_esc_fija.AutoSize = true;
+            this.ui_superposicion_esc_fija.Checked = true;
+            this.ui_superposicion_esc_fija.Location = new System.Drawing.Point(6, 19);
+            this.ui_superposicion_esc_fija.Name = "ui_superposicion_esc_fija";
+            this.ui_superposicion_esc_fija.Size = new System.Drawing.Size(76, 17);
+            this.ui_superposicion_esc_fija.TabIndex = 1;
+            this.ui_superposicion_esc_fija.TabStop = true;
+            this.ui_superposicion_esc_fija.Text = "Escala_fija";
+            this.ui_superposicion_esc_fija.UseVisualStyleBackColor = true;
+            this.ui_superposicion_esc_fija.CheckedChanged += new System.EventHandler(this.ui_superposicion_esc_fija_CheckedChanged);
+            // 
+            // ui_superposicion_esc_dec_cons
+            // 
+            this.ui_superposicion_esc_dec_cons.AutoSize = true;
+            this.ui_superposicion_esc_dec_cons.Location = new System.Drawing.Point(6, 42);
+            this.ui_superposicion_esc_dec_cons.Name = "ui_superposicion_esc_dec_cons";
+            this.ui_superposicion_esc_dec_cons.Size = new System.Drawing.Size(166, 17);
+            this.ui_superposicion_esc_dec_cons.TabIndex = 0;
+            this.ui_superposicion_esc_dec_cons.Text = "Escala decreciente constante";
+            this.ui_superposicion_esc_dec_cons.UseVisualStyleBackColor = true;
+            // 
+            // ui_groupBox_superposicion_modo
+            // 
+            this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_rad_valor_por_rango);
+            this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_rad_valor_fijo);
+            this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_valor_fijo);
+            this.ui_groupBox_superposicion_modo.Enabled = false;
+            this.ui_groupBox_superposicion_modo.Location = new System.Drawing.Point(178, 10);
+            this.ui_groupBox_superposicion_modo.Name = "ui_groupBox_superposicion_modo";
+            this.ui_groupBox_superposicion_modo.Size = new System.Drawing.Size(139, 75);
+            this.ui_groupBox_superposicion_modo.TabIndex = 7;
+            this.ui_groupBox_superposicion_modo.TabStop = false;
+            this.ui_groupBox_superposicion_modo.Text = "Valor de reducción";
+            // 
+            // ui_superposicion_rad_valor_por_rango
+            // 
+            this.ui_superposicion_rad_valor_por_rango.AutoSize = true;
+            this.ui_superposicion_rad_valor_por_rango.Location = new System.Drawing.Point(15, 42);
+            this.ui_superposicion_rad_valor_por_rango.Name = "ui_superposicion_rad_valor_por_rango";
+            this.ui_superposicion_rad_valor_por_rango.Size = new System.Drawing.Size(97, 17);
+            this.ui_superposicion_rad_valor_por_rango.TabIndex = 6;
+            this.ui_superposicion_rad_valor_por_rango.TabStop = true;
+            this.ui_superposicion_rad_valor_por_rango.Text = "Valor por rango";
+            this.ui_superposicion_rad_valor_por_rango.UseVisualStyleBackColor = true;
+            // 
+            // ui_superposicion_rad_valor_fijo
+            // 
+            this.ui_superposicion_rad_valor_fijo.AutoSize = true;
+            this.ui_superposicion_rad_valor_fijo.Location = new System.Drawing.Point(15, 19);
+            this.ui_superposicion_rad_valor_fijo.Name = "ui_superposicion_rad_valor_fijo";
+            this.ui_superposicion_rad_valor_fijo.Size = new System.Drawing.Size(65, 17);
+            this.ui_superposicion_rad_valor_fijo.TabIndex = 5;
+            this.ui_superposicion_rad_valor_fijo.TabStop = true;
+            this.ui_superposicion_rad_valor_fijo.Text = "Valor fijo";
+            this.ui_superposicion_rad_valor_fijo.UseVisualStyleBackColor = true;
+            this.ui_superposicion_rad_valor_fijo.CheckedChanged += new System.EventHandler(this.ui_superposicion_rad_valor_fijo_CheckedChanged_1);
+            // 
+            // ui_superposicion_valor_fijo
+            // 
+            this.ui_superposicion_valor_fijo.Location = new System.Drawing.Point(86, 19);
+            this.ui_superposicion_valor_fijo.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_superposicion_valor_fijo.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_superposicion_valor_fijo.Name = "ui_superposicion_valor_fijo";
+            this.ui_superposicion_valor_fijo.Size = new System.Drawing.Size(47, 20);
+            this.ui_superposicion_valor_fijo.TabIndex = 4;
+            this.ui_superposicion_valor_fijo.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // ui_cantidad_pisos
             // 
@@ -547,84 +626,6 @@
             this.panel1.Size = new System.Drawing.Size(239, 328);
             this.panel1.TabIndex = 7;
             // 
-            // ui_superposicion_esc_cre
-            // 
-            this.ui_superposicion_esc_cre.AutoSize = true;
-            this.ui_superposicion_esc_cre.Location = new System.Drawing.Point(6, 68);
-            this.ui_superposicion_esc_cre.Name = "ui_superposicion_esc_cre";
-            this.ui_superposicion_esc_cre.Size = new System.Drawing.Size(104, 17);
-            this.ui_superposicion_esc_cre.TabIndex = 2;
-            this.ui_superposicion_esc_cre.TabStop = true;
-            this.ui_superposicion_esc_cre.Text = "Escala creciente";
-            this.ui_superposicion_esc_cre.UseVisualStyleBackColor = true;
-            // 
-            // ui_superposicion_esc_var
-            // 
-            this.ui_superposicion_esc_var.AutoSize = true;
-            this.ui_superposicion_esc_var.Location = new System.Drawing.Point(6, 91);
-            this.ui_superposicion_esc_var.Name = "ui_superposicion_esc_var";
-            this.ui_superposicion_esc_var.Size = new System.Drawing.Size(97, 17);
-            this.ui_superposicion_esc_var.TabIndex = 3;
-            this.ui_superposicion_esc_var.TabStop = true;
-            this.ui_superposicion_esc_var.Text = "Escala variable";
-            this.ui_superposicion_esc_var.UseVisualStyleBackColor = true;
-            // 
-            // ui_superposicion_valor_esc_dec
-            // 
-            this.ui_superposicion_valor_esc_dec.Location = new System.Drawing.Point(15, 42);
-            this.ui_superposicion_valor_esc_dec.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_superposicion_valor_esc_dec.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ui_superposicion_valor_esc_dec.Name = "ui_superposicion_valor_esc_dec";
-            this.ui_superposicion_valor_esc_dec.Size = new System.Drawing.Size(47, 20);
-            this.ui_superposicion_valor_esc_dec.TabIndex = 4;
-            this.ui_superposicion_valor_esc_dec.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // ui_groupBox_superposicion_modo
-            // 
-            this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_valor_alea);
-            this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_valor_cons);
-            this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_valor_esc_dec);
-            this.ui_groupBox_superposicion_modo.Location = new System.Drawing.Point(145, 10);
-            this.ui_groupBox_superposicion_modo.Name = "ui_groupBox_superposicion_modo";
-            this.ui_groupBox_superposicion_modo.Size = new System.Drawing.Size(158, 100);
-            this.ui_groupBox_superposicion_modo.TabIndex = 7;
-            this.ui_groupBox_superposicion_modo.TabStop = false;
-            this.ui_groupBox_superposicion_modo.Text = "Modo: Seleccionado";
-            // 
-            // ui_superposicion_valor_cons
-            // 
-            this.ui_superposicion_valor_cons.AutoSize = true;
-            this.ui_superposicion_valor_cons.Location = new System.Drawing.Point(15, 19);
-            this.ui_superposicion_valor_cons.Name = "ui_superposicion_valor_cons";
-            this.ui_superposicion_valor_cons.Size = new System.Drawing.Size(99, 17);
-            this.ui_superposicion_valor_cons.TabIndex = 5;
-            this.ui_superposicion_valor_cons.TabStop = true;
-            this.ui_superposicion_valor_cons.Text = "Valor constante";
-            this.ui_superposicion_valor_cons.UseVisualStyleBackColor = true;
-            // 
-            // ui_superposicion_valor_alea
-            // 
-            this.ui_superposicion_valor_alea.AutoSize = true;
-            this.ui_superposicion_valor_alea.Location = new System.Drawing.Point(15, 68);
-            this.ui_superposicion_valor_alea.Name = "ui_superposicion_valor_alea";
-            this.ui_superposicion_valor_alea.Size = new System.Drawing.Size(92, 17);
-            this.ui_superposicion_valor_alea.TabIndex = 6;
-            this.ui_superposicion_valor_alea.TabStop = true;
-            this.ui_superposicion_valor_alea.Text = "Valor aleatorio";
-            this.ui_superposicion_valor_alea.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -647,6 +648,9 @@
             this.groupBoxGeneral.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.ui_groupBox_superposicion_modo.ResumeLayout(false);
+            this.ui_groupBox_superposicion_modo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_superposicion_valor_fijo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_pisos)).EndInit();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_casas)).EndInit();
@@ -662,9 +666,6 @@
             this.groupBoxCasas.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_superposicion_valor_esc_dec)).EndInit();
-            this.ui_groupBox_superposicion_modo.ResumeLayout(false);
-            this.ui_groupBox_superposicion_modo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -709,14 +710,14 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.RadioButton ui_forma_casa_rectangular;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.RadioButton ui_tipo_superposicion_normal;
-        private System.Windows.Forms.RadioButton ui_superposicion_esc_dec;
+        private System.Windows.Forms.RadioButton ui_superposicion_esc_fija;
+        private System.Windows.Forms.RadioButton ui_superposicion_esc_dec_cons;
         private System.Windows.Forms.RadioButton ui_superposicion_esc_var;
-        private System.Windows.Forms.RadioButton ui_superposicion_esc_cre;
         private System.Windows.Forms.GroupBox ui_groupBox_superposicion_modo;
-        private System.Windows.Forms.RadioButton ui_superposicion_valor_alea;
-        private System.Windows.Forms.RadioButton ui_superposicion_valor_cons;
-        private System.Windows.Forms.NumericUpDown ui_superposicion_valor_esc_dec;
+        private System.Windows.Forms.RadioButton ui_superposicion_rad_valor_por_rango;
+        private System.Windows.Forms.RadioButton ui_superposicion_rad_valor_fijo;
+        private System.Windows.Forms.NumericUpDown ui_superposicion_valor_fijo;
+        private System.Windows.Forms.RadioButton ui_superposicion_esc_dec_var;
     }
 }
 

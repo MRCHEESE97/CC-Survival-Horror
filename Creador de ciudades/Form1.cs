@@ -17,7 +17,7 @@ namespace Creador_de_ciudades
     {
         public Form1()
         {
-            InitializeComponent();         
+            InitializeComponent();
         }
         
         //Subsistema TabControl
@@ -57,6 +57,7 @@ namespace Creador_de_ciudades
            public int ancho_forma;
            public int alto_forma;
            public int grosor_pared;
+           public Point nuevo_origen;
         }
 
         //Subsistema de dibujo
@@ -69,34 +70,107 @@ namespace Creador_de_ciudades
             List<Point> cuadricula;
             cuadricula= cuadriculas.cuadricula_normal(ancho_lienzo(),alto_lienzo());
 
-            List<datos_forma> datos_forma = new List<datos_forma>();
+            List<datos_forma> datos = new List<datos_forma>();
 
-            //llenar lista de datos
+            //llenar lista de datos por casa
 
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {
-                datos_forma.Add(new datos_forma()
+                datos.Add(new datos_forma()
                 {
-                    ancho_lienzo=ancho_lienzo(),
-                    alto_lienzo=alto_lienzo(),
-                    punto_origen = cuadricula[azar.Next(0,cuadricula.Count)], 
-                    ancho_forma = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value),Convert.ToInt32(ui_max_ancho_casa.Value)), 
+                    ancho_lienzo = ancho_lienzo(),
+                    alto_lienzo = alto_lienzo(),
+                    punto_origen = cuadricula[azar.Next(0, cuadricula.Count)],
+                    ancho_forma = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
                     alto_forma = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
-                    grosor_pared = Convert.ToInt32(ui_grosor_pared.Value)
+                    grosor_pared = Convert.ToInt32(ui_grosor_pared.Value),
+                    nuevo_origen = new Point()
                 });         
             }
 
 
             //Pintar lienzos con los datos almacenados
 
-            for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+            if (ui_superposicion_esc_fija.Checked == true)
             {
-                for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
+                for (int i = 0; i < ui_cantidad_pisos.Value; i++)
                 {
-                    string nombre_page = "Planta " + i;
-                    formas.forma(ui_forma_casa_rectangular, datos_forma[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                    for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
+                    {
+                        string nombre_page = "Planta " + i;
+                        formas.forma(ui_forma_casa_rectangular, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                    }
                 }
-            }    
+            }
+
+            else if (ui_superposicion_esc_dec_cons.Checked == true) 
+            {
+                for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+                {
+                    for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
+                    {
+                        datos_forma modificar = datos[recorrer];                                      
+                        if (i>0)
+                        {
+                            int valor_reduccion = 0;
+                            if (ui_superposicion_rad_valor_fijo.Checked == true)
+                            {
+                                valor_reduccion = Convert.ToInt32(ui_superposicion_valor_fijo.Value);
+                            }
+                            else if(ui_superposicion_rad_valor_por_rango.Checked == true)
+                            {
+                                int limite = Math.Min(modificar.alto_forma, modificar.ancho_forma);
+                                //Esto es para manejar la excepcion
+                                if (limite < 0)
+                                { limite = 0; }
+                                valor_reduccion = azar.Next(1, limite+1);
+                            }
+                            modificar.nuevo_origen = new Point(modificar.punto_origen.X + ((valor_reduccion * 100) / 2),modificar.punto_origen.Y + ((valor_reduccion * 100) / 2));
+                            modificar.punto_origen = modificar.nuevo_origen;
+                            modificar.ancho_forma = modificar.ancho_forma - valor_reduccion;
+                            modificar.alto_forma  = modificar.alto_forma - valor_reduccion;
+                        }
+                        datos[recorrer] = modificar;
+                        string nombre_page = "Planta " + i;
+                        formas.forma(ui_forma_casa_rectangular, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                    }
+                }
+            }
+            else if(ui_superposicion_esc_dec_var.Checked == true)
+            {
+                for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+                {
+                    for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
+                    {
+                        datos_forma modificar = datos[recorrer];
+                        if (i > 0)
+                        {
+                            int valor_reduccion = 0;
+                            if (ui_superposicion_rad_valor_fijo.Checked == true)
+                            {
+                                valor_reduccion = Convert.ToInt32(ui_superposicion_valor_fijo.Value);
+                            }
+                            else if (ui_superposicion_rad_valor_por_rango.Checked == true)
+                            {
+                                int limite = Math.Min(modificar.alto_forma, modificar.ancho_forma);
+                                //Esto es para manejar la excepcion
+                                if (limite < 0)
+                                { limite = 0; }
+                                valor_reduccion = azar.Next(0, limite + 1);
+                            }
+                            modificar.nuevo_origen = new Point(modificar.punto_origen.X + ((valor_reduccion * 100) / 2), modificar.punto_origen.Y + ((valor_reduccion * 100) / 2));
+                            modificar.punto_origen = modificar.nuevo_origen;
+                            modificar.ancho_forma = modificar.ancho_forma - valor_reduccion;
+                            modificar.alto_forma = modificar.alto_forma - valor_reduccion;
+                        }
+                        datos[recorrer] = modificar;
+                        string nombre_page = "Planta " + i;
+                        formas.forma(ui_forma_casa_rectangular, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                    }
+                }
+            }
+
+         
         }
               
         private void ui_construir_Click(object sender, EventArgs e)
@@ -134,6 +208,16 @@ namespace Creador_de_ciudades
                 TabControl.TabPages.Add(nueva_pagina);
             }           
 
+        }
+
+        private void ui_superposicion_rad_valor_fijo_CheckedChanged_1(object sender, EventArgs e)
+        {
+            ui_superposicion_valor_fijo.Enabled = ui_superposicion_rad_valor_fijo.Checked;
+        }
+
+        private void ui_superposicion_esc_fija_CheckedChanged(object sender, EventArgs e)
+        {
+            ui_groupBox_superposicion_modo.Enabled = !ui_superposicion_esc_fija.Checked;
         }
     }
 }

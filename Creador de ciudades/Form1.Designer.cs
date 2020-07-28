@@ -74,6 +74,7 @@
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.groupBoxCasas = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.guardarCiudadComoCarpetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
@@ -112,6 +113,8 @@
             // 
             // archivoToolStripMenuItem
             // 
+            this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.guardarCiudadComoCarpetaToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -626,6 +629,13 @@
             this.panel1.Size = new System.Drawing.Size(239, 328);
             this.panel1.TabIndex = 7;
             // 
+            // guardarCiudadComoCarpetaToolStripMenuItem
+            // 
+            this.guardarCiudadComoCarpetaToolStripMenuItem.Name = "guardarCiudadComoCarpetaToolStripMenuItem";
+            this.guardarCiudadComoCarpetaToolStripMenuItem.Size = new System.Drawing.Size(248, 22);
+            this.guardarCiudadComoCarpetaToolStripMenuItem.Text = "Guardar ciudad (PNG en carpeta)";
+            this.guardarCiudadComoCarpetaToolStripMenuItem.Click += new System.EventHandler(this.guardarCiudadComoCarpetaToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -718,6 +728,7 @@
         private System.Windows.Forms.RadioButton ui_superposicion_rad_valor_fijo;
         private System.Windows.Forms.NumericUpDown ui_superposicion_valor_fijo;
         private System.Windows.Forms.RadioButton ui_superposicion_esc_dec_var;
+        private System.Windows.Forms.ToolStripMenuItem guardarCiudadComoCarpetaToolStripMenuItem;
     }
 }
 

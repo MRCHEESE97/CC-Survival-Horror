@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
+using System.IO;
 using System.Security.Principal;
 using System.Windows.Forms;
 
@@ -35,15 +36,19 @@ namespace Creador_de_ciudades
 
         private int ancho_lienzo()
         {
-            int multiplicador = 2; // el valor que agranda el lienzo con respecto al tamaño de las casas
-            int ancho = ((Convert.ToInt32(ui_max_ancho_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value)) * multiplicador;
+            int multiplicador = 1; // el valor que agranda el lienzo con respecto al tamaño de las casas
+            int media_ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) + Convert.ToInt32(ui_max_ancho_casa.Value)/2);
+            //int ancho = (media_ancho * 100) * Convert.ToInt32(ui_cantidad_casas.Value)* multiplicador;
+            int ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
             return ancho;
         }
 
         private int alto_lienzo()
         {
-            int multiplicador = 2; // el valor que agranda el lienzo con respecto al tamaño de las casas
-            int alto = ((Convert.ToInt32(ui_max_alto_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value)) * multiplicador;
+            int multiplicador = 1; // el valor que agranda el lienzo con respecto al tamaño de las casas
+            int media_alto = (Convert.ToInt32(ui_min_alto_casa.Value) + Convert.ToInt32(ui_max_alto_casa.Value) / 2);
+            //int alto = (media_alto * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
+            int alto = (Convert.ToInt32(ui_min_alto_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
             return alto;
         }
 
@@ -103,7 +108,7 @@ namespace Creador_de_ciudades
                 }
             }
 
-            else if (ui_superposicion_esc_dec_cons.Checked == true) 
+            else if (ui_superposicion_esc_dec_cons.Checked == true || ui_superposicion_esc_dec_var.Checked == true) 
             {
                 for (int i = 0; i < ui_cantidad_pisos.Value; i++)
                 {
@@ -123,7 +128,17 @@ namespace Creador_de_ciudades
                                 //Esto es para manejar la excepcion
                                 if (limite < 0)
                                 { limite = 0; }
-                                valor_reduccion = azar.Next(1, limite+1);
+
+                                int modo = 0;
+                                if (ui_superposicion_esc_dec_cons.Checked == true)
+                                {
+                                    modo = 1;
+                                }
+                                else if (ui_superposicion_esc_dec_var.Checked == true)
+                                {
+                                    modo = 0;
+                                }
+                                valor_reduccion = azar.Next(modo, limite+1);
                             }
                             modificar.nuevo_origen = new Point(modificar.punto_origen.X + ((valor_reduccion * 100) / 2),modificar.punto_origen.Y + ((valor_reduccion * 100) / 2));
                             modificar.punto_origen = modificar.nuevo_origen;
@@ -135,42 +150,7 @@ namespace Creador_de_ciudades
                         formas.forma(ui_forma_casa_rectangular, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                     }
                 }
-            }
-            else if(ui_superposicion_esc_dec_var.Checked == true)
-            {
-                for (int i = 0; i < ui_cantidad_pisos.Value; i++)
-                {
-                    for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
-                    {
-                        datos_forma modificar = datos[recorrer];
-                        if (i > 0)
-                        {
-                            int valor_reduccion = 0;
-                            if (ui_superposicion_rad_valor_fijo.Checked == true)
-                            {
-                                valor_reduccion = Convert.ToInt32(ui_superposicion_valor_fijo.Value);
-                            }
-                            else if (ui_superposicion_rad_valor_por_rango.Checked == true)
-                            {
-                                int limite = Math.Min(modificar.alto_forma, modificar.ancho_forma);
-                                //Esto es para manejar la excepcion
-                                if (limite < 0)
-                                { limite = 0; }
-                                valor_reduccion = azar.Next(0, limite + 1);
-                            }
-                            modificar.nuevo_origen = new Point(modificar.punto_origen.X + ((valor_reduccion * 100) / 2), modificar.punto_origen.Y + ((valor_reduccion * 100) / 2));
-                            modificar.punto_origen = modificar.nuevo_origen;
-                            modificar.ancho_forma = modificar.ancho_forma - valor_reduccion;
-                            modificar.alto_forma = modificar.alto_forma - valor_reduccion;
-                        }
-                        datos[recorrer] = modificar;
-                        string nombre_page = "Planta " + i;
-                        formas.forma(ui_forma_casa_rectangular, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-                    }
-                }
-            }
-
-         
+            }        
         }
               
         private void ui_construir_Click(object sender, EventArgs e)
@@ -218,6 +198,25 @@ namespace Creador_de_ciudades
         private void ui_superposicion_esc_fija_CheckedChanged(object sender, EventArgs e)
         {
             ui_groupBox_superposicion_modo.Enabled = !ui_superposicion_esc_fija.Checked;
+        }
+
+        private void guardarCiudadComoCarpetaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Ciudades"));
+
+            //En las siguientes lineas recolecto las imagenes de los TabControls para guardarlas         
+            for (int i = 0; i < TabControl.TabCount; i++)
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "( *.png) | *.png";
+                dialog.FileName = "Planta " + i;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];             
+                    nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                }
+            }
         }
     }
 }

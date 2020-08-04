@@ -11,9 +11,9 @@ namespace Creador_de_ciudades.Clases_estaticas
 {
     static class formas
     {    
-        public static void forma(RadioButton seleccion_forma, datos_forma datos, PictureBox lienzo)
+        public static void forma(String seleccion_forma, datos_forma datos, PictureBox lienzo)
         {
-            if (seleccion_forma.Checked == true)
+            if (seleccion_forma.Equals("ui_forma_casa_rectangular"))
             { 
                 rectangulo(datos, lienzo); 
             }

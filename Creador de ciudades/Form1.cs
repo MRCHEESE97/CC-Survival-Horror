@@ -7,6 +7,7 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
+using System.Linq;
 using System.Security.Principal;
 using System.Windows.Forms;
 
@@ -93,6 +94,9 @@ namespace Creador_de_ciudades
                 });         
             }
 
+            //Encuentro el nombre del radiobutton de forma que ha escogido el usuario
+
+            String forma_seleccionada = ui_groupbox_forma_casas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
             //Pintar lienzos con los datos almacenados
 
@@ -103,7 +107,7 @@ namespace Creador_de_ciudades
                     for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
                     {
                         string nombre_page = "Planta " + i;
-                        formas.forma(ui_forma_casa_rectangular, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                        formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                     }
                 }
             }
@@ -112,6 +116,7 @@ namespace Creador_de_ciudades
             {
                 for (int i = 0; i < ui_cantidad_pisos.Value; i++)
                 {
+
                     for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
                     {
                         datos_forma modificar = datos[recorrer];                                      
@@ -147,7 +152,7 @@ namespace Creador_de_ciudades
                         }
                         datos[recorrer] = modificar;
                         string nombre_page = "Planta " + i;
-                        formas.forma(ui_forma_casa_rectangular, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                        formas.forma(forma_seleccionada , datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                     }
                 }
             }        

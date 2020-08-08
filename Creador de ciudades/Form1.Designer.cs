@@ -75,8 +75,10 @@
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.groupBoxCasas = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.ui_objeto_rad_columna_esquinera = new System.Windows.Forms.RadioButton();
+            this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
+            this.ui_objetos_columna_cuadrada = new System.Windows.Forms.CheckBox();
+            this.ui_objetos_columna_redonda = new System.Windows.Forms.CheckBox();
+            this.ui_objetos_puerta = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
@@ -95,7 +97,7 @@
             this.ui_groupbox_forma_casas.SuspendLayout();
             this.groupBoxCasas.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.groupBox5.SuspendLayout();
+            this.ui_groupbox_objetos.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -629,7 +631,7 @@
             // 
             this.panel1.AutoScroll = true;
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.panel1.Controls.Add(this.groupBox5);
+            this.panel1.Controls.Add(this.ui_groupbox_objetos);
             this.panel1.Controls.Add(this.ui_cantidad_casas);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
@@ -639,29 +641,50 @@
             this.panel1.Controls.Add(this.ui_groupbox_forma_casas);
             this.panel1.Location = new System.Drawing.Point(6, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 328);
+            this.panel1.Size = new System.Drawing.Size(239, 270);
             this.panel1.TabIndex = 7;
             // 
-            // groupBox5
+            // ui_groupbox_objetos
             // 
-            this.groupBox5.Controls.Add(this.ui_objeto_rad_columna_esquinera);
-            this.groupBox5.Location = new System.Drawing.Point(3, 233);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(211, 43);
-            this.groupBox5.TabIndex = 7;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Objetos";
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_puerta);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_columna_cuadrada);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_columna_redonda);
+            this.ui_groupbox_objetos.Location = new System.Drawing.Point(3, 233);
+            this.ui_groupbox_objetos.Name = "ui_groupbox_objetos";
+            this.ui_groupbox_objetos.Size = new System.Drawing.Size(211, 77);
+            this.ui_groupbox_objetos.TabIndex = 7;
+            this.ui_groupbox_objetos.TabStop = false;
+            this.ui_groupbox_objetos.Text = "Objetos";
             // 
-            // ui_objeto_rad_columna_esquinera
+            // ui_objetos_columna_cuadrada
             // 
-            this.ui_objeto_rad_columna_esquinera.AutoSize = true;
-            this.ui_objeto_rad_columna_esquinera.Location = new System.Drawing.Point(15, 20);
-            this.ui_objeto_rad_columna_esquinera.Name = "ui_objeto_rad_columna_esquinera";
-            this.ui_objeto_rad_columna_esquinera.Size = new System.Drawing.Size(125, 17);
-            this.ui_objeto_rad_columna_esquinera.TabIndex = 0;
-            this.ui_objeto_rad_columna_esquinera.TabStop = true;
-            this.ui_objeto_rad_columna_esquinera.Text = "Columnas esquineras";
-            this.ui_objeto_rad_columna_esquinera.UseVisualStyleBackColor = true;
+            this.ui_objetos_columna_cuadrada.AutoSize = true;
+            this.ui_objetos_columna_cuadrada.Location = new System.Drawing.Point(15, 19);
+            this.ui_objetos_columna_cuadrada.Name = "ui_objetos_columna_cuadrada";
+            this.ui_objetos_columna_cuadrada.Size = new System.Drawing.Size(115, 17);
+            this.ui_objetos_columna_cuadrada.TabIndex = 0;
+            this.ui_objetos_columna_cuadrada.Text = "Columna cuadrada";
+            this.ui_objetos_columna_cuadrada.UseVisualStyleBackColor = true;
+            // 
+            // ui_objetos_columna_redonda
+            // 
+            this.ui_objetos_columna_redonda.AutoSize = true;
+            this.ui_objetos_columna_redonda.Location = new System.Drawing.Point(15, 35);
+            this.ui_objetos_columna_redonda.Name = "ui_objetos_columna_redonda";
+            this.ui_objetos_columna_redonda.Size = new System.Drawing.Size(109, 17);
+            this.ui_objetos_columna_redonda.TabIndex = 1;
+            this.ui_objetos_columna_redonda.Text = "Columna redonda";
+            this.ui_objetos_columna_redonda.UseVisualStyleBackColor = true;
+            // 
+            // ui_objetos_puerta
+            // 
+            this.ui_objetos_puerta.AutoSize = true;
+            this.ui_objetos_puerta.Location = new System.Drawing.Point(15, 54);
+            this.ui_objetos_puerta.Name = "ui_objetos_puerta";
+            this.ui_objetos_puerta.Size = new System.Drawing.Size(57, 17);
+            this.ui_objetos_puerta.TabIndex = 2;
+            this.ui_objetos_puerta.Text = "Puerta";
+            this.ui_objetos_puerta.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -703,8 +726,8 @@
             this.groupBoxCasas.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
+            this.ui_groupbox_objetos.ResumeLayout(false);
+            this.ui_groupbox_objetos.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -758,8 +781,10 @@
         private System.Windows.Forms.NumericUpDown ui_superposicion_valor_fijo;
         private System.Windows.Forms.RadioButton ui_superposicion_esc_dec_var;
         private System.Windows.Forms.ToolStripMenuItem guardarCiudadComoCarpetaToolStripMenuItem;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.RadioButton ui_objeto_rad_columna_esquinera;
+        private System.Windows.Forms.GroupBox ui_groupbox_objetos;
+        private System.Windows.Forms.CheckBox ui_objetos_columna_cuadrada;
+        private System.Windows.Forms.CheckBox ui_objetos_columna_redonda;
+        private System.Windows.Forms.CheckBox ui_objetos_puerta;
     }
 }
 

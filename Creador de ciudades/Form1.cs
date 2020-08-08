@@ -108,6 +108,19 @@ namespace Creador_de_ciudades
                     {
                         string nombre_page = "Planta " + i;
                         formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                        //Después de pintar las casas, se pintan los objetos
+
+                        //Primero se guardan los nombre de los checkbox activo es una lista
+
+                        List<String> nombres_checkbox = new List<string>();
+                        foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                        {
+                            if (c.Checked == true){nombres_checkbox.Add(c.Name);}
+                        }
+
+                        objetos.objeto(nombres_checkbox,datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
                     }
                 }
             }
@@ -153,6 +166,18 @@ namespace Creador_de_ciudades
                         datos[recorrer] = modificar;
                         string nombre_page = "Planta " + i;
                         formas.forma(forma_seleccionada , datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                        //Después de pintar las casas, se pintan los objetos
+
+                        //Primero se guardan los nombre de los checkbox activo es una lista
+
+                        List<String> nombres_checkbox = new List<string>();
+                        foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                        {
+                            if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                        }
+
+                        objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                     }
                 }
             }        

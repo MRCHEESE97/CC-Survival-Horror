@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,16 +31,37 @@ namespace Creador_de_ciudades.Clases_estaticas
             }          
         }
         private static void puerta(datos_forma informacion, PictureBox pintura)
-        { 
+        {
+            
          
         }
         private static void columna_cuadrada(datos_forma informacion, PictureBox pintura)
         {
+            Bitmap bmp = (Bitmap)pintura.Image;
+            Graphics g;
+            g = Graphics.FromImage(bmp);
+            Point punto_superior_izquierdo = informacion.punto_origen;
+            Point punto_superior_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.columna_cuadrada_valor, informacion.punto_origen.Y);
+            Point punto_inferior_izquierdo = new Point(informacion.punto_origen.X, informacion.punto_origen.Y + informacion.alto_forma *100 - informacion.columna_cuadrada_valor);
+            Point punto_inferior_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.columna_cuadrada_valor, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
+
+            Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+
+            Rectangle columna = new Rectangle(punto_superior_izquierdo, new Size(informacion.columna_cuadrada_valor, informacion.columna_cuadrada_valor));
+            g.FillRectangle(brocha_columna, columna);
+            columna = new Rectangle(punto_superior_derecho, new Size(informacion.columna_cuadrada_valor, informacion.columna_cuadrada_valor));
+            g.FillRectangle(brocha_columna, columna);
+            columna = new Rectangle(punto_inferior_izquierdo, new Size(informacion.columna_cuadrada_valor, informacion.columna_cuadrada_valor));
+            g.FillRectangle(brocha_columna, columna);
+            columna = new Rectangle(punto_inferior_derecho, new Size(informacion.columna_cuadrada_valor, informacion.columna_cuadrada_valor));
+            g.FillRectangle(brocha_columna, columna);
 
         }
         private static void columna_circular(datos_forma informacion, PictureBox pintura)
         {
 
         }
+      
+
     }
 }

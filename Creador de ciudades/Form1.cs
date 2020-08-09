@@ -59,11 +59,13 @@ namespace Creador_de_ciudades
         {
            public int ancho_lienzo;
            public int alto_lienzo;
-           public Point punto_origen;
            public int ancho_forma;
            public int alto_forma;
            public int grosor_pared;
+           public Point punto_origen;
            public Point nuevo_origen;
+           public int columna_cuadrada_valor;
+           public int columna_redonda_valor;
         }
 
         //Subsistema de dibujo
@@ -86,11 +88,13 @@ namespace Creador_de_ciudades
                 {
                     ancho_lienzo = ancho_lienzo(),
                     alto_lienzo = alto_lienzo(),
-                    punto_origen = cuadricula[azar.Next(0, cuadricula.Count)],
                     ancho_forma = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
                     alto_forma = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
                     grosor_pared = Convert.ToInt32(ui_grosor_pared.Value),
-                    nuevo_origen = new Point()
+                    punto_origen = cuadricula[azar.Next(0, cuadricula.Count)],
+                    nuevo_origen = new Point(),
+                    columna_cuadrada_valor = Convert.ToInt32(ui_columna_cuadrada_valor.Value),
+                    columna_redonda_valor = Convert.ToInt32(ui_columna_redonda_valor.Value)
                 });         
             }
 

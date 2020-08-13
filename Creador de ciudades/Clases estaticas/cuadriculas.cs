@@ -15,8 +15,8 @@ namespace Creador_de_ciudades.Clases
 
             //Aqui se define el tamaño de la cuadricula, siempre será 1/4 del tamaño del lienzo
 
-            int ancho_cuadricula = ancho_lienzo;
-            int alto_cuadricula = alto_lienzo;
+            float ancho_cuadricula = ancho_lienzo/(float)1.2;
+            float alto_cuadricula = alto_lienzo/(float)1.2;
 
             //Creando la cuadricula de puntos
 

@@ -76,13 +76,13 @@
             this.groupBoxCasas = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.ui_columna_redonda_valor = new System.Windows.Forms.NumericUpDown();
+            this.label13 = new System.Windows.Forms.Label();
+            this.ui_columna_cuadrada_valor = new System.Windows.Forms.NumericUpDown();
             this.ui_objetos_puerta = new System.Windows.Forms.CheckBox();
             this.ui_objetos_columna_cuadrada = new System.Windows.Forms.CheckBox();
             this.ui_objetos_columna_redonda = new System.Windows.Forms.CheckBox();
-            this.ui_columna_cuadrada_valor = new System.Windows.Forms.NumericUpDown();
-            this.label13 = new System.Windows.Forms.Label();
-            this.ui_columna_redonda_valor = new System.Windows.Forms.NumericUpDown();
-            this.label14 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
@@ -102,8 +102,8 @@
             this.groupBoxCasas.SuspendLayout();
             this.panel1.SuspendLayout();
             this.ui_groupbox_objetos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_columna_cuadrada_valor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_redonda_valor)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_columna_cuadrada_valor)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -266,13 +266,13 @@
             this.ui_superposicion_rad_valor_por_rango.Name = "ui_superposicion_rad_valor_por_rango";
             this.ui_superposicion_rad_valor_por_rango.Size = new System.Drawing.Size(97, 17);
             this.ui_superposicion_rad_valor_por_rango.TabIndex = 6;
-            this.ui_superposicion_rad_valor_por_rango.TabStop = true;
             this.ui_superposicion_rad_valor_por_rango.Text = "Valor por rango";
             this.ui_superposicion_rad_valor_por_rango.UseVisualStyleBackColor = true;
             // 
             // ui_superposicion_rad_valor_fijo
             // 
             this.ui_superposicion_rad_valor_fijo.AutoSize = true;
+            this.ui_superposicion_rad_valor_fijo.Checked = true;
             this.ui_superposicion_rad_valor_fijo.Location = new System.Drawing.Point(15, 19);
             this.ui_superposicion_rad_valor_fijo.Name = "ui_superposicion_rad_valor_fijo";
             this.ui_superposicion_rad_valor_fijo.Size = new System.Drawing.Size(65, 17);
@@ -666,6 +666,68 @@
             this.ui_groupbox_objetos.TabStop = false;
             this.ui_groupbox_objetos.Text = "Objetos";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(186, 43);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(24, 13);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "cm.";
+            // 
+            // ui_columna_redonda_valor
+            // 
+            this.ui_columna_redonda_valor.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_columna_redonda_valor.Location = new System.Drawing.Point(136, 41);
+            this.ui_columna_redonda_valor.Minimum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.ui_columna_redonda_valor.Name = "ui_columna_redonda_valor";
+            this.ui_columna_redonda_valor.Size = new System.Drawing.Size(46, 20);
+            this.ui_columna_redonda_valor.TabIndex = 5;
+            this.ui_columna_redonda_valor.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(186, 20);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(24, 13);
+            this.label13.TabIndex = 4;
+            this.label13.Text = "cm.";
+            // 
+            // ui_columna_cuadrada_valor
+            // 
+            this.ui_columna_cuadrada_valor.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_columna_cuadrada_valor.Location = new System.Drawing.Point(136, 18);
+            this.ui_columna_cuadrada_valor.Minimum = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            this.ui_columna_cuadrada_valor.Name = "ui_columna_cuadrada_valor";
+            this.ui_columna_cuadrada_valor.Size = new System.Drawing.Size(46, 20);
+            this.ui_columna_cuadrada_valor.TabIndex = 3;
+            this.ui_columna_cuadrada_valor.Value = new decimal(new int[] {
+            30,
+            0,
+            0,
+            0});
+            // 
             // ui_objetos_puerta
             // 
             this.ui_objetos_puerta.AutoSize = true;
@@ -695,68 +757,6 @@
             this.ui_objetos_columna_redonda.TabIndex = 1;
             this.ui_objetos_columna_redonda.Text = "Columna redonda";
             this.ui_objetos_columna_redonda.UseVisualStyleBackColor = true;
-            // 
-            // ui_columna_cuadrada_valor
-            // 
-            this.ui_columna_cuadrada_valor.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_columna_cuadrada_valor.Location = new System.Drawing.Point(136, 18);
-            this.ui_columna_cuadrada_valor.Minimum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.ui_columna_cuadrada_valor.Name = "ui_columna_cuadrada_valor";
-            this.ui_columna_cuadrada_valor.Size = new System.Drawing.Size(46, 20);
-            this.ui_columna_cuadrada_valor.TabIndex = 3;
-            this.ui_columna_cuadrada_valor.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(186, 20);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(24, 13);
-            this.label13.TabIndex = 4;
-            this.label13.Text = "cm.";
-            // 
-            // ui_columna_redonda_valor
-            // 
-            this.ui_columna_redonda_valor.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_columna_redonda_valor.Location = new System.Drawing.Point(136, 41);
-            this.ui_columna_redonda_valor.Minimum = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            this.ui_columna_redonda_valor.Name = "ui_columna_redonda_valor";
-            this.ui_columna_redonda_valor.Size = new System.Drawing.Size(46, 20);
-            this.ui_columna_redonda_valor.TabIndex = 5;
-            this.ui_columna_redonda_valor.Value = new decimal(new int[] {
-            30,
-            0,
-            0,
-            0});
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(186, 43);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(24, 13);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "cm.";
             // 
             // Form1
             // 
@@ -800,8 +800,8 @@
             this.panel1.PerformLayout();
             this.ui_groupbox_objetos.ResumeLayout(false);
             this.ui_groupbox_objetos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_columna_cuadrada_valor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_redonda_valor)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_columna_cuadrada_valor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

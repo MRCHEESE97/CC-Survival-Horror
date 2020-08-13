@@ -38,17 +38,13 @@ namespace Creador_de_ciudades
         private int ancho_lienzo()
         {
             int multiplicador = 1; // el valor que agranda el lienzo con respecto al tamaño de las casas
-            int media_ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) + Convert.ToInt32(ui_max_ancho_casa.Value)/2);
-            //int ancho = (media_ancho * 100) * Convert.ToInt32(ui_cantidad_casas.Value)* multiplicador;
-            int ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
+            int ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;          
             return ancho;
         }
 
         private int alto_lienzo()
         {
             int multiplicador = 1; // el valor que agranda el lienzo con respecto al tamaño de las casas
-            int media_alto = (Convert.ToInt32(ui_min_alto_casa.Value) + Convert.ToInt32(ui_max_alto_casa.Value) / 2);
-            //int alto = (media_alto * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
             int alto = (Convert.ToInt32(ui_min_alto_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
             return alto;
         }
@@ -147,7 +143,7 @@ namespace Creador_de_ciudades
                             else if(ui_superposicion_rad_valor_por_rango.Checked == true)
                             {
                                 int limite = Math.Min(modificar.alto_forma, modificar.ancho_forma);
-                                //Esto es para manejar la excepcion
+                                //Esto es para manejar la excepcion probar un break
                                 if (limite < 0)
                                 { limite = 0; }
 
@@ -168,20 +164,26 @@ namespace Creador_de_ciudades
                             modificar.alto_forma  = modificar.alto_forma - valor_reduccion;
                         }
                         datos[recorrer] = modificar;
-                        string nombre_page = "Planta " + i;
-                        formas.forma(forma_seleccionada , datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
-                        //Después de pintar las casas, se pintan los objetos
-
-                        //Primero se guardan los nombre de los checkbox activo es una lista
-
-                        List<String> nombres_checkbox = new List<string>();
-                        foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                        if (datos[recorrer].ancho_forma > 2 && datos[recorrer].alto_forma > 2) 
                         {
-                            if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                            string nombre_page = "Planta " + i;
+                            formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                            //Después de pintar las casas, se pintan los objetos
+
+                            //Primero se guardan los nombre de los checkbox activo es una lista
+
+                            List<String> nombres_checkbox = new List<string>();
+                            foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                            {
+                                if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                            }
+
+                            objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                         }
 
-                        objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                      
                     }
                 }
             }        
@@ -252,5 +254,6 @@ namespace Creador_de_ciudades
                 }
             }
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Creador_de_ciudades.Clases;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,10 +10,10 @@ using static Creador_de_ciudades.Form1;
 
 namespace Creador_de_ciudades.Clases_estaticas
 {
-    static class objetos
+    static class Objetos
     {
         public static Random azar = new Random();
-        public static void objeto(List<String> seleccion_objeto, datos_forma datos, PictureBox lienzo)
+        public static void objeto(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo)
         {
             for (int i = 0; i < seleccion_objeto.Count ; i++)
             {
@@ -31,7 +32,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
             }          
         }
-        private static void puerta(datos_forma informacion, PictureBox pintura)
+        private static void puerta(Info_forma informacion, PictureBox pintura)
         {   
             //Optimizar
 
@@ -107,7 +108,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             }   
          
         }
-        private static void columna_cuadrada(datos_forma informacion, PictureBox pintura)
+        private static void columna_cuadrada(Info_forma informacion, PictureBox pintura)
         {
             Bitmap bmp = (Bitmap)pintura.Image;
             Graphics g;
@@ -129,7 +130,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             g.FillRectangle(brocha_columna, columna);
 
         }
-        private static void columna_circular(datos_forma informacion, PictureBox pintura)
+        private static void columna_circular(Info_forma informacion, PictureBox pintura)
         {
 
         }  

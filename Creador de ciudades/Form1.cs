@@ -25,7 +25,6 @@ namespace Creador_de_ciudades
         //Subsistema TabControl
         //Objetivo: Esta parte del código instancia las paginas para el tabControl
 
-
         private void ui_cantidad_pisos_ValueChanged(object sender, EventArgs e)
         {
             crear_pages();
@@ -49,20 +48,8 @@ namespace Creador_de_ciudades
             return alto;
         }
 
-        //Subsistema de datos para los Lienzos
-
-        public struct datos_forma
-        {
-           public int ancho_lienzo;
-           public int alto_lienzo;
-           public int ancho_forma;
-           public int alto_forma;
-           public int grosor_pared;
-           public Point punto_origen;
-           public Point nuevo_origen;
-           public int columna_cuadrada_valor;
-           public int columna_redonda_valor;
-        }
+     
+        
 
         //Subsistema de dibujo
         //Objetivo: Dibujar los planos en todos los lienzos.
@@ -74,24 +61,26 @@ namespace Creador_de_ciudades
             List<Point> cuadricula;
             cuadricula= cuadriculas.cuadricula_normal(ancho_lienzo(),alto_lienzo());
 
-            List<datos_forma> datos = new List<datos_forma>();
+            List<Info_forma> datos = new List<Info_forma>();
 
             //llenar lista de datos por casa
 
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {
-                datos.Add(new datos_forma()
-                {
-                    ancho_lienzo = ancho_lienzo(),
-                    alto_lienzo = alto_lienzo(),
-                    ancho_forma = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
-                    alto_forma = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
-                    grosor_pared = Convert.ToInt32(ui_grosor_pared.Value),
-                    punto_origen = cuadricula[azar.Next(0, cuadricula.Count)],
-                    nuevo_origen = new Point(),
-                    columna_cuadrada_valor = Convert.ToInt32(ui_columna_cuadrada_valor.Value),
-                    columna_redonda_valor = Convert.ToInt32(ui_columna_redonda_valor.Value)
-                });         
+                Info_forma info = new Info_forma
+                (
+                 ancho_lienzo(),
+                 alto_lienzo(),
+                 azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
+                 azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
+                 Convert.ToInt32(ui_grosor_pared.Value),
+                 cuadricula[azar.Next(0, cuadricula.Count)],
+                 new Point(),
+                 Convert.ToInt32(ui_columna_cuadrada_valor.Value),
+                 Convert.ToInt32(ui_columna_redonda_valor.Value)
+                );
+                
+                datos.Add(info);         
             }
 
             //Encuentro el nombre del radiobutton de forma que ha escogido el usuario
@@ -107,7 +96,7 @@ namespace Creador_de_ciudades
                     for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
                     {
                         string nombre_page = "Planta " + i;
-                        formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                        Formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
                         //Después de pintar las casas, se pintan los objetos
 
@@ -119,7 +108,7 @@ namespace Creador_de_ciudades
                             if (c.Checked == true){nombres_checkbox.Add(c.Name);}
                         }
 
-                        objetos.objeto(nombres_checkbox,datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                        Objetos.objeto(nombres_checkbox,datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
                     }
                 }
@@ -131,8 +120,7 @@ namespace Creador_de_ciudades
                 {
 
                     for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
-                    {
-                        datos_forma modificar = datos[recorrer];                                      
+                    {                                                           
                         if (i>0)
                         {
                             int valor_reduccion = 0;
@@ -142,7 +130,7 @@ namespace Creador_de_ciudades
                             }
                             else if(ui_superposicion_rad_valor_por_rango.Checked == true)
                             {
-                                int limite = Math.Min(modificar.alto_forma, modificar.ancho_forma);
+                                int limite = Math.Min(datos[recorrer].alto_forma, datos[recorrer].ancho_forma);
                                 //Esto es para manejar la excepcion probar un break
                                 if (limite < 0)
                                 { limite = 0; }
@@ -158,17 +146,16 @@ namespace Creador_de_ciudades
                                 }
                                 valor_reduccion = azar.Next(modo, limite+1);
                             }
-                            modificar.nuevo_origen = new Point(modificar.punto_origen.X + ((valor_reduccion * 100) / 2),modificar.punto_origen.Y + ((valor_reduccion * 100) / 2));
-                            modificar.punto_origen = modificar.nuevo_origen;
-                            modificar.ancho_forma = modificar.ancho_forma - valor_reduccion;
-                            modificar.alto_forma  = modificar.alto_forma - valor_reduccion;
-                        }
-                        datos[recorrer] = modificar;
+                            datos[recorrer].nuevo_origen = new Point(datos[recorrer].punto_origen.X + ((valor_reduccion * 100) / 2), datos[recorrer].punto_origen.Y + ((valor_reduccion * 100) / 2));
+                            datos[recorrer].punto_origen = datos[recorrer].nuevo_origen;
+                            datos[recorrer].ancho_forma = datos[recorrer].ancho_forma - valor_reduccion;
+                            datos[recorrer].alto_forma  = datos[recorrer].alto_forma - valor_reduccion;
+                        }                      
 
                         if (datos[recorrer].ancho_forma > 2 && datos[recorrer].alto_forma > 2) 
                         {
                             string nombre_page = "Planta " + i;
-                            formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            Formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
                             //Después de pintar las casas, se pintan los objetos
 
@@ -180,7 +167,7 @@ namespace Creador_de_ciudades
                                 if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                             }
 
-                            objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            Objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                         }
 
                       

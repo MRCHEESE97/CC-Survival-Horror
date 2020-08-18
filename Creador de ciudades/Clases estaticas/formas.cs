@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Creador_de_ciudades.Clases;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -9,9 +10,9 @@ using static Creador_de_ciudades.Form1;
 
 namespace Creador_de_ciudades.Clases_estaticas
 {
-    static class formas
+    static class Formas
     {    
-        public static void forma( String seleccion_forma, datos_forma datos, PictureBox lienzo)
+        public static void forma( String seleccion_forma, Info_forma datos, PictureBox lienzo)
         {
             if (seleccion_forma.Equals("ui_forma_casa_rectangular"))
             { 
@@ -19,7 +20,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             }
         }
 
-        private static void rectangulo(datos_forma informacion, PictureBox pintura)
+        private static void rectangulo(Info_forma informacion, PictureBox pintura)
         {                     
             Bitmap bmp = (Bitmap)pintura.Image;
             Graphics g;

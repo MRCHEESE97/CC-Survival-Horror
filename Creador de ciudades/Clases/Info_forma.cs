@@ -19,6 +19,8 @@ namespace Creador_de_ciudades.Clases
         public Point nuevo_origen;
         public int columna_cuadrada_valor;
         public int columna_redonda_valor;
+        public Rectangle limite;
+
 
         public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor) 
         {
@@ -30,7 +32,21 @@ namespace Creador_de_ciudades.Clases
             punto_origen = Punto_origen;
             nuevo_origen = Nuevo_origen;
             columna_cuadrada_valor = Columna_cuadrada_valor;
-            columna_redonda_valor = Columna_redonda_valor;      
+            columna_redonda_valor = Columna_redonda_valor;
+            limite = rectangulo();
         }
+
+       
+
+
+        // Toda figura geometrica tendrá un limite para que no haya una interseccion con otras, la forma de este limite será un rectangulo
+        private Rectangle rectangulo()
+        { 
+            Rectangle limite = new Rectangle(punto_origen, new Size(ancho_forma * 100, alto_forma * 100));
+            return limite;
+        }
+
+
+
     }
 }

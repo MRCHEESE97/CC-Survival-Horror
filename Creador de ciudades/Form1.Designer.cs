@@ -83,7 +83,11 @@
             this.ui_objetos_puerta = new System.Windows.Forms.CheckBox();
             this.ui_objetos_columna_cuadrada = new System.Windows.Forms.CheckBox();
             this.ui_objetos_columna_redonda = new System.Windows.Forms.CheckBox();
-            this.groupBoxManzanas = new System.Windows.Forms.GroupBox();
+            this.groupBoxUrbanizacion = new System.Windows.Forms.GroupBox();
+            this.ui_forma_casa_cilindrica = new System.Windows.Forms.RadioButton();
+            this.lenguajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
@@ -116,7 +120,8 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.temaToolStripMenuItem});
+            this.temaToolStripMenuItem,
+            this.lenguajeToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1150, 24);
@@ -184,7 +189,7 @@
             this.groupBoxGeneral.Controls.Add(this.ui_groupBox_superposicion_modo);
             this.groupBoxGeneral.Location = new System.Drawing.Point(609, 24);
             this.groupBoxGeneral.Name = "groupBoxGeneral";
-            this.groupBoxGeneral.Size = new System.Drawing.Size(344, 197);
+            this.groupBoxGeneral.Size = new System.Drawing.Size(334, 197);
             this.groupBoxGeneral.TabIndex = 7;
             this.groupBoxGeneral.TabStop = false;
             this.groupBoxGeneral.Text = "Propiedades de las plantas";
@@ -287,7 +292,7 @@
             this.ui_groupBox_superposicion_modo.Enabled = false;
             this.ui_groupBox_superposicion_modo.Location = new System.Drawing.Point(196, 54);
             this.ui_groupBox_superposicion_modo.Name = "ui_groupBox_superposicion_modo";
-            this.ui_groupBox_superposicion_modo.Size = new System.Drawing.Size(139, 75);
+            this.ui_groupBox_superposicion_modo.Size = new System.Drawing.Size(131, 75);
             this.ui_groupBox_superposicion_modo.TabIndex = 7;
             this.ui_groupBox_superposicion_modo.TabStop = false;
             this.ui_groupBox_superposicion_modo.Text = "Valor de reducción";
@@ -295,7 +300,7 @@
             // ui_superposicion_rad_valor_por_rango
             // 
             this.ui_superposicion_rad_valor_por_rango.AutoSize = true;
-            this.ui_superposicion_rad_valor_por_rango.Location = new System.Drawing.Point(15, 42);
+            this.ui_superposicion_rad_valor_por_rango.Location = new System.Drawing.Point(6, 42);
             this.ui_superposicion_rad_valor_por_rango.Name = "ui_superposicion_rad_valor_por_rango";
             this.ui_superposicion_rad_valor_por_rango.Size = new System.Drawing.Size(97, 17);
             this.ui_superposicion_rad_valor_por_rango.TabIndex = 6;
@@ -306,7 +311,7 @@
             // 
             this.ui_superposicion_rad_valor_fijo.AutoSize = true;
             this.ui_superposicion_rad_valor_fijo.Checked = true;
-            this.ui_superposicion_rad_valor_fijo.Location = new System.Drawing.Point(15, 19);
+            this.ui_superposicion_rad_valor_fijo.Location = new System.Drawing.Point(6, 19);
             this.ui_superposicion_rad_valor_fijo.Name = "ui_superposicion_rad_valor_fijo";
             this.ui_superposicion_rad_valor_fijo.Size = new System.Drawing.Size(65, 17);
             this.ui_superposicion_rad_valor_fijo.TabIndex = 5;
@@ -317,7 +322,7 @@
             // 
             // ui_superposicion_valor_fijo
             // 
-            this.ui_superposicion_valor_fijo.Location = new System.Drawing.Point(86, 19);
+            this.ui_superposicion_valor_fijo.Location = new System.Drawing.Point(77, 19);
             this.ui_superposicion_valor_fijo.Maximum = new decimal(new int[] {
             10,
             0,
@@ -344,17 +349,19 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.ui_quitar_todo);
             this.groupBox2.Controls.Add(this.ui_construir);
-            this.groupBox2.Location = new System.Drawing.Point(630, 597);
+            this.groupBox2.Location = new System.Drawing.Point(609, 597);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(430, 54);
+            this.groupBox2.Size = new System.Drawing.Size(529, 54);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             // 
             // ui_quitar_todo
             // 
-            this.ui_quitar_todo.Location = new System.Drawing.Point(234, 19);
+            this.ui_quitar_todo.Location = new System.Drawing.Point(420, 19);
             this.ui_quitar_todo.Name = "ui_quitar_todo";
             this.ui_quitar_todo.Size = new System.Drawing.Size(75, 23);
             this.ui_quitar_todo.TabIndex = 1;
@@ -363,7 +370,7 @@
             // 
             // ui_construir
             // 
-            this.ui_construir.Location = new System.Drawing.Point(118, 19);
+            this.ui_construir.Location = new System.Drawing.Point(311, 19);
             this.ui_construir.Name = "ui_construir";
             this.ui_construir.Size = new System.Drawing.Size(75, 23);
             this.ui_construir.TabIndex = 0;
@@ -603,6 +610,7 @@
             // 
             // ui_groupbox_forma_casas
             // 
+            this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_cilindrica);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_rectangular);
             this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(3, 159);
             this.ui_groupbox_forma_casas.Name = "ui_groupbox_forma_casas";
@@ -759,22 +767,56 @@
             this.ui_objetos_columna_redonda.Text = "Columna redonda";
             this.ui_objetos_columna_redonda.UseVisualStyleBackColor = true;
             // 
-            // groupBoxManzanas
+            // groupBoxUrbanizacion
             // 
-            this.groupBoxManzanas.BackColor = System.Drawing.Color.White;
-            this.groupBoxManzanas.Location = new System.Drawing.Point(959, 24);
-            this.groupBoxManzanas.Name = "groupBoxManzanas";
-            this.groupBoxManzanas.Size = new System.Drawing.Size(179, 197);
-            this.groupBoxManzanas.TabIndex = 10;
-            this.groupBoxManzanas.TabStop = false;
-            this.groupBoxManzanas.Text = "Propiedades de las manzanas";
+            this.groupBoxUrbanizacion.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBoxUrbanizacion.Location = new System.Drawing.Point(949, 24);
+            this.groupBoxUrbanizacion.Name = "groupBoxUrbanizacion";
+            this.groupBoxUrbanizacion.Size = new System.Drawing.Size(189, 197);
+            this.groupBoxUrbanizacion.TabIndex = 10;
+            this.groupBoxUrbanizacion.TabStop = false;
+            this.groupBoxUrbanizacion.Text = "Propiedades de las urbanizaciones";
+            // 
+            // ui_forma_casa_cilindrica
+            // 
+            this.ui_forma_casa_cilindrica.AutoSize = true;
+            this.ui_forma_casa_cilindrica.Location = new System.Drawing.Point(15, 37);
+            this.ui_forma_casa_cilindrica.Name = "ui_forma_casa_cilindrica";
+            this.ui_forma_casa_cilindrica.Size = new System.Drawing.Size(69, 17);
+            this.ui_forma_casa_cilindrica.TabIndex = 1;
+            this.ui_forma_casa_cilindrica.TabStop = true;
+            this.ui_forma_casa_cilindrica.Text = "Cilíndrica";
+            this.ui_forma_casa_cilindrica.UseVisualStyleBackColor = true;
+            // 
+            // lenguajeToolStripMenuItem
+            // 
+            this.lenguajeToolStripMenuItem.Name = "lenguajeToolStripMenuItem";
+            this.lenguajeToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.lenguajeToolStripMenuItem.Text = "Lenguaje";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(87, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 2;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(37, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Perfiles:";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1150, 663);
-            this.Controls.Add(this.groupBoxManzanas);
+            this.Controls.Add(this.groupBoxUrbanizacion);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxGeneral);
             this.Controls.Add(this.TabControl);
@@ -798,6 +840,7 @@
             this.ui_groupBox_superposicion_modo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_superposicion_valor_fijo)).EndInit();
             this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_casas)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_grosor_pared)).EndInit();
             this.groupBox1.ResumeLayout(false);
@@ -876,7 +919,11 @@
         private System.Windows.Forms.NumericUpDown ui_columna_redonda_valor;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown ui_columna_cuadrada_valor;
-        private System.Windows.Forms.GroupBox groupBoxManzanas;
+        private System.Windows.Forms.GroupBox groupBoxUrbanizacion;
+        private System.Windows.Forms.RadioButton ui_forma_casa_cilindrica;
+        private System.Windows.Forms.ToolStripMenuItem lenguajeToolStripMenuItem;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

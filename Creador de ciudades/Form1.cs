@@ -79,8 +79,35 @@ namespace Creador_de_ciudades
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
                  Convert.ToInt32(ui_columna_redonda_valor.Value)
                 );
-                
-                datos.Add(info);         
+
+                if (ubicacion_datos == 0)
+                {
+                    datos.Add(info);
+                    continue;
+                }
+             
+                bool interruptor = false;
+
+                //Valida si existe interseccion entre casas
+                for (int i = 0; i < datos.Count; i++)
+                {              
+                 if ( info.limite.IntersectsWith(datos[i].limite))
+                    {
+                        //Existe interseccion
+                        interruptor = true;
+                        break;
+                    }                           
+                }
+                if (interruptor)
+                {
+                    ubicacion_datos--;
+                    continue;
+                }
+                else 
+                { 
+                    // Si no se encontraron intersecciones agrega la info de la nueva forma
+                    datos.Add(info); 
+                }                     
             }
 
             //Encuentro el nombre del radiobutton de forma que ha escogido el usuario

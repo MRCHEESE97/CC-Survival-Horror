@@ -4,31 +4,40 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Creador_de_ciudades.Clases
 {
     static class cuadriculas
     {
-        public static List<Point> cuadricula_normal(int ancho_lienzo, int alto_lienzo)
+        public static Point cuadricula_normal(int ancho_lienzo, int alto_lienzo)
         {
-            List<Point> cuadricula = new List<Point>();
+            Random azar = new Random();
 
             //Aqui se define el tamaño de la cuadricula, siempre será 1/4 del tamaño del lienzo
 
-            float ancho_cuadricula = ancho_lienzo/(float)1.2;
-            float alto_cuadricula = alto_lienzo/(float)1.2;
+            float ancho_cuadricula = ancho_lienzo/(float)1.3;
+            float alto_cuadricula = alto_lienzo/(float)1.3;
 
-            //Creando la cuadricula de puntos
+            int x = buscar_multiplo(ancho_cuadricula);
+            int y = buscar_multiplo(alto_cuadricula);
 
-            for (int x = 0; x < ancho_cuadricula; x+=10)
+            int encontrado;
+
+            int buscar_multiplo(float a)
             {
-                for (int y = 0; y < alto_cuadricula; y+=10)
+                encontrado = azar.Next(0,(int)a);
+                if (!(encontrado % 10 == 0))
                 {
-                    cuadricula.Add(new Point(x,y));
+                    return buscar_multiplo(a);
                 }
-            }
-
-            return cuadricula;
+                else
+                {
+                    return encontrado;
+                }
+            }        
+            
+            return new Point(x,y);
         }
         
     }

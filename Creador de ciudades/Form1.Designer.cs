@@ -34,6 +34,7 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarCiudadComoCarpetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.temaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lenguajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxInteriores = new System.Windows.Forms.GroupBox();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -51,6 +52,8 @@
             this.ui_superposicion_valor_fijo = new System.Windows.Forms.NumericUpDown();
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.ui_quitar_todo = new System.Windows.Forms.Button();
             this.ui_construir = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -72,6 +75,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ui_groupbox_forma_casas = new System.Windows.Forms.GroupBox();
+            this.ui_forma_casa_cilindrica = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.groupBoxCasas = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -84,10 +88,7 @@
             this.ui_objetos_columna_cuadrada = new System.Windows.Forms.CheckBox();
             this.ui_objetos_columna_redonda = new System.Windows.Forms.CheckBox();
             this.groupBoxUrbanizacion = new System.Windows.Forms.GroupBox();
-            this.ui_forma_casa_cilindrica = new System.Windows.Forms.RadioButton();
-            this.lenguajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.ui_objetos_elevador = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBoxGeneral.SuspendLayout();
@@ -149,12 +150,18 @@
             this.temaToolStripMenuItem.Size = new System.Drawing.Size(47, 20);
             this.temaToolStripMenuItem.Text = "Tema";
             // 
+            // lenguajeToolStripMenuItem
+            // 
+            this.lenguajeToolStripMenuItem.Name = "lenguajeToolStripMenuItem";
+            this.lenguajeToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
+            this.lenguajeToolStripMenuItem.Text = "Lenguaje";
+            // 
             // groupBoxInteriores
             // 
             this.groupBoxInteriores.BackColor = System.Drawing.Color.WhiteSmoke;
             this.groupBoxInteriores.Location = new System.Drawing.Point(888, 227);
             this.groupBoxInteriores.Name = "groupBoxInteriores";
-            this.groupBoxInteriores.Size = new System.Drawing.Size(250, 368);
+            this.groupBoxInteriores.Size = new System.Drawing.Size(250, 385);
             this.groupBoxInteriores.TabIndex = 5;
             this.groupBoxInteriores.TabStop = false;
             this.groupBoxInteriores.Text = "Propiedades de los interiores";
@@ -165,7 +172,7 @@
             this.TabControl.Location = new System.Drawing.Point(12, 24);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(591, 627);
+            this.TabControl.Size = new System.Drawing.Size(591, 648);
             this.TabControl.TabIndex = 6;
             this.TabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_Selected);
             // 
@@ -175,7 +182,7 @@
             this.tabPage1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(583, 601);
+            this.tabPage1.Size = new System.Drawing.Size(583, 622);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "PB";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -353,11 +360,28 @@
             this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.ui_quitar_todo);
             this.groupBox2.Controls.Add(this.ui_construir);
-            this.groupBox2.Location = new System.Drawing.Point(609, 597);
+            this.groupBox2.Location = new System.Drawing.Point(609, 618);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(529, 54);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(37, 22);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(44, 13);
+            this.label15.TabIndex = 3;
+            this.label15.Text = "Perfiles:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(87, 19);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 2;
             // 
             // ui_quitar_todo
             // 
@@ -619,6 +643,17 @@
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Forma/casas";
             // 
+            // ui_forma_casa_cilindrica
+            // 
+            this.ui_forma_casa_cilindrica.AutoSize = true;
+            this.ui_forma_casa_cilindrica.Location = new System.Drawing.Point(15, 37);
+            this.ui_forma_casa_cilindrica.Name = "ui_forma_casa_cilindrica";
+            this.ui_forma_casa_cilindrica.Size = new System.Drawing.Size(69, 17);
+            this.ui_forma_casa_cilindrica.TabIndex = 1;
+            this.ui_forma_casa_cilindrica.TabStop = true;
+            this.ui_forma_casa_cilindrica.Text = "Cilíndrica";
+            this.ui_forma_casa_cilindrica.UseVisualStyleBackColor = true;
+            // 
             // ui_forma_casa_rectangular
             // 
             this.ui_forma_casa_rectangular.AutoSize = true;
@@ -637,7 +672,7 @@
             this.groupBoxCasas.Controls.Add(this.panel1);
             this.groupBoxCasas.Location = new System.Drawing.Point(609, 227);
             this.groupBoxCasas.Name = "groupBoxCasas";
-            this.groupBoxCasas.Size = new System.Drawing.Size(251, 368);
+            this.groupBoxCasas.Size = new System.Drawing.Size(251, 385);
             this.groupBoxCasas.TabIndex = 4;
             this.groupBoxCasas.TabStop = false;
             this.groupBoxCasas.Text = "Propiedades de las casas";
@@ -656,11 +691,12 @@
             this.panel1.Controls.Add(this.ui_groupbox_forma_casas);
             this.panel1.Location = new System.Drawing.Point(6, 19);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(239, 343);
+            this.panel1.Size = new System.Drawing.Size(239, 360);
             this.panel1.TabIndex = 7;
             // 
             // ui_groupbox_objetos
             // 
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_elevador);
             this.ui_groupbox_objetos.Controls.Add(this.label14);
             this.ui_groupbox_objetos.Controls.Add(this.ui_columna_redonda_valor);
             this.ui_groupbox_objetos.Controls.Add(this.label13);
@@ -670,7 +706,7 @@
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_columna_redonda);
             this.ui_groupbox_objetos.Location = new System.Drawing.Point(3, 233);
             this.ui_groupbox_objetos.Name = "ui_groupbox_objetos";
-            this.ui_groupbox_objetos.Size = new System.Drawing.Size(211, 92);
+            this.ui_groupbox_objetos.Size = new System.Drawing.Size(211, 124);
             this.ui_groupbox_objetos.TabIndex = 7;
             this.ui_groupbox_objetos.TabStop = false;
             this.ui_groupbox_objetos.Text = "Objetos";
@@ -740,11 +776,11 @@
             // ui_objetos_puerta
             // 
             this.ui_objetos_puerta.AutoSize = true;
-            this.ui_objetos_puerta.Location = new System.Drawing.Point(15, 65);
+            this.ui_objetos_puerta.Location = new System.Drawing.Point(15, 88);
             this.ui_objetos_puerta.Name = "ui_objetos_puerta";
-            this.ui_objetos_puerta.Size = new System.Drawing.Size(57, 17);
+            this.ui_objetos_puerta.Size = new System.Drawing.Size(99, 17);
             this.ui_objetos_puerta.TabIndex = 2;
-            this.ui_objetos_puerta.Text = "Puerta";
+            this.ui_objetos_puerta.Text = "Vano de puerta";
             this.ui_objetos_puerta.UseVisualStyleBackColor = true;
             // 
             // ui_objetos_columna_cuadrada
@@ -777,45 +813,21 @@
             this.groupBoxUrbanizacion.TabStop = false;
             this.groupBoxUrbanizacion.Text = "Propiedades de las urbanizaciones";
             // 
-            // ui_forma_casa_cilindrica
+            // ui_objetos_elevador
             // 
-            this.ui_forma_casa_cilindrica.AutoSize = true;
-            this.ui_forma_casa_cilindrica.Location = new System.Drawing.Point(15, 37);
-            this.ui_forma_casa_cilindrica.Name = "ui_forma_casa_cilindrica";
-            this.ui_forma_casa_cilindrica.Size = new System.Drawing.Size(69, 17);
-            this.ui_forma_casa_cilindrica.TabIndex = 1;
-            this.ui_forma_casa_cilindrica.TabStop = true;
-            this.ui_forma_casa_cilindrica.Text = "Cilíndrica";
-            this.ui_forma_casa_cilindrica.UseVisualStyleBackColor = true;
-            // 
-            // lenguajeToolStripMenuItem
-            // 
-            this.lenguajeToolStripMenuItem.Name = "lenguajeToolStripMenuItem";
-            this.lenguajeToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
-            this.lenguajeToolStripMenuItem.Text = "Lenguaje";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(87, 19);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(37, 22);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(44, 13);
-            this.label15.TabIndex = 3;
-            this.label15.Text = "Perfiles:";
+            this.ui_objetos_elevador.AutoSize = true;
+            this.ui_objetos_elevador.Location = new System.Drawing.Point(15, 65);
+            this.ui_objetos_elevador.Name = "ui_objetos_elevador";
+            this.ui_objetos_elevador.Size = new System.Drawing.Size(68, 17);
+            this.ui_objetos_elevador.TabIndex = 7;
+            this.ui_objetos_elevador.Text = "Elevador";
+            this.ui_objetos_elevador.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1150, 663);
+            this.ClientSize = new System.Drawing.Size(1150, 684);
             this.Controls.Add(this.groupBoxUrbanizacion);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxGeneral);
@@ -924,6 +936,7 @@
         private System.Windows.Forms.ToolStripMenuItem lenguajeToolStripMenuItem;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.CheckBox ui_objetos_elevador;
     }
 }
 

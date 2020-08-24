@@ -58,8 +58,6 @@ namespace Creador_de_ciudades
         {
             Random azar = new Random();
 
-            List<Point> cuadricula;
-            cuadricula= cuadriculas.cuadricula_normal(ancho_lienzo(),alto_lienzo());
 
             List<Info_forma> datos = new List<Info_forma>();
 
@@ -74,7 +72,7 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
                  azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
                  Convert.ToInt32(ui_grosor_pared.Value),
-                 cuadricula[azar.Next(0, cuadricula.Count)],
+                 cuadriculas.cuadricula_normal(ancho_lienzo(), alto_lienzo()),
                  new Point(),
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
                  Convert.ToInt32(ui_columna_redonda_valor.Value)
@@ -110,11 +108,11 @@ namespace Creador_de_ciudades
                 }                     
             }
 
-            //Encuentro el nombre del radiobutton de forma que ha escogido el usuario
+            //Encuentro el nombre del radiobutton de la forma que ha escogido el usuario
 
             String forma_seleccionada = ui_groupbox_forma_casas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
-            //Pintar lienzos con los datos almacenados
+            //Pintar lienzos con los datos almacenados, dependiedo de la superposicion
 
             if (ui_superposicion_esc_fija.Checked == true)
             {
@@ -125,8 +123,6 @@ namespace Creador_de_ciudades
                         string nombre_page = "Planta " + i;
                         Formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
-                        //Después de pintar las casas, se pintan los objetos
-
                         //Primero se guardan los nombre de los checkbox activo es una lista
 
                         List<String> nombres_checkbox = new List<string>();
@@ -135,7 +131,11 @@ namespace Creador_de_ciudades
                             if (c.Checked == true){nombres_checkbox.Add(c.Name);}
                         }
 
+                        //Después de pintar las casas, se pintan los objetos
                         Objetos.objeto(nombres_checkbox,datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                        
+                        //Esta variable es modificada una vez que PB se haya dibujado
+                        datos[recorrer].ubicacion_pb = false;
 
                     }
                 }
@@ -195,6 +195,9 @@ namespace Creador_de_ciudades
                             }
 
                             Objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                           
+                            //Esta variable es modificada una vez que PB se haya dibujado
+                            datos[recorrer].ubicacion_pb = false;
                         }
 
                       

@@ -30,6 +30,11 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     puerta(datos, lienzo); 
                 }
+                else if (nombre_objeto.Equals("ui_objetos_puerta"))
+                {
+                    elevador(datos, lienzo);
+                }
+
             }          
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
@@ -133,7 +138,12 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void columna_circular(Info_forma informacion, PictureBox pintura)
         {
 
-        }  
+        }
+
+        private static void elevador(Info_forma informacion, PictureBox pintura)
+        {
+
+        }
 
     }
 }

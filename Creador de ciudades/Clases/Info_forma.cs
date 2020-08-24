@@ -20,6 +20,7 @@ namespace Creador_de_ciudades.Clases
         public int columna_cuadrada_valor;
         public int columna_redonda_valor;
         public Rectangle limite;
+        public bool ubicacion_pb = true;
 
 
         public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor) 

@@ -14,6 +14,8 @@ namespace Creador_de_ciudades.Clases
         public int alto_lienzo;
         public int ancho_forma;
         public int alto_forma;
+        public int nuevo_ancho_forma;
+        public int nuevo_alto_forma;
         public int grosor_pared;
         public Point punto_origen;
         public Point nuevo_origen;

@@ -58,6 +58,9 @@ namespace Creador_de_ciudades
         {
             Random azar = new Random();
 
+            //Aqui calcularé el 20% del tamaño del lienzo, esto para que la ciudad tenga un limite y las formas no sobresalgan
+            float c_ancho = ancho_lienzo() * (float)0.20;
+            float c_alto = alto_lienzo() * (float)0.20;
 
             List<Info_forma> datos = new List<Info_forma>();
 
@@ -72,11 +75,15 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
                  azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
                  Convert.ToInt32(ui_grosor_pared.Value),
-                 cuadriculas.cuadricula_normal(ancho_lienzo(), alto_lienzo()),
+                 Distribuidor.cuadricula_normal(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto),
                  new Point(),
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
                  Convert.ToInt32(ui_columna_redonda_valor.Value)
                 );
+
+                info.nuevo_alto_forma = info.alto_forma;
+                info.nuevo_ancho_forma = info.ancho_forma;
+
 
                 if (ubicacion_datos == 0)
                 {
@@ -175,8 +182,8 @@ namespace Creador_de_ciudades
                             }
                             datos[recorrer].nuevo_origen = new Point(datos[recorrer].punto_origen.X + ((valor_reduccion * 100) / 2), datos[recorrer].punto_origen.Y + ((valor_reduccion * 100) / 2));
                             datos[recorrer].punto_origen = datos[recorrer].nuevo_origen;
-                            datos[recorrer].ancho_forma = datos[recorrer].ancho_forma - valor_reduccion;
-                            datos[recorrer].alto_forma  = datos[recorrer].alto_forma - valor_reduccion;
+                            datos[recorrer].nuevo_ancho_forma = datos[recorrer].nuevo_ancho_forma - valor_reduccion;
+                            datos[recorrer].nuevo_alto_forma  = datos[recorrer].nuevo_alto_forma - valor_reduccion;
                         }                      
 
                         if (datos[recorrer].ancho_forma > 2 && datos[recorrer].alto_forma > 2) 
@@ -272,5 +279,10 @@ namespace Creador_de_ciudades
             }
         }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // The top panel remains the same size when the form is resized.
+            splitContainer1.FixedPanel= System.Windows.Forms.FixedPanel.Panel2;
+        }
     }
 }

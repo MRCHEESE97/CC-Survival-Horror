@@ -8,19 +8,14 @@ using System.Windows.Forms;
 
 namespace Creador_de_ciudades.Clases
 {
-    static class cuadriculas
+    static class Distribuidor
     {
-        public static Point cuadricula_normal(int ancho_lienzo, int alto_lienzo)
+        public static Point cuadricula_normal(int ancho, int alto)
         {
             Random azar = new Random();
 
-            //Aqui se define el tamaño de la cuadricula, siempre será 1/4 del tamaño del lienzo
-
-            float ancho_cuadricula = ancho_lienzo/(float)1.3;
-            float alto_cuadricula = alto_lienzo/(float)1.3;
-
-            int x = buscar_multiplo(ancho_cuadricula);
-            int y = buscar_multiplo(alto_cuadricula);
+            int x = buscar_multiplo(ancho);
+            int y = buscar_multiplo(alto);
 
             int encontrado;
 

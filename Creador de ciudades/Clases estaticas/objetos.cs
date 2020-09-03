@@ -30,7 +30,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     puerta(datos, lienzo); 
                 }
-                else if (nombre_objeto.Equals("ui_objetos_puerta"))
+                else if (nombre_objeto.Equals("ui_objetos_elevador") && datos.ubicacion_pb == false)
                 {
                     elevador(datos, lienzo);
                 }
@@ -141,8 +141,26 @@ namespace Creador_de_ciudades.Clases_estaticas
         }
 
         private static void elevador(Info_forma informacion, PictureBox pintura)
-        {
+        {  
+            Bitmap bmp = (Bitmap)pintura.Image;
+            Graphics g;
+            g = Graphics.FromImage(bmp);
 
+            //Aqui se dibuja la pared
+            Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            Rectangle pared = new Rectangle(informacion.origen_elevador, new Size(2 * 100, 2 * 100));
+            g.FillRectangle(brocha_pared, pared);
+
+            //Aqui se dibuja el suelo
+            Point punto_origen_suelo = new Point(informacion.origen_elevador.X + informacion.grosor_pared, informacion.origen_elevador.Y + informacion.grosor_pared);
+            int ancho_suelo = 2 * 100 - informacion.grosor_pared * 2;
+            int alto_suelo = 2 * 100 - informacion.grosor_pared * 2;
+            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
+            Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent);
+
+            //Cambiando el modo de composicion paso a modo forzado de pintado. Predeterminado: SourceOver
+            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            g.FillRectangle(brocha_suelo, suelo);            
         }
 
     }

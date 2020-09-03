@@ -33,11 +33,11 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarCiudadComoCarpetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.temaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lenguajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
+            this.temaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -126,16 +126,17 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.Font = new System.Drawing.Font("Trebuchet MS", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe Print", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.temaToolStripMenuItem,
             this.lenguajeToolStripMenuItem,
-            this.perfilesToolStripMenuItem});
+            this.perfilesToolStripMenuItem,
+            this.temaToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
-            this.menuStrip1.Size = new System.Drawing.Size(996, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(996, 31);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -144,26 +145,20 @@
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.guardarCiudadComoCarpetaToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(68, 25);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // guardarCiudadComoCarpetaToolStripMenuItem
             // 
             this.guardarCiudadComoCarpetaToolStripMenuItem.Name = "guardarCiudadComoCarpetaToolStripMenuItem";
-            this.guardarCiudadComoCarpetaToolStripMenuItem.Size = new System.Drawing.Size(260, 22);
+            this.guardarCiudadComoCarpetaToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
             this.guardarCiudadComoCarpetaToolStripMenuItem.Text = "Guardar ciudad (PNG en carpeta)";
             this.guardarCiudadComoCarpetaToolStripMenuItem.Click += new System.EventHandler(this.guardarCiudadComoCarpetaToolStripMenuItem_Click);
-            // 
-            // temaToolStripMenuItem
-            // 
-            this.temaToolStripMenuItem.Name = "temaToolStripMenuItem";
-            this.temaToolStripMenuItem.Size = new System.Drawing.Size(49, 20);
-            this.temaToolStripMenuItem.Text = "Tema";
             // 
             // lenguajeToolStripMenuItem
             // 
             this.lenguajeToolStripMenuItem.Name = "lenguajeToolStripMenuItem";
-            this.lenguajeToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.lenguajeToolStripMenuItem.Size = new System.Drawing.Size(75, 25);
             this.lenguajeToolStripMenuItem.Text = "Lenguaje";
             // 
             // perfilesToolStripMenuItem
@@ -172,7 +167,7 @@
             this.toolStripComboBox1,
             this.toolStripComboBox2});
             this.perfilesToolStripMenuItem.Name = "perfilesToolStripMenuItem";
-            this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.perfilesToolStripMenuItem.Size = new System.Drawing.Size(63, 25);
             this.perfilesToolStripMenuItem.Text = "Perfiles";
             // 
             // toolStripComboBox1
@@ -185,6 +180,12 @@
             this.toolStripComboBox2.Name = "toolStripComboBox2";
             this.toolStripComboBox2.Size = new System.Drawing.Size(121, 23);
             // 
+            // temaToolStripMenuItem
+            // 
+            this.temaToolStripMenuItem.Name = "temaToolStripMenuItem";
+            this.temaToolStripMenuItem.Size = new System.Drawing.Size(55, 25);
+            this.temaToolStripMenuItem.Text = "Tema";
+            // 
             // TabControl
             // 
             this.TabControl.Controls.Add(this.tabPage1);
@@ -194,7 +195,7 @@
             this.TabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(710, 474);
+            this.TabControl.Size = new System.Drawing.Size(710, 471);
             this.TabControl.TabIndex = 6;
             this.TabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_Selected);
             // 
@@ -205,7 +206,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(702, 445);
+            this.tabPage1.Size = new System.Drawing.Size(702, 442);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Planta 0";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -292,7 +293,7 @@
             this.ui_cantidad_pisos.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_pisos.TabIndex = 1;
             this.ui_cantidad_pisos.Value = new decimal(new int[] {
-            1,
+            5,
             0,
             0,
             0});
@@ -397,7 +398,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            1,
+            8,
             0,
             0,
             0});
@@ -624,7 +625,7 @@
             this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(245, 78);
             this.ui_groupbox_forma_casas.TabIndex = 6;
             this.ui_groupbox_forma_casas.TabStop = false;
-            this.ui_groupbox_forma_casas.Text = "Forma/casas";
+            this.ui_groupbox_forma_casas.Text = "Formas/casas";
             // 
             // ui_forma_casa_cilindrica
             // 
@@ -673,6 +674,8 @@
             // ui_objetos_elevador
             // 
             this.ui_objetos_elevador.AutoSize = true;
+            this.ui_objetos_elevador.Checked = true;
+            this.ui_objetos_elevador.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_objetos_elevador.Location = new System.Drawing.Point(17, 85);
             this.ui_objetos_elevador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_elevador.Name = "ui_objetos_elevador";
@@ -748,6 +751,8 @@
             // ui_objetos_puerta
             // 
             this.ui_objetos_puerta.AutoSize = true;
+            this.ui_objetos_puerta.Checked = true;
+            this.ui_objetos_puerta.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_objetos_puerta.Location = new System.Drawing.Point(17, 115);
             this.ui_objetos_puerta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_puerta.Name = "ui_objetos_puerta";
@@ -759,6 +764,8 @@
             // ui_objetos_columna_cuadrada
             // 
             this.ui_objetos_columna_cuadrada.AutoSize = true;
+            this.ui_objetos_columna_cuadrada.Checked = true;
+            this.ui_objetos_columna_cuadrada.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_objetos_columna_cuadrada.Location = new System.Drawing.Point(17, 25);
             this.ui_objetos_columna_cuadrada.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_columna_cuadrada.Name = "ui_objetos_columna_cuadrada";
@@ -789,12 +796,13 @@
             this.tabControlProp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlProp.Name = "tabControlProp";
             this.tabControlProp.SelectedIndex = 0;
-            this.tabControlProp.Size = new System.Drawing.Size(282, 420);
+            this.tabControlProp.Size = new System.Drawing.Size(282, 417);
             this.tabControlProp.TabIndex = 10;
             // 
             // tabcontrol_propiedades
             // 
             this.tabcontrol_propiedades.AutoScroll = true;
+            this.tabcontrol_propiedades.BackColor = System.Drawing.Color.White;
             this.tabcontrol_propiedades.Controls.Add(this.ui_groupBox_superposicion_modo);
             this.tabcontrol_propiedades.Controls.Add(this.groupBox4);
             this.tabcontrol_propiedades.Controls.Add(this.label1);
@@ -803,10 +811,9 @@
             this.tabcontrol_propiedades.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabcontrol_propiedades.Name = "tabcontrol_propiedades";
             this.tabcontrol_propiedades.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabcontrol_propiedades.Size = new System.Drawing.Size(274, 390);
+            this.tabcontrol_propiedades.Size = new System.Drawing.Size(274, 387);
             this.tabcontrol_propiedades.TabIndex = 0;
             this.tabcontrol_propiedades.Text = "Plantas";
-            this.tabcontrol_propiedades.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -815,7 +822,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(274, 390);
+            this.tabPage3.Size = new System.Drawing.Size(274, 387);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Urbanización";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -835,7 +842,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(274, 390);
+            this.tabPage2.Size = new System.Drawing.Size(274, 387);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -843,11 +850,11 @@
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
-            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage4.Size = new System.Drawing.Size(274, 390);
+            this.tabPage4.Size = new System.Drawing.Size(274, 391);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Interiores";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -876,8 +883,9 @@
             // 
             // splitContainer1
             // 
+            this.splitContainer1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 28);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 31);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -888,7 +896,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControlProp);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(996, 474);
+            this.splitContainer1.Size = new System.Drawing.Size(996, 471);
             this.splitContainer1.SplitterDistance = 710;
             this.splitContainer1.TabIndex = 11;
             // 
@@ -897,7 +905,7 @@
             this.groupBox2.Controls.Add(this.ui_quitar_todo);
             this.groupBox2.Controls.Add(this.ui_construir);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 420);
+            this.groupBox2.Location = new System.Drawing.Point(0, 417);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(282, 54);
             this.groupBox2.TabIndex = 11;
@@ -907,6 +915,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.HighlightText;
             this.ClientSize = new System.Drawing.Size(996, 502);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);

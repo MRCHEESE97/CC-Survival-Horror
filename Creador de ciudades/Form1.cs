@@ -75,7 +75,7 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
                  azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
                  Convert.ToInt32(ui_grosor_pared.Value),
-                 Distribuidor.cuadricula_normal(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, 0, 0), //100 es el multiplo 
+                 Distribuidor.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, 0, 0), //100 es el multiplo 
                  new Point(),
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
                  Convert.ToInt32(ui_columna_redonda_valor.Value)
@@ -83,21 +83,13 @@ namespace Creador_de_ciudades
 
                 info.nuevo_alto_forma = info.alto_forma;
                 info.nuevo_ancho_forma = info.ancho_forma;
-                info.origen_elevador = Distribuidor.cuadricula_normal(info.punto_origen.X + info.ancho_forma * 100, info.punto_origen.Y + info.alto_forma * 100, 100, info.punto_origen.X, info.punto_origen.Y); //El ascensor aparece solo en los numeros multiplos de 100
-
-
-                if (ubicacion_datos == 0)
-                {
-                    datos.Add(info);
-                    continue;
-                }
              
                 bool interruptor = false;
 
                 //Valida si existe interseccion entre casas
                 for (int i = 0; i < datos.Count; i++)
                 {              
-                 if ( info.limite.IntersectsWith(datos[i].limite))
+                 if (Distribuidor.validar_interseccion(info.espacio_forma,datos[i].espacio_forma))
                     {
                         //Existe interseccion
                         interruptor = true;
@@ -109,11 +101,12 @@ namespace Creador_de_ciudades
                     ubicacion_datos--;
                     continue;
                 }
-                else 
-                { 
-                    // Si no se encontraron intersecciones agrega la info de la nueva forma
-                    datos.Add(info); 
-                }                     
+                else
+                {
+                    // Si no se encontraron intersecciones agrega la info de forma
+                    datos.Add(info);
+
+                }     
             }
 
             //Encuentro el nombre del radiobutton de la forma que ha escogido el usuario

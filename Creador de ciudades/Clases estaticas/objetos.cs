@@ -141,7 +141,22 @@ namespace Creador_de_ciudades.Clases_estaticas
         }
 
         private static void elevador(Info_forma informacion, PictureBox pintura)
-        {  
+        {
+
+            //Valida que el elevador este dentro del espacio de la forma
+            
+            bool encontrado = false;
+            do
+            {
+                informacion.origen_elevador = Distribuidor.seleccionar_punto_cuadricula(informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.alto_forma * 100, 100, informacion.punto_origen.X, informacion.punto_origen.Y);
+                informacion.espacio_elevador = new Rectangle(informacion.origen_elevador.X, informacion.origen_elevador.Y, 2 * 100, 2 * 100);
+                Rectangle resultado = Rectangle.Intersect(informacion.espacio_elevador, informacion.espacio_forma);
+                if (resultado == informacion.espacio_elevador)
+                { encontrado = true; }
+            } while (encontrado == false);
+
+            //Dibuja el elevador
+
             Bitmap bmp = (Bitmap)pintura.Image;
             Graphics g;
             g = Graphics.FromImage(bmp);

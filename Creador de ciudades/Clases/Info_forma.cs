@@ -21,10 +21,11 @@ namespace Creador_de_ciudades.Clases
         public Point nuevo_origen;
         public int columna_cuadrada_valor;
         public int columna_redonda_valor;
-        public Rectangle limite;
+        public Rectangle espacio_forma;
+        public Rectangle espacio_elevador;
         public bool ubicacion_pb = true;
         public Point origen_elevador;
-
+        
 
         public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor) 
         {
@@ -37,7 +38,7 @@ namespace Creador_de_ciudades.Clases
             nuevo_origen = Nuevo_origen;
             columna_cuadrada_valor = Columna_cuadrada_valor;
             columna_redonda_valor = Columna_redonda_valor;
-            limite = rectangulo();
+            espacio_forma = rectangulo();
         }
 
        

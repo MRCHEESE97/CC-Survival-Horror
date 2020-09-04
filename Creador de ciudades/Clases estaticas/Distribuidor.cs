@@ -10,7 +10,7 @@ namespace Creador_de_ciudades.Clases
 {
     static class Distribuidor
     {
-        public static Point cuadricula_normal(int maximox, int maximoy, int multiplo, int minimox, int minimoy)
+        public static Point seleccionar_punto_cuadricula(int maximox, int maximoy, int multiplo, int minimox, int minimoy)
         {
             Random azar = new Random();
 
@@ -33,6 +33,16 @@ namespace Creador_de_ciudades.Clases
             }        
             
             return new Point(x,y);
+        }
+
+        public static bool validar_interseccion( Rectangle uno, Rectangle dos)
+        {
+            bool existe = false;
+            if (uno.IntersectsWith(dos))
+            {
+                existe = true; 
+            }
+            return existe; 
         }
         
     }

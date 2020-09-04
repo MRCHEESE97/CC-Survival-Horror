@@ -106,6 +106,20 @@ namespace Creador_de_ciudades
                     // Si no se encontraron intersecciones agrega la info de forma
                     datos.Add(info);
 
+                    if (ui_objetos_elevador.Checked == true)
+                    {
+                        //Valida que el elevador este dentro del espacio de la forma
+                        bool encontrado = false;
+                        do
+                        {
+                            info.origen_elevador = Distribuidor.seleccionar_punto_cuadricula(info.punto_origen.X + info.ancho_forma * 100, info.punto_origen.Y + info.alto_forma * 100, 100, info.punto_origen.X, info.punto_origen.Y);
+                            info.espacio_elevador = new Rectangle(info.origen_elevador.X, info.origen_elevador.Y, 2 * 100, 2 * 100);
+                            Rectangle resultado = Rectangle.Intersect(info.espacio_elevador, info.espacio_forma);
+                            if (resultado == info.espacio_elevador)
+                            { encontrado = true; }
+                        } while (encontrado == false);
+                    }
+
                 }     
             }
 
@@ -256,7 +270,6 @@ namespace Creador_de_ciudades
 
         private void guardarCiudadComoCarpetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //Directory.CreateDirectory(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Ciudades"));
 
             //En las siguientes lineas recolecto las imagenes de los TabControls para guardarlas         
             for (int i = 0; i < TabControl.TabCount; i++)

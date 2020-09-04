@@ -26,15 +26,14 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     columna_circular(datos, lienzo);
                 }
-                else if (nombre_objeto.Equals("ui_objetos_puerta"))
-                {
-                    puerta(datos, lienzo); 
-                }
                 else if (nombre_objeto.Equals("ui_objetos_elevador") && datos.ubicacion_pb == false)
                 {
                     elevador(datos, lienzo);
                 }
-
+                else if (nombre_objeto.Equals("ui_objetos_puerta"))
+                {
+                    puerta(datos, lienzo); 
+                }
             }          
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
@@ -46,71 +45,75 @@ namespace Creador_de_ciudades.Clases_estaticas
             g = Graphics.FromImage(bmp);
             Brush brocha_puerta = new System.Drawing.SolidBrush(System.Drawing.Color.Red);
             Rectangle puerta;
-            int seleccion_origen = azar.Next(0, 8);
-            Point origen_puerta;
-            //Puntos esquineros
-            Point punto_superior_izquierdo_izquierdo = new Point(informacion.punto_origen.X, informacion.punto_origen.Y + informacion.columna_cuadrada_valor);
-            Point punto_superior_izquierdo_arriba = new Point(informacion.punto_origen.X + informacion.columna_cuadrada_valor, informacion.punto_origen.Y);
-            Point punto_superior_derecho_arriba = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.grosor_pared, informacion.punto_origen.Y);
-            Point punto_superior_derecho_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.columna_cuadrada_valor);
-            Point punto_inferior_derecho_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
-            Point punto_inferior_derecho_abajo = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.grosor_pared, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.grosor_pared);
-            Point punto_inferior_izquierdo_abajo = new Point(informacion.punto_origen.X + informacion.columna_cuadrada_valor, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.grosor_pared);
-            Point punto_inferior_izquierdo_izquierdo = new Point(informacion.punto_origen.X, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
-            //Puntos medios
-            Point pm_lado_izquierdo = new Point(punto_inferior_izquierdo_izquierdo.X, (punto_inferior_izquierdo_izquierdo.Y + punto_superior_izquierdo_izquierdo.Y)/2);
-            Point pm_lado_superior = new Point((punto_superior_derecho_arriba.X + punto_superior_izquierdo_arriba.X)/2, punto_superior_izquierdo_arriba.Y);
-            Point pm_lado_derecho = new Point(punto_superior_derecho_arriba.X, (punto_inferior_derecho_derecho.Y + punto_superior_derecho_derecho.Y)/2);
-            Point pm_lado_inferior = new Point((punto_inferior_derecho_abajo.X + punto_inferior_izquierdo_abajo.X)/2, punto_inferior_izquierdo_abajo.Y);
+            bool colisiona = true;
 
-            if (seleccion_origen == 0)
-            {
-                origen_puerta = new Point(pm_lado_izquierdo.X, azar.Next(punto_superior_izquierdo_izquierdo.Y, pm_lado_izquierdo.Y));
-                puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
-                g.FillRectangle(brocha_puerta, puerta);
-            }
-            else if (seleccion_origen == 1)
-            {
-                origen_puerta = new Point(azar.Next(punto_superior_izquierdo_arriba.X, pm_lado_superior.X), pm_lado_superior.Y);
-                puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
-                g.FillRectangle(brocha_puerta, puerta);
-            }
-            else if (seleccion_origen == 2)
-            {
-                origen_puerta = new Point(azar.Next(pm_lado_superior.X, punto_superior_derecho_arriba.X) - 100, pm_lado_superior.Y);
-                puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
-                g.FillRectangle(brocha_puerta, puerta);
-            }
-            else if (seleccion_origen == 3)
-            {
-                origen_puerta = new Point(pm_lado_derecho.X, azar.Next(punto_superior_derecho_derecho.Y, pm_lado_derecho.Y));
-                puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
-                g.FillRectangle(brocha_puerta, puerta);
-            }
-            else if (seleccion_origen == 4)
-            {
-                origen_puerta = new Point(pm_lado_derecho.X, azar.Next(pm_lado_derecho.Y, punto_inferior_derecho_abajo.Y) - 100);
-                puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
-                g.FillRectangle(brocha_puerta, puerta);
-            }
-            else if (seleccion_origen == 5)
-            {
-                origen_puerta = new Point(azar.Next(pm_lado_inferior.X, punto_inferior_derecho_abajo.X) - 100, pm_lado_inferior.Y);
-                puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
-                g.FillRectangle(brocha_puerta, puerta);
-            }
-            else if (seleccion_origen == 6)
-            {
-                origen_puerta = new Point(azar.Next(punto_inferior_izquierdo_abajo.X, pm_lado_inferior.X), pm_lado_inferior.Y);
-                puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
-                g.FillRectangle(brocha_puerta, puerta);
-            }
-            else if (seleccion_origen == 7)
-            {
-                origen_puerta = new Point(pm_lado_izquierdo.X, azar.Next(pm_lado_izquierdo.Y, punto_inferior_izquierdo_izquierdo.Y) - 100);
-                puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
-                g.FillRectangle(brocha_puerta, puerta);
-            }   
+            do {
+                int seleccion_origen = azar.Next(0, 8);
+                Point origen_puerta;
+                //Puntos esquineros
+                Point punto_superior_izquierdo_izquierdo = new Point(informacion.punto_origen.X, informacion.punto_origen.Y + informacion.columna_cuadrada_valor);
+                Point punto_superior_izquierdo_arriba = new Point(informacion.punto_origen.X + informacion.columna_cuadrada_valor, informacion.punto_origen.Y);
+                Point punto_superior_derecho_arriba = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.grosor_pared, informacion.punto_origen.Y);
+                Point punto_superior_derecho_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.columna_cuadrada_valor);
+                Point punto_inferior_derecho_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
+                Point punto_inferior_derecho_abajo = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.grosor_pared, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.grosor_pared);
+                Point punto_inferior_izquierdo_abajo = new Point(informacion.punto_origen.X + informacion.columna_cuadrada_valor, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.grosor_pared);
+                Point punto_inferior_izquierdo_izquierdo = new Point(informacion.punto_origen.X, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
+                //Puntos medios
+                Point pm_lado_izquierdo = new Point(punto_inferior_izquierdo_izquierdo.X, (punto_inferior_izquierdo_izquierdo.Y + punto_superior_izquierdo_izquierdo.Y)/2);
+                Point pm_lado_superior = new Point((punto_superior_derecho_arriba.X + punto_superior_izquierdo_arriba.X)/2, punto_superior_izquierdo_arriba.Y);
+                Point pm_lado_derecho = new Point(punto_superior_derecho_arriba.X, (punto_inferior_derecho_derecho.Y + punto_superior_derecho_derecho.Y)/2);
+                Point pm_lado_inferior = new Point((punto_inferior_derecho_abajo.X + punto_inferior_izquierdo_abajo.X)/2, punto_inferior_izquierdo_abajo.Y);
+
+                if (seleccion_origen == 0)
+                {                    
+                    origen_puerta = new Point(pm_lado_izquierdo.X, azar.Next(punto_superior_izquierdo_izquierdo.Y, pm_lado_izquierdo.Y));
+                    puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
+                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)){ colisiona = false; g.FillRectangle(brocha_puerta, puerta); }                  
+                }
+                else if (seleccion_origen == 1)
+                {
+                    origen_puerta = new Point(azar.Next(punto_superior_izquierdo_arriba.X, pm_lado_superior.X), pm_lado_superior.Y);
+                    puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
+                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                }
+                else if (seleccion_origen == 2)
+                {
+                    origen_puerta = new Point(azar.Next(pm_lado_superior.X, punto_superior_derecho_arriba.X) - 100, pm_lado_superior.Y);
+                    puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
+                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                }
+                else if (seleccion_origen == 3)
+                {
+                    origen_puerta = new Point(pm_lado_derecho.X, azar.Next(punto_superior_derecho_derecho.Y, pm_lado_derecho.Y));
+                    puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
+                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                }
+                else if (seleccion_origen == 4)
+                {
+                    origen_puerta = new Point(pm_lado_derecho.X, azar.Next(pm_lado_derecho.Y, punto_inferior_derecho_abajo.Y) - 100);
+                    puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
+                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                }
+                else if (seleccion_origen == 5)
+                {
+                    origen_puerta = new Point(azar.Next(pm_lado_inferior.X, punto_inferior_derecho_abajo.X) - 100, pm_lado_inferior.Y);
+                    puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
+                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                }
+                else if (seleccion_origen == 6)
+                {
+                    origen_puerta = new Point(azar.Next(punto_inferior_izquierdo_abajo.X, pm_lado_inferior.X), pm_lado_inferior.Y);
+                    puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
+                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                }
+                else if (seleccion_origen == 7)
+                {
+                    origen_puerta = new Point(pm_lado_izquierdo.X, azar.Next(pm_lado_izquierdo.Y, punto_inferior_izquierdo_izquierdo.Y) - 100);
+                    puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
+                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                }
+            } while(colisiona);  
          
         }
         private static void columna_cuadrada(Info_forma informacion, PictureBox pintura)
@@ -142,19 +145,6 @@ namespace Creador_de_ciudades.Clases_estaticas
 
         private static void elevador(Info_forma informacion, PictureBox pintura)
         {
-
-            //Valida que el elevador este dentro del espacio de la forma
-            
-            bool encontrado = false;
-            do
-            {
-                informacion.origen_elevador = Distribuidor.seleccionar_punto_cuadricula(informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.alto_forma * 100, 100, informacion.punto_origen.X, informacion.punto_origen.Y);
-                informacion.espacio_elevador = new Rectangle(informacion.origen_elevador.X, informacion.origen_elevador.Y, 2 * 100, 2 * 100);
-                Rectangle resultado = Rectangle.Intersect(informacion.espacio_elevador, informacion.espacio_forma);
-                if (resultado == informacion.espacio_elevador)
-                { encontrado = true; }
-            } while (encontrado == false);
-
             //Dibuja el elevador
 
             Bitmap bmp = (Bitmap)pintura.Image;

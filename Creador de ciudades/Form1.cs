@@ -81,8 +81,8 @@ namespace Creador_de_ciudades
                  Convert.ToInt32(ui_columna_redonda_valor.Value)
                 );
 
-                info.nuevo_alto_forma = info.alto_forma;
-                info.nuevo_ancho_forma = info.ancho_forma;
+                info.resp_alto_forma = info.alto_forma;
+                info.resp_ancho_forma = info.ancho_forma;
              
                 bool interruptor = false;
 
@@ -190,8 +190,8 @@ namespace Creador_de_ciudades
                             }
                             datos[recorrer].nuevo_origen = new Point(datos[recorrer].punto_origen.X + ((valor_reduccion * 100) / 2), datos[recorrer].punto_origen.Y + ((valor_reduccion * 100) / 2));
                             datos[recorrer].punto_origen = datos[recorrer].nuevo_origen;
-                            datos[recorrer].nuevo_ancho_forma = datos[recorrer].nuevo_ancho_forma - valor_reduccion;
-                            datos[recorrer].nuevo_alto_forma  = datos[recorrer].nuevo_alto_forma - valor_reduccion;
+                            datos[recorrer].ancho_forma = datos[recorrer].ancho_forma - valor_reduccion;
+                            datos[recorrer].alto_forma  = datos[recorrer].alto_forma - valor_reduccion;
                         }                      
 
                         if (datos[recorrer].ancho_forma > 2 && datos[recorrer].alto_forma > 2) 

@@ -78,11 +78,13 @@ namespace Creador_de_ciudades
                  Distribuidor.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, 0, 0), //100 es el multiplo 
                  new Point(),
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
-                 Convert.ToInt32(ui_columna_redonda_valor.Value)
+                 Convert.ToInt32(ui_columna_redonda_valor.Value),
+                 azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1)
                 );
 
                 info.resp_alto_forma = info.alto_forma;
                 info.resp_ancho_forma = info.ancho_forma;
+
              
                 bool interruptor = false;
 
@@ -129,12 +131,13 @@ namespace Creador_de_ciudades
 
             //Pintar lienzos con los datos almacenados, dependiedo de la superposicion
 
-            if (ui_superposicion_esc_fija.Checked == true)
+            if (ui_superposicion_esc_cons.Checked == true)
             {
                 for (int i = 0; i < ui_cantidad_pisos.Value; i++)
                 {
                     for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
                     {
+                        
                         string nombre_page = "Planta " + i;
                         Formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
@@ -155,8 +158,36 @@ namespace Creador_de_ciudades
                     }
                 }
             }
+            else if (ui_superposicion_esc_cons_var.Checked == true)
+            {
+                for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+                {
+                    for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
+                    {
+                        if (datos[recorrer].pisos_reales > 0)
+                        {
+                            string nombre_page = "Planta " + i;
+                            Formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
-            else if (ui_superposicion_esc_dec_cons.Checked == true || ui_superposicion_esc_dec_var.Checked == true) 
+                            //Primero se guardan los nombre de los checkbox activo es una lista
+
+                            List<String> nombres_checkbox = new List<string>();
+                            foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                            {
+                                if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                            }
+
+                            //Después de pintar las casas, se pintan los objetos
+                            Objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                            //Esta variable es modificada una vez que PB se haya dibujado
+                            datos[recorrer].ubicacion_pb = false;
+                        }
+                        datos[recorrer].pisos_reales = datos[recorrer].pisos_reales - 1;
+                    }
+                }
+            }
+            else if (ui_superposicion_esc_dec_cons.Checked == true) 
             {
                 for (int i = 0; i < ui_cantidad_pisos.Value; i++)
                 {
@@ -178,14 +209,6 @@ namespace Creador_de_ciudades
                                 { limite = 0; }
 
                                 int modo = 0;
-                                if (ui_superposicion_esc_dec_cons.Checked == true)
-                                {
-                                    modo = 1;
-                                }
-                                else if (ui_superposicion_esc_dec_var.Checked == true)
-                                {
-                                    modo = 0;
-                                }
                                 valor_reduccion = azar.Next(modo, limite+1);
                             }
                             datos[recorrer].nuevo_origen = new Point(datos[recorrer].punto_origen.X + ((valor_reduccion * 100) / 2), datos[recorrer].punto_origen.Y + ((valor_reduccion * 100) / 2));
@@ -218,7 +241,8 @@ namespace Creador_de_ciudades
                       
                     }
                 }
-            }        
+            }    
+            
         }
               
         private void ui_construir_Click(object sender, EventArgs e)
@@ -265,7 +289,7 @@ namespace Creador_de_ciudades
 
         private void ui_superposicion_esc_fija_CheckedChanged(object sender, EventArgs e)
         {
-            ui_groupBox_superposicion_modo.Enabled = !ui_superposicion_esc_fija.Checked;
+            ui_groupBox_superposicion_modo.Enabled = !ui_superposicion_esc_cons.Checked;
         }
 
         private void guardarCiudadComoCarpetaToolStripMenuItem_Click(object sender, EventArgs e)
@@ -290,6 +314,11 @@ namespace Creador_de_ciudades
         {
             // The top panel remains the same size when the form is resized.
             splitContainer1.FixedPanel= System.Windows.Forms.FixedPanel.Panel2;
+        }
+
+        private void ui_superposicion_esc_cons_var_CheckedChanged(object sender, EventArgs e)
+        {
+            ui_groupBox_superposicion_modo.Enabled = !ui_superposicion_esc_cons_var.Checked;
         }
     }
 }

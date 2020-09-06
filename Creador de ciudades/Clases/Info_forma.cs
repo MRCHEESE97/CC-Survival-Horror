@@ -25,9 +25,10 @@ namespace Creador_de_ciudades.Clases
         public Rectangle espacio_elevador;
         public bool ubicacion_pb = true;
         public Point origen_elevador;
-        
+        //Solo escala constante variable hace uso de esta variable
+        public int pisos_reales;
 
-        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor) 
+        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales) 
         {
             ancho_lienzo = Ancho_lienzo;
             alto_lienzo = Alto_Lienzo;
@@ -39,6 +40,7 @@ namespace Creador_de_ciudades.Clases
             columna_cuadrada_valor = Columna_cuadrada_valor;
             columna_redonda_valor = Columna_redonda_valor;
             espacio_forma = rectangulo();
+            pisos_reales = Pisos_reales;
         }
 
        

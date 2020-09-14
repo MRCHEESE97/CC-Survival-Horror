@@ -38,14 +38,14 @@ namespace Creador_de_ciudades
         {
             int multiplicador = 1; // el valor que agranda el lienzo con respecto al tamaño de las casas
             int ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;          
-            return ancho;
+            return 4000;
         }
 
         private int alto_lienzo()
         {
             int multiplicador = 1; // el valor que agranda el lienzo con respecto al tamaño de las casas
             int alto = (Convert.ToInt32(ui_min_alto_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
-            return alto;
+            return 4000;
         }
 
      
@@ -79,7 +79,9 @@ namespace Creador_de_ciudades
                  new Point(),
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
                  Convert.ToInt32(ui_columna_redonda_valor.Value),
-                 azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1)
+                 azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1),
+                 azar.Next(0,361),
+                 azar.Next(10, 20) // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
                 );
 
                 info.resp_alto_forma = info.alto_forma;

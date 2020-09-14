@@ -92,6 +92,7 @@
             this.ui_quitar_todo = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ui_objetos_ventana = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -241,11 +242,13 @@
             // ui_superposicion_esc_cons_var
             // 
             this.ui_superposicion_esc_cons_var.AutoSize = true;
+            this.ui_superposicion_esc_cons_var.Checked = true;
             this.ui_superposicion_esc_cons_var.Location = new System.Drawing.Point(6, 54);
             this.ui_superposicion_esc_cons_var.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_superposicion_esc_cons_var.Name = "ui_superposicion_esc_cons_var";
             this.ui_superposicion_esc_cons_var.Size = new System.Drawing.Size(165, 21);
             this.ui_superposicion_esc_cons_var.TabIndex = 2;
+            this.ui_superposicion_esc_cons_var.TabStop = true;
             this.ui_superposicion_esc_cons_var.Text = "Escala constante variable";
             this.ui_superposicion_esc_cons_var.UseVisualStyleBackColor = true;
             this.ui_superposicion_esc_cons_var.CheckedChanged += new System.EventHandler(this.ui_superposicion_esc_cons_var_CheckedChanged);
@@ -253,13 +256,11 @@
             // ui_superposicion_esc_cons
             // 
             this.ui_superposicion_esc_cons.AutoSize = true;
-            this.ui_superposicion_esc_cons.Checked = true;
             this.ui_superposicion_esc_cons.Location = new System.Drawing.Point(7, 25);
             this.ui_superposicion_esc_cons.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_superposicion_esc_cons.Name = "ui_superposicion_esc_cons";
             this.ui_superposicion_esc_cons.Size = new System.Drawing.Size(118, 21);
             this.ui_superposicion_esc_cons.TabIndex = 1;
-            this.ui_superposicion_esc_cons.TabStop = true;
             this.ui_superposicion_esc_cons.Text = "Escala constante";
             this.ui_superposicion_esc_cons.UseVisualStyleBackColor = true;
             this.ui_superposicion_esc_cons.CheckedChanged += new System.EventHandler(this.ui_superposicion_esc_fija_CheckedChanged);
@@ -398,7 +399,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            8,
+            20,
             0,
             0,
             0});
@@ -517,7 +518,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            4,
+            15,
             0,
             0,
             0});
@@ -536,7 +537,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            4,
+            15,
             0,
             0,
             0});
@@ -654,6 +655,7 @@
             // 
             // ui_groupbox_objetos
             // 
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_ventana);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_elevador);
             this.ui_groupbox_objetos.Controls.Add(this.label14);
             this.ui_groupbox_objetos.Controls.Add(this.ui_columna_redonda_valor);
@@ -676,7 +678,7 @@
             this.ui_objetos_elevador.AutoSize = true;
             this.ui_objetos_elevador.Checked = true;
             this.ui_objetos_elevador.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ui_objetos_elevador.Location = new System.Drawing.Point(17, 85);
+            this.ui_objetos_elevador.Location = new System.Drawing.Point(17, 55);
             this.ui_objetos_elevador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_elevador.Name = "ui_objetos_elevador";
             this.ui_objetos_elevador.Size = new System.Drawing.Size(73, 21);
@@ -687,7 +689,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(217, 56);
+            this.label14.Location = new System.Drawing.Point(213, 114);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(27, 17);
             this.label14.TabIndex = 6;
@@ -700,7 +702,7 @@
             0,
             0,
             0});
-            this.ui_columna_redonda_valor.Location = new System.Drawing.Point(159, 54);
+            this.ui_columna_redonda_valor.Location = new System.Drawing.Point(157, 112);
             this.ui_columna_redonda_valor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_columna_redonda_valor.Minimum = new decimal(new int[] {
             30,
@@ -719,7 +721,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(217, 26);
+            this.label13.Location = new System.Drawing.Point(213, 85);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(27, 17);
             this.label13.TabIndex = 4;
@@ -732,10 +734,15 @@
             0,
             0,
             0});
-            this.ui_columna_cuadrada_valor.Location = new System.Drawing.Point(159, 24);
+            this.ui_columna_cuadrada_valor.Location = new System.Drawing.Point(157, 83);
             this.ui_columna_cuadrada_valor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_columna_cuadrada_valor.Maximum = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
             this.ui_columna_cuadrada_valor.Minimum = new decimal(new int[] {
-            30,
+            10,
             0,
             0,
             0});
@@ -743,7 +750,7 @@
             this.ui_columna_cuadrada_valor.Size = new System.Drawing.Size(54, 27);
             this.ui_columna_cuadrada_valor.TabIndex = 3;
             this.ui_columna_cuadrada_valor.Value = new decimal(new int[] {
-            30,
+            10,
             0,
             0,
             0});
@@ -753,7 +760,7 @@
             this.ui_objetos_puerta.AutoSize = true;
             this.ui_objetos_puerta.Checked = true;
             this.ui_objetos_puerta.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ui_objetos_puerta.Location = new System.Drawing.Point(17, 115);
+            this.ui_objetos_puerta.Location = new System.Drawing.Point(17, 26);
             this.ui_objetos_puerta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_puerta.Name = "ui_objetos_puerta";
             this.ui_objetos_puerta.Size = new System.Drawing.Size(116, 21);
@@ -766,7 +773,7 @@
             this.ui_objetos_columna_cuadrada.AutoSize = true;
             this.ui_objetos_columna_cuadrada.Checked = true;
             this.ui_objetos_columna_cuadrada.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ui_objetos_columna_cuadrada.Location = new System.Drawing.Point(17, 25);
+            this.ui_objetos_columna_cuadrada.Location = new System.Drawing.Point(17, 84);
             this.ui_objetos_columna_cuadrada.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_columna_cuadrada.Name = "ui_objetos_columna_cuadrada";
             this.ui_objetos_columna_cuadrada.Size = new System.Drawing.Size(128, 21);
@@ -777,7 +784,7 @@
             // ui_objetos_columna_redonda
             // 
             this.ui_objetos_columna_redonda.AutoSize = true;
-            this.ui_objetos_columna_redonda.Location = new System.Drawing.Point(17, 55);
+            this.ui_objetos_columna_redonda.Location = new System.Drawing.Point(17, 113);
             this.ui_objetos_columna_redonda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_columna_redonda.Name = "ui_objetos_columna_redonda";
             this.ui_objetos_columna_redonda.Size = new System.Drawing.Size(123, 21);
@@ -838,11 +845,11 @@
             this.tabPage2.Controls.Add(this.ui_grosor_pared);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.label4);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(274, 391);
+            this.tabPage2.Size = new System.Drawing.Size(274, 387);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -910,6 +917,19 @@
             this.groupBox2.Size = new System.Drawing.Size(282, 54);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
+            // 
+            // ui_objetos_ventana
+            // 
+            this.ui_objetos_ventana.AutoSize = true;
+            this.ui_objetos_ventana.Checked = true;
+            this.ui_objetos_ventana.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_objetos_ventana.Location = new System.Drawing.Point(17, 141);
+            this.ui_objetos_ventana.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_objetos_ventana.Name = "ui_objetos_ventana";
+            this.ui_objetos_ventana.Size = new System.Drawing.Size(133, 21);
+            this.ui_objetos_ventana.TabIndex = 8;
+            this.ui_objetos_ventana.Text = "Vanos de ventanas";
+            this.ui_objetos_ventana.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1030,6 +1050,7 @@
         private System.Windows.Forms.Button ui_quitar_todo;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox ui_objetos_ventana;
     }
 }
 

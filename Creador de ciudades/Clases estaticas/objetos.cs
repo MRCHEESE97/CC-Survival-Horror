@@ -12,13 +12,19 @@ namespace Creador_de_ciudades.Clases_estaticas
 {
     static class Objetos
     {
+        
         public static Random azar = new Random();
         public static void objeto(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo)
         {
             for (int i = 0; i < seleccion_objeto.Count ; i++)
             {
                 String nombre_objeto = seleccion_objeto[i];
-                if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
+
+                if (nombre_objeto.Equals("ui_objetos_ventana"))
+                {
+                    ventanas(datos, lienzo);
+                }
+                else if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
                 {
                     columna_cuadrada(datos, lienzo);
                 }
@@ -121,26 +127,40 @@ namespace Creador_de_ciudades.Clases_estaticas
             Bitmap bmp = (Bitmap)pintura.Image;
             Graphics g;
             g = Graphics.FromImage(bmp);
-            Point punto_superior_izquierdo = informacion.punto_origen;
-            Point punto_superior_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.columna_cuadrada_valor, informacion.punto_origen.Y);
-            Point punto_inferior_izquierdo = new Point(informacion.punto_origen.X, informacion.punto_origen.Y + informacion.alto_forma *100 - informacion.columna_cuadrada_valor);
-            Point punto_inferior_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.columna_cuadrada_valor, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
 
             Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            Pen columnas = new Pen(Color.Black, informacion.columna_cuadrada_valor);
 
-            Rectangle columna = new Rectangle(punto_superior_izquierdo, new Size(informacion.columna_cuadrada_valor, informacion.columna_cuadrada_valor));
-            g.FillRectangle(brocha_columna, columna);
-            columna = new Rectangle(punto_superior_derecho, new Size(informacion.columna_cuadrada_valor, informacion.columna_cuadrada_valor));
-            g.FillRectangle(brocha_columna, columna);
-            columna = new Rectangle(punto_inferior_izquierdo, new Size(informacion.columna_cuadrada_valor, informacion.columna_cuadrada_valor));
-            g.FillRectangle(brocha_columna, columna);
-            columna = new Rectangle(punto_inferior_derecho, new Size(informacion.columna_cuadrada_valor, informacion.columna_cuadrada_valor));
-            g.FillRectangle(brocha_columna, columna);
+            //float[] dashValues = {1,informacion.distancia_entre_columnas};
+            float[] dashValues = {1,8,2,8};
+            columnas.DashPattern = dashValues;
+
+            Point punto_origen_suelo = new Point(informacion.punto_origen.X + informacion.grosor_pared / 2, informacion.punto_origen.Y + informacion.grosor_pared / 2);
+            int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
+            int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
+            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
+            g.DrawRectangle(columnas,suelo);
 
         }
         private static void columna_circular(Info_forma informacion, PictureBox pintura)
         {
+           
+        }
 
+        private static void ventanas(Info_forma informacion, PictureBox pintura)
+        {
+            Bitmap bmp = (Bitmap)pintura.Image;
+            Graphics g;
+            g = Graphics.FromImage(bmp);
+
+            Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            Pen columnas = new Pen(Color.Green, informacion.grosor_pared);
+           
+            Point punto_origen_suelo = new Point(informacion.punto_origen.X + informacion.grosor_pared / 2, informacion.punto_origen.Y + informacion.grosor_pared / 2);
+            int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
+            int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
+            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
+            g.DrawRectangle(columnas, suelo);
         }
 
         private static void elevador(Info_forma informacion, PictureBox pintura)
@@ -156,8 +176,9 @@ namespace Creador_de_ciudades.Clases_estaticas
             Rectangle pared = new Rectangle(informacion.origen_elevador, new Size(2 * 100, 2 * 100));
             g.FillRectangle(brocha_pared, pared);
 
-            //Aqui se dibuja el suelo
             Point punto_origen_suelo = new Point(informacion.origen_elevador.X + informacion.grosor_pared, informacion.origen_elevador.Y + informacion.grosor_pared);
+
+            //Aqui se dibuja el agujero del suelo
             int ancho_suelo = 2 * 100 - informacion.grosor_pared * 2;
             int alto_suelo = 2 * 100 - informacion.grosor_pared * 2;
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
@@ -165,7 +186,20 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             //Cambiando el modo de composicion paso a modo forzado de pintado. Predeterminado: SourceOver
             g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            g.FillRectangle(brocha_suelo, suelo);            
+            g.FillRectangle(brocha_suelo, suelo);
+
+            //Aqui cambia el punto para que el agujero se desplace, vuelve a dibujar otro agujero
+            int mover = azar.Next(1, 5);
+            switch (mover)
+            {
+                case 1: punto_origen_suelo.Y = punto_origen_suelo.Y - informacion.grosor_pared; break;
+                case 2: punto_origen_suelo.X = punto_origen_suelo.X + informacion.grosor_pared; break;
+                case 3: punto_origen_suelo.Y = punto_origen_suelo.Y + informacion.grosor_pared; break;
+                case 4: punto_origen_suelo.X = punto_origen_suelo.X - informacion.grosor_pared; break;
+            }
+            suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
+            brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent);
+            g.FillRectangle(brocha_suelo, suelo);
         }
 
     }

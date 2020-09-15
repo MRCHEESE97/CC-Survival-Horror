@@ -65,8 +65,6 @@ namespace Creador_de_ciudades.Clases_estaticas
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
             Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
             g.FillEllipse(brocha_suelo, suelo);
-
-            pintura.Image = bmp;
         }
 
     }

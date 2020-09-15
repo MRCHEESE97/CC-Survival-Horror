@@ -32,7 +32,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     columna_circular(datos, lienzo);
                 }
-                else if (nombre_objeto.Equals("ui_objetos_elevador") && datos.ubicacion_pb == false)
+                else if (nombre_objeto.Equals("ui_objetos_elevador"))
                 {
                     elevador(datos, lienzo);
                 }
@@ -184,13 +184,20 @@ namespace Creador_de_ciudades.Clases_estaticas
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
             Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent);
 
-            //Cambiando el modo de composicion paso a modo forzado de pintado. Predeterminado: SourceOver
-            g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            if (informacion.ubicacion_pb)
+            {
+                brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
+            }
+            else 
+            {
+                //Cambiando el modo de composicion paso a modo forzado de pintado. Predeterminado: SourceOver
+                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+            }
+            
             g.FillRectangle(brocha_suelo, suelo);
 
             //Aqui cambia el punto para que el agujero se desplace, vuelve a dibujar otro agujero
-            int mover = azar.Next(1, 5);
-            switch (mover)
+            switch (informacion.mover_ascensor)
             {
                 case 1: punto_origen_suelo.Y = punto_origen_suelo.Y - informacion.grosor_pared; break;
                 case 2: punto_origen_suelo.X = punto_origen_suelo.X + informacion.grosor_pared; break;
@@ -198,7 +205,11 @@ namespace Creador_de_ciudades.Clases_estaticas
                 case 4: punto_origen_suelo.X = punto_origen_suelo.X - informacion.grosor_pared; break;
             }
             suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent);
+            
+            if (informacion.ubicacion_pb)
+            {  brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));}
+            else { brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent); }
+            
             g.FillRectangle(brocha_suelo, suelo);
         }
 

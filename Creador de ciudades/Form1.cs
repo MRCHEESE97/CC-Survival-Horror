@@ -81,7 +81,8 @@ namespace Creador_de_ciudades
                  Convert.ToInt32(ui_columna_redonda_valor.Value),
                  azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1),
                  azar.Next(0,361),
-                 azar.Next(10, 20) // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
+                 azar.Next(10, 20), // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
+                 azar.Next(1, 5)
                 );
 
                 info.resp_alto_forma = info.alto_forma;

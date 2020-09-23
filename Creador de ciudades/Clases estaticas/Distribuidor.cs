@@ -44,6 +44,13 @@ namespace Creador_de_ciudades.Clases
             }
             return existe; 
         }
+
+        public static void rotar_grafico(Graphics e, int grados, int ancho, int alto) 
+        {
+            e.TranslateTransform(ancho/2, alto/2);
+            e.RotateTransform(grados);
+            e.TranslateTransform(- ancho / 2, - alto / 2);
+        }
         
     }
 }

@@ -124,10 +124,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         }
         private static void columna_cuadrada(Info_forma informacion, PictureBox pintura)
         {
-            Bitmap bmp = (Bitmap)pintura.Image;
-            Graphics g;
-            g = Graphics.FromImage(bmp);
-
+       
             Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Pen columnas = new Pen(Color.Black, informacion.columna_cuadrada_valor);
 
@@ -139,7 +136,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
             int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            g.DrawRectangle(columnas,suelo);
+            informacion.g.DrawRectangle(columnas,suelo);
 
         }
         private static void columna_circular(Info_forma informacion, PictureBox pintura)
@@ -149,10 +146,6 @@ namespace Creador_de_ciudades.Clases_estaticas
 
         private static void ventanas(Info_forma informacion, PictureBox pintura)
         {
-            Bitmap bmp = (Bitmap)pintura.Image;
-            Graphics g;
-            g = Graphics.FromImage(bmp);
-
             Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Pen columnas = new Pen(Color.Green, informacion.grosor_pared);
            
@@ -160,21 +153,17 @@ namespace Creador_de_ciudades.Clases_estaticas
             int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
             int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            g.DrawRectangle(columnas, suelo);
+            informacion.g.DrawRectangle(columnas, suelo);
         }
 
         private static void elevador(Info_forma informacion, PictureBox pintura)
         {
-            //Dibuja el elevador
-
-            Bitmap bmp = (Bitmap)pintura.Image;
-            Graphics g;
-            g = Graphics.FromImage(bmp);
+           
 
             //Aqui se dibuja la pared
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Rectangle pared = new Rectangle(informacion.origen_elevador, new Size(2 * 100, 2 * 100));
-            g.FillRectangle(brocha_pared, pared);
+            informacion.g.FillRectangle(brocha_pared, pared);
 
             Point punto_origen_suelo = new Point(informacion.origen_elevador.X + informacion.grosor_pared, informacion.origen_elevador.Y + informacion.grosor_pared);
 
@@ -191,10 +180,10 @@ namespace Creador_de_ciudades.Clases_estaticas
             else 
             {
                 //Cambiando el modo de composicion paso a modo forzado de pintado. Predeterminado: SourceOver
-                g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
+                informacion.g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
             }
             
-            g.FillRectangle(brocha_suelo, suelo);
+            informacion.g.FillRectangle(brocha_suelo, suelo);
 
             //Aqui cambia el punto para que el agujero se desplace, vuelve a dibujar otro agujero
             switch (informacion.mover_ascensor)
@@ -210,7 +199,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             {  brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));}
             else { brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent); }
             
-            g.FillRectangle(brocha_suelo, suelo);
+            informacion.g.FillRectangle(brocha_suelo, suelo);
         }
 
     }

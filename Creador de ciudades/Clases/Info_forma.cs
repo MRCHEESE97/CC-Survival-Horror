@@ -30,6 +30,8 @@ namespace Creador_de_ciudades.Clases
         public int pisos_reales;
         public int grados;
         public float distancia_entre_columnas;
+        public Graphics g;
+       
         
 
         public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor) 

@@ -28,15 +28,16 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void rectangulo(Info_forma informacion, PictureBox pintura)
         {                     
             Bitmap bmp = (Bitmap)pintura.Image;
-            Graphics g;
-            g = Graphics.FromImage(bmp);
+            informacion.g = Graphics.FromImage(bmp);
+            Distribuidor.rotar_grafico(informacion.g, informacion.grados,informacion.ancho_lienzo,informacion.alto_lienzo);
 
             //Aqui se dibuja la pared
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Rectangle pared = new Rectangle(informacion.punto_origen,new Size(informacion.ancho_forma * 100,informacion.alto_forma * 100));
             //g.RotateTransform(informacion.grados);
-            g.FillRectangle(brocha_pared,pared);
+            informacion.g.FillRectangle(brocha_pared,pared);
 
+            
             //Aqui se dibuja el suelo
             Point punto_origen_suelo = new Point(informacion.punto_origen.X + informacion.grosor_pared,informacion.punto_origen.Y + informacion.grosor_pared);
             int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared * 2;
@@ -44,7 +45,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
             Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209,209,135));
             //g.RotateTransform(informacion.grados);
-            g.FillRectangle(brocha_suelo, suelo);
+            informacion.g.FillRectangle(brocha_suelo, suelo);
 
         }
         private static void cilindro(Info_forma informacion, PictureBox pintura) 

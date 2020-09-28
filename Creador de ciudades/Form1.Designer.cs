@@ -96,6 +96,9 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ui_max_grosor_pared = new System.Windows.Forms.NumericUpDown();
             this.label15 = new System.Windows.Forms.Label();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.ui_label_m2 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -123,6 +126,7 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_max_grosor_pared)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -203,7 +207,6 @@
             this.TabControl.SelectedIndex = 0;
             this.TabControl.Size = new System.Drawing.Size(710, 471);
             this.TabControl.TabIndex = 6;
-            this.TabControl.Selected += new System.Windows.Forms.TabControlEventHandler(this.TabControl_Selected);
             // 
             // tabPage1
             // 
@@ -826,7 +829,7 @@
             this.tabControlProp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlProp.Name = "tabControlProp";
             this.tabControlProp.SelectedIndex = 0;
-            this.tabControlProp.Size = new System.Drawing.Size(282, 417);
+            this.tabControlProp.Size = new System.Drawing.Size(282, 319);
             this.tabControlProp.TabIndex = 10;
             // 
             // tabcontrol_propiedades
@@ -856,7 +859,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(274, 387);
+            this.tabPage3.Size = new System.Drawing.Size(274, 289);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Urbanización";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -866,9 +869,9 @@
             this.ui_checkbox_girar.AutoSize = true;
             this.ui_checkbox_girar.Location = new System.Drawing.Point(23, 60);
             this.ui_checkbox_girar.Name = "ui_checkbox_girar";
-            this.ui_checkbox_girar.Size = new System.Drawing.Size(87, 21);
+            this.ui_checkbox_girar.Size = new System.Drawing.Size(129, 21);
             this.ui_checkbox_girar.TabIndex = 7;
-            this.ui_checkbox_girar.Text = "Girar casas";
+            this.ui_checkbox_girar.Text = "Girar casas (beta)";
             this.ui_checkbox_girar.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -880,7 +883,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(274, 387);
+            this.tabPage2.Size = new System.Drawing.Size(274, 289);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -900,7 +903,7 @@
             // ui_construir
             // 
             this.ui_construir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ui_construir.Location = new System.Drawing.Point(36, 17);
+            this.ui_construir.Location = new System.Drawing.Point(45, 115);
             this.ui_construir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_construir.Name = "ui_construir";
             this.ui_construir.Size = new System.Drawing.Size(87, 30);
@@ -911,13 +914,14 @@
             // 
             // ui_quitar_todo
             // 
-            this.ui_quitar_todo.Location = new System.Drawing.Point(164, 17);
+            this.ui_quitar_todo.Location = new System.Drawing.Point(151, 115);
             this.ui_quitar_todo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_quitar_todo.Name = "ui_quitar_todo";
             this.ui_quitar_todo.Size = new System.Drawing.Size(87, 30);
             this.ui_quitar_todo.TabIndex = 1;
-            this.ui_quitar_todo.Text = "Quitar todo";
+            this.ui_quitar_todo.Text = "Borrar";
             this.ui_quitar_todo.UseVisualStyleBackColor = true;
+            this.ui_quitar_todo.Click += new System.EventHandler(this.ui_quitar_todo_Click);
             // 
             // splitContainer1
             // 
@@ -940,12 +944,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.ui_quitar_todo);
             this.groupBox2.Controls.Add(this.ui_construir);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 417);
+            this.groupBox2.Location = new System.Drawing.Point(0, 319);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(282, 54);
+            this.groupBox2.Size = new System.Drawing.Size(282, 152);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             // 
@@ -980,6 +986,36 @@
             this.label15.Size = new System.Drawing.Size(27, 17);
             this.label15.TabIndex = 12;
             this.label15.Text = "cm.";
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox3.Controls.Add(this.ui_label_m2);
+            this.groupBox3.Controls.Add(this.label16);
+            this.groupBox3.Location = new System.Drawing.Point(16, 21);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(254, 87);
+            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Información de la ciudad actual:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(58, 23);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(24, 17);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "m²";
+            // 
+            // ui_label_m2
+            // 
+            this.ui_label_m2.AutoSize = true;
+            this.ui_label_m2.Location = new System.Drawing.Point(20, 23);
+            this.ui_label_m2.Name = "ui_label_m2";
+            this.ui_label_m2.Size = new System.Drawing.Size(32, 17);
+            this.ui_label_m2.TabIndex = 1;
+            this.ui_label_m2.Text = "----";
             // 
             // Form1
             // 
@@ -1032,6 +1068,8 @@
             this.splitContainer1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ui_max_grosor_pared)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1106,6 +1144,9 @@
         private System.Windows.Forms.CheckBox ui_checkbox_girar;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown ui_max_grosor_pared;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Label ui_label_m2;
+        private System.Windows.Forms.Label label16;
     }
 }
 

@@ -255,13 +255,15 @@ namespace Creador_de_ciudades
         {
             crear_pages();
             dibujar();
+            ui_label_m2.Text = Convert.ToString(calcular_metros_cuadrados()); 
         }
 
-        private void TabControl_Selected(object sender, TabControlEventArgs e)
-        {
-            //mostrar_lienzos();
+        private float calcular_metros_cuadrados()
+        {         
+            return (ancho_lienzo() / 100) * (alto_lienzo() / 100);
         }
 
+       
         private void crear_pages() 
         {
             TabControl.TabPages.Clear();
@@ -325,6 +327,11 @@ namespace Creador_de_ciudades
         private void ui_superposicion_esc_cons_var_CheckedChanged(object sender, EventArgs e)
         {
             ui_groupBox_superposicion_modo.Enabled = !ui_superposicion_esc_cons_var.Checked;
+        }
+
+        private void ui_quitar_todo_Click(object sender, EventArgs e)
+        {
+            ui_label_m2.Text = "----";
         }
     }
 }

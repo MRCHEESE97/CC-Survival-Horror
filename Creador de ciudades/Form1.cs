@@ -76,7 +76,7 @@ namespace Creador_de_ciudades
                  alto_lienzo(),
                  azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
                  azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
-                 Convert.ToInt32(ui_grosor_pared.Value),
+                 azar.Next(Convert.ToInt32(ui_min_grosor_pared.Value), Convert.ToInt32(ui_max_grosor_pared.Value)),
                  Distribuidor.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, 0, 0), //100 es el multiplo 
                  new Point(),
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),

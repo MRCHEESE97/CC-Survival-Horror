@@ -36,16 +36,16 @@ namespace Creador_de_ciudades
 
         private int ancho_lienzo()
         {
-            int multiplicador = 1; // el valor que agranda el lienzo con respecto al tamaño de las casas
-            int ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;          
-            return 4000;
+            int multiplicador = 50; // La mitad de un metro
+            int ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) + Convert.ToInt32(ui_max_ancho_casa.Value))/2 * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;          
+            return ancho;
         }
 
         private int alto_lienzo()
         {
-            int multiplicador = 1; // el valor que agranda el lienzo con respecto al tamaño de las casas
-            int alto = (Convert.ToInt32(ui_min_alto_casa.Value) * 100) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
-            return 4000;
+            int multiplicador = 50;
+            int alto = (Convert.ToInt32(ui_min_alto_casa.Value) + Convert.ToInt32(ui_max_alto_casa.Value)) / 2 * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
+            return alto;
         }
 
      
@@ -59,8 +59,8 @@ namespace Creador_de_ciudades
             Random azar = new Random();
 
             //Aqui calcularé el 20% del tamaño del lienzo, esto para que la ciudad tenga un limite y las formas no sobresalgan
-            float c_ancho = ancho_lienzo() * (float)0.20;
-            float c_alto = alto_lienzo() * (float)0.20;
+            float c_ancho = Convert.ToInt32(ui_max_ancho_casa.Value) * 100;
+            float c_alto = Convert.ToInt32(ui_max_alto_casa.Value) * 100;
 
             List<Info_forma> datos = new List<Info_forma>();
 
@@ -68,6 +68,8 @@ namespace Creador_de_ciudades
 
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {
+                int grados = 0;  if (ui_checkbox_girar.Checked) { grados = azar.Next(0, 361); } 
+
                 Info_forma info = new Info_forma
                 (
                  ancho_lienzo(),
@@ -80,9 +82,10 @@ namespace Creador_de_ciudades
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
                  Convert.ToInt32(ui_columna_redonda_valor.Value),
                  azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1),
-                 azar.Next(0,361),
+                 grados,
                  azar.Next(10, 20), // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
-                 azar.Next(1, 5)
+                 azar.Next(1, 5),
+                 ui_checkbox_girar.Checked
                 );
 
                 info.resp_alto_forma = info.alto_forma;

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             Bitmap bmp = (Bitmap)pintura.Image;
             informacion.g = Graphics.FromImage(bmp);
             Distribuidor.rotar_grafico(informacion.g, informacion.grados,informacion.ancho_lienzo,informacion.alto_lienzo);
-
+            
             //Aqui se dibuja la pared
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Rectangle pared = new Rectangle(informacion.punto_origen,new Size(informacion.ancho_forma * 100,informacion.alto_forma * 100));

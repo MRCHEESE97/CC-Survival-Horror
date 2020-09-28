@@ -31,10 +31,12 @@ namespace Creador_de_ciudades.Clases
         public int grados;
         public float distancia_entre_columnas;
         public Graphics g;
+        public bool rotar_activo;
+       
        
         
 
-        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor) 
+        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar) 
         {
             ancho_lienzo = Ancho_lienzo;
             alto_lienzo = Alto_Lienzo;
@@ -50,16 +52,13 @@ namespace Creador_de_ciudades.Clases
             grados = Grados;
             distancia_entre_columnas = Distancia_entre_columnas;
             mover_ascensor = Mover_ascensor;
+            rotar_activo = Rotar;
         }
-
-       
-
-
         // Toda figura geometrica tendrá un limite para que no haya una interseccion con otras, la forma de este limite será un rectangulo
         private Rectangle rectangulo()
-        { 
-            Rectangle limite = new Rectangle(punto_origen, new Size(ancho_forma * 100, alto_forma * 100));
-            return limite;
+        {
+          Rectangle limite = new Rectangle(punto_origen, new Size(ancho_forma * 100, alto_forma * 100));
+          return limite;
         }
 
 

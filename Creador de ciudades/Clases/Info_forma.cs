@@ -32,6 +32,7 @@ namespace Creador_de_ciudades.Clases
         public float distancia_entre_columnas;
         public Graphics g;
         public bool rotar_activo;
+        public List<Point> area_puntos;
        
        
         public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar) 
@@ -51,6 +52,7 @@ namespace Creador_de_ciudades.Clases
             distancia_entre_columnas = Distancia_entre_columnas;
             mover_ascensor = Mover_ascensor;
             rotar_activo = Rotar;
+            area_puntos = area();
         }
         // Toda figura geometrica tendrá un limite para que no haya una interseccion con otras, la forma de este limite será un rectangulo
         private Rectangle rectangulo()
@@ -59,7 +61,22 @@ namespace Creador_de_ciudades.Clases
           return limite;
         }
 
+        private List<Point> area()
+        {
+            //Devuelve una cuadricula de puntos cada 1 metro
+            List<Point> area_puntos = new List<Point>();
 
+            Point punto_final = new Point(punto_origen.X + (ancho_forma * 100), punto_origen.Y + (alto_forma * 100));
 
+            for (int x = punto_origen.X; x <= punto_final.X; x += 100)
+            {
+                for (int y = punto_origen.Y; y <= punto_final.Y; y += 100)
+                {
+                   area_puntos.Add(new Point(x, y));
+                }
+            }
+
+            return area_puntos;
+        }
     }
 }

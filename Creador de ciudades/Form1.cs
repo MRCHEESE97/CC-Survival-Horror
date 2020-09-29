@@ -97,10 +97,11 @@ namespace Creador_de_ciudades
                 //Valida si existe interseccion entre casas
                 for (int i = 0; i < datos.Count; i++)
                 {              
-                 if (Distribuidor.validar_interseccion(info.espacio_forma,datos[i].espacio_forma))
+                 if (info.area_puntos.Intersect(datos[i].area_puntos).Any())
                     {
                         //Existe interseccion
                         interruptor = true;
+                        info = null;
                         break;
                     }                           
                 }

@@ -18,6 +18,7 @@ namespace Creador_de_ciudades.Clases
         public int resp_alto_forma;
         public int grosor_pared;
         public Point punto_origen;
+        public Point b,c,d;
         public Point nuevo_origen;
         public int columna_cuadrada_valor;
         public int columna_redonda_valor;
@@ -43,6 +44,9 @@ namespace Creador_de_ciudades.Clases
             alto_forma = Alto_forma;
             grosor_pared = Grosor_pared;
             punto_origen = Punto_origen;
+            b = B();
+            c = C();
+            d = D();
             nuevo_origen = Nuevo_origen;
             columna_cuadrada_valor = Columna_cuadrada_valor;
             columna_redonda_valor = Columna_redonda_valor;
@@ -63,20 +67,29 @@ namespace Creador_de_ciudades.Clases
 
         private List<Point> area()
         {
-            //Devuelve una cuadricula de puntos cada 1 metro
-            List<Point> area_puntos = new List<Point>();
-
-            Point punto_final = new Point(punto_origen.X + (ancho_forma * 100), punto_origen.Y + (alto_forma * 100));
-
-            for (int x = punto_origen.X; x <= punto_final.X; x += 100)
-            {
-                for (int y = punto_origen.Y; y <= punto_final.Y; y += 100)
-                {
-                   area_puntos.Add(new Point(x, y));
-                }
-            }
-
-            return area_puntos;
+            List<Point> recolector = new List<Point>();
+            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(punto_origen.X,punto_origen.Y,b.X,b.Y));
+            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(b.X, b.Y, d.X, d.Y));
+            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(c.X, c.Y, d.X, d.Y));
+            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(punto_origen.X, punto_origen.Y, c.X, c.Y));
+            //Hasta aqui he encontrado los puntos del cuadrado
+            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(d.X, d.Y, punto_origen.X, punto_origen.Y));
+            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(b.X, b.Y, c.X, c.Y));
+            return recolector;    
         }
+
+        private Point B()
+        {
+            return new Point(punto_origen.X + ancho_forma * 100, punto_origen.Y);
+        }
+        private Point C()
+        {
+            return new Point(punto_origen.X, punto_origen.Y + alto_forma * 100);
+        }
+        private Point D()
+        {
+            return new Point(punto_origen.X + ancho_forma * 100, punto_origen.Y + alto_forma * 100);
+        }
+
     }
 }

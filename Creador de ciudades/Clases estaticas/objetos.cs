@@ -124,7 +124,10 @@ namespace Creador_de_ciudades.Clases_estaticas
         }
         private static void columna_cuadrada(Info_forma informacion, PictureBox pintura)
         {
-       
+            Bitmap bmp = (Bitmap)pintura.Image;
+            Graphics g;
+            g = Graphics.FromImage(bmp);
+
             Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Pen columnas = new Pen(Color.Black, informacion.columna_cuadrada_valor);
 
@@ -136,7 +139,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
             int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            informacion.g.DrawRectangle(columnas,suelo);
+            g.DrawRectangle(columnas,suelo);
 
         }
         private static void columna_circular(Info_forma informacion, PictureBox pintura)

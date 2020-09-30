@@ -32,6 +32,14 @@ namespace Creador_de_ciudades.Clases_estaticas
             informacion.g = Graphics.FromImage(bmp);
             Distribuidor.rotar_grafico(informacion.g, informacion.grados,informacion.ancho_lienzo,informacion.alto_lienzo);
             
+            //Prueba
+            Bitmap bmp2 = (Bitmap)pintura.Image;
+            Graphics nuevo = Graphics.FromImage(bmp2);
+            Point a = Distribuidor.rotar_punto(informacion.punto_origen, informacion.grados);
+            Point b = Distribuidor.rotar_punto(new Point (informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.alto_forma * 100), informacion.grados);
+            nuevo.DrawLine(new Pen(Color.Black,10),a,b);
+            //Prueba
+
             //Aqui se dibuja la pared
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Rectangle pared = new Rectangle(informacion.punto_origen,new Size(informacion.ancho_forma * 100,informacion.alto_forma * 100));

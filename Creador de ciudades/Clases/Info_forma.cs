@@ -19,6 +19,7 @@ namespace Creador_de_ciudades.Clases
         public int grosor_pared;
         public Point punto_origen;
         public Point b,c,d;
+        public Point punto_medio;
         public Point nuevo_origen;
         public int columna_cuadrada_valor;
         public int columna_redonda_valor;
@@ -44,9 +45,10 @@ namespace Creador_de_ciudades.Clases
             alto_forma = Alto_forma;
             grosor_pared = Grosor_pared;
             punto_origen = Punto_origen;
+            punto_medio = centro();
             b = B();
             c = C();
-            d = D();
+            d = D();           
             nuevo_origen = Nuevo_origen;
             columna_cuadrada_valor = Columna_cuadrada_valor;
             columna_redonda_valor = Columna_redonda_valor;
@@ -57,6 +59,7 @@ namespace Creador_de_ciudades.Clases
             mover_ascensor = Mover_ascensor;
             rotar_activo = Rotar;
             area_puntos = area();
+            
         }
         // Toda figura geometrica tendrá un limite para que no haya una interseccion con otras, la forma de este limite será un rectangulo
         private Rectangle rectangulo()
@@ -68,28 +71,38 @@ namespace Creador_de_ciudades.Clases
         private List<Point> area()
         {
             List<Point> recolector = new List<Point>();
-            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(punto_origen.X,punto_origen.Y,b.X,b.Y));
-            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(b.X, b.Y, d.X, d.Y));
-            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(c.X, c.Y, d.X, d.Y));
-            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(punto_origen.X, punto_origen.Y, c.X, c.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(punto_origen.X,punto_origen.Y,b.X,b.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, d.X, d.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(c.X, c.Y, d.X, d.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(punto_origen.X, punto_origen.Y, c.X, c.Y));
             //Hasta aqui he encontrado los puntos del cuadrado
-            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(d.X, d.Y, punto_origen.X, punto_origen.Y));
-            recolector.AddRange(Distribuidor.obtener_puntos_diagonal(b.X, b.Y, c.X, c.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(d.X, d.Y, punto_origen.X, punto_origen.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, c.X, c.Y));
+            //Encontradas las 2 diagonales
             return recolector;    
         }
 
         private Point B()
-        {
-            return new Point(punto_origen.X + ancho_forma * 100, punto_origen.Y);
+        {   
+            Point b = new Point(punto_origen.X + ancho_forma * 100, punto_origen.Y);
+            return Herramienta.rotarpunto(b,punto_medio,grados);
         }
         private Point C()
         {
-            return new Point(punto_origen.X, punto_origen.Y + alto_forma * 100);
+            Point c = new Point(punto_origen.X, punto_origen.Y + alto_forma * 100);
+            return Herramienta.rotarpunto(c, punto_medio, grados);
         }
         private Point D()
         {
-            return new Point(punto_origen.X + ancho_forma * 100, punto_origen.Y + alto_forma * 100);
+            Point d = new Point(punto_origen.X + ancho_forma * 100, punto_origen.Y + alto_forma * 100);
+            return Herramienta.rotarpunto(d, punto_medio, grados);
         }
+        private Point centro()
+        {
+            return new Point((punto_origen.X + (punto_origen.X + ancho_forma * 100))/2 , 
+                             (punto_origen.Y + (punto_origen.Y + alto_forma * 100))/2);
+        }
+      
 
     }
 }

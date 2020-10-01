@@ -77,7 +77,7 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
                  azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
                  azar.Next(Convert.ToInt32(ui_min_grosor_pared.Value), Convert.ToInt32(ui_max_grosor_pared.Value)),
-                 Distribuidor.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, 0, 0), //100 es el multiplo 
+                 Herramienta.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, 0, 0), //100 es el multiplo 
                  new Point(),
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
                  Convert.ToInt32(ui_columna_redonda_valor.Value),
@@ -121,7 +121,7 @@ namespace Creador_de_ciudades
                         bool encontrado = false;
                         do
                         {
-                            info.origen_elevador = Distribuidor.seleccionar_punto_cuadricula(info.punto_origen.X + info.ancho_forma * 100, info.punto_origen.Y + info.alto_forma * 100, 100, info.punto_origen.X, info.punto_origen.Y);
+                            info.origen_elevador = Herramienta.seleccionar_punto_cuadricula(info.punto_origen.X + info.ancho_forma * 100, info.punto_origen.Y + info.alto_forma * 100, 100, info.punto_origen.X, info.punto_origen.Y);
                             info.espacio_elevador = new Rectangle(info.origen_elevador.X, info.origen_elevador.Y, 2 * 100, 2 * 100);
                             Rectangle resultado = Rectangle.Intersect(info.espacio_elevador, info.espacio_forma);
                             if (resultado == info.espacio_elevador)

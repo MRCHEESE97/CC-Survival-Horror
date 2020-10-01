@@ -75,49 +75,49 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {                    
                     origen_puerta = new Point(pm_lado_izquierdo.X, azar.Next(punto_superior_izquierdo_izquierdo.Y, pm_lado_izquierdo.Y));
                     puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
-                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)){ colisiona = false; g.FillRectangle(brocha_puerta, puerta); }                  
+                    if (!Herramienta.validar_interseccion(puerta, informacion.espacio_elevador)){ colisiona = false; g.FillRectangle(brocha_puerta, puerta); }                  
                 }
                 else if (seleccion_origen == 1)
                 {
                     origen_puerta = new Point(azar.Next(punto_superior_izquierdo_arriba.X, pm_lado_superior.X), pm_lado_superior.Y);
                     puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
-                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                    if (!Herramienta.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
                 }
                 else if (seleccion_origen == 2)
                 {
                     origen_puerta = new Point(azar.Next(pm_lado_superior.X, punto_superior_derecho_arriba.X) - 100, pm_lado_superior.Y);
                     puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
-                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                    if (!Herramienta.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
                 }
                 else if (seleccion_origen == 3)
                 {
                     origen_puerta = new Point(pm_lado_derecho.X, azar.Next(punto_superior_derecho_derecho.Y, pm_lado_derecho.Y));
                     puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
-                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                    if (!Herramienta.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
                 }
                 else if (seleccion_origen == 4)
                 {
                     origen_puerta = new Point(pm_lado_derecho.X, azar.Next(pm_lado_derecho.Y, punto_inferior_derecho_abajo.Y) - 100);
                     puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
-                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                    if (!Herramienta.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
                 }
                 else if (seleccion_origen == 5)
                 {
                     origen_puerta = new Point(azar.Next(pm_lado_inferior.X, punto_inferior_derecho_abajo.X) - 100, pm_lado_inferior.Y);
                     puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
-                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                    if (!Herramienta.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
                 }
                 else if (seleccion_origen == 6)
                 {
                     origen_puerta = new Point(azar.Next(punto_inferior_izquierdo_abajo.X, pm_lado_inferior.X), pm_lado_inferior.Y);
                     puerta = new Rectangle(origen_puerta, new Size(100, informacion.grosor_pared));
-                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                    if (!Herramienta.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
                 }
                 else if (seleccion_origen == 7)
                 {
                     origen_puerta = new Point(pm_lado_izquierdo.X, azar.Next(pm_lado_izquierdo.Y, punto_inferior_izquierdo_izquierdo.Y) - 100);
                     puerta = new Rectangle(origen_puerta, new Size(informacion.grosor_pared, 100));
-                    if (!Distribuidor.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
+                    if (!Herramienta.validar_interseccion(puerta, informacion.espacio_elevador)) { colisiona = false; g.FillRectangle(brocha_puerta, puerta); }
                 }
             } while(colisiona);  
          

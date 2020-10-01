@@ -30,31 +30,34 @@ namespace Creador_de_ciudades.Clases_estaticas
         {                     
             Bitmap bmp = (Bitmap)pintura.Image;
             informacion.g = Graphics.FromImage(bmp);
-            Distribuidor.rotar_grafico(informacion.g, informacion.grados,informacion.ancho_lienzo,informacion.alto_lienzo);
-            
-            //Prueba
-            Bitmap bmp2 = (Bitmap)pintura.Image;
-            Graphics nuevo = Graphics.FromImage(bmp2);
-            Point a = Distribuidor.rotar_punto(informacion.punto_origen, informacion.grados);
-            Point b = Distribuidor.rotar_punto(new Point (informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.alto_forma * 100), informacion.grados);
-            nuevo.DrawLine(new Pen(Color.Black,10),a,b);
-            //Prueba
 
-            //Aqui se dibuja la pared
+            Point a = informacion.punto_origen;
+            Point b = new Point(a.X + informacion.ancho_forma * 100, a.Y);
+            Point c = new Point(a.X, a.Y + informacion.alto_forma * 100); 
+            Point d = new Point(a.X + informacion.ancho_forma * 100, a.Y + informacion.alto_forma * 100);
+          
+            //Se dibuja la pared
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            Rectangle pared = new Rectangle(informacion.punto_origen,new Size(informacion.ancho_forma * 100,informacion.alto_forma * 100));
-            //g.RotateTransform(informacion.grados);
-            informacion.g.FillRectangle(brocha_pared,pared);
+            Point[] rect_pared = {a,b,d,c};
+            rect_pared = Herramienta.rotar_lista_puntos(rect_pared.ToList(),informacion.grados,informacion.punto_medio).ToArray();
+            informacion.g.FillPolygon(brocha_pared,rect_pared);
 
             
-            //Aqui se dibuja el suelo
-            Point punto_origen_suelo = new Point(informacion.punto_origen.X + informacion.grosor_pared,informacion.punto_origen.Y + informacion.grosor_pared);
-            int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared * 2;
-            int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared * 2;
-            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
+            //Se dibuja el suelo
+            a = new Point(informacion.punto_origen.X + informacion.grosor_pared,informacion.punto_origen.Y + informacion.grosor_pared);
+            b = new Point(a.X + informacion.ancho_forma * 100 - informacion.grosor_pared * 2, a.Y);
+            c = new Point(a.X , a.Y + informacion.alto_forma * 100 - informacion.grosor_pared * 2);
+            d = new Point(a.X + informacion.ancho_forma * 100 - informacion.grosor_pared * 2, a.Y + informacion.alto_forma * 100 - informacion.grosor_pared * 2);
             Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209,209,135));
-            //g.RotateTransform(informacion.grados);
-            informacion.g.FillRectangle(brocha_suelo, suelo);
+            Point[] rect_suelo = { a, b, d, c };
+            rect_suelo = Herramienta.rotar_lista_puntos(rect_suelo.ToList(), informacion.grados, informacion.punto_medio).ToArray();
+            informacion.g.FillPolygon(brocha_suelo,rect_suelo);
+
+            //Prueba  
+            informacion.b = Herramienta.rotarpunto(informacion.punto_origen, informacion.punto_medio, informacion.grados);
+            informacion.c = Herramienta.rotarpunto(informacion.d, informacion.punto_medio, informacion.grados);
+            informacion.g.DrawLine(new Pen(Color.Black, 10), informacion.b, informacion.c);
+            //Prueba
 
         }
         private static void cilindro(Info_forma informacion, PictureBox pintura) 

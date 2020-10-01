@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Creador_de_ciudades.Clases
 {
-    static class Distribuidor
+    static class Herramienta
     {
         public static Point seleccionar_punto_cuadricula(int maximox, int maximoy, int multiplo, int minimox, int minimoy)
         {
@@ -45,23 +45,35 @@ namespace Creador_de_ciudades.Clases
             return existe; 
         }
 
-        public static void rotar_grafico(Graphics e, int grados, int ancho, int alto) 
+        public static List<Point> rotar_lista_puntos(List<Point> puntos, int angle, Point origen) 
         {
-            e.TranslateTransform(ancho/2, alto/2);
-            e.RotateTransform(grados);
-            e.TranslateTransform(- ancho / 2, - alto / 2);
+            //Rota todos los puntos, con un mismo origen y angulo
+            List<Point> puntos_a_rotar = new List<Point>();
+            for (int i = 0; i < puntos.Count; i++)
+            {
+                puntos[i] = rotarpunto(puntos[i],origen,angle);
+            }
+            return puntos;     
+        } 
+        public static Point rotarpunto(Point P_rotar, Point P_ori, int angle)
+        {
+            double radians = (Math.PI / 180) * angle;
+            double sin = Math.Sin(radians);
+            double cos = Math.Cos(radians);
+
+            // Translate point back to origin
+            P_rotar.X -= P_ori.X;
+            P_rotar.Y -= P_ori.Y;
+
+            // Rotate point
+            double xnew = P_rotar.X * cos - P_rotar.Y * sin;
+            double ynew = P_rotar.X * sin + P_rotar.Y * cos;
+
+            // Translate point back
+            Point newPoint = new Point((int)xnew + P_ori.X, (int)ynew + P_ori.Y);
+            return newPoint;
         }
 
-        public static Point rotar_punto(Point objetivo, int grados)
-        {
-            double angle = grados * (Math.PI / 180);
-            Double s = Math.Sin(angle); // angle is in radians
-            Double c = Math.Cos(angle); // angle is in radians
-            Double xnew = objetivo.X * c - objetivo.Y * s;
-            Double ynew = objetivo.X * s + objetivo.Y * c;
-
-            return new Point((int)xnew, (int)ynew);
-        }
         public static IEnumerable<Point> obtener_puntos_diagonal(int x0, int y0, int x1, int y1)
         {
             bool steep = Math.Abs(y1 - y0) > Math.Abs(x1 - x0);

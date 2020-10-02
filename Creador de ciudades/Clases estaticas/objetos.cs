@@ -57,14 +57,14 @@ namespace Creador_de_ciudades.Clases_estaticas
                 int seleccion_origen = azar.Next(0, 8);
                 Point origen_puerta;
                 //Puntos esquineros
-                Point punto_superior_izquierdo_izquierdo = new Point(informacion.punto_origen.X, informacion.punto_origen.Y + informacion.columna_cuadrada_valor);
-                Point punto_superior_izquierdo_arriba = new Point(informacion.punto_origen.X + informacion.columna_cuadrada_valor, informacion.punto_origen.Y);
-                Point punto_superior_derecho_arriba = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.grosor_pared, informacion.punto_origen.Y);
-                Point punto_superior_derecho_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.columna_cuadrada_valor);
-                Point punto_inferior_derecho_derecho = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
-                Point punto_inferior_derecho_abajo = new Point(informacion.punto_origen.X + informacion.ancho_forma * 100 - informacion.grosor_pared, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.grosor_pared);
-                Point punto_inferior_izquierdo_abajo = new Point(informacion.punto_origen.X + informacion.columna_cuadrada_valor, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.grosor_pared);
-                Point punto_inferior_izquierdo_izquierdo = new Point(informacion.punto_origen.X, informacion.punto_origen.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
+                Point punto_superior_izquierdo_izquierdo = new Point(informacion.po.X, informacion.po.Y + informacion.columna_cuadrada_valor);
+                Point punto_superior_izquierdo_arriba = new Point(informacion.po.X + informacion.columna_cuadrada_valor, informacion.po.Y);
+                Point punto_superior_derecho_arriba = new Point(informacion.po.X + informacion.ancho_forma * 100 - informacion.grosor_pared, informacion.po.Y);
+                Point punto_superior_derecho_derecho = new Point(informacion.po.X + informacion.ancho_forma * 100, informacion.po.Y + informacion.columna_cuadrada_valor);
+                Point punto_inferior_derecho_derecho = new Point(informacion.po.X + informacion.ancho_forma * 100, informacion.po.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
+                Point punto_inferior_derecho_abajo = new Point(informacion.po.X + informacion.ancho_forma * 100 - informacion.grosor_pared, informacion.po.Y + informacion.alto_forma * 100 - informacion.grosor_pared);
+                Point punto_inferior_izquierdo_abajo = new Point(informacion.po.X + informacion.columna_cuadrada_valor, informacion.po.Y + informacion.alto_forma * 100 - informacion.grosor_pared);
+                Point punto_inferior_izquierdo_izquierdo = new Point(informacion.po.X, informacion.po.Y + informacion.alto_forma * 100 - informacion.columna_cuadrada_valor);
                 //Puntos medios
                 Point pm_lado_izquierdo = new Point(punto_inferior_izquierdo_izquierdo.X, (punto_inferior_izquierdo_izquierdo.Y + punto_superior_izquierdo_izquierdo.Y)/2);
                 Point pm_lado_superior = new Point((punto_superior_derecho_arriba.X + punto_superior_izquierdo_arriba.X)/2, punto_superior_izquierdo_arriba.Y);
@@ -135,7 +135,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             float[] dashValues = {1,8,2,8};
             columnas.DashPattern = dashValues;
 
-            Point punto_origen_suelo = new Point(informacion.punto_origen.X + informacion.grosor_pared / 2, informacion.punto_origen.Y + informacion.grosor_pared / 2);
+            Point punto_origen_suelo = new Point(informacion.po.X + informacion.grosor_pared / 2, informacion.po.Y + informacion.grosor_pared / 2);
             int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
             int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
@@ -149,19 +149,19 @@ namespace Creador_de_ciudades.Clases_estaticas
 
         private static void ventanas(Info_forma informacion, PictureBox pintura)
         {
-            Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            /*Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Pen columnas = new Pen(Color.Green, informacion.grosor_pared);
            
-            Point punto_origen_suelo = new Point(informacion.punto_origen.X + informacion.grosor_pared / 2, informacion.punto_origen.Y + informacion.grosor_pared / 2);
+            Point punto_origen_suelo = new Point(informacion.po.X + informacion.grosor_pared / 2, informacion.po.Y + informacion.grosor_pared / 2);
             int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
             int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
             Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            informacion.g.DrawRectangle(columnas, suelo);
+            informacion.g.DrawRectangle(columnas, suelo);*/
         }
 
         private static void elevador(Info_forma informacion, PictureBox pintura)
         {
-           
+           /*
 
             //Aqui se dibuja la pared
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
@@ -202,7 +202,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             {  brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));}
             else { brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent); }
             
-            informacion.g.FillRectangle(brocha_suelo, suelo);
+            informacion.g.FillRectangle(brocha_suelo, suelo); */
         }
 
     }

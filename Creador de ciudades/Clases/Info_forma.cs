@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Creador_de_ciudades.Clases
 {
@@ -17,8 +18,9 @@ namespace Creador_de_ciudades.Clases
         public int resp_ancho_forma;
         public int resp_alto_forma;
         public int grosor_pared;
-        public Point punto_origen;
-        public Point b,c,d;
+        public Point po;
+        //po es el punto_origen
+        public Point a,b,c,d;
         public Point punto_medio;
         public Point nuevo_origen;
         public int columna_cuadrada_valor;
@@ -33,19 +35,24 @@ namespace Creador_de_ciudades.Clases
         public int grados;
         public float distancia_entre_columnas;
         public Graphics g;
-        public bool rotar_activo;
         public List<Point> area_puntos;
-       
-       
-        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar) 
+        public TrackBar posibilidad;
+        public TrackBar distancia;
+        public bool rotar_activo;
+        public bool pegar_casas;
+
+
+        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas) 
         {
             ancho_lienzo = Ancho_lienzo;
             alto_lienzo = Alto_Lienzo;
             ancho_forma = Ancho_forma;
             alto_forma = Alto_forma;
             grosor_pared = Grosor_pared;
-            punto_origen = Punto_origen;
+            po = Punto_origen;
             punto_medio = centro();
+            pegar_casas = Pegar_casas;
+            a = A();
             b = B();
             c = C();
             d = D();           
@@ -59,48 +66,59 @@ namespace Creador_de_ciudades.Clases
             mover_ascensor = Mover_ascensor;
             rotar_activo = Rotar;
             area_puntos = area();
-            
+            posibilidad = Posibilidad;
+            distancia = Distancia;
+           
         }
         // Toda figura geometrica tendrá un limite para que no haya una interseccion con otras, la forma de este limite será un rectangulo
         private Rectangle rectangulo()
         {
-          Rectangle limite = new Rectangle(punto_origen, new Size(ancho_forma * 100, alto_forma * 100));
+          Rectangle limite = new Rectangle(po, new Size(ancho_forma * 100, alto_forma * 100));
           return limite;
         }
 
         private List<Point> area()
         {
             List<Point> recolector = new List<Point>();
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(punto_origen.X,punto_origen.Y,b.X,b.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(a.X,a.Y,b.X,b.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, d.X, d.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(c.X, c.Y, d.X, d.Y));
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(punto_origen.X, punto_origen.Y, c.X, c.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(a.X, a.Y, c.X, c.Y));
             //Hasta aqui he encontrado los puntos del cuadrado
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(d.X, d.Y, punto_origen.X, punto_origen.Y));
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(d.X, d.Y, a.X, a.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, c.X, c.Y));
             //Encontradas las 2 diagonales
             return recolector;    
         }
-
+        private Point A()
+        {
+            Point a = po;
+            if (pegar_casas) { a.X = a.X + 1; a.Y = a.Y + 1;}
+            return a;
+        }
         private Point B()
         {   
-            Point b = new Point(punto_origen.X + ancho_forma * 100, punto_origen.Y);
+            Point b = new Point(po.X + ancho_forma * 100, po.Y);
+            if (pegar_casas) { b.X = b.X - 1; b.Y = b.Y + 1; }
             return Herramienta.rotarpunto(b,punto_medio,grados);
         }
         private Point C()
         {
-            Point c = new Point(punto_origen.X, punto_origen.Y + alto_forma * 100);
+            Point c = new Point(po.X, po.Y + alto_forma * 100);
+            if (pegar_casas) { c.X = c.X + 1; c.Y = c.Y - 1;}
+           
             return Herramienta.rotarpunto(c, punto_medio, grados);
         }
         private Point D()
         {
-            Point d = new Point(punto_origen.X + ancho_forma * 100, punto_origen.Y + alto_forma * 100);
+            Point d = new Point(po.X + ancho_forma * 100, po.Y + alto_forma * 100);
+            if (pegar_casas) { d.X = d.X - 1; d.Y = d.Y - 1; }
             return Herramienta.rotarpunto(d, punto_medio, grados);
         }
         private Point centro()
         {
-            return new Point((punto_origen.X + (punto_origen.X + ancho_forma * 100))/2 , 
-                             (punto_origen.Y + (punto_origen.Y + alto_forma * 100))/2);
+            return new Point((po.X + (po.X + ancho_forma * 100))/2 , 
+                             (po.Y + (po.Y + alto_forma * 100))/2);
         }
       
 

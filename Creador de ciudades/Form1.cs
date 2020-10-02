@@ -58,7 +58,7 @@ namespace Creador_de_ciudades
         {
             Random azar = new Random();
 
-            //Aqui calcularé el 20% del tamaño del lienzo, esto para que la ciudad tenga un limite y las formas no sobresalgan
+            //Aqui calcularé el margen del area de dibujo, para que las formas no sobresalgan
             float c_ancho = Convert.ToInt32(ui_max_ancho_casa.Value) * 100;
             float c_alto = Convert.ToInt32(ui_max_alto_casa.Value) * 100;
 
@@ -85,7 +85,10 @@ namespace Creador_de_ciudades
                  grados,
                  azar.Next(10, 20), // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
                  azar.Next(1, 5),
-                 ui_checkbox_girar.Checked
+                 ui_checkbox_girar.Checked,
+                 Posibilidad,
+                 Distancia,
+                 ui_pegar_casas.Checked
                 );
 
                 info.resp_alto_forma = info.alto_forma;
@@ -121,7 +124,7 @@ namespace Creador_de_ciudades
                         bool encontrado = false;
                         do
                         {
-                            info.origen_elevador = Herramienta.seleccionar_punto_cuadricula(info.punto_origen.X + info.ancho_forma * 100, info.punto_origen.Y + info.alto_forma * 100, 100, info.punto_origen.X, info.punto_origen.Y);
+                            info.origen_elevador = Herramienta.seleccionar_punto_cuadricula(info.po.X + info.ancho_forma * 100, info.po.Y + info.alto_forma * 100, 100, info.po.X, info.po.Y);
                             info.espacio_elevador = new Rectangle(info.origen_elevador.X, info.origen_elevador.Y, 2 * 100, 2 * 100);
                             Rectangle resultado = Rectangle.Intersect(info.espacio_elevador, info.espacio_forma);
                             if (resultado == info.espacio_elevador)
@@ -218,8 +221,8 @@ namespace Creador_de_ciudades
                                 int modo = 0;
                                 valor_reduccion = azar.Next(modo, limite+1);
                             }
-                            datos[recorrer].nuevo_origen = new Point(datos[recorrer].punto_origen.X + ((valor_reduccion * 100) / 2), datos[recorrer].punto_origen.Y + ((valor_reduccion * 100) / 2));
-                            datos[recorrer].punto_origen = datos[recorrer].nuevo_origen;
+                            datos[recorrer].nuevo_origen = new Point(datos[recorrer].po.X + ((valor_reduccion * 100) / 2), datos[recorrer].po.Y + ((valor_reduccion * 100) / 2));
+                            datos[recorrer].po = datos[recorrer].nuevo_origen;
                             datos[recorrer].ancho_forma = datos[recorrer].ancho_forma - valor_reduccion;
                             datos[recorrer].alto_forma  = datos[recorrer].alto_forma - valor_reduccion;
                         }                      

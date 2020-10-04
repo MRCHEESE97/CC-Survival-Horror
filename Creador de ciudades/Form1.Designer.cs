@@ -73,6 +73,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ui_groupbox_forma_casas = new System.Windows.Forms.GroupBox();
+            this.Distancia = new System.Windows.Forms.TrackBar();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.Posibilidad = new System.Windows.Forms.TrackBar();
+            this.ui_forma_casa_deformada = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_cilindrica = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
@@ -102,12 +107,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.ui_forma_casa_deformada = new System.Windows.Forms.RadioButton();
-            this.Posibilidad = new System.Windows.Forms.TrackBar();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.Distancia = new System.Windows.Forms.TrackBar();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -123,6 +123,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_alto_casa)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_casa)).BeginInit();
             this.ui_groupbox_forma_casas.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Distancia)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).BeginInit();
             this.ui_groupbox_objetos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_redonda_valor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_cuadrada_valor)).BeginInit();
@@ -137,8 +139,6 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Distancia)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -690,6 +690,56 @@
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Formas/casas";
             // 
+            // Distancia
+            // 
+            this.Distancia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Distancia.Location = new System.Drawing.Point(16, 157);
+            this.Distancia.Minimum = 1;
+            this.Distancia.Name = "Distancia";
+            this.Distancia.Size = new System.Drawing.Size(212, 45);
+            this.Distancia.TabIndex = 6;
+            this.Distancia.Value = 1;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(32, 137);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(176, 17);
+            this.label18.TabIndex = 5;
+            this.label18.Text = "Longitud de deformación (m)";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(32, 86);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(191, 17);
+            this.label17.TabIndex = 4;
+            this.label17.Text = "Probabilidad de deformación (%)";
+            // 
+            // Posibilidad
+            // 
+            this.Posibilidad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Posibilidad.Location = new System.Drawing.Point(17, 106);
+            this.Posibilidad.Minimum = 1;
+            this.Posibilidad.Name = "Posibilidad";
+            this.Posibilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Posibilidad.Size = new System.Drawing.Size(211, 45);
+            this.Posibilidad.TabIndex = 3;
+            this.Posibilidad.Value = 10;
+            // 
+            // ui_forma_casa_deformada
+            // 
+            this.ui_forma_casa_deformada.AutoSize = true;
+            this.ui_forma_casa_deformada.Location = new System.Drawing.Point(17, 58);
+            this.ui_forma_casa_deformada.Name = "ui_forma_casa_deformada";
+            this.ui_forma_casa_deformada.Size = new System.Drawing.Size(150, 21);
+            this.ui_forma_casa_deformada.TabIndex = 2;
+            this.ui_forma_casa_deformada.TabStop = true;
+            this.ui_forma_casa_deformada.Text = "Rectangulo deformado";
+            this.ui_forma_casa_deformada.UseVisualStyleBackColor = true;
+            // 
             // ui_forma_casa_cilindrica
             // 
             this.ui_forma_casa_cilindrica.AutoSize = true;
@@ -962,11 +1012,11 @@
             this.tabPage2.AutoScroll = true;
             this.tabPage2.Controls.Add(this.ui_groupbox_objetos);
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(274, 289);
+            this.tabPage2.Size = new System.Drawing.Size(274, 293);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1068,60 +1118,10 @@
             this.label16.TabIndex = 0;
             this.label16.Text = "m²";
             // 
-            // ui_forma_casa_deformada
-            // 
-            this.ui_forma_casa_deformada.AutoSize = true;
-            this.ui_forma_casa_deformada.Location = new System.Drawing.Point(17, 58);
-            this.ui_forma_casa_deformada.Name = "ui_forma_casa_deformada";
-            this.ui_forma_casa_deformada.Size = new System.Drawing.Size(150, 21);
-            this.ui_forma_casa_deformada.TabIndex = 2;
-            this.ui_forma_casa_deformada.TabStop = true;
-            this.ui_forma_casa_deformada.Text = "Rectangulo deformado";
-            this.ui_forma_casa_deformada.UseVisualStyleBackColor = true;
-            // 
-            // Posibilidad
-            // 
-            this.Posibilidad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Posibilidad.Location = new System.Drawing.Point(17, 106);
-            this.Posibilidad.Minimum = 1;
-            this.Posibilidad.Name = "Posibilidad";
-            this.Posibilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Posibilidad.Size = new System.Drawing.Size(211, 45);
-            this.Posibilidad.TabIndex = 3;
-            this.Posibilidad.Value = 10;
-            // 
             // contextMenuStrip3
             // 
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(88, 92);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(65, 17);
-            this.label17.TabIndex = 4;
-            this.label17.Text = "Posibilidad";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(52, 137);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(148, 17);
-            this.label18.TabIndex = 5;
-            this.label18.Text = "Longitud de deformación";
-            // 
-            // Distancia
-            // 
-            this.Distancia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Distancia.Location = new System.Drawing.Point(16, 157);
-            this.Distancia.Minimum = 1;
-            this.Distancia.Name = "Distancia";
-            this.Distancia.Size = new System.Drawing.Size(212, 45);
-            this.Distancia.TabIndex = 6;
-            this.Distancia.Value = 1;
             // 
             // Form1
             // 
@@ -1159,6 +1159,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_casa)).EndInit();
             this.ui_groupbox_forma_casas.ResumeLayout(false);
             this.ui_groupbox_forma_casas.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Distancia)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).EndInit();
             this.ui_groupbox_objetos.ResumeLayout(false);
             this.ui_groupbox_objetos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_redonda_valor)).EndInit();
@@ -1178,8 +1180,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Distancia)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

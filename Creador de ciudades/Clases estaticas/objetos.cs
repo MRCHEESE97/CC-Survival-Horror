@@ -60,40 +60,38 @@ namespace Creador_de_ciudades.Clases_estaticas
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
         {   
-            //Optimizar
+            //Por limitaciones de la API no se puede usar decimales para la puerta
+            //debido a eso tendré que fijar una medida 1,2,3 m maximo
 
             Bitmap bmp = (Bitmap)pintura.Image;
             Graphics g;
             g = Graphics.FromImage(bmp);
 
             Pen puerta = new Pen(Color.Red,informacion.grosor_pared);
-            Pen col_puerta = new Pen(Color.Black, informacion.grosor_pared);
+            Pen col_puerta = new Pen(Color.Black, informacion.columna_cuadrada_valor);
 
             int ubicacion_punto = azar.Next(0, informacion.contorno.Count-1);
             Point punto_inicio = informacion.contorno[ubicacion_punto];
             Point punto_fin = informacion.contorno[ubicacion_punto + 1];
-
-            g.DrawLine(puerta,punto_inicio,punto_fin);    
+            
+            g.DrawLine(puerta, punto_inicio, punto_fin);
+            
         }
-        private static void columna_cuadrada(Info_forma informacion, PictureBox pintura)
+        private static void columna_cuadrada(Info_forma info, PictureBox pintura)
         {
             Bitmap bmp = (Bitmap)pintura.Image;
             Graphics g;
             g = Graphics.FromImage(bmp);
+            Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            int mitad_col = info.columna_cuadrada_valor / 2;
 
-            Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            Pen columnas = new Pen(Color.Black, informacion.columna_cuadrada_valor);
-
-            //float[] dashValues = {1,informacion.distancia_entre_columnas};
-            float[] dashValues = {1,8,2,8};
-            columnas.DashPattern = dashValues;
-
-            Point punto_origen_suelo = new Point(informacion.po.X + informacion.grosor_pared / 2, informacion.po.Y + informacion.grosor_pared / 2);
-            int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
-            int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
-            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            g.DrawRectangle(columnas,suelo);
-
+            for (int i = 0; i < info.contorno.Count; i++)
+            {
+                Point origen_columna = new Point(info.contorno[i].X - mitad_col, info.contorno[i].Y - mitad_col);
+                Rectangle columna = new Rectangle(origen_columna,new Size(info.columna_cuadrada_valor,info.columna_cuadrada_valor));
+                g.FillRectangle(dibujar,columna);
+            }
+           
         }
         private static void columna_circular(Info_forma informacion, PictureBox pintura)
         {

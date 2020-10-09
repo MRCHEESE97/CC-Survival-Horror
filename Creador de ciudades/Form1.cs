@@ -84,8 +84,27 @@ namespace Creador_de_ciudades
             //llenar lista de datos por casa
 
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
-            {
-                int grados = 0;  if (ui_checkbox_girar.Checked) { grados = azar.Next(0, 361); } 
+            {   
+                //Guardo en una variable el valor para los grados
+                int grados = 0;
+                if (ui_checkbox_girar.Checked) { grados = azar.Next(0, 361); }
+                else 
+                { 
+                    int seleccionar = azar.Next(0, 5);
+                    switch (seleccionar) 
+                    { 
+                        case 0: grados = 90;
+                            break;
+                        case 1: grados = 180;
+                            break;
+                        case 2: grados = 270;
+                            break;
+                        case 3: grados = 360;
+                            break;
+                    }
+                }
+
+                //LLeno el objeto
 
                 Info_forma info = new Info_forma
                 (

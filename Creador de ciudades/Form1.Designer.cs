@@ -73,6 +73,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ui_groupbox_forma_casas = new System.Windows.Forms.GroupBox();
+            this.ui_forma_casa_deformada_chaflan = new System.Windows.Forms.RadioButton();
             this.Distancia = new System.Windows.Forms.TrackBar();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
@@ -81,6 +82,8 @@
             this.ui_forma_casa_cilindrica = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ui_vano_puerta = new System.Windows.Forms.NumericUpDown();
             this.ui_objetos_ventana = new System.Windows.Forms.CheckBox();
             this.ui_objetos_elevador = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -108,9 +111,6 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ui_vano_puerta = new System.Windows.Forms.NumericUpDown();
-            this.label19 = new System.Windows.Forms.Label();
-            this.ui_forma_casa_deformada_chaflan = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -129,6 +129,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Distancia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).BeginInit();
             this.ui_groupbox_objetos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_redonda_valor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_cuadrada_valor)).BeginInit();
             this.tabControlProp.SuspendLayout();
@@ -142,7 +143,6 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -695,6 +695,17 @@
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Formas/casas";
             // 
+            // ui_forma_casa_deformada_chaflan
+            // 
+            this.ui_forma_casa_deformada_chaflan.AutoSize = true;
+            this.ui_forma_casa_deformada_chaflan.Location = new System.Drawing.Point(17, 80);
+            this.ui_forma_casa_deformada_chaflan.Name = "ui_forma_casa_deformada_chaflan";
+            this.ui_forma_casa_deformada_chaflan.Size = new System.Drawing.Size(195, 21);
+            this.ui_forma_casa_deformada_chaflan.TabIndex = 7;
+            this.ui_forma_casa_deformada_chaflan.TabStop = true;
+            this.ui_forma_casa_deformada_chaflan.Text = "Rectangulo deformado chaflán";
+            this.ui_forma_casa_deformada_chaflan.UseVisualStyleBackColor = true;
+            // 
             // Distancia
             // 
             this.Distancia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
@@ -792,6 +803,43 @@
             this.ui_groupbox_objetos.TabStop = false;
             this.ui_groupbox_objetos.Text = "Objetos";
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(213, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(27, 17);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "cm.";
+            // 
+            // ui_vano_puerta
+            // 
+            this.ui_vano_puerta.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta.Location = new System.Drawing.Point(156, 25);
+            this.ui_vano_puerta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta.Name = "ui_vano_puerta";
+            this.ui_vano_puerta.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta.TabIndex = 9;
+            this.ui_vano_puerta.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
             // ui_objetos_ventana
             // 
             this.ui_objetos_ventana.AutoSize = true;
@@ -882,7 +930,7 @@
             this.ui_columna_cuadrada_valor.Size = new System.Drawing.Size(54, 27);
             this.ui_columna_cuadrada_valor.TabIndex = 3;
             this.ui_columna_cuadrada_valor.Value = new decimal(new int[] {
-            10,
+            30,
             0,
             0,
             0});
@@ -1130,54 +1178,6 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // ui_vano_puerta
-            // 
-            this.ui_vano_puerta.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta.Location = new System.Drawing.Point(156, 25);
-            this.ui_vano_puerta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_vano_puerta.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta.Name = "ui_vano_puerta";
-            this.ui_vano_puerta.Size = new System.Drawing.Size(54, 27);
-            this.ui_vano_puerta.TabIndex = 9;
-            this.ui_vano_puerta.Value = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(213, 30);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(27, 17);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "cm.";
-            // 
-            // ui_forma_casa_deformada_chaflan
-            // 
-            this.ui_forma_casa_deformada_chaflan.AutoSize = true;
-            this.ui_forma_casa_deformada_chaflan.Location = new System.Drawing.Point(17, 80);
-            this.ui_forma_casa_deformada_chaflan.Name = "ui_forma_casa_deformada_chaflan";
-            this.ui_forma_casa_deformada_chaflan.Size = new System.Drawing.Size(195, 21);
-            this.ui_forma_casa_deformada_chaflan.TabIndex = 7;
-            this.ui_forma_casa_deformada_chaflan.TabStop = true;
-            this.ui_forma_casa_deformada_chaflan.Text = "Rectangulo deformado chaflán";
-            this.ui_forma_casa_deformada_chaflan.UseVisualStyleBackColor = true;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1218,6 +1218,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).EndInit();
             this.ui_groupbox_objetos.ResumeLayout(false);
             this.ui_groupbox_objetos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_redonda_valor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_columna_cuadrada_valor)).EndInit();
             this.tabControlProp.ResumeLayout(false);
@@ -1235,7 +1236,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

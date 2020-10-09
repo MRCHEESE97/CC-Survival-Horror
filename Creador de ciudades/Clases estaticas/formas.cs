@@ -401,11 +401,14 @@ namespace Creador_de_ciudades.Clases_estaticas
             for (int c = lado_izquierdo.Count - 1; c >= 0; c--)
             { irregular.Add(lado_izquierdo[c]); }
 
+            //Limpio de la lista los elementos duplicados
+            irregular = irregular.Distinct().ToList();
+
             //Se rotan los puntos 
             irregular = Herramienta.rotar_lista_puntos(irregular, info.grados, info.punto_medio);
 
             //Guardo los puntos en el objeto
-            info.contorno = irregular.Distinct().ToList();
+            info.contorno = irregular;
 
             info.g.FillPolygon(brocha, irregular.ToArray());
             info.g.DrawPolygon(contorno, irregular.ToArray());

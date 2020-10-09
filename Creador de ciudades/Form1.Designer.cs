@@ -44,7 +44,7 @@
             this.ui_superposicion_esc_var = new System.Windows.Forms.RadioButton();
             this.ui_superposicion_esc_cons_var = new System.Windows.Forms.RadioButton();
             this.ui_superposicion_esc_cons = new System.Windows.Forms.RadioButton();
-            this.ui_superposicion_esc_dec_cons = new System.Windows.Forms.RadioButton();
+            this.ui_superposicion_piramidal = new System.Windows.Forms.RadioButton();
             this.ui_cantidad_pisos = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.ui_groupBox_superposicion_modo = new System.Windows.Forms.GroupBox();
@@ -108,6 +108,9 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ui_vano_puerta = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
+            this.ui_forma_casa_deformada_chaflan = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -139,6 +142,7 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -237,7 +241,7 @@
             this.groupBox4.Controls.Add(this.ui_superposicion_esc_var);
             this.groupBox4.Controls.Add(this.ui_superposicion_esc_cons_var);
             this.groupBox4.Controls.Add(this.ui_superposicion_esc_cons);
-            this.groupBox4.Controls.Add(this.ui_superposicion_esc_dec_cons);
+            this.groupBox4.Controls.Add(this.ui_superposicion_piramidal);
             this.groupBox4.Location = new System.Drawing.Point(18, 53);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
@@ -279,22 +283,22 @@
             this.ui_superposicion_esc_cons.Location = new System.Drawing.Point(7, 25);
             this.ui_superposicion_esc_cons.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_superposicion_esc_cons.Name = "ui_superposicion_esc_cons";
-            this.ui_superposicion_esc_cons.Size = new System.Drawing.Size(118, 21);
+            this.ui_superposicion_esc_cons.Size = new System.Drawing.Size(124, 21);
             this.ui_superposicion_esc_cons.TabIndex = 1;
-            this.ui_superposicion_esc_cons.Text = "Escala constante";
+            this.ui_superposicion_esc_cons.Text = "Escala constante ";
             this.ui_superposicion_esc_cons.UseVisualStyleBackColor = true;
             this.ui_superposicion_esc_cons.CheckedChanged += new System.EventHandler(this.ui_superposicion_esc_fija_CheckedChanged);
             // 
-            // ui_superposicion_esc_dec_cons
+            // ui_superposicion_piramidal
             // 
-            this.ui_superposicion_esc_dec_cons.AutoSize = true;
-            this.ui_superposicion_esc_dec_cons.Location = new System.Drawing.Point(7, 83);
-            this.ui_superposicion_esc_dec_cons.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_superposicion_esc_dec_cons.Name = "ui_superposicion_esc_dec_cons";
-            this.ui_superposicion_esc_dec_cons.Size = new System.Drawing.Size(186, 21);
-            this.ui_superposicion_esc_dec_cons.TabIndex = 0;
-            this.ui_superposicion_esc_dec_cons.Text = "Escala decreciente constante";
-            this.ui_superposicion_esc_dec_cons.UseVisualStyleBackColor = true;
+            this.ui_superposicion_piramidal.AutoSize = true;
+            this.ui_superposicion_piramidal.Location = new System.Drawing.Point(7, 83);
+            this.ui_superposicion_piramidal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_superposicion_piramidal.Name = "ui_superposicion_piramidal";
+            this.ui_superposicion_piramidal.Size = new System.Drawing.Size(114, 21);
+            this.ui_superposicion_piramidal.TabIndex = 0;
+            this.ui_superposicion_piramidal.Text = "Escala piramidal";
+            this.ui_superposicion_piramidal.UseVisualStyleBackColor = true;
             // 
             // ui_cantidad_pisos
             // 
@@ -674,6 +678,7 @@
             // 
             // ui_groupbox_forma_casas
             // 
+            this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada_chaflan);
             this.ui_groupbox_forma_casas.Controls.Add(this.Distancia);
             this.ui_groupbox_forma_casas.Controls.Add(this.label18);
             this.ui_groupbox_forma_casas.Controls.Add(this.label17);
@@ -685,7 +690,7 @@
             this.ui_groupbox_forma_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_forma_casas.Name = "ui_groupbox_forma_casas";
             this.ui_groupbox_forma_casas.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(245, 209);
+            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(245, 227);
             this.ui_groupbox_forma_casas.TabIndex = 6;
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Formas/casas";
@@ -693,7 +698,7 @@
             // Distancia
             // 
             this.Distancia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Distancia.Location = new System.Drawing.Point(16, 157);
+            this.Distancia.Location = new System.Drawing.Point(16, 175);
             this.Distancia.Minimum = 1;
             this.Distancia.Name = "Distancia";
             this.Distancia.Size = new System.Drawing.Size(212, 45);
@@ -703,7 +708,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(32, 137);
+            this.label18.Location = new System.Drawing.Point(32, 155);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(176, 17);
             this.label18.TabIndex = 5;
@@ -712,7 +717,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(32, 86);
+            this.label17.Location = new System.Drawing.Point(32, 104);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(191, 17);
             this.label17.TabIndex = 4;
@@ -721,7 +726,7 @@
             // Posibilidad
             // 
             this.Posibilidad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Posibilidad.Location = new System.Drawing.Point(17, 106);
+            this.Posibilidad.Location = new System.Drawing.Point(17, 124);
             this.Posibilidad.Minimum = 1;
             this.Posibilidad.Name = "Posibilidad";
             this.Posibilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -767,6 +772,8 @@
             // 
             // ui_groupbox_objetos
             // 
+            this.ui_groupbox_objetos.Controls.Add(this.label19);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_ventana);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_elevador);
             this.ui_groupbox_objetos.Controls.Add(this.label14);
@@ -1012,11 +1019,11 @@
             this.tabPage2.AutoScroll = true;
             this.tabPage2.Controls.Add(this.ui_groupbox_objetos);
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(274, 293);
+            this.tabPage2.Size = new System.Drawing.Size(274, 289);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1123,6 +1130,54 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
+            // ui_vano_puerta
+            // 
+            this.ui_vano_puerta.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta.Location = new System.Drawing.Point(156, 25);
+            this.ui_vano_puerta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta.Name = "ui_vano_puerta";
+            this.ui_vano_puerta.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta.TabIndex = 9;
+            this.ui_vano_puerta.Value = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(213, 30);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(27, 17);
+            this.label19.TabIndex = 10;
+            this.label19.Text = "cm.";
+            // 
+            // ui_forma_casa_deformada_chaflan
+            // 
+            this.ui_forma_casa_deformada_chaflan.AutoSize = true;
+            this.ui_forma_casa_deformada_chaflan.Location = new System.Drawing.Point(17, 80);
+            this.ui_forma_casa_deformada_chaflan.Name = "ui_forma_casa_deformada_chaflan";
+            this.ui_forma_casa_deformada_chaflan.Size = new System.Drawing.Size(195, 21);
+            this.ui_forma_casa_deformada_chaflan.TabIndex = 7;
+            this.ui_forma_casa_deformada_chaflan.TabStop = true;
+            this.ui_forma_casa_deformada_chaflan.Text = "Rectangulo deformado chaflán";
+            this.ui_forma_casa_deformada_chaflan.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1180,6 +1235,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1218,7 +1274,7 @@
         private System.Windows.Forms.RadioButton ui_forma_casa_rectangular;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.RadioButton ui_superposicion_esc_cons;
-        private System.Windows.Forms.RadioButton ui_superposicion_esc_dec_cons;
+        private System.Windows.Forms.RadioButton ui_superposicion_piramidal;
         private System.Windows.Forms.RadioButton ui_superposicion_esc_var;
         private System.Windows.Forms.GroupBox ui_groupBox_superposicion_modo;
         private System.Windows.Forms.RadioButton ui_superposicion_rad_valor_por_rango;
@@ -1266,6 +1322,9 @@
         private System.Windows.Forms.TrackBar Distancia;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.NumericUpDown ui_vano_puerta;
+        private System.Windows.Forms.RadioButton ui_forma_casa_deformada_chaflan;
     }
 }
 

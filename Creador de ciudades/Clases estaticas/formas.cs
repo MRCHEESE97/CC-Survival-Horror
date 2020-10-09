@@ -43,6 +43,10 @@ namespace Creador_de_ciudades.Clases_estaticas
             {
                 rectangulo_deformado(datos, lienzo, 1);
             }
+            else if (seleccion_forma.Equals("ui_forma_casa_deformada_chaflan"))
+            {
+                rectangulo_deformado(datos, lienzo, 2);
+            }            
         }
 
         private static void rectangulo(Info_forma informacion, PictureBox pintura)
@@ -54,23 +58,19 @@ namespace Creador_de_ciudades.Clases_estaticas
             Point b = new Point(a.X + informacion.ancho_forma * 100, a.Y);
             Point c = new Point(a.X, a.Y + informacion.alto_forma * 100); 
             Point d = new Point(a.X + informacion.ancho_forma * 100, a.Y + informacion.alto_forma * 100);
-          
+
             //Se dibuja la pared
-            Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            Pen borde = new Pen(Color.Black, informacion.grosor_pared);
+            Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
             Point[] rect_pared = {a,b,d,c};
             rect_pared = Herramienta.rotar_lista_puntos(rect_pared.ToList(),informacion.grados,informacion.punto_medio).ToArray();
-            informacion.g.FillPolygon(brocha_pared,rect_pared);
 
-            
-            //Se dibuja el suelo
-            a = new Point(informacion.po.X + informacion.grosor_pared,informacion.po.Y + informacion.grosor_pared);
-            b = new Point(a.X + informacion.ancho_forma * 100 - informacion.grosor_pared * 2, a.Y);
-            c = new Point(a.X , a.Y + informacion.alto_forma * 100 - informacion.grosor_pared * 2);
-            d = new Point(a.X + informacion.ancho_forma * 100 - informacion.grosor_pared * 2, a.Y + informacion.alto_forma * 100 - informacion.grosor_pared * 2);
-            Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209,209,135));
-            Point[] rect_suelo = { a, b, d, c };
-            rect_suelo = Herramienta.rotar_lista_puntos(rect_suelo.ToList(), informacion.grados, informacion.punto_medio).ToArray();
-            informacion.g.FillPolygon(brocha_suelo,rect_suelo);
+            //Despues de rotar guardo los puntos en el objeto
+            informacion.contorno = rect_pared.ToList();
+
+            informacion.g.FillPolygon(brocha_pared, rect_pared);
+            informacion.g.DrawPolygon(borde,rect_pared);
+           
 
             //Prueba  
             informacion.b = Herramienta.rotarpunto(informacion.a, informacion.punto_medio, informacion.grados);
@@ -113,11 +113,10 @@ namespace Creador_de_ciudades.Clases_estaticas
             int ancho = info.ancho_forma;
             int alto = info.alto_forma;
             int contador = 1;
-            int limite_profundidad_ancho = (int)Math.Truncate(alto * 0.30) + 1, limite_profundidad_alto = (int)Math.Truncate(ancho * 0.30) + 1;
+            int distancia_des_ancho = (int)Math.Truncate(alto * 0.30) + 1, distancia_des_alto = (int)Math.Truncate(ancho * 0.30) + 1;
             int hund_izq = 0, hund_der = info.ancho_lienzo;
             Point point1 = new Point();
             Point point2 = new Point();
-            List<Point> contorno_irregular = new List<Point>();
             SolidBrush brocha = new SolidBrush(Color.FromArgb(211, 209, 133));
             Pen contorno = new Pen(Color.Black,info.grosor_pared);
 
@@ -127,9 +126,18 @@ namespace Creador_de_ciudades.Clases_estaticas
             List<Point> lado_izquierdo = new List<Point>();
             List<Point> lado_abajo = new List<Point>();
 
-            //En cada while utilizo una variable llamada hundir si es uno 1 o 2 entonces dibujara de forma normal
-            //si es cero hundira hago esto para tener una menor probabilidad de que el segmento se hunda
-            int conteo = 0, hundir = 0;
+            /*
+            Una variable llamada "desplazar hacia el centro" determina si 2 puntos se mueven.
+            si es cualquier número a excepción de 0 no moverá el vertice
+            si es cero el vertice será atraido al centro 
+             __________
+            |        __|
+            |       |__   <--- "desplazar_al_centro = 0"
+            |          |
+            |__________|          
+            */
+
+            int conteo = 0, desplazar_al_centro = 0;
             int random_profundidad = 0;
 
             //Ancho superior     
@@ -140,8 +148,8 @@ namespace Creador_de_ciudades.Clases_estaticas
                 if (conteo == 0)
                 {
                     conteo = 1;
-                    random_profundidad = random.Next(1, limite_profundidad_ancho);
-                    hundir = random.Next(0, info.posibilidad.Value);
+                    random_profundidad = random.Next(1, distancia_des_ancho);
+                    desplazar_al_centro = random.Next(0, info.posibilidad.Value);
                     if (conteo == info.distancia.Value)
                     { conteo = 0; }
                 }
@@ -152,7 +160,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     { conteo = 0; }
                 }
                 //-------------------------------------------
-                if (hundir != 0)
+                if (desplazar_al_centro != 0)
                 {
                     if (contador == 1)
                     {
@@ -194,21 +202,20 @@ namespace Creador_de_ciudades.Clases_estaticas
             inicioy = lado_arriba[0].Y;
             // Guarda la Y del ultimo segmento
 
-            //Ajuste 12 de junio/2019 
-            lado_arriba[lado_arriba.Count - 1] = new Point(lado_arriba[lado_arriba.Count - 1].X + 1, lado_arriba[lado_arriba.Count - 1].Y);
+         
             ultimay = lado_arriba[lado_arriba.Count - 1].Y;
-            contador = limite_profundidad_ancho;
+            contador = distancia_des_ancho;
             conteo = 0;
             //lado derecho
             while (contador <= alto)
             {
-                int punto_inicial_x = (100 * ancho) + x + 1;
+                int punto_inicial_x = (100 * ancho) + x;
                 //Esta parte fue agragada para la distancia
                 if (conteo == 0)
                 {
                     conteo = 1;
-                    random_profundidad = random.Next(1, limite_profundidad_alto);
-                    hundir = random.Next(0, info.posibilidad.Value);
+                    random_profundidad = random.Next(1, distancia_des_alto);
+                    desplazar_al_centro = random.Next(0, info.posibilidad.Value);
                     if (conteo == info.distancia.Value)
                     { conteo = 0; }
                 }
@@ -219,7 +226,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     { conteo = 0; }
                 }
                 //-------------------------------------------
-                if (contador == limite_profundidad_ancho)
+                if (contador == distancia_des_ancho)
                 {
                     point1.X = punto_inicial_x;
                     point1.Y = ultimay;
@@ -228,7 +235,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
                 else
                 {
-                    if (hundir != 0)
+                    if (desplazar_al_centro != 0)
                     {
                         point1.X = punto_inicial_x;
                         point1.Y = point2.Y;
@@ -254,9 +261,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             iniciox = lado_derecho[lado_derecho.Count - 1].X;
             cierrex = iniciox;
 
-            lado_derecho[lado_derecho.Count - 1] = new Point(lado_derecho[lado_derecho.Count - 1].X, lado_derecho[lado_derecho.Count - 1].Y + 1);
-
-            contador = limite_profundidad_ancho;
+            contador = distancia_des_ancho;
 
             //lado izquierdo
 
@@ -265,8 +270,8 @@ namespace Creador_de_ciudades.Clases_estaticas
                 if (conteo == 0)
                 {
                     conteo = 1;
-                    random_profundidad = random.Next(1, limite_profundidad_alto);
-                    hundir = random.Next(0, info.posibilidad.Value);
+                    random_profundidad = random.Next(1, distancia_des_alto);
+                    desplazar_al_centro = random.Next(0, info.posibilidad.Value);
                     if (conteo == info.distancia.Value)
                     { conteo = 0; }
                 }
@@ -277,7 +282,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     { conteo = 0; }
                 }
                 //-------------------------------------------
-                if (contador == limite_profundidad_ancho)
+                if (contador == distancia_des_ancho)
                 {
                     point1.X = x;
                     point1.Y = inicioy;
@@ -286,7 +291,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
                 else
                 {
-                    if (hundir != 0)
+                    if (desplazar_al_centro != 0)
                     {
                         point1.X = x;
                         point1.Y = point2.Y;
@@ -312,24 +317,20 @@ namespace Creador_de_ciudades.Clases_estaticas
             iniciox = lado_izquierdo[lado_izquierdo.Count - 1].X;
             ultimay = lado_izquierdo[lado_izquierdo.Count - 1].Y;
 
-            contador = limite_profundidad_alto;
+            contador = distancia_des_alto;
             conteo = 0;
-
-            //fix 12 de junio
-
-            lado_izquierdo[lado_izquierdo.Count - 1] = new Point(lado_izquierdo[lado_izquierdo.Count - 1].X, lado_izquierdo[lado_izquierdo.Count - 1].Y + 1);
 
             //Ancho inferior
 
             while (contador <= ancho + 1)
             {
-                int punto_inicial_y = (100 * alto) + y + 1;
+                int punto_inicial_y = (100 * alto) + y;
                 //Esta parte fue agragada para la distancia
                 if (conteo == 0)
                 {
                     conteo = 1;
-                    random_profundidad = random.Next(1, limite_profundidad_ancho);
-                    hundir = random.Next(0, info.posibilidad.Value);
+                    random_profundidad = random.Next(1, distancia_des_ancho);
+                    desplazar_al_centro = random.Next(0, info.posibilidad.Value);
                     if (conteo == info.distancia.Value)
                     { conteo = 0; }
                 }
@@ -350,7 +351,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     lado_abajo.Add(point2);
                     break;
                 }
-                if (contador == limite_profundidad_alto)
+                if (contador == distancia_des_alto)
                 {
                     point1.X = iniciox;
                     point1.Y = punto_inicial_y;
@@ -359,7 +360,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
                 else
                 {
-                    if (hundir != 0)
+                    if (desplazar_al_centro != 0)
                     {
                         point1.X = point2.X;
                         point1.Y = punto_inicial_y;
@@ -379,10 +380,10 @@ namespace Creador_de_ciudades.Clases_estaticas
                 lado_abajo.Add(point2);
             }
 
-            // Tipo de deformacion 2 de lo que comprendo
+            // Tipo de deformacion 2 
             if (modo == 2)
             {
-                //deformacion b, tiene un problema de estetica: en ocasiones los vertices de las esquinas desaparecen en las siguientes lineas lo soluciono
+                //deformacion b, tiene un problema de estetica: en ocasiones los vertices de las esquinas desaparecen, en las siguientes lineas lo soluciono
                 deformar_lados(lado_arriba);
                 deformar_lados(lado_abajo);
                 deformar_lados(lado_derecho);
@@ -403,8 +404,12 @@ namespace Creador_de_ciudades.Clases_estaticas
             //Se rotan los puntos 
             irregular = Herramienta.rotar_lista_puntos(irregular, info.grados, info.punto_medio);
 
-            info.g.DrawPolygon(contorno, irregular.ToArray());
+            //Guardo los puntos en el objeto
+            info.contorno = irregular.Distinct().ToList();
+
             info.g.FillPolygon(brocha, irregular.ToArray());
+            info.g.DrawPolygon(contorno, irregular.ToArray());
+            
         }
         static void deformar_lados(List<Point> lado)
         {

@@ -105,7 +105,8 @@ namespace Creador_de_ciudades
                  ui_checkbox_girar.Checked,
                  Posibilidad,
                  Distancia,
-                 ui_pegar_casas.Checked
+                 ui_pegar_casas.Checked,
+                 azar.Next(Convert.ToInt32(ui_vano_puerta.Value))
                 );
 
                 info.resp_alto_forma = info.alto_forma;
@@ -214,7 +215,7 @@ namespace Creador_de_ciudades
                     }
                 }
             }
-            else if (ui_superposicion_esc_dec_cons.Checked == true) 
+            else if (ui_superposicion_piramidal.Checked == true) 
             {
                 for (int i = 0; i < ui_cantidad_pisos.Value; i++)
                 {

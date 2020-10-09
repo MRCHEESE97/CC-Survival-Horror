@@ -44,7 +44,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     columna_cuadrada(datos, lienzo);
                 }
-                else if (nombre_objeto.Equals("ui_objetos_columna_circular"))
+                else if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
                 {
                     columna_circular(datos, lienzo);
                 }
@@ -93,9 +93,20 @@ namespace Creador_de_ciudades.Clases_estaticas
             }
            
         }
-        private static void columna_circular(Info_forma informacion, PictureBox pintura)
+        private static void columna_circular(Info_forma info, PictureBox pintura)
         {
-           
+            Bitmap bmp = (Bitmap)pintura.Image;
+            Graphics g;
+            g = Graphics.FromImage(bmp);
+            Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            int mitad_col = info.columna_redonda_valor / 2;
+
+            for (int i = 0; i < info.contorno.Count; i++)
+            {
+                Point origen_columna = new Point(info.contorno[i].X - mitad_col, info.contorno[i].Y - mitad_col);
+                Rectangle columna = new Rectangle(origen_columna, new Size(info.columna_redonda_valor, info.columna_redonda_valor));
+                g.FillEllipse(dibujar, columna);
+            }
         }
 
         private static void ventanas(Info_forma informacion, PictureBox pintura)

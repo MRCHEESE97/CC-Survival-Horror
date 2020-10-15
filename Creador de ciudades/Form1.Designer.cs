@@ -111,6 +111,7 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ui_forma_casa_combinar = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -678,6 +679,7 @@
             // 
             // ui_groupbox_forma_casas
             // 
+            this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_combinar);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_hexagonal);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada_chaflan);
             this.ui_groupbox_forma_casas.Controls.Add(this.Distancia);
@@ -698,7 +700,7 @@
             // ui_forma_casa_hexagonal
             // 
             this.ui_forma_casa_hexagonal.AutoSize = true;
-            this.ui_forma_casa_hexagonal.Location = new System.Drawing.Point(130, 217);
+            this.ui_forma_casa_hexagonal.Location = new System.Drawing.Point(85, 205);
             this.ui_forma_casa_hexagonal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_hexagonal.Name = "ui_forma_casa_hexagonal";
             this.ui_forma_casa_hexagonal.Size = new System.Drawing.Size(81, 21);
@@ -772,7 +774,7 @@
             // 
             this.ui_forma_casa_rectangular.AutoSize = true;
             this.ui_forma_casa_rectangular.Checked = true;
-            this.ui_forma_casa_rectangular.Location = new System.Drawing.Point(16, 217);
+            this.ui_forma_casa_rectangular.Location = new System.Drawing.Point(75, 234);
             this.ui_forma_casa_rectangular.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_rectangular.Name = "ui_forma_casa_rectangular";
             this.ui_forma_casa_rectangular.Size = new System.Drawing.Size(91, 21);
@@ -1178,6 +1180,18 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
+            // ui_forma_casa_combinar
+            // 
+            this.ui_forma_casa_combinar.AutoSize = true;
+            this.ui_forma_casa_combinar.Location = new System.Drawing.Point(67, 263);
+            this.ui_forma_casa_combinar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_forma_casa_combinar.Name = "ui_forma_casa_combinar";
+            this.ui_forma_casa_combinar.Size = new System.Drawing.Size(119, 21);
+            this.ui_forma_casa_combinar.TabIndex = 9;
+            this.ui_forma_casa_combinar.TabStop = true;
+            this.ui_forma_casa_combinar.Text = "Combinar formas";
+            this.ui_forma_casa_combinar.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1325,6 +1339,7 @@
         private System.Windows.Forms.NumericUpDown ui_vano_puerta;
         private System.Windows.Forms.RadioButton ui_forma_casa_deformada_chaflan;
         private System.Windows.Forms.RadioButton ui_forma_casa_hexagonal;
+        private System.Windows.Forms.RadioButton ui_forma_casa_combinar;
     }
 }
 

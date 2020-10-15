@@ -47,6 +47,15 @@ namespace Creador_de_ciudades.Clases_estaticas
             {
                 hexagono(datos, lienzo);
             }
+            else if (seleccion_forma.Equals("ui_forma_casa_combinar"))
+            {
+                combinar(datos, lienzo);
+            }
+        }
+
+        private static void combinar(Info_forma informacion, PictureBox pintura)
+        {
+            forma(informacion.forma, informacion, pintura);
         }
         private static void hexagono(Info_forma informacion, PictureBox pintura)
         {

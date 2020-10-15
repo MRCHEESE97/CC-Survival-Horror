@@ -126,7 +126,14 @@ namespace Creador_de_ciudades
                     }
                 }
 
-                //LLeno el objeto
+                List<String> nombres_de_formas = new List<string>();
+                nombres_de_formas.Add("ui_forma_casa_rectangular");
+                nombres_de_formas.Add("ui_forma_casa_hexagonal");
+                nombres_de_formas.Add("ui_forma_casa_deformada");
+                nombres_de_formas.Add("ui_forma_casa_deformada_chaflan");
+
+
+                //Aqui empieza la recollecion de la informacion para las casas
 
                 Info_forma info = new Info_forma
                 (
@@ -147,7 +154,8 @@ namespace Creador_de_ciudades
                  Posibilidad,
                  Distancia,
                  ui_pegar_casas.Checked,
-                 azar.Next(Convert.ToInt32(ui_vano_puerta.Value))
+                 azar.Next(Convert.ToInt32(ui_vano_puerta.Value)),
+                 nombres_de_formas[azar.Next(0,nombres_de_formas.Count)]
                 );
 
                 info.resp_alto_forma = info.alto_forma;

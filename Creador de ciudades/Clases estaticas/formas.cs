@@ -35,10 +35,6 @@ namespace Creador_de_ciudades.Clases_estaticas
             { 
                 rectangulo(datos, lienzo); 
             }
-            else if(seleccion_forma.Equals("ui_forma_casa_cilindrica"))
-            {
-                cilindro(datos, lienzo);
-            }
             else if (seleccion_forma.Equals("ui_forma_casa_deformada"))
             {
                 rectangulo_deformado(datos, lienzo, 1);
@@ -46,58 +42,76 @@ namespace Creador_de_ciudades.Clases_estaticas
             else if (seleccion_forma.Equals("ui_forma_casa_deformada_chaflan"))
             {
                 rectangulo_deformado(datos, lienzo, 2);
-            }            
+            }
+            else if (seleccion_forma.Equals("ui_forma_casa_hexagonal"))
+            {
+                hexagono(datos, lienzo);
+            }
         }
-
-        private static void rectangulo(Info_forma informacion, PictureBox pintura)
-        {                     
+        private static void hexagono(Info_forma informacion, PictureBox pintura)
+        {
             Bitmap bmp = (Bitmap)pintura.Image;
             informacion.g = Graphics.FromImage(bmp);
+            Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
+            Point[] shape = new Point[6];
+            Pen borde = new Pen(Color.Black, informacion.grosor_pared);
+            int[] array = { informacion.ancho_forma, informacion.alto_forma };
+            int r = array.Min() * 100; 
 
-            Point a = informacion.po;
-            Point b = new Point(a.X + informacion.ancho_forma * 100, a.Y);
-            Point c = new Point(a.X, a.Y + informacion.alto_forma * 100); 
-            Point d = new Point(a.X + informacion.ancho_forma * 100, a.Y + informacion.alto_forma * 100);
+            //Create 6 points
+            for (int a = 0; a < 6; a++)
+            {
+                shape[a] = new Point(
+                    (int)(informacion.po.X + r * (float)Math.Cos(a * 60 * Math.PI / 180)),
+                    (int)(informacion.po.Y + r * (float)Math.Sin(a * 60 * Math.PI / 180)));
+            }
+            informacion.contorno = shape.ToList();
+            informacion.g.FillPolygon(brocha_pared, shape);
+            informacion.g.DrawPolygon(borde, shape);
+            
+        }
+        private static void rectangulo(Info_forma inf, PictureBox pintura)
+        {                     
+            Bitmap bmp = (Bitmap)pintura.Image;
+            inf.g = Graphics.FromImage(bmp);
+            List<Point> rectangulo = new List<Point>();
+          
+            // Se usan 4 listas para cada lado
+            List<Point> lado_superior = Herramienta.calcular_lado(inf.po,inf.ancho_forma,"x");
+            List<Point> lado_izquierdo = Herramienta.calcular_lado(inf.po, inf.alto_forma, "y");
+            List<Point> lado_derecho = Herramienta.calcular_lado(new Point(inf.po.X + inf.ancho_forma * 100, inf.po.Y), inf.alto_forma, "y");
+            List<Point> lado_inferior = Herramienta.calcular_lado(new Point(inf.po.X, inf.po.Y + inf.alto_forma * 100), inf.ancho_forma, "x");
+
+            rectangulo.AddRange(lado_superior);
+            rectangulo.AddRange(lado_derecho);
+            lado_inferior.Reverse();
+            rectangulo.AddRange(lado_inferior);
+            lado_izquierdo.Reverse();
+            rectangulo.AddRange(lado_izquierdo);
+
+            //Elimino los puntos repetidos
+            rectangulo = rectangulo.Distinct().ToList();
 
             //Se dibuja la pared
-            Pen borde = new Pen(Color.Black, informacion.grosor_pared);
+            Pen borde = new Pen(Color.Black, inf.grosor_pared);
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
-            Point[] rect_pared = {a,b,d,c};
-            rect_pared = Herramienta.rotar_lista_puntos(rect_pared.ToList(),informacion.grados,informacion.punto_medio).ToArray();
+           
+            rectangulo = Herramienta.rotar_lista_puntos(rectangulo,inf.grados,inf.punto_medio);
 
             //Despues de rotar guardo los puntos en el objeto
-            informacion.contorno = rect_pared.ToList();
+            inf.contorno = rectangulo;
 
-            informacion.g.FillPolygon(brocha_pared, rect_pared);
-            informacion.g.DrawPolygon(borde,rect_pared);
+            inf.g.FillPolygon(brocha_pared, rectangulo.ToArray());
+            inf.g.DrawPolygon(borde, rectangulo.ToArray());
            
-
             //Prueba  
-            informacion.b = Herramienta.rotarpunto(informacion.a, informacion.punto_medio, informacion.grados);
-            informacion.c = Herramienta.rotarpunto(informacion.d, informacion.punto_medio, informacion.grados);
-            informacion.g.DrawLine(new Pen(Color.Black, 10), informacion.b, informacion.c);
+            inf.b = Herramienta.rotarpunto(inf.a, inf.punto_medio, inf.grados);
+            inf.c = Herramienta.rotarpunto(inf.d, inf.punto_medio, inf.grados);
+            inf.g.DrawLine(new Pen(Color.Black, 10), inf.b, inf.c);
             //Prueba
 
         }
-        private static void cilindro(Info_forma informacion, PictureBox pintura) 
-        {
-            Bitmap bmp = (Bitmap)pintura.Image;
-            Graphics g;
-            g = Graphics.FromImage(bmp);
-
-            //Aqui se dibuja la pared
-            Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            Rectangle pared = new Rectangle(informacion.po, new Size(informacion.ancho_forma * 100, informacion.alto_forma * 100));
-            g.FillEllipse(brocha_pared, pared);
-
-            //Aqui se dibuja el suelo
-            Point punto_origen_suelo = new Point(informacion.po.X + informacion.grosor_pared, informacion.po.Y + informacion.grosor_pared);
-            int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared * 2;
-            int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared * 2;
-            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
-            g.FillEllipse(brocha_suelo, suelo);
-        }
+       
         private static void rectangulo_deformado(Info_forma info, PictureBox pintura, int modo)
         {
             Bitmap bmp = (Bitmap)pintura.Image;
@@ -409,10 +423,9 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             //Guardo los puntos en el objeto
             info.contorno = irregular;
-
             info.g.FillPolygon(brocha, irregular.ToArray());
             info.g.DrawPolygon(contorno, irregular.ToArray());
-            
+
         }
         static void deformar_lados(List<Point> lado)
         {

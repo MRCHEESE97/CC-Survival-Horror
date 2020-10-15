@@ -37,40 +37,40 @@ namespace Creador_de_ciudades.Clases
 
             int buscar_multiplo(float minimo, float maximo)
             {
-                encontrado = azar.Next((int)minimo,(int)maximo);
+                encontrado = azar.Next((int)minimo, (int)maximo);
                 if (!(encontrado % multiplo == 0))
                 {
-                    return buscar_multiplo(minimo,maximo);
+                    return buscar_multiplo(minimo, maximo);
                 }
                 else
                 {
                     return encontrado;
                 }
-            }        
-            
-            return new Point(x,y);
+            }
+
+            return new Point(x, y);
         }
 
-        public static bool validar_interseccion( Rectangle uno, Rectangle dos)
+        public static bool validar_interseccion(Rectangle uno, Rectangle dos)
         {
             bool existe = false;
             if (uno.IntersectsWith(dos))
             {
-                existe = true; 
+                existe = true;
             }
-            return existe; 
+            return existe;
         }
 
-        public static List<Point> rotar_lista_puntos(List<Point> puntos, int angle, Point origen) 
+        public static List<Point> rotar_lista_puntos(List<Point> puntos, int angle, Point origen)
         {
             //Rota todos los puntos, con un mismo origen y angulo
             List<Point> puntos_a_rotar = new List<Point>();
             for (int i = 0; i < puntos.Count; i++)
             {
-                puntos[i] = rotarpunto(puntos[i],origen,angle);
+                puntos[i] = rotarpunto(puntos[i], origen, angle);
             }
-            return puntos;     
-        } 
+            return puntos;
+        }
         public static Point rotarpunto(Point P_rotar, Point P_ori, int angle)
         {
             double radians = (Math.PI / 180) * angle;
@@ -129,6 +129,26 @@ namespace Creador_de_ciudades.Clases
                 }
             }
             yield break;
+        }
+        public static List<Point> calcular_lado(Point inicio, int longitud, string eje)
+        {
+            List<Point> puntos = new List<Point>();
+            if (eje == "x")
+            {
+                for (int i = inicio.X; i <= inicio.X + (longitud * 100); i+= 100)
+                {
+                    puntos.Add(new Point(i,inicio.Y));
+                }
+                return puntos; 
+            }
+            else 
+            {
+                for (int i = inicio.Y; i <= inicio.Y + (longitud * 100); i += 100)
+                {
+                    puntos.Add(new Point(inicio.X, i));
+                }
+                return puntos;
+            }
         }
 
     }

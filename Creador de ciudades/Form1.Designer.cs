@@ -73,13 +73,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.ui_groupbox_forma_casas = new System.Windows.Forms.GroupBox();
+            this.ui_forma_casa_hexagonal = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_deformada_chaflan = new System.Windows.Forms.RadioButton();
             this.Distancia = new System.Windows.Forms.TrackBar();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.Posibilidad = new System.Windows.Forms.TrackBar();
             this.ui_forma_casa_deformada = new System.Windows.Forms.RadioButton();
-            this.ui_forma_casa_cilindrica = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
             this.label19 = new System.Windows.Forms.Label();
@@ -678,27 +678,39 @@
             // 
             // ui_groupbox_forma_casas
             // 
+            this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_hexagonal);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada_chaflan);
             this.ui_groupbox_forma_casas.Controls.Add(this.Distancia);
             this.ui_groupbox_forma_casas.Controls.Add(this.label18);
             this.ui_groupbox_forma_casas.Controls.Add(this.label17);
             this.ui_groupbox_forma_casas.Controls.Add(this.Posibilidad);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada);
-            this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_cilindrica);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_rectangular);
             this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(6, 182);
             this.ui_groupbox_forma_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_forma_casas.Name = "ui_groupbox_forma_casas";
             this.ui_groupbox_forma_casas.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(245, 227);
+            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(245, 322);
             this.ui_groupbox_forma_casas.TabIndex = 6;
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Formas/casas";
             // 
+            // ui_forma_casa_hexagonal
+            // 
+            this.ui_forma_casa_hexagonal.AutoSize = true;
+            this.ui_forma_casa_hexagonal.Location = new System.Drawing.Point(130, 217);
+            this.ui_forma_casa_hexagonal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_forma_casa_hexagonal.Name = "ui_forma_casa_hexagonal";
+            this.ui_forma_casa_hexagonal.Size = new System.Drawing.Size(81, 21);
+            this.ui_forma_casa_hexagonal.TabIndex = 8;
+            this.ui_forma_casa_hexagonal.TabStop = true;
+            this.ui_forma_casa_hexagonal.Text = "Hexagonal";
+            this.ui_forma_casa_hexagonal.UseVisualStyleBackColor = true;
+            // 
             // ui_forma_casa_deformada_chaflan
             // 
             this.ui_forma_casa_deformada_chaflan.AutoSize = true;
-            this.ui_forma_casa_deformada_chaflan.Location = new System.Drawing.Point(17, 80);
+            this.ui_forma_casa_deformada_chaflan.Location = new System.Drawing.Point(16, 54);
             this.ui_forma_casa_deformada_chaflan.Name = "ui_forma_casa_deformada_chaflan";
             this.ui_forma_casa_deformada_chaflan.Size = new System.Drawing.Size(195, 21);
             this.ui_forma_casa_deformada_chaflan.TabIndex = 7;
@@ -709,7 +721,7 @@
             // Distancia
             // 
             this.Distancia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Distancia.Location = new System.Drawing.Point(16, 175);
+            this.Distancia.Location = new System.Drawing.Point(16, 166);
             this.Distancia.Minimum = 1;
             this.Distancia.Name = "Distancia";
             this.Distancia.Size = new System.Drawing.Size(212, 45);
@@ -719,7 +731,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(32, 155);
+            this.label18.Location = new System.Drawing.Point(32, 146);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(176, 17);
             this.label18.TabIndex = 5;
@@ -728,7 +740,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(32, 104);
+            this.label17.Location = new System.Drawing.Point(32, 78);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(191, 17);
             this.label17.TabIndex = 4;
@@ -737,7 +749,7 @@
             // Posibilidad
             // 
             this.Posibilidad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Posibilidad.Location = new System.Drawing.Point(17, 124);
+            this.Posibilidad.Location = new System.Drawing.Point(17, 107);
             this.Posibilidad.Minimum = 1;
             this.Posibilidad.Name = "Posibilidad";
             this.Posibilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -748,7 +760,7 @@
             // ui_forma_casa_deformada
             // 
             this.ui_forma_casa_deformada.AutoSize = true;
-            this.ui_forma_casa_deformada.Location = new System.Drawing.Point(17, 58);
+            this.ui_forma_casa_deformada.Location = new System.Drawing.Point(16, 27);
             this.ui_forma_casa_deformada.Name = "ui_forma_casa_deformada";
             this.ui_forma_casa_deformada.Size = new System.Drawing.Size(150, 21);
             this.ui_forma_casa_deformada.TabIndex = 2;
@@ -756,23 +768,11 @@
             this.ui_forma_casa_deformada.Text = "Rectangulo deformado";
             this.ui_forma_casa_deformada.UseVisualStyleBackColor = true;
             // 
-            // ui_forma_casa_cilindrica
-            // 
-            this.ui_forma_casa_cilindrica.AutoSize = true;
-            this.ui_forma_casa_cilindrica.Location = new System.Drawing.Point(17, 39);
-            this.ui_forma_casa_cilindrica.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_forma_casa_cilindrica.Name = "ui_forma_casa_cilindrica";
-            this.ui_forma_casa_cilindrica.Size = new System.Drawing.Size(75, 21);
-            this.ui_forma_casa_cilindrica.TabIndex = 1;
-            this.ui_forma_casa_cilindrica.TabStop = true;
-            this.ui_forma_casa_cilindrica.Text = "Cilíndrica";
-            this.ui_forma_casa_cilindrica.UseVisualStyleBackColor = true;
-            // 
             // ui_forma_casa_rectangular
             // 
             this.ui_forma_casa_rectangular.AutoSize = true;
             this.ui_forma_casa_rectangular.Checked = true;
-            this.ui_forma_casa_rectangular.Location = new System.Drawing.Point(17, 19);
+            this.ui_forma_casa_rectangular.Location = new System.Drawing.Point(16, 217);
             this.ui_forma_casa_rectangular.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_rectangular.Name = "ui_forma_casa_rectangular";
             this.ui_forma_casa_rectangular.Size = new System.Drawing.Size(91, 21);
@@ -1067,11 +1067,11 @@
             this.tabPage2.AutoScroll = true;
             this.tabPage2.Controls.Add(this.ui_groupbox_objetos);
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(274, 289);
+            this.tabPage2.Size = new System.Drawing.Size(274, 293);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -1290,7 +1290,6 @@
         private System.Windows.Forms.NumericUpDown ui_columna_redonda_valor;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown ui_columna_cuadrada_valor;
-        private System.Windows.Forms.RadioButton ui_forma_casa_cilindrica;
         private System.Windows.Forms.ToolStripMenuItem lenguajeToolStripMenuItem;
         private System.Windows.Forms.CheckBox ui_objetos_elevador;
         private System.Windows.Forms.TabControl tabControlProp;
@@ -1325,6 +1324,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.NumericUpDown ui_vano_puerta;
         private System.Windows.Forms.RadioButton ui_forma_casa_deformada_chaflan;
+        private System.Windows.Forms.RadioButton ui_forma_casa_hexagonal;
     }
 }
 

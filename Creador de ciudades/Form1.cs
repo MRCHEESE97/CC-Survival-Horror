@@ -53,15 +53,37 @@ namespace Creador_de_ciudades
 
         private int ancho_lienzo()
         {
-            int multiplicador = 50; // La mitad de un metro
-            int ancho = (Convert.ToInt32(ui_min_ancho_casa.Value) + Convert.ToInt32(ui_max_ancho_casa.Value))/2 * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;          
+            //Todo este proceso hace que en una cantidad mayor de casas
+            // el lienzo se agrande de manera exponencial
+            //Para solucionarlo la variable que divide a la suma
+            //Tendrá una condición si es mejor  a 10 será = 1
+            //Si es mayor a 20 = 2 y asi sucesivamente
+
+            int div = 0;
+            if (Convert.ToInt32(ui_cantidad_casas.Value) < 10)
+            { div = 1; }
+            else if (Convert.ToInt32(ui_cantidad_casas.Value) < 20 && Convert.ToInt32(ui_cantidad_casas.Value) >= 10)
+            { div = 2; }
+            else if (Convert.ToInt32(ui_cantidad_casas.Value) < 30 && Convert.ToInt32(ui_cantidad_casas.Value) >= 20)
+            { div = 3; }
+
+            int multiplicador = 100; // La mitad de un metro
+            int ancho = ((Convert.ToInt32(ui_min_ancho_casa.Value) + Convert.ToInt32(ui_max_ancho_casa.Value))/div) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;          
             return ancho;
         }
 
         private int alto_lienzo()
         {
-            int multiplicador = 50;
-            int alto = (Convert.ToInt32(ui_min_alto_casa.Value) + Convert.ToInt32(ui_max_alto_casa.Value)) / 2 * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
+            int div = 0;
+            if (Convert.ToInt32(ui_cantidad_casas.Value) < 10)
+            { div = 1; }
+            else if (Convert.ToInt32(ui_cantidad_casas.Value) < 20 && Convert.ToInt32(ui_cantidad_casas.Value) >= 10)
+            { div = 2; }
+            else if (Convert.ToInt32(ui_cantidad_casas.Value) < 30 && Convert.ToInt32(ui_cantidad_casas.Value) >= 20)
+            { div = 3; }
+
+            int multiplicador = 100;
+            int alto = ((Convert.ToInt32(ui_min_alto_casa.Value) + Convert.ToInt32(ui_max_alto_casa.Value)) / div) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
             return alto;
         }
 
@@ -76,8 +98,8 @@ namespace Creador_de_ciudades
             Random azar = new Random();
 
             //Aqui calcularé el margen del area de dibujo, para que las formas no sobresalgan
-            float c_ancho = Convert.ToInt32(ui_max_ancho_casa.Value) * 100;
-            float c_alto = Convert.ToInt32(ui_max_alto_casa.Value) * 100;
+            float c_ancho = Convert.ToInt32(ui_max_ancho_casa.Value) * 100 ;
+            float c_alto = Convert.ToInt32(ui_max_alto_casa.Value) * 100 ;
 
             List<Info_forma> datos = new List<Info_forma>();
 
@@ -113,7 +135,7 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
                  azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
                  azar.Next(Convert.ToInt32(ui_min_grosor_pared.Value), Convert.ToInt32(ui_max_grosor_pared.Value)),
-                 Herramienta.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, 0, 0), //100 es el multiplo 
+                 Herramienta.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, Convert.ToInt32(ui_max_ancho_casa.Value) * 100, Convert.ToInt32(ui_max_alto_casa.Value) * 100), //100 es el multiplo 
                  new Point(),
                  Convert.ToInt32(ui_columna_cuadrada_valor.Value),
                  Convert.ToInt32(ui_columna_redonda_valor.Value),

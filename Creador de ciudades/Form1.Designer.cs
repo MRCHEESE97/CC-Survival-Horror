@@ -80,8 +80,24 @@
             this.ui_forma_casa_deformada = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
+            this.label27 = new System.Windows.Forms.Label();
+            this.ui_pilar_prox_max = new System.Windows.Forms.NumericUpDown();
+            this.ui_pilar_prox_min = new System.Windows.Forms.NumericUpDown();
+            this.ui_pilar_round_med_max = new System.Windows.Forms.NumericUpDown();
+            this.ui_pilar_cubico_med_max = new System.Windows.Forms.NumericUpDown();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.labellin = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.ui_vano_puerta = new System.Windows.Forms.NumericUpDown();
+            this.ui_vano_puerta_med_min = new System.Windows.Forms.NumericUpDown();
             this.ui_objetos_ventana = new System.Windows.Forms.CheckBox();
             this.ui_objetos_elevador = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -109,22 +125,11 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.labellin = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.ui_pilar_cubico_med_max = new System.Windows.Forms.NumericUpDown();
-            this.ui_pilar_round_med_max = new System.Windows.Forms.NumericUpDown();
-            this.ui_pilar_prox_min = new System.Windows.Forms.NumericUpDown();
-            this.ui_pilar_prox_max = new System.Windows.Forms.NumericUpDown();
-            this.label27 = new System.Windows.Forms.Label();
+            this.ui_vano_puerta_cant_min = new System.Windows.Forms.NumericUpDown();
+            this.ui_vano_puerta_cant_max = new System.Windows.Forms.NumericUpDown();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.ui_vano_puerta_med_max = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -143,7 +148,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Distancia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).BeginInit();
             this.ui_groupbox_objetos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_min)).BeginInit();
             this.tabControlProp.SuspendLayout();
@@ -157,10 +166,9 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_min)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_max)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -784,6 +792,11 @@
             // 
             // ui_groupbox_objetos
             // 
+            this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta_med_max);
+            this.ui_groupbox_objetos.Controls.Add(this.label28);
+            this.ui_groupbox_objetos.Controls.Add(this.label29);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta_cant_max);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta_cant_min);
             this.ui_groupbox_objetos.Controls.Add(this.label27);
             this.ui_groupbox_objetos.Controls.Add(this.ui_pilar_prox_max);
             this.ui_groupbox_objetos.Controls.Add(this.ui_pilar_prox_min);
@@ -801,7 +814,7 @@
             this.ui_groupbox_objetos.Controls.Add(this.label9);
             this.ui_groupbox_objetos.Controls.Add(this.label20);
             this.ui_groupbox_objetos.Controls.Add(this.label19);
-            this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta_med_min);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_ventana);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_elevador);
             this.ui_groupbox_objetos.Controls.Add(this.label14);
@@ -820,39 +833,252 @@
             this.ui_groupbox_objetos.TabStop = false;
             this.ui_groupbox_objetos.Text = "Objetos";
             // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(383, 89);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(18, 17);
+            this.label27.TabIndex = 28;
+            this.label27.Text = "m";
+            // 
+            // ui_pilar_prox_max
+            // 
+            this.ui_pilar_prox_max.Location = new System.Drawing.Point(323, 87);
+            this.ui_pilar_prox_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_pilar_prox_max.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.ui_pilar_prox_max.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_pilar_prox_max.Name = "ui_pilar_prox_max";
+            this.ui_pilar_prox_max.Size = new System.Drawing.Size(54, 27);
+            this.ui_pilar_prox_max.TabIndex = 26;
+            this.ui_pilar_prox_max.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // ui_pilar_prox_min
+            // 
+            this.ui_pilar_prox_min.Location = new System.Drawing.Point(261, 87);
+            this.ui_pilar_prox_min.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_pilar_prox_min.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.ui_pilar_prox_min.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_pilar_prox_min.Name = "ui_pilar_prox_min";
+            this.ui_pilar_prox_min.Size = new System.Drawing.Size(54, 27);
+            this.ui_pilar_prox_min.TabIndex = 24;
+            this.ui_pilar_prox_min.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // ui_pilar_round_med_max
+            // 
+            this.ui_pilar_round_med_max.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_pilar_round_med_max.Location = new System.Drawing.Point(173, 106);
+            this.ui_pilar_round_med_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_pilar_round_med_max.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.ui_pilar_round_med_max.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_pilar_round_med_max.Name = "ui_pilar_round_med_max";
+            this.ui_pilar_round_med_max.Size = new System.Drawing.Size(54, 27);
+            this.ui_pilar_round_med_max.TabIndex = 23;
+            this.ui_pilar_round_med_max.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            // 
+            // ui_pilar_cubico_med_max
+            // 
+            this.ui_pilar_cubico_med_max.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_pilar_cubico_med_max.Location = new System.Drawing.Point(173, 73);
+            this.ui_pilar_cubico_med_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_pilar_cubico_med_max.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.ui_pilar_cubico_med_max.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_pilar_cubico_med_max.Name = "ui_pilar_cubico_med_max";
+            this.ui_pilar_cubico_med_max.Size = new System.Drawing.Size(54, 27);
+            this.ui_pilar_cubico_med_max.TabIndex = 22;
+            this.ui_pilar_cubico_med_max.Value = new decimal(new int[] {
+            40,
+            0,
+            0,
+            0});
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.Location = new System.Drawing.Point(170, 49);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(56, 17);
+            this.label25.TabIndex = 21;
+            this.label25.Text = "Máximo";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(108, 49);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(48, 17);
+            this.label26.TabIndex = 20;
+            this.label26.Text = "Mínimo";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.Location = new System.Drawing.Point(128, 159);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(60, 17);
+            this.label24.TabIndex = 19;
+            this.label24.Text = "Medidas";
+            // 
+            // labellin
+            // 
+            this.labellin.AutoSize = true;
+            this.labellin.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.labellin.Location = new System.Drawing.Point(32, 137);
+            this.labellin.Name = "labellin";
+            this.labellin.Size = new System.Drawing.Size(343, 17);
+            this.labellin.TabIndex = 18;
+            this.labellin.Text = "___________________________________________________________________";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(335, 184);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(56, 17);
+            this.label10.TabIndex = 17;
+            this.label10.Text = "Máximo";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.Location = new System.Drawing.Point(294, 159);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(65, 17);
+            this.label22.TabIndex = 16;
+            this.label22.Text = "Cantidad";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(267, 184);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(48, 17);
+            this.label23.TabIndex = 15;
+            this.label23.Text = "Mínimo";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(321, 49);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 17);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Máximo";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.Location = new System.Drawing.Point(280, 24);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(79, 17);
+            this.label21.TabIndex = 14;
+            this.label21.Text = "Proximidad";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(267, 49);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(48, 17);
+            this.label9.TabIndex = 13;
+            this.label9.Text = "Mínimo";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.Location = new System.Drawing.Point(128, 24);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(60, 17);
+            this.label20.TabIndex = 13;
+            this.label20.Text = "Medidas";
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(194, 232);
+            this.label19.Location = new System.Drawing.Point(226, 236);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(27, 17);
+            this.label19.Size = new System.Drawing.Size(18, 17);
             this.label19.TabIndex = 10;
-            this.label19.Text = "cm.";
+            this.label19.Text = "m";
             // 
-            // ui_vano_puerta
+            // ui_vano_puerta_med_min
             // 
-            this.ui_vano_puerta.Increment = new decimal(new int[] {
-            10,
+            this.ui_vano_puerta_med_min.Location = new System.Drawing.Point(102, 232);
+            this.ui_vano_puerta_med_min.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta_med_min.Maximum = new decimal(new int[] {
+            4,
             0,
             0,
             0});
-            this.ui_vano_puerta.Location = new System.Drawing.Point(134, 231);
-            this.ui_vano_puerta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_vano_puerta.Maximum = new decimal(new int[] {
-            200,
+            this.ui_vano_puerta_med_min.Minimum = new decimal(new int[] {
+            1,
             0,
             0,
             0});
-            this.ui_vano_puerta.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta.Name = "ui_vano_puerta";
-            this.ui_vano_puerta.Size = new System.Drawing.Size(54, 27);
-            this.ui_vano_puerta.TabIndex = 9;
-            this.ui_vano_puerta.Value = new decimal(new int[] {
-            100,
+            this.ui_vano_puerta_med_min.Name = "ui_vano_puerta_med_min";
+            this.ui_vano_puerta_med_min.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta_med_min.TabIndex = 9;
+            this.ui_vano_puerta_med_min.Value = new decimal(new int[] {
+            1,
             0,
             0,
             0});
@@ -865,9 +1091,9 @@
             this.ui_objetos_ventana.Location = new System.Drawing.Point(9, 261);
             this.ui_objetos_ventana.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_ventana.Name = "ui_objetos_ventana";
-            this.ui_objetos_ventana.Size = new System.Drawing.Size(123, 21);
+            this.ui_objetos_ventana.Size = new System.Drawing.Size(104, 21);
             this.ui_objetos_ventana.TabIndex = 8;
-            this.ui_objetos_ventana.Text = "Vano de ventana";
+            this.ui_objetos_ventana.Text = "Vano ventana";
             this.ui_objetos_ventana.UseVisualStyleBackColor = true;
             // 
             // ui_objetos_elevador
@@ -965,9 +1191,9 @@
             this.ui_objetos_puerta.Location = new System.Drawing.Point(9, 232);
             this.ui_objetos_puerta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_puerta.Name = "ui_objetos_puerta";
-            this.ui_objetos_puerta.Size = new System.Drawing.Size(116, 21);
+            this.ui_objetos_puerta.Size = new System.Drawing.Size(97, 21);
             this.ui_objetos_puerta.TabIndex = 2;
-            this.ui_objetos_puerta.Text = "Vano de puerta";
+            this.ui_objetos_puerta.Text = "Vano puerta";
             this.ui_objetos_puerta.UseVisualStyleBackColor = true;
             // 
             // ui_objetos_columna_cuadrada
@@ -1101,11 +1327,11 @@
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
-            this.tabPage4.Location = new System.Drawing.Point(4, 26);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage4.Size = new System.Drawing.Size(442, 289);
+            this.tabPage4.Size = new System.Drawing.Size(442, 293);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Interiores";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -1200,223 +1426,93 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // label20
+            // ui_vano_puerta_cant_min
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label20.Location = new System.Drawing.Point(128, 24);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(60, 17);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Medidas";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label21.Location = new System.Drawing.Point(280, 24);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(79, 17);
-            this.label21.TabIndex = 14;
-            this.label21.Text = "Proximidad";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(321, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 17);
-            this.label4.TabIndex = 14;
-            this.label4.Text = "Máximo";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(267, 49);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 17);
-            this.label9.TabIndex = 13;
-            this.label9.Text = "Mínimo";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(335, 184);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(56, 17);
-            this.label10.TabIndex = 17;
-            this.label10.Text = "Máximo";
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.Location = new System.Drawing.Point(294, 159);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(65, 17);
-            this.label22.TabIndex = 16;
-            this.label22.Text = "Cantidad";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(267, 184);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(48, 17);
-            this.label23.TabIndex = 15;
-            this.label23.Text = "Mínimo";
-            // 
-            // labellin
-            // 
-            this.labellin.AutoSize = true;
-            this.labellin.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.labellin.Location = new System.Drawing.Point(32, 137);
-            this.labellin.Name = "labellin";
-            this.labellin.Size = new System.Drawing.Size(343, 17);
-            this.labellin.TabIndex = 18;
-            this.labellin.Text = "___________________________________________________________________";
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label24.Location = new System.Drawing.Point(128, 159);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(60, 17);
-            this.label24.TabIndex = 19;
-            this.label24.Text = "Medidas";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.Location = new System.Drawing.Point(170, 49);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(56, 17);
-            this.label25.TabIndex = 21;
-            this.label25.Text = "Máximo";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(108, 49);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(48, 17);
-            this.label26.TabIndex = 20;
-            this.label26.Text = "Mínimo";
-            // 
-            // ui_pilar_cubico_med_max
-            // 
-            this.ui_pilar_cubico_med_max.Increment = new decimal(new int[] {
-            10,
+            this.ui_vano_puerta_cant_min.Location = new System.Drawing.Point(261, 231);
+            this.ui_vano_puerta_cant_min.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta_cant_min.Maximum = new decimal(new int[] {
+            8,
             0,
             0,
             0});
-            this.ui_pilar_cubico_med_max.Location = new System.Drawing.Point(173, 73);
-            this.ui_pilar_cubico_med_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_pilar_cubico_med_max.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.ui_pilar_cubico_med_max.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_pilar_cubico_med_max.Name = "ui_pilar_cubico_med_max";
-            this.ui_pilar_cubico_med_max.Size = new System.Drawing.Size(54, 27);
-            this.ui_pilar_cubico_med_max.TabIndex = 22;
-            this.ui_pilar_cubico_med_max.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-            // 
-            // ui_pilar_round_med_max
-            // 
-            this.ui_pilar_round_med_max.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_pilar_round_med_max.Location = new System.Drawing.Point(173, 106);
-            this.ui_pilar_round_med_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_pilar_round_med_max.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.ui_pilar_round_med_max.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_pilar_round_med_max.Name = "ui_pilar_round_med_max";
-            this.ui_pilar_round_med_max.Size = new System.Drawing.Size(54, 27);
-            this.ui_pilar_round_med_max.TabIndex = 23;
-            this.ui_pilar_round_med_max.Value = new decimal(new int[] {
-            40,
-            0,
-            0,
-            0});
-            // 
-            // ui_pilar_prox_min
-            // 
-            this.ui_pilar_prox_min.Location = new System.Drawing.Point(261, 87);
-            this.ui_pilar_prox_min.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_pilar_prox_min.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.ui_pilar_prox_min.Minimum = new decimal(new int[] {
+            this.ui_vano_puerta_cant_min.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.ui_pilar_prox_min.Name = "ui_pilar_prox_min";
-            this.ui_pilar_prox_min.Size = new System.Drawing.Size(54, 27);
-            this.ui_pilar_prox_min.TabIndex = 24;
-            this.ui_pilar_prox_min.Value = new decimal(new int[] {
+            this.ui_vano_puerta_cant_min.Name = "ui_vano_puerta_cant_min";
+            this.ui_vano_puerta_cant_min.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta_cant_min.TabIndex = 29;
+            this.ui_vano_puerta_cant_min.Value = new decimal(new int[] {
             2,
             0,
             0,
             0});
             // 
-            // ui_pilar_prox_max
+            // ui_vano_puerta_cant_max
             // 
-            this.ui_pilar_prox_max.Location = new System.Drawing.Point(323, 87);
-            this.ui_pilar_prox_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_pilar_prox_max.Maximum = new decimal(new int[] {
-            4,
+            this.ui_vano_puerta_cant_max.Location = new System.Drawing.Point(324, 230);
+            this.ui_vano_puerta_cant_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta_cant_max.Maximum = new decimal(new int[] {
+            8,
             0,
             0,
             0});
-            this.ui_pilar_prox_max.Minimum = new decimal(new int[] {
+            this.ui_vano_puerta_cant_max.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.ui_pilar_prox_max.Name = "ui_pilar_prox_max";
-            this.ui_pilar_prox_max.Size = new System.Drawing.Size(54, 27);
-            this.ui_pilar_prox_max.TabIndex = 26;
-            this.ui_pilar_prox_max.Value = new decimal(new int[] {
-            4,
+            this.ui_vano_puerta_cant_max.Name = "ui_vano_puerta_cant_max";
+            this.ui_vano_puerta_cant_max.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta_cant_max.TabIndex = 30;
+            this.ui_vano_puerta_cant_max.Value = new decimal(new int[] {
+            6,
             0,
             0,
             0});
             // 
-            // label27
+            // label28
             // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(383, 89);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(18, 17);
-            this.label27.TabIndex = 28;
-            this.label27.Text = "m";
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(176, 184);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(56, 17);
+            this.label28.TabIndex = 32;
+            this.label28.Text = "Máximo";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(108, 184);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(48, 17);
+            this.label29.TabIndex = 31;
+            this.label29.Text = "Mínimo";
+            // 
+            // ui_vano_puerta_med_max
+            // 
+            this.ui_vano_puerta_med_max.Location = new System.Drawing.Point(173, 232);
+            this.ui_vano_puerta_med_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta_med_max.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta_med_max.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta_med_max.Name = "ui_vano_puerta_med_max";
+            this.ui_vano_puerta_med_max.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta_med_max.TabIndex = 33;
+            this.ui_vano_puerta_med_max.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -1458,7 +1554,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).EndInit();
             this.ui_groupbox_objetos.ResumeLayout(false);
             this.ui_groupbox_objetos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_min)).EndInit();
             this.tabControlProp.ResumeLayout(false);
@@ -1476,10 +1576,9 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_min)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_max)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1563,7 +1662,7 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown ui_vano_puerta;
+        private System.Windows.Forms.NumericUpDown ui_vano_puerta_med_min;
         private System.Windows.Forms.RadioButton ui_forma_casa_deformada_chaflan;
         private System.Windows.Forms.RadioButton ui_forma_casa_hexagonal;
         private System.Windows.Forms.RadioButton ui_forma_casa_combinar;
@@ -1583,6 +1682,11 @@
         private System.Windows.Forms.NumericUpDown ui_pilar_prox_min;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.NumericUpDown ui_pilar_prox_max;
+        private System.Windows.Forms.NumericUpDown ui_vano_puerta_cant_max;
+        private System.Windows.Forms.NumericUpDown ui_vano_puerta_cant_min;
+        private System.Windows.Forms.NumericUpDown ui_vano_puerta_med_max;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.Label label29;
     }
 }
 

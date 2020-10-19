@@ -154,9 +154,10 @@ namespace Creador_de_ciudades
                  Posibilidad,
                  Distancia,
                  ui_pegar_casas.Checked,
-                 azar.Next(Convert.ToInt32(ui_vano_puerta.Value)),
+                 azar.Next(Convert.ToInt32(ui_vano_puerta_med_min.Value), Convert.ToInt32(ui_vano_puerta_med_max.Value)),
                  nombres_de_formas[azar.Next(0,nombres_de_formas.Count)],
-                 azar.Next(Convert.ToInt32(ui_pilar_prox_min.Value), Convert.ToInt32(ui_pilar_prox_max.Value))
+                 azar.Next(Convert.ToInt32(ui_pilar_prox_min.Value), Convert.ToInt32(ui_pilar_prox_max.Value)),
+                 azar.Next(Convert.ToInt32(ui_vano_puerta_cant_min.Value), Convert.ToInt32(ui_vano_puerta_cant_max.Value))
                 );
 
                 info.resp_alto_forma = info.alto_forma;

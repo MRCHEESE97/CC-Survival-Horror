@@ -54,13 +54,13 @@ namespace Creador_de_ciudades.Clases_estaticas
         }
 
         private static void combinar(Info_forma informacion, PictureBox pintura)
-        {
+        {   
             forma(informacion.forma, informacion, pintura);
         }
         private static void hexagono(Info_forma informacion, PictureBox pintura)
         {
-            Bitmap bmp = (Bitmap)pintura.Image;
-            informacion.g = Graphics.FromImage(bmp);
+           
+            informacion.g = Graphics.FromImage((Bitmap)pintura.Image);
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
             Point[] shape = new Point[6];
             Pen borde = new Pen(Color.Black, informacion.grosor_pared);
@@ -78,11 +78,12 @@ namespace Creador_de_ciudades.Clases_estaticas
             informacion.g.FillPolygon(brocha_pared, shape);
             informacion.g.DrawPolygon(borde, shape);
             
+            
         }
         private static void rectangulo(Info_forma inf, PictureBox pintura)
         {                     
-            Bitmap bmp = (Bitmap)pintura.Image;
-            inf.g = Graphics.FromImage(bmp);
+            
+            inf.g = Graphics.FromImage((Bitmap)pintura.Image);
             List<Point> rectangulo = new List<Point>();
           
             // Se usan 4 listas para cada lado
@@ -117,17 +118,16 @@ namespace Creador_de_ciudades.Clases_estaticas
             inf.b = Herramienta.rotarpunto(inf.a, inf.punto_medio, inf.grados);
             inf.c = Herramienta.rotarpunto(inf.d, inf.punto_medio, inf.grados);
             inf.g.DrawLine(new Pen(Color.Black, 10), inf.b, inf.c);
-            //Prueba
-
+            //Prueba          
         }
        
         private static void rectangulo_deformado(Info_forma info, PictureBox pintura, int modo)
         {
-            Bitmap bmp = (Bitmap)pintura.Image;
-            info.g = Graphics.FromImage(bmp);
+            
+            info.g = Graphics.FromImage((Bitmap)pintura.Image);
 
             Random random = new Random();
-            /* Está función la desarrollé en la primera versión hace 2 años, 
+            /* Está función la desarrollé en la primera versión en el 2019, 
                parametros originales que recibia la función:
                float x, float y, float ancho, float alto, int tipo, List<PointF> pi*/
             int inicioy, iniciox, ultimay, cierrex;
@@ -151,8 +151,8 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             /*
             Una variable llamada "desplazar hacia el centro" determina si 2 puntos se mueven.
-            si es cualquier número a excepción de 0 no moverá el vertice
-            si es cero el vertice será atraido al centro 
+            si es cualquier número a excepción de 0 no moverá los vertices
+            si es cero los vertices serán atraidos al centro 
              __________
             |        __|
             |       |__   <--- "desplazar_al_centro = 0"

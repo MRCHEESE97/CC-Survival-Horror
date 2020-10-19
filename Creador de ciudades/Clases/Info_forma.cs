@@ -60,6 +60,7 @@ namespace Creador_de_ciudades.Clases
         public bool rotar_activo;
         public bool pegar_casas;
         public int ancho_puerta;
+        public int cant_puerta;
         //Despues de dibujar las casas obtengo su forma en esta variable
         public List<Point> contorno;
         //Esta variable solo se usa cuando "Combinar formas" esté activo
@@ -67,7 +68,7 @@ namespace Creador_de_ciudades.Clases
 
 
 
-        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas, int Ancho_puerta, String Forma, int Col_prox) 
+        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas, int Ancho_puerta, String Forma, int Col_prox, int Cant_puerta) 
         {
             ancho_lienzo = Ancho_lienzo;
             alto_lienzo = Alto_Lienzo;
@@ -95,6 +96,7 @@ namespace Creador_de_ciudades.Clases
             posibilidad = Posibilidad;
             distancia = Distancia;
             ancho_puerta = Ancho_puerta;
+            cant_puerta = Cant_puerta;
             forma = Forma;
         }
         // Toda figura geometrica tendrá un limite para que no haya una interseccion con otras, la forma de este limite será un rectangulo

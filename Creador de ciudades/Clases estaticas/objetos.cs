@@ -59,29 +59,38 @@ namespace Creador_de_ciudades.Clases_estaticas
             }          
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
-        {   
+        {
             //Por limitaciones de la API no se puede usar decimales para la puerta
             //debido a eso tendré que fijar una medida 1,2,3 m maximo
+            int cantidad = 0;
 
-            Bitmap bmp = (Bitmap)pintura.Image;
-            Graphics g;
-            g = Graphics.FromImage(bmp);
+            do {
 
-            Pen puerta = new Pen(Color.Red,informacion.grosor_pared);
-            Pen col_puerta = new Pen(Color.Black, informacion.columna_cuadrada_med);
+                Pen puerta = new Pen(Color.Red, informacion.grosor_pared);
+                Pen col_puerta = new Pen(Color.Black, informacion.columna_cuadrada_med);
 
-            int ubicacion_punto = azar.Next(0, informacion.contorno.Count-1);
-            Point punto_inicio = informacion.contorno[ubicacion_punto];
-            Point punto_fin = informacion.contorno[ubicacion_punto + 1];
-            
-            g.DrawLine(puerta, punto_inicio, punto_fin);
+                int ubicacion_punto = azar.Next(0, informacion.contorno.Count - informacion.ancho_puerta - 1);
+
+                Point punto_inicio;
+                Point punto_fin;
+                int conteo = 0;
+                do {
+                    ubicacion_punto = ubicacion_punto + 1;
+
+                    punto_inicio = informacion.contorno[ubicacion_punto];
+                    punto_fin = informacion.contorno[ubicacion_punto + 1];
+                    informacion.g.DrawLine(puerta, punto_inicio, punto_fin);
+                    conteo = conteo + 1;
+                } while (conteo != informacion.ancho_puerta);
+
+                cantidad = cantidad + 1;
+            } while (cantidad != informacion.cant_puerta);
+
             
         }
         private static void columna_cuadrada(Info_forma info, PictureBox pintura)
         {
-            Bitmap bmp = (Bitmap)pintura.Image;
-            Graphics g;
-            g = Graphics.FromImage(bmp);
+
             Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             int mitad_col = info.columna_cuadrada_med / 2;
 
@@ -89,15 +98,13 @@ namespace Creador_de_ciudades.Clases_estaticas
             {
                 Point origen_columna = new Point(info.contorno[i].X - mitad_col, info.contorno[i].Y - mitad_col);
                 Rectangle columna = new Rectangle(origen_columna,new Size(info.columna_cuadrada_med,info.columna_cuadrada_med));
-                g.FillRectangle(dibujar,columna);
+                info.g.FillRectangle(dibujar,columna);
             }
            
         }
         private static void columna_circular(Info_forma info, PictureBox pintura)
         {
-            Bitmap bmp = (Bitmap)pintura.Image;
-            Graphics g;
-            g = Graphics.FromImage(bmp);
+            
             Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             int mitad_col = info.columna_redonda_med / 2;
 
@@ -105,7 +112,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             {
                 Point origen_columna = new Point(info.contorno[i].X - mitad_col, info.contorno[i].Y - mitad_col);
                 Rectangle columna = new Rectangle(origen_columna, new Size(info.columna_redonda_med, info.columna_redonda_med));
-                g.FillEllipse(dibujar, columna);
+                info.g.FillEllipse(dibujar, columna);
             }
         }
 

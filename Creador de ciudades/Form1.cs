@@ -144,8 +144,8 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_min_grosor_pared.Value), Convert.ToInt32(ui_max_grosor_pared.Value)),
                  Herramienta.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, Convert.ToInt32(ui_max_ancho_casa.Value) * 100, Convert.ToInt32(ui_max_alto_casa.Value) * 100), //100 es el multiplo 
                  new Point(),
-                 Convert.ToInt32(ui_columna_cuadrada_valor.Value),
-                 Convert.ToInt32(ui_columna_redonda_valor.Value),
+                 azar.Next(Convert.ToInt32(ui_pilar_cubico_med_min.Value), Convert.ToInt32(ui_pilar_cubico_med_max.Value)),
+                 azar.Next(Convert.ToInt32(ui_pilar_round_med_min.Value), Convert.ToInt32(ui_pilar_round_med_max.Value)),
                  azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1),
                  grados,
                  azar.Next(10, 20), // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
@@ -155,7 +155,8 @@ namespace Creador_de_ciudades
                  Distancia,
                  ui_pegar_casas.Checked,
                  azar.Next(Convert.ToInt32(ui_vano_puerta.Value)),
-                 nombres_de_formas[azar.Next(0,nombres_de_formas.Count)]
+                 nombres_de_formas[azar.Next(0,nombres_de_formas.Count)],
+                 azar.Next(Convert.ToInt32(ui_pilar_prox_min.Value), Convert.ToInt32(ui_pilar_prox_max.Value))
                 );
 
                 info.resp_alto_forma = info.alto_forma;

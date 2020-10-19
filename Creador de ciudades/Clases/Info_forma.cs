@@ -41,8 +41,9 @@ namespace Creador_de_ciudades.Clases
         public Point a,b,c,d;
         public Point punto_medio;
         public Point nuevo_origen;
-        public int columna_cuadrada_valor;
-        public int columna_redonda_valor;
+        public int columna_cuadrada_med;
+        public int columna_redonda_med;
+        public int col_prox;
         public Rectangle espacio_forma;
         public Rectangle espacio_elevador;
         public bool ubicacion_pb = true;
@@ -66,7 +67,7 @@ namespace Creador_de_ciudades.Clases
 
 
 
-        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas, int Ancho_puerta, String Forma) 
+        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas, int Ancho_puerta, String Forma, int Col_prox) 
         {
             ancho_lienzo = Ancho_lienzo;
             alto_lienzo = Alto_Lienzo;
@@ -81,8 +82,9 @@ namespace Creador_de_ciudades.Clases
             c = C();
             d = D();           
             nuevo_origen = Nuevo_origen;
-            columna_cuadrada_valor = Columna_cuadrada_valor;
-            columna_redonda_valor = Columna_redonda_valor;
+            columna_cuadrada_med = Columna_cuadrada_valor;
+            columna_redonda_med = Columna_redonda_valor;
+            col_prox = Col_prox;
             espacio_forma = rectangulo();
             pisos_reales = Pisos_reales;
             grados = Grados;

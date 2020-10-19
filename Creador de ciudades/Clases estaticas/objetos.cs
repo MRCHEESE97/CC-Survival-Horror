@@ -68,7 +68,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             g = Graphics.FromImage(bmp);
 
             Pen puerta = new Pen(Color.Red,informacion.grosor_pared);
-            Pen col_puerta = new Pen(Color.Black, informacion.columna_cuadrada_valor);
+            Pen col_puerta = new Pen(Color.Black, informacion.columna_cuadrada_med);
 
             int ubicacion_punto = azar.Next(0, informacion.contorno.Count-1);
             Point punto_inicio = informacion.contorno[ubicacion_punto];
@@ -83,12 +83,12 @@ namespace Creador_de_ciudades.Clases_estaticas
             Graphics g;
             g = Graphics.FromImage(bmp);
             Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            int mitad_col = info.columna_cuadrada_valor / 2;
+            int mitad_col = info.columna_cuadrada_med / 2;
 
-            for (int i = 0; i < info.contorno.Count; i++)
+            for (int i = 0; i < info.contorno.Count - info.col_prox; i+=info.col_prox)
             {
                 Point origen_columna = new Point(info.contorno[i].X - mitad_col, info.contorno[i].Y - mitad_col);
-                Rectangle columna = new Rectangle(origen_columna,new Size(info.columna_cuadrada_valor,info.columna_cuadrada_valor));
+                Rectangle columna = new Rectangle(origen_columna,new Size(info.columna_cuadrada_med,info.columna_cuadrada_med));
                 g.FillRectangle(dibujar,columna);
             }
            
@@ -99,12 +99,12 @@ namespace Creador_de_ciudades.Clases_estaticas
             Graphics g;
             g = Graphics.FromImage(bmp);
             Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            int mitad_col = info.columna_redonda_valor / 2;
+            int mitad_col = info.columna_redonda_med / 2;
 
-            for (int i = 0; i < info.contorno.Count; i++)
+            for (int i = 0; i < info.contorno.Count - info.col_prox; i+=info.col_prox)
             {
                 Point origen_columna = new Point(info.contorno[i].X - mitad_col, info.contorno[i].Y - mitad_col);
-                Rectangle columna = new Rectangle(origen_columna, new Size(info.columna_redonda_valor, info.columna_redonda_valor));
+                Rectangle columna = new Rectangle(origen_columna, new Size(info.columna_redonda_med, info.columna_redonda_med));
                 g.FillEllipse(dibujar, columna);
             }
         }

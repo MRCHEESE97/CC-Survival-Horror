@@ -128,7 +128,7 @@ namespace Creador_de_ciudades
 
                 List<String> nombres_de_formas = new List<string>();
                 nombres_de_formas.Add("ui_forma_casa_rectangular");
-                nombres_de_formas.Add("ui_forma_casa_hexagonal");
+                //nombres_de_formas.Add("ui_forma_casa_hexagonal");
                 nombres_de_formas.Add("ui_forma_casa_deformada");
                 nombres_de_formas.Add("ui_forma_casa_deformada_chaflan");
 

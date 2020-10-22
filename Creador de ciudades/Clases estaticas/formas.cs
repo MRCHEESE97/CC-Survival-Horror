@@ -113,12 +113,8 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             inf.g.FillPolygon(brocha_pared, rectangulo.ToArray());
             inf.g.DrawPolygon(borde, rectangulo.ToArray());
-           
-            //Prueba  
-            inf.b = Herramienta.rotarpunto(inf.a, inf.punto_medio, inf.grados);
-            inf.c = Herramienta.rotarpunto(inf.d, inf.punto_medio, inf.grados);
-            inf.g.DrawLine(new Pen(Color.Black, 10), inf.b, inf.c);
-            //Prueba          
+
+
         }
        
         private static void rectangulo_deformado(Info_forma info, PictureBox pintura, int modo)

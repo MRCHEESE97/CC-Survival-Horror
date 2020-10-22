@@ -65,6 +65,7 @@ namespace Creador_de_ciudades.Clases
         public List<Point> contorno;
         //Esta variable solo se usa cuando "Combinar formas" esté activo
         public string forma;
+        
 
 
 

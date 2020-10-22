@@ -80,6 +80,11 @@
             this.ui_forma_casa_deformada = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
+            this.ui_vano_puerta_med_max = new System.Windows.Forms.NumericUpDown();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.ui_vano_puerta_cant_max = new System.Windows.Forms.NumericUpDown();
+            this.ui_vano_puerta_cant_min = new System.Windows.Forms.NumericUpDown();
             this.label27 = new System.Windows.Forms.Label();
             this.ui_pilar_prox_max = new System.Windows.Forms.NumericUpDown();
             this.ui_pilar_prox_min = new System.Windows.Forms.NumericUpDown();
@@ -125,11 +130,6 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ui_vano_puerta_cant_min = new System.Windows.Forms.NumericUpDown();
-            this.ui_vano_puerta_cant_max = new System.Windows.Forms.NumericUpDown();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.ui_vano_puerta_med_max = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -148,6 +148,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Distancia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).BeginInit();
             this.ui_groupbox_objetos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_max)).BeginInit();
@@ -166,9 +169,6 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_max)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -710,10 +710,10 @@
             this.ui_forma_casa_hexagonal.Location = new System.Drawing.Point(241, 54);
             this.ui_forma_casa_hexagonal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_hexagonal.Name = "ui_forma_casa_hexagonal";
-            this.ui_forma_casa_hexagonal.Size = new System.Drawing.Size(81, 21);
+            this.ui_forma_casa_hexagonal.Size = new System.Drawing.Size(124, 21);
             this.ui_forma_casa_hexagonal.TabIndex = 8;
             this.ui_forma_casa_hexagonal.TabStop = true;
-            this.ui_forma_casa_hexagonal.Text = "Hexagonal";
+            this.ui_forma_casa_hexagonal.Text = "Hexagonal (Beta)";
             this.ui_forma_casa_hexagonal.UseVisualStyleBackColor = true;
             // 
             // ui_forma_casa_deformada_chaflan
@@ -832,6 +832,94 @@
             this.ui_groupbox_objetos.TabIndex = 7;
             this.ui_groupbox_objetos.TabStop = false;
             this.ui_groupbox_objetos.Text = "Objetos";
+            // 
+            // ui_vano_puerta_med_max
+            // 
+            this.ui_vano_puerta_med_max.Location = new System.Drawing.Point(173, 232);
+            this.ui_vano_puerta_med_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta_med_max.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta_med_max.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta_med_max.Name = "ui_vano_puerta_med_max";
+            this.ui_vano_puerta_med_max.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta_med_max.TabIndex = 33;
+            this.ui_vano_puerta_med_max.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.Location = new System.Drawing.Point(176, 184);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(56, 17);
+            this.label28.TabIndex = 32;
+            this.label28.Text = "Máximo";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(108, 184);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(48, 17);
+            this.label29.TabIndex = 31;
+            this.label29.Text = "Mínimo";
+            // 
+            // ui_vano_puerta_cant_max
+            // 
+            this.ui_vano_puerta_cant_max.Location = new System.Drawing.Point(324, 230);
+            this.ui_vano_puerta_cant_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta_cant_max.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta_cant_max.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta_cant_max.Name = "ui_vano_puerta_cant_max";
+            this.ui_vano_puerta_cant_max.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta_cant_max.TabIndex = 30;
+            this.ui_vano_puerta_cant_max.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            // 
+            // ui_vano_puerta_cant_min
+            // 
+            this.ui_vano_puerta_cant_min.Location = new System.Drawing.Point(261, 231);
+            this.ui_vano_puerta_cant_min.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vano_puerta_cant_min.Maximum = new decimal(new int[] {
+            8,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta_cant_min.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_vano_puerta_cant_min.Name = "ui_vano_puerta_cant_min";
+            this.ui_vano_puerta_cant_min.Size = new System.Drawing.Size(54, 27);
+            this.ui_vano_puerta_cant_min.TabIndex = 29;
+            this.ui_vano_puerta_cant_min.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // label27
             // 
@@ -1305,9 +1393,9 @@
             this.ui_checkbox_girar.AutoSize = true;
             this.ui_checkbox_girar.Location = new System.Drawing.Point(272, 21);
             this.ui_checkbox_girar.Name = "ui_checkbox_girar";
-            this.ui_checkbox_girar.Size = new System.Drawing.Size(129, 21);
+            this.ui_checkbox_girar.Size = new System.Drawing.Size(93, 21);
             this.ui_checkbox_girar.TabIndex = 7;
-            this.ui_checkbox_girar.Text = "Girar casas (beta)";
+            this.ui_checkbox_girar.Text = "Girar casas ";
             this.ui_checkbox_girar.UseVisualStyleBackColor = true;
             // 
             // tabPage2
@@ -1426,94 +1514,6 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // ui_vano_puerta_cant_min
-            // 
-            this.ui_vano_puerta_cant_min.Location = new System.Drawing.Point(261, 231);
-            this.ui_vano_puerta_cant_min.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_vano_puerta_cant_min.Maximum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_cant_min.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_cant_min.Name = "ui_vano_puerta_cant_min";
-            this.ui_vano_puerta_cant_min.Size = new System.Drawing.Size(54, 27);
-            this.ui_vano_puerta_cant_min.TabIndex = 29;
-            this.ui_vano_puerta_cant_min.Value = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            // 
-            // ui_vano_puerta_cant_max
-            // 
-            this.ui_vano_puerta_cant_max.Location = new System.Drawing.Point(324, 230);
-            this.ui_vano_puerta_cant_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_vano_puerta_cant_max.Maximum = new decimal(new int[] {
-            8,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_cant_max.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_cant_max.Name = "ui_vano_puerta_cant_max";
-            this.ui_vano_puerta_cant_max.Size = new System.Drawing.Size(54, 27);
-            this.ui_vano_puerta_cant_max.TabIndex = 30;
-            this.ui_vano_puerta_cant_max.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.Location = new System.Drawing.Point(176, 184);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(56, 17);
-            this.label28.TabIndex = 32;
-            this.label28.Text = "Máximo";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Location = new System.Drawing.Point(108, 184);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(48, 17);
-            this.label29.TabIndex = 31;
-            this.label29.Text = "Mínimo";
-            // 
-            // ui_vano_puerta_med_max
-            // 
-            this.ui_vano_puerta_med_max.Location = new System.Drawing.Point(173, 232);
-            this.ui_vano_puerta_med_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_vano_puerta_med_max.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_med_max.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_med_max.Name = "ui_vano_puerta_med_max";
-            this.ui_vano_puerta_med_max.Size = new System.Drawing.Size(54, 27);
-            this.ui_vano_puerta_med_max.TabIndex = 33;
-            this.ui_vano_puerta_med_max.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1554,6 +1554,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).EndInit();
             this.ui_groupbox_objetos.ResumeLayout(false);
             this.ui_groupbox_objetos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_max)).EndInit();
@@ -1576,9 +1579,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_max)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -40,6 +40,12 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     ventanas(datos, lienzo);
                 }
+
+                else if (nombre_objeto.Equals("ui_objetos_puerta") && datos.ubicacion_pb)
+                {
+                    puerta(datos, lienzo);
+                }
+                
                 else if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
                 {
                     columna_cuadrada(datos, lienzo);
@@ -52,10 +58,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     elevador(datos, lienzo);
                 }
-                else if (nombre_objeto.Equals("ui_objetos_puerta"))
-                {
-                    puerta(datos, lienzo); 
-                }
+               
             }          
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
@@ -63,11 +66,12 @@ namespace Creador_de_ciudades.Clases_estaticas
             //Por limitaciones de la API no se puede usar decimales para la puerta
             //debido a eso tendré que fijar una medida 1,2,3 m maximo
             int cantidad = 0;
+            List<Point> borrador = new List<Point>();
 
             do {
 
                 Pen puerta = new Pen(Color.Red, informacion.grosor_pared);
-                Pen col_puerta = new Pen(Color.Black, informacion.columna_cuadrada_med);
+                
 
                 int ubicacion_punto = azar.Next(0, informacion.contorno.Count - informacion.ancho_puerta - 1);
 
@@ -81,12 +85,17 @@ namespace Creador_de_ciudades.Clases_estaticas
                     punto_fin = informacion.contorno[ubicacion_punto + 1];
                     informacion.g.DrawLine(puerta, punto_inicio, punto_fin);
                     conteo = conteo + 1;
+
+                    //Para que no se dibuje otro objeto encima, tendré que borrar los puntos
+                    borrador.Add(punto_inicio);
+                    borrador.Add(punto_fin);
+
                 } while (conteo != informacion.ancho_puerta);
 
                 cantidad = cantidad + 1;
             } while (cantidad != informacion.cant_puerta);
 
-            
+            informacion.contorno = informacion.contorno.Except(borrador).ToList();
         }
         private static void columna_cuadrada(Info_forma info, PictureBox pintura)
         {
@@ -118,14 +127,32 @@ namespace Creador_de_ciudades.Clases_estaticas
 
         private static void ventanas(Info_forma informacion, PictureBox pintura)
         {
-            /*Brush brocha_columna = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            Pen columnas = new Pen(Color.Green, informacion.grosor_pared);
-           
-            Point punto_origen_suelo = new Point(informacion.po.X + informacion.grosor_pared / 2, informacion.po.Y + informacion.grosor_pared / 2);
-            int ancho_suelo = informacion.ancho_forma * 100 - informacion.grosor_pared;
-            int alto_suelo = informacion.alto_forma * 100 - informacion.grosor_pared;
-            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            informacion.g.DrawRectangle(columnas, suelo);*/
+
+            Pen ventana = new Pen(Color.Cyan, informacion.grosor_pared);
+            Pen pared = new Pen(Color.Black, informacion.grosor_pared);
+            List<bool> marcar = new List<bool>();
+
+            for (int i = 0; i < informacion.contorno.Count - 1; i++)
+            {
+                int x = azar.Next(0,2);
+                if (x == 0)
+                { marcar.Add(false); }
+                else if (x == 1)
+                { marcar.Add(true); }        
+            }
+
+            for (int i = 0; i < informacion.contorno.Count - 1; i++)
+            {
+                if (marcar[i])
+                {
+                    informacion.g.DrawLine(ventana, informacion.contorno[i], informacion.contorno[i+1]);                  
+                }
+                else if (marcar[i] == false)
+                { 
+                    informacion.g.DrawLine(pared, informacion.contorno[i], informacion.contorno[i+1]); 
+                }
+            }
+            
         }
 
         private static void elevador(Info_forma informacion, PictureBox pintura)

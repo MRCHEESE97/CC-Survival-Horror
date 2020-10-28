@@ -80,7 +80,6 @@
             this.ui_forma_casa_deformada = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
-            this.ui_vano_puerta_med_max = new System.Windows.Forms.NumericUpDown();
             this.label28 = new System.Windows.Forms.Label();
             this.label29 = new System.Windows.Forms.Label();
             this.ui_vano_puerta_cant_max = new System.Windows.Forms.NumericUpDown();
@@ -101,9 +100,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.ui_vano_puerta_med_min = new System.Windows.Forms.NumericUpDown();
-            this.ui_objetos_ventana = new System.Windows.Forms.CheckBox();
             this.ui_objetos_elevador = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.ui_pilar_round_med_min = new System.Windows.Forms.NumericUpDown();
@@ -112,6 +108,11 @@
             this.ui_objetos_puerta = new System.Windows.Forms.CheckBox();
             this.ui_objetos_columna_cuadrada = new System.Windows.Forms.CheckBox();
             this.ui_objetos_columna_redonda = new System.Windows.Forms.CheckBox();
+            this.ui_group_box_vanos_ventanas = new System.Windows.Forms.GroupBox();
+            this.ui_objetos_ventana_todos = new System.Windows.Forms.RadioButton();
+            this.ui_objetos_ventana_ale = new System.Windows.Forms.RadioButton();
+            this.ui_objetos_ventana_total = new System.Windows.Forms.RadioButton();
+            this.ui_objetos_ventana_binaria = new System.Windows.Forms.RadioButton();
             this.tabControlProp = new System.Windows.Forms.TabControl();
             this.tabcontrol_propiedades = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
@@ -130,6 +131,7 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ui_objetos_ventana = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -148,16 +150,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.Distancia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).BeginInit();
             this.ui_groupbox_objetos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_max)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_min)).BeginInit();
+            this.ui_group_box_vanos_ventanas.SuspendLayout();
             this.tabControlProp.SuspendLayout();
             this.tabcontrol_propiedades.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -695,6 +696,7 @@
             // ui_forma_casa_combinar
             // 
             this.ui_forma_casa_combinar.AutoSize = true;
+            this.ui_forma_casa_combinar.Checked = true;
             this.ui_forma_casa_combinar.Location = new System.Drawing.Point(241, 78);
             this.ui_forma_casa_combinar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_combinar.Name = "ui_forma_casa_combinar";
@@ -735,7 +737,7 @@
             this.Distancia.Name = "Distancia";
             this.Distancia.Size = new System.Drawing.Size(212, 45);
             this.Distancia.TabIndex = 6;
-            this.Distancia.Value = 1;
+            this.Distancia.Value = 4;
             // 
             // label18
             // 
@@ -764,7 +766,7 @@
             this.Posibilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Posibilidad.Size = new System.Drawing.Size(211, 45);
             this.Posibilidad.TabIndex = 3;
-            this.Posibilidad.Value = 10;
+            this.Posibilidad.Value = 5;
             // 
             // ui_forma_casa_deformada
             // 
@@ -780,19 +782,17 @@
             // ui_forma_casa_rectangular
             // 
             this.ui_forma_casa_rectangular.AutoSize = true;
-            this.ui_forma_casa_rectangular.Checked = true;
             this.ui_forma_casa_rectangular.Location = new System.Drawing.Point(241, 28);
             this.ui_forma_casa_rectangular.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_rectangular.Name = "ui_forma_casa_rectangular";
             this.ui_forma_casa_rectangular.Size = new System.Drawing.Size(91, 21);
             this.ui_forma_casa_rectangular.TabIndex = 0;
-            this.ui_forma_casa_rectangular.TabStop = true;
             this.ui_forma_casa_rectangular.Text = "Rectangular";
             this.ui_forma_casa_rectangular.UseVisualStyleBackColor = true;
             // 
             // ui_groupbox_objetos
             // 
-            this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta_med_max);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_ventana);
             this.ui_groupbox_objetos.Controls.Add(this.label28);
             this.ui_groupbox_objetos.Controls.Add(this.label29);
             this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta_cant_max);
@@ -813,9 +813,6 @@
             this.ui_groupbox_objetos.Controls.Add(this.label21);
             this.ui_groupbox_objetos.Controls.Add(this.label9);
             this.ui_groupbox_objetos.Controls.Add(this.label20);
-            this.ui_groupbox_objetos.Controls.Add(this.label19);
-            this.ui_groupbox_objetos.Controls.Add(this.ui_vano_puerta_med_min);
-            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_ventana);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_elevador);
             this.ui_groupbox_objetos.Controls.Add(this.label14);
             this.ui_groupbox_objetos.Controls.Add(this.ui_pilar_round_med_min);
@@ -824,37 +821,15 @@
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_puerta);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_columna_cuadrada);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_columna_redonda);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_group_box_vanos_ventanas);
             this.ui_groupbox_objetos.Location = new System.Drawing.Point(6, 180);
             this.ui_groupbox_objetos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_objetos.Name = "ui_groupbox_objetos";
             this.ui_groupbox_objetos.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_groupbox_objetos.Size = new System.Drawing.Size(413, 311);
+            this.ui_groupbox_objetos.Size = new System.Drawing.Size(413, 436);
             this.ui_groupbox_objetos.TabIndex = 7;
             this.ui_groupbox_objetos.TabStop = false;
             this.ui_groupbox_objetos.Text = "Objetos";
-            // 
-            // ui_vano_puerta_med_max
-            // 
-            this.ui_vano_puerta_med_max.Location = new System.Drawing.Point(173, 232);
-            this.ui_vano_puerta_med_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_vano_puerta_med_max.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_med_max.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_med_max.Name = "ui_vano_puerta_med_max";
-            this.ui_vano_puerta_med_max.Size = new System.Drawing.Size(54, 27);
-            this.ui_vano_puerta_med_max.TabIndex = 33;
-            this.ui_vano_puerta_med_max.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
             // 
             // label28
             // 
@@ -1139,51 +1114,6 @@
             this.label20.TabIndex = 13;
             this.label20.Text = "Medidas";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(226, 236);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(18, 17);
-            this.label19.TabIndex = 10;
-            this.label19.Text = "m";
-            // 
-            // ui_vano_puerta_med_min
-            // 
-            this.ui_vano_puerta_med_min.Location = new System.Drawing.Point(102, 232);
-            this.ui_vano_puerta_med_min.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_vano_puerta_med_min.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_med_min.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ui_vano_puerta_med_min.Name = "ui_vano_puerta_med_min";
-            this.ui_vano_puerta_med_min.Size = new System.Drawing.Size(54, 27);
-            this.ui_vano_puerta_med_min.TabIndex = 9;
-            this.ui_vano_puerta_med_min.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // ui_objetos_ventana
-            // 
-            this.ui_objetos_ventana.AutoSize = true;
-            this.ui_objetos_ventana.Checked = true;
-            this.ui_objetos_ventana.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ui_objetos_ventana.Location = new System.Drawing.Point(9, 261);
-            this.ui_objetos_ventana.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_objetos_ventana.Name = "ui_objetos_ventana";
-            this.ui_objetos_ventana.Size = new System.Drawing.Size(104, 21);
-            this.ui_objetos_ventana.TabIndex = 8;
-            this.ui_objetos_ventana.Text = "Vano ventana";
-            this.ui_objetos_ventana.UseVisualStyleBackColor = true;
-            // 
             // ui_objetos_elevador
             // 
             this.ui_objetos_elevador.AutoSize = true;
@@ -1287,8 +1217,6 @@
             // ui_objetos_columna_cuadrada
             // 
             this.ui_objetos_columna_cuadrada.AutoSize = true;
-            this.ui_objetos_columna_cuadrada.Checked = true;
-            this.ui_objetos_columna_cuadrada.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_objetos_columna_cuadrada.Location = new System.Drawing.Point(6, 71);
             this.ui_objetos_columna_cuadrada.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_columna_cuadrada.Name = "ui_objetos_columna_cuadrada";
@@ -1300,6 +1228,8 @@
             // ui_objetos_columna_redonda
             // 
             this.ui_objetos_columna_redonda.AutoSize = true;
+            this.ui_objetos_columna_redonda.Checked = true;
+            this.ui_objetos_columna_redonda.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_objetos_columna_redonda.Location = new System.Drawing.Point(6, 106);
             this.ui_objetos_columna_redonda.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_objetos_columna_redonda.Name = "ui_objetos_columna_redonda";
@@ -1307,6 +1237,64 @@
             this.ui_objetos_columna_redonda.TabIndex = 1;
             this.ui_objetos_columna_redonda.Text = "Pilar round";
             this.ui_objetos_columna_redonda.UseVisualStyleBackColor = true;
+            // 
+            // ui_group_box_vanos_ventanas
+            // 
+            this.ui_group_box_vanos_ventanas.Controls.Add(this.ui_objetos_ventana_todos);
+            this.ui_group_box_vanos_ventanas.Controls.Add(this.ui_objetos_ventana_ale);
+            this.ui_group_box_vanos_ventanas.Controls.Add(this.ui_objetos_ventana_total);
+            this.ui_group_box_vanos_ventanas.Controls.Add(this.ui_objetos_ventana_binaria);
+            this.ui_group_box_vanos_ventanas.Location = new System.Drawing.Point(9, 287);
+            this.ui_group_box_vanos_ventanas.Name = "ui_group_box_vanos_ventanas";
+            this.ui_group_box_vanos_ventanas.Size = new System.Drawing.Size(217, 194);
+            this.ui_group_box_vanos_ventanas.TabIndex = 37;
+            this.ui_group_box_vanos_ventanas.TabStop = false;
+            this.ui_group_box_vanos_ventanas.Text = "Modos vanos ventanas";
+            // 
+            // ui_objetos_ventana_todos
+            // 
+            this.ui_objetos_ventana_todos.AutoSize = true;
+            this.ui_objetos_ventana_todos.Location = new System.Drawing.Point(11, 107);
+            this.ui_objetos_ventana_todos.Name = "ui_objetos_ventana_todos";
+            this.ui_objetos_ventana_todos.Size = new System.Drawing.Size(185, 21);
+            this.ui_objetos_ventana_todos.TabIndex = 36;
+            this.ui_objetos_ventana_todos.TabStop = true;
+            this.ui_objetos_ventana_todos.Text = "Vano ventana (combinación)";
+            this.ui_objetos_ventana_todos.UseVisualStyleBackColor = true;
+            // 
+            // ui_objetos_ventana_ale
+            // 
+            this.ui_objetos_ventana_ale.AutoSize = true;
+            this.ui_objetos_ventana_ale.Checked = true;
+            this.ui_objetos_ventana_ale.Location = new System.Drawing.Point(11, 26);
+            this.ui_objetos_ventana_ale.Name = "ui_objetos_ventana_ale";
+            this.ui_objetos_ventana_ale.Size = new System.Drawing.Size(156, 21);
+            this.ui_objetos_ventana_ale.TabIndex = 33;
+            this.ui_objetos_ventana_ale.TabStop = true;
+            this.ui_objetos_ventana_ale.Text = "Vano ventana aleatoria";
+            this.ui_objetos_ventana_ale.UseVisualStyleBackColor = true;
+            // 
+            // ui_objetos_ventana_total
+            // 
+            this.ui_objetos_ventana_total.AutoSize = true;
+            this.ui_objetos_ventana_total.Location = new System.Drawing.Point(11, 80);
+            this.ui_objetos_ventana_total.Name = "ui_objetos_ventana_total";
+            this.ui_objetos_ventana_total.Size = new System.Drawing.Size(136, 21);
+            this.ui_objetos_ventana_total.TabIndex = 35;
+            this.ui_objetos_ventana_total.Text = "Vano ventana total";
+            this.ui_objetos_ventana_total.UseVisualStyleBackColor = true;
+            this.ui_objetos_ventana_total.CheckedChanged += new System.EventHandler(this.ui_objetos_ventana_total_CheckedChanged);
+            // 
+            // ui_objetos_ventana_binaria
+            // 
+            this.ui_objetos_ventana_binaria.AutoSize = true;
+            this.ui_objetos_ventana_binaria.Location = new System.Drawing.Point(11, 53);
+            this.ui_objetos_ventana_binaria.Name = "ui_objetos_ventana_binaria";
+            this.ui_objetos_ventana_binaria.Size = new System.Drawing.Size(145, 21);
+            this.ui_objetos_ventana_binaria.TabIndex = 34;
+            this.ui_objetos_ventana_binaria.Text = "Vano ventana binaria";
+            this.ui_objetos_ventana_binaria.UseVisualStyleBackColor = true;
+            this.ui_objetos_ventana_binaria.CheckedChanged += new System.EventHandler(this.ui_objetos_ventana_binaria_CheckedChanged);
             // 
             // tabControlProp
             // 
@@ -1391,6 +1379,8 @@
             // ui_checkbox_girar
             // 
             this.ui_checkbox_girar.AutoSize = true;
+            this.ui_checkbox_girar.Checked = true;
+            this.ui_checkbox_girar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_checkbox_girar.Location = new System.Drawing.Point(272, 21);
             this.ui_checkbox_girar.Name = "ui_checkbox_girar";
             this.ui_checkbox_girar.Size = new System.Drawing.Size(93, 21);
@@ -1514,6 +1504,18 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
+            // ui_objetos_ventana
+            // 
+            this.ui_objetos_ventana.AutoSize = true;
+            this.ui_objetos_ventana.Checked = true;
+            this.ui_objetos_ventana.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_objetos_ventana.Location = new System.Drawing.Point(9, 260);
+            this.ui_objetos_ventana.Name = "ui_objetos_ventana";
+            this.ui_objetos_ventana.Size = new System.Drawing.Size(104, 21);
+            this.ui_objetos_ventana.TabIndex = 37;
+            this.ui_objetos_ventana.Text = "Vano ventana";
+            this.ui_objetos_ventana.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1554,16 +1556,16 @@
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).EndInit();
             this.ui_groupbox_objetos.ResumeLayout(false);
             this.ui_groupbox_objetos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_max)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_med_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_min)).EndInit();
+            this.ui_group_box_vanos_ventanas.ResumeLayout(false);
+            this.ui_group_box_vanos_ventanas.PerformLayout();
             this.tabControlProp.ResumeLayout(false);
             this.tabcontrol_propiedades.ResumeLayout(false);
             this.tabcontrol_propiedades.PerformLayout();
@@ -1645,7 +1647,6 @@
         private System.Windows.Forms.Button ui_quitar_todo;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.CheckBox ui_objetos_ventana;
         private System.Windows.Forms.CheckBox ui_checkbox_girar;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.NumericUpDown ui_max_grosor_pared;
@@ -1661,8 +1662,6 @@
         private System.Windows.Forms.TrackBar Distancia;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.NumericUpDown ui_vano_puerta_med_min;
         private System.Windows.Forms.RadioButton ui_forma_casa_deformada_chaflan;
         private System.Windows.Forms.RadioButton ui_forma_casa_hexagonal;
         private System.Windows.Forms.RadioButton ui_forma_casa_combinar;
@@ -1684,9 +1683,14 @@
         private System.Windows.Forms.NumericUpDown ui_pilar_prox_max;
         private System.Windows.Forms.NumericUpDown ui_vano_puerta_cant_max;
         private System.Windows.Forms.NumericUpDown ui_vano_puerta_cant_min;
-        private System.Windows.Forms.NumericUpDown ui_vano_puerta_med_max;
         private System.Windows.Forms.Label label28;
         private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.GroupBox ui_group_box_vanos_ventanas;
+        private System.Windows.Forms.RadioButton ui_objetos_ventana_todos;
+        private System.Windows.Forms.RadioButton ui_objetos_ventana_ale;
+        private System.Windows.Forms.RadioButton ui_objetos_ventana_total;
+        private System.Windows.Forms.RadioButton ui_objetos_ventana_binaria;
+        private System.Windows.Forms.CheckBox ui_objetos_ventana;
     }
 }
 

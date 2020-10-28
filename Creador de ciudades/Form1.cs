@@ -132,6 +132,7 @@ namespace Creador_de_ciudades
                 nombres_de_formas.Add("ui_forma_casa_deformada");
                 nombres_de_formas.Add("ui_forma_casa_deformada_chaflan");
 
+                String vano_ventana_seleccionado = ui_group_box_vanos_ventanas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
                 //Aqui empieza la recollecion de la informacion para las casas
 
@@ -154,7 +155,7 @@ namespace Creador_de_ciudades
                  Posibilidad,
                  Distancia,
                  ui_pegar_casas.Checked,
-                 azar.Next(Convert.ToInt32(ui_vano_puerta_med_min.Value), Convert.ToInt32(ui_vano_puerta_med_max.Value)),
+                 vano_ventana_seleccionado,
                  nombres_de_formas[azar.Next(0,nombres_de_formas.Count)],
                  azar.Next(Convert.ToInt32(ui_pilar_prox_min.Value), Convert.ToInt32(ui_pilar_prox_max.Value)),
                  azar.Next(Convert.ToInt32(ui_vano_puerta_cant_min.Value), Convert.ToInt32(ui_vano_puerta_cant_max.Value))
@@ -351,11 +352,13 @@ namespace Creador_de_ciudades
                 nueva_pagina.AutoScroll = true;
                 nueva_pagina.BorderStyle = BorderStyle.Fixed3D;
                 nueva_pagina.BackColor = Color.White;
+                
 
                 PictureBox nuevo_lienzo = new PictureBox();
                 nuevo_lienzo.Name = "Planta "+ i;
                 nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
                 nuevo_lienzo.Image = new Bitmap(ancho, alto);
+                nuevo_lienzo.SizeMode = PictureBoxSizeMode.Zoom;
                 nueva_pagina.Controls.Add(nuevo_lienzo);
 
                 TabControl.TabPages.Add(nueva_pagina);
@@ -405,6 +408,16 @@ namespace Creador_de_ciudades
         private void ui_quitar_todo_Click(object sender, EventArgs e)
         {
             ui_label_m2.Text = "----";
+        }
+
+        private void ui_objetos_ventana_binaria_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ui_objetos_ventana_total_CheckedChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -38,7 +38,28 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 if (nombre_objeto.Equals("ui_objetos_ventana"))
                 {
-                    ventanas(datos, lienzo);
+                    if (datos.vano_ventana.Equals("ui_objetos_ventana_ale")) 
+                    {
+                        ventanas(datos, lienzo);
+                    } 
+                    else if (datos.vano_ventana.Equals("ui_objetos_ventana_binaria")) 
+                    {
+                        ventanas_binarias(datos, lienzo); 
+                    } 
+                    else if (datos.vano_ventana.Equals("ui_objetos_ventana_total")) 
+                    { 
+                        ventanas_totales(datos, lienzo); 
+                    }
+                    else if (datos.vano_ventana.Equals("ui_objetos_ventana_todos")) 
+                    {
+                        int s = azar.Next(0,3);
+                        if (s == 0)
+                        { ventanas_binarias(datos, lienzo); }
+                        else if (s == 1)
+                        { ventanas_binarias(datos, lienzo); }
+                        else if (s == 2)
+                        { ventanas_totales(datos, lienzo); }
+                    }
                 }
 
                 else if (nombre_objeto.Equals("ui_objetos_puerta") && datos.ubicacion_pb)
@@ -77,20 +98,19 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 Point punto_inicio;
                 Point punto_fin;
-                int conteo = 0;
-                do {
-                    ubicacion_punto = ubicacion_punto + 1;
+                
+               
 
-                    punto_inicio = informacion.contorno[ubicacion_punto];
-                    punto_fin = informacion.contorno[ubicacion_punto + 1];
-                    informacion.g.DrawLine(puerta, punto_inicio, punto_fin);
-                    conteo = conteo + 1;
+                punto_inicio = informacion.contorno[ubicacion_punto];
+                punto_fin = informacion.contorno[ubicacion_punto + 1];
+                informacion.g.DrawLine(puerta, punto_inicio, punto_fin);
+               
 
-                    //Para que no se dibuje otro objeto encima, tendré que borrar los puntos
-                    borrador.Add(punto_inicio);
-                    borrador.Add(punto_fin);
+                //Para que no se dibuje otro objeto encima, tendré que borrar los puntos
+                borrador.Add(punto_inicio);
+                borrador.Add(punto_fin);
 
-                } while (conteo != informacion.ancho_puerta);
+             
 
                 cantidad = cantidad + 1;
             } while (cantidad != informacion.cant_puerta);
@@ -129,7 +149,6 @@ namespace Creador_de_ciudades.Clases_estaticas
         {
 
             Pen ventana = new Pen(Color.Cyan, informacion.grosor_pared);
-            Pen pared = new Pen(Color.Black, informacion.grosor_pared);
             List<bool> marcar = new List<bool>();
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)
@@ -146,13 +165,49 @@ namespace Creador_de_ciudades.Clases_estaticas
                 if (marcar[i])
                 {
                     informacion.g.DrawLine(ventana, informacion.contorno[i], informacion.contorno[i+1]);                  
-                }
-                else if (marcar[i] == false)
-                { 
-                    informacion.g.DrawLine(pared, informacion.contorno[i], informacion.contorno[i+1]); 
+                }       
+            }         
+        }
+        private static void ventanas_binarias(Info_forma informacion, PictureBox pintura)
+        {
+
+            Pen ventana = new Pen(Color.Cyan, informacion.grosor_pared);
+            List<bool> marcar = new List<bool>();
+
+            for (int i = 0; i < informacion.contorno.Count - 1; i++)
+            {              
+                if (i % 2 == 0)
+                { marcar.Add(false); }
+                else 
+                { marcar.Add(true); }
+            }
+
+            for (int i = 0; i < informacion.contorno.Count - 1; i++)
+            {
+                if (marcar[i])
+                {
+                    informacion.g.DrawLine(ventana, informacion.contorno[i], informacion.contorno[i + 1]);
                 }
             }
-            
+        }
+        private static void ventanas_totales(Info_forma informacion, PictureBox pintura)
+        {
+
+            Pen ventana = new Pen(Color.Cyan, informacion.grosor_pared);
+            List<bool> marcar = new List<bool>();
+
+            for (int i = 0; i < informacion.contorno.Count - 1; i++)
+            {            
+               marcar.Add(true); 
+            }
+
+            for (int i = 0; i < informacion.contorno.Count - 1; i++)
+            {
+                if (marcar[i])
+                {
+                    informacion.g.DrawLine(ventana, informacion.contorno[i], informacion.contorno[i + 1]);
+                }
+            }
         }
 
         private static void elevador(Info_forma informacion, PictureBox pintura)

@@ -1,4 +1,4 @@
-#Mi primer proyecto
+#Mi primer proyecto.
 Cada version es enumerada por la secuencia ¨0.XXX¨
 
 El principal objetivo de este software es acortar el tiempo del desarrollo de un videojuego del genero Survival horror con un estilo de antaño, facilitando la creación de ciudades.

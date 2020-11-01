@@ -47,63 +47,53 @@ namespace Creador_de_ciudades
             crear_pages();
         }
 
-       
-        //Subsistema tamaño lienzos
-        //Objetivo: Definir tamaños de los lienzos
-
-        private int ancho_lienzo()
-        {
-            //Todo este proceso hace que en una cantidad mayor de casas
-            // el lienzo se agrande de manera exponencial
-            //Para solucionarlo la variable que divide a la suma
-            //Tendrá una condición si es mejor  a 10 será = 1
-            //Si es mayor a 20 = 2 y asi sucesivamente
-
-            int div = 0;
-            if (Convert.ToInt32(ui_cantidad_casas.Value) < 10)
-            { div = 1; }
-            else if (Convert.ToInt32(ui_cantidad_casas.Value) < 20 && Convert.ToInt32(ui_cantidad_casas.Value) >= 10)
-            { div = 2; }
-            else if (Convert.ToInt32(ui_cantidad_casas.Value) < 30 && Convert.ToInt32(ui_cantidad_casas.Value) >= 20)
-            { div = 3; }
-
-            int multiplicador = 100; // La mitad de un metro
-            int ancho = ((Convert.ToInt32(ui_min_ancho_casa.Value) + Convert.ToInt32(ui_max_ancho_casa.Value))/div) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;          
-            return ancho;
-        }
-
-        private int alto_lienzo()
-        {
-            int div = 0;
-            if (Convert.ToInt32(ui_cantidad_casas.Value) < 10)
-            { div = 1; }
-            else if (Convert.ToInt32(ui_cantidad_casas.Value) < 20 && Convert.ToInt32(ui_cantidad_casas.Value) >= 10)
-            { div = 2; }
-            else if (Convert.ToInt32(ui_cantidad_casas.Value) < 30 && Convert.ToInt32(ui_cantidad_casas.Value) >= 20)
-            { div = 3; }
-
-            int multiplicador = 100;
-            int alto = ((Convert.ToInt32(ui_min_alto_casa.Value) + Convert.ToInt32(ui_max_alto_casa.Value)) / div) * Convert.ToInt32(ui_cantidad_casas.Value) * multiplicador;
-            return alto;
-        }
-
-     
-        
-
-        //Subsistema de dibujo
+   
+        //Sistema de dibujo
         //Objetivo: Dibujar los planos en todos los lienzos.
 
         private void dibujar()
         {
             Random azar = new Random();
 
-            //Aqui calcularé el margen del area de dibujo, para que las formas no sobresalgan
-            float c_ancho = Convert.ToInt32(ui_max_ancho_casa.Value) * 100 ;
-            float c_alto = Convert.ToInt32(ui_max_alto_casa.Value) * 100 ;
-
             List<Info_forma> datos = new List<Info_forma>();
 
-            //llenar lista de datos por casa
+            //Subsitema: calculo de area ciudad
+
+            //Calculo del margen del area de dibujo, para que las formas no sobresalgan
+            int margen_ancho = Convert.ToInt32(ui_max_ancho_casa.Value) * 100 ;
+            int margen_alto = Convert.ToInt32(ui_max_alto_casa.Value) * 100 ;
+
+            //-------
+
+            int ancho_lienzo = 0, alto_lienzo = 0;
+
+            List<int> anchos = new List<int>();
+            List<int> altos = new List<int>();
+                        
+            for (int i = 0; i < ui_cantidad_casas.Value; i++) 
+            {
+                anchos.Add(azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
+                altos.Add(azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
+
+                ancho_lienzo = ancho_lienzo + anchos[i] * 100;
+                alto_lienzo = alto_lienzo + altos[i] * 100;
+            }
+
+            float por_ancho = (float)(ancho_lienzo * (Convert.ToInt32(ui_porcentaje_sin_casas.Value) * 0.01));           
+            ancho_lienzo = (int)(ancho_lienzo + por_ancho);
+            ancho_lienzo = ancho_lienzo + margen_ancho;
+
+            float por_alto = (float)(alto_lienzo * (Convert.ToInt32(ui_porcentaje_sin_casas.Value) * 0.01));
+            alto_lienzo = (int)(alto_lienzo + por_alto);
+            alto_lienzo = alto_lienzo + margen_alto;
+
+            //Llamada a la función que crea los lienzos
+
+            crear_pages_area_casas(ancho_lienzo,alto_lienzo);
+
+
+            //Subsistema de recoleccion de datos: casas
+
 
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {   
@@ -138,12 +128,12 @@ namespace Creador_de_ciudades
 
                 Info_forma info = new Info_forma
                 (
-                 ancho_lienzo(),
-                 alto_lienzo(),
-                 azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value)),
-                 azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value)),
+                 ancho_lienzo,
+                 alto_lienzo,
+                 anchos[ubicacion_datos],
+                 altos[ubicacion_datos],
                  azar.Next(Convert.ToInt32(ui_min_grosor_pared.Value), Convert.ToInt32(ui_max_grosor_pared.Value)),
-                 Herramienta.seleccionar_punto_cuadricula(ancho_lienzo() - (int)c_ancho,alto_lienzo() - (int)c_alto, 100, Convert.ToInt32(ui_max_ancho_casa.Value) * 100, Convert.ToInt32(ui_max_alto_casa.Value) * 100), //100 es el multiplo 
+                 Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 100, Convert.ToInt32(ui_max_ancho_casa.Value) * 100, Convert.ToInt32(ui_max_alto_casa.Value) * 100), //100 es el multiplo 
                  new Point(),
                  azar.Next(Convert.ToInt32(ui_pilar_cubico_med_min.Value), Convert.ToInt32(ui_pilar_cubico_med_max.Value)),
                  azar.Next(Convert.ToInt32(ui_pilar_round_med_min.Value), Convert.ToInt32(ui_pilar_round_med_max.Value)),
@@ -204,7 +194,12 @@ namespace Creador_de_ciudades
 
                 }     
             }
+            //Subsistema #2 Calcular area del lienzo
 
+
+
+
+            //Subsistema #3 superposiciones
             //Encuentro el nombre del radiobutton de la forma que ha escogido el usuario
 
             String forma_seleccionada = ui_groupbox_forma_casas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
@@ -329,21 +324,16 @@ namespace Creador_de_ciudades
         {
             crear_pages();
             dibujar();
-            ui_label_m2.Text = Convert.ToString(calcular_metros_cuadrados()); 
+            
         }
 
-        private float calcular_metros_cuadrados()
-        {         
-            return (ancho_lienzo() / 100) * (alto_lienzo() / 100);
-        }
+       
 
        
         private void crear_pages() 
         {
             TabControl.TabPages.Clear();
 
-            int ancho = ancho_lienzo();
-            int alto = alto_lienzo();
 
             for (int i = 0; i < ui_cantidad_pisos.Value; i++)
             {
@@ -356,13 +346,33 @@ namespace Creador_de_ciudades
 
                 PictureBox nuevo_lienzo = new PictureBox();
                 nuevo_lienzo.Name = "Planta "+ i;
-                nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
-                nuevo_lienzo.Image = new Bitmap(ancho, alto);
-                nuevo_lienzo.SizeMode = PictureBoxSizeMode.Zoom;
+                
                 nueva_pagina.Controls.Add(nuevo_lienzo);
-
                 TabControl.TabPages.Add(nueva_pagina);
             }           
+
+        }
+        private void crear_pages_area_casas(int ancho, int alto)
+        {
+            TabControl.TabPages.Clear();
+
+            for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+            {
+                string titulo = "Planta " + (TabControl.TabCount).ToString();
+                TabPage nueva_pagina = new TabPage(titulo);
+                nueva_pagina.AutoScroll = true;
+                nueva_pagina.BorderStyle = BorderStyle.Fixed3D;
+                nueva_pagina.BackColor = Color.White;
+
+
+                PictureBox nuevo_lienzo = new PictureBox();
+                nuevo_lienzo.Name = "Planta " + i;
+
+                nueva_pagina.Controls.Add(nuevo_lienzo);
+                nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
+                nuevo_lienzo.Image = new Bitmap(ancho, alto);
+                TabControl.TabPages.Add(nueva_pagina);
+            }
 
         }
 

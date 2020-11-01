@@ -75,8 +75,10 @@ namespace Creador_de_ciudades
                 anchos.Add(azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
                 altos.Add(azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
 
-                ancho_lienzo = ancho_lienzo + anchos[i] * 100;
-                alto_lienzo = alto_lienzo + altos[i] * 100;
+                if (anchos[i] >= altos[i]) 
+                { ancho_lienzo = ancho_lienzo + anchos[i] * 50; } 
+                else 
+                { alto_lienzo = alto_lienzo + altos[i] * 50; }      
             }
 
             float por_ancho = (float)(ancho_lienzo * (Convert.ToInt32(ui_porcentaje_sin_casas.Value) * 0.01));           

@@ -117,6 +117,9 @@
             this.tabControlProp = new System.Windows.Forms.TabControl();
             this.tabcontrol_propiedades = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label30 = new System.Windows.Forms.Label();
+            this.ui_porcentaje_sin_casas = new System.Windows.Forms.NumericUpDown();
+            this.label19 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ui_aislar_casas = new System.Windows.Forms.RadioButton();
             this.ui_pegar_casas = new System.Windows.Forms.RadioButton();
@@ -132,9 +135,6 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label19 = new System.Windows.Forms.Label();
-            this.ui_porcentaje_sin_casas = new System.Windows.Forms.NumericUpDown();
-            this.label30 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -165,6 +165,7 @@
             this.tabControlProp.SuspendLayout();
             this.tabcontrol_propiedades.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_porcentaje_sin_casas)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -173,7 +174,6 @@
             this.splitContainer1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_porcentaje_sin_casas)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -446,7 +446,7 @@
             this.ui_cantidad_casas.Location = new System.Drawing.Point(128, 19);
             this.ui_cantidad_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_cantidad_casas.Minimum = new decimal(new int[] {
-            1,
+            4,
             0,
             0,
             0});
@@ -700,13 +700,11 @@
             // ui_forma_casa_combinar
             // 
             this.ui_forma_casa_combinar.AutoSize = true;
-            this.ui_forma_casa_combinar.Checked = true;
             this.ui_forma_casa_combinar.Location = new System.Drawing.Point(241, 78);
             this.ui_forma_casa_combinar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_combinar.Name = "ui_forma_casa_combinar";
             this.ui_forma_casa_combinar.Size = new System.Drawing.Size(119, 21);
             this.ui_forma_casa_combinar.TabIndex = 9;
-            this.ui_forma_casa_combinar.TabStop = true;
             this.ui_forma_casa_combinar.Text = "Combinar formas";
             this.ui_forma_casa_combinar.UseVisualStyleBackColor = true;
             // 
@@ -775,6 +773,7 @@
             // ui_forma_casa_deformada
             // 
             this.ui_forma_casa_deformada.AutoSize = true;
+            this.ui_forma_casa_deformada.Checked = true;
             this.ui_forma_casa_deformada.Location = new System.Drawing.Point(16, 27);
             this.ui_forma_casa_deformada.Name = "ui_forma_casa_deformada";
             this.ui_forma_casa_deformada.Size = new System.Drawing.Size(150, 21);
@@ -1362,6 +1361,47 @@
             this.tabPage3.Text = "Distribución";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Location = new System.Drawing.Point(355, 21);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(16, 17);
+            this.label30.TabIndex = 11;
+            this.label30.Text = "%";
+            // 
+            // ui_porcentaje_sin_casas
+            // 
+            this.ui_porcentaje_sin_casas.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.ui_porcentaje_sin_casas.Location = new System.Drawing.Point(300, 19);
+            this.ui_porcentaje_sin_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_porcentaje_sin_casas.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_porcentaje_sin_casas.Name = "ui_porcentaje_sin_casas";
+            this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
+            this.ui_porcentaje_sin_casas.TabIndex = 10;
+            this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(203, 21);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(91, 17);
+            this.label19.TabIndex = 9;
+            this.label19.Text = "Área sin casas:";
+            // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.ui_aislar_casas);
@@ -1398,8 +1438,6 @@
             // ui_checkbox_girar
             // 
             this.ui_checkbox_girar.AutoSize = true;
-            this.ui_checkbox_girar.Checked = true;
-            this.ui_checkbox_girar.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_checkbox_girar.Location = new System.Drawing.Point(273, 154);
             this.ui_checkbox_girar.Name = "ui_checkbox_girar";
             this.ui_checkbox_girar.Size = new System.Drawing.Size(93, 21);
@@ -1523,47 +1561,6 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(203, 21);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(91, 17);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "Área sin casas:";
-            // 
-            // ui_porcentaje_sin_casas
-            // 
-            this.ui_porcentaje_sin_casas.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.ui_porcentaje_sin_casas.Location = new System.Drawing.Point(300, 19);
-            this.ui_porcentaje_sin_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_porcentaje_sin_casas.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_porcentaje_sin_casas.Name = "ui_porcentaje_sin_casas";
-            this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
-            this.ui_porcentaje_sin_casas.TabIndex = 10;
-            this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(355, 21);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(16, 17);
-            this.label30.TabIndex = 11;
-            this.label30.Text = "%";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -1619,6 +1616,7 @@
             this.tabcontrol_propiedades.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_porcentaje_sin_casas)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.tabPage2.ResumeLayout(false);
@@ -1629,7 +1627,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_porcentaje_sin_casas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

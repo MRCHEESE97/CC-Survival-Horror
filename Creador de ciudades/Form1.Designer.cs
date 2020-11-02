@@ -1388,7 +1388,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            20,
+            30,
             0,
             0,
             0});
@@ -1450,11 +1450,11 @@
             this.tabPage2.AutoScroll = true;
             this.tabPage2.Controls.Add(this.ui_groupbox_objetos);
             this.tabPage2.Controls.Add(this.groupBox1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(442, 293);
+            this.tabPage2.Size = new System.Drawing.Size(442, 289);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;

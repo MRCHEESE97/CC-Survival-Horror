@@ -56,8 +56,9 @@ namespace Creador_de_ciudades
             Random azar = new Random();
 
             List<Info_forma> datos = new List<Info_forma>();
+            List<Info_calle> datos_calles = new List<Info_calle>();
 
-            //Subsitema: calculo de area ciudad
+            //Subsitema #1: calculo de area ciudad
 
             //Calculo del margen del area de dibujo, para que las formas no sobresalgan
             int margen_ancho = Convert.ToInt32(ui_max_ancho_casa.Value) * 100 ;
@@ -94,7 +95,38 @@ namespace Creador_de_ciudades
             crear_pages_area_casas(ancho_lienzo,alto_lienzo);
 
 
-            //Subsistema de recoleccion de datos: casas
+            //Subsistema # 2 creación de calles
+
+            int largo_calle_ver = alto_lienzo / 100;
+            int largo_calle_hor = ancho_lienzo / 100;
+
+            Brush brocha_calle = new SolidBrush(Color.FromArgb(88,88,88));
+            
+            for (int i = 0; i < 10; i++)
+            {   
+                int s = azar.Next(0,2);
+                if (s == 0)
+                { // Calle vertical
+                    Info_calle nueva_calle = new Info_calle(2, azar.Next(10, largo_calle_ver),
+                    Herramienta.seleccionar_punto_cuadricula(ancho_lienzo , alto_lienzo, 1000, 0, 0));
+                    PictureBox pintura = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
+                    Graphics c = Graphics.FromImage(pintura.Image);
+                    c.FillRectangle(brocha_calle,nueva_calle.po.X, nueva_calle.po.Y, nueva_calle.ancho_forma * 100,nueva_calle.alto_forma * 100);
+                    datos_calles.Add(nueva_calle); 
+                }
+                else 
+                { // Calle horizontal
+                    Info_calle nueva_calle = new Info_calle(azar.Next(10, largo_calle_hor), 2,
+                    Herramienta.seleccionar_punto_cuadricula(ancho_lienzo, alto_lienzo, 1000,0,0));
+                    PictureBox pintura = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
+                    Graphics c = Graphics.FromImage(pintura.Image);
+                    c.FillRectangle(brocha_calle, nueva_calle.po.X, nueva_calle.po.Y, nueva_calle.ancho_forma * 100, nueva_calle.alto_forma * 100);
+                    datos_calles.Add(nueva_calle);
+                }
+            }
+
+
+            //Subsistema # 3 de recoleccion de datos: casas
 
 
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
@@ -156,8 +188,8 @@ namespace Creador_de_ciudades
                 info.resp_alto_forma = info.alto_forma;
                 info.resp_ancho_forma = info.ancho_forma;
 
-             
-                bool interruptor = false;
+              
+                bool interruptor = false;              
 
                 //Valida si existe interseccion entre casas
                 for (int i = 0; i < datos.Count; i++)
@@ -169,6 +201,21 @@ namespace Creador_de_ciudades
                         info = null;
                         break;
                     }                           
+                }
+                //Valida si existe interseccion entre casas en calles
+
+                if (info != null)
+                {
+                    for (int i = 0; i < datos_calles.Count; i++)
+                    {
+                        if (info.area_puntos.Intersect(datos_calles[i].area_puntos).Any())
+                        {
+                            //Existe interseccion
+                            interruptor = true;
+                            info = null;
+                            break;
+                        }
+                    }
                 }
                 if (interruptor)
                 {
@@ -196,12 +243,8 @@ namespace Creador_de_ciudades
 
                 }     
             }
-            //Subsistema #2 Calcular area del lienzo
-
-
-
-
-            //Subsistema #3 superposiciones
+           
+            //Subsistema #4 superposiciones
             //Encuentro el nombre del radiobutton de la forma que ha escogido el usuario
 
             String forma_seleccionada = ui_groupbox_forma_casas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
@@ -372,7 +415,10 @@ namespace Creador_de_ciudades
 
                 nueva_pagina.Controls.Add(nuevo_lienzo);
                 nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
-                nuevo_lienzo.Image = new Bitmap(ancho, alto);
+
+                Bitmap bmp = new Bitmap(ancho, alto);
+                nuevo_lienzo.Image = bmp;
+                
                 TabControl.TabPages.Add(nueva_pagina);
             }
 

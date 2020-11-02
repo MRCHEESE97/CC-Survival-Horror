@@ -36,6 +36,7 @@
     <NoWin32Manifest>true</NoWin32Manifest>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,6 +53,7 @@
     <Compile Include="Clases estaticas\Formas.cs" />
     <Compile Include="Clases estaticas\Herramienta.cs" />
     <Compile Include="Clases estaticas\Objetos.cs" />
+    <Compile Include="Clases\Info_calle.cs" />
     <Compile Include="Clases\Info_forma.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

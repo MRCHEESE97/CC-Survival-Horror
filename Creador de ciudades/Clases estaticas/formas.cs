@@ -61,7 +61,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         {
            
             informacion.g = Graphics.FromImage((Bitmap)pintura.Image);
-            Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
+            SolidBrush brocha_pared = new SolidBrush(Color.FromArgb(253, 236, 166));
             Point[] shape = new Point[6];
             Pen borde = new Pen(Color.Black, informacion.grosor_pared);
             int[] array = { informacion.ancho_forma, informacion.alto_forma };
@@ -104,8 +104,8 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             //Se dibuja la pared
             Pen borde = new Pen(Color.Black, inf.grosor_pared);
-            Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
-           
+            SolidBrush brocha_pared = new SolidBrush(Color.FromArgb(253, 236, 166));
+
             rectangulo = Herramienta.rotar_lista_puntos(rectangulo,inf.grados,inf.punto_medio);
 
             //Despues de rotar guardo los puntos en el objeto
@@ -136,7 +136,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             int hund_izq = 0, hund_der = info.ancho_lienzo;
             Point point1 = new Point();
             Point point2 = new Point();
-            SolidBrush brocha = new SolidBrush(Color.FromArgb(211, 209, 133));
+            SolidBrush brocha = new SolidBrush(Color.FromArgb(253, 236, 166));
             Pen contorno = new Pen(Color.Black,info.grosor_pared);
 
             // Se usan 4 listas para cada lado

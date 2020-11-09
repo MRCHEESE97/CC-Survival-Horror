@@ -150,7 +150,20 @@ namespace Creador_de_ciudades.Clases
                 return puntos;
             }
         }
-        
+        public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto)
+        {
+            //Rota todos los puntos, con un mismo origen y angulo
+            List<Point> puntos = new List<Point>();
+            for (int i = po.X; i <= po.X + ancho * 100; i += 10)
+            {
+                for (int j = po.Y; j <= po.Y + alto * 100; j += 10)
+                {
+                    puntos.Add(new Point(i,j));
+                }
+            }
+            return puntos;
+        }
+
 
     }
 }

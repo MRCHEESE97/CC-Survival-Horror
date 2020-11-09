@@ -41,9 +41,13 @@ namespace Creador_de_ciudades.Clases
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(c.X, c.Y, d.X, d.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(a.X, a.Y, c.X, c.Y));
             //Hasta aqui he encontrado los puntos del cuadrado
+
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(d.X, d.Y, a.X, a.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, c.X, c.Y));
             //Encontradas las 2 diagonales
+
+            //recolector.AddRange(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma));
+
             return recolector;
         }
         private Point A()

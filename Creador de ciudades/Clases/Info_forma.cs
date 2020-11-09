@@ -119,13 +119,15 @@ namespace Creador_de_ciudades.Clases
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(d.X, d.Y, a.X, a.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, c.X, c.Y));
             //Encontradas las 2 diagonales
+            recolector.AddRange(Herramienta.rotar_lista_puntos(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma), grados, punto_medio));
+            //MessageBox.Show(Convert.ToString(a));
             return recolector;    
         }
         private Point A()
         {
             Point a = po;
             if (pegar_casas) { a.X = a.X + 1; a.Y = a.Y + 1;}
-            return a;
+            return Herramienta.rotarpunto(a, punto_medio, grados);
         }
         private Point B()
         {   

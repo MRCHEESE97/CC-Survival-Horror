@@ -19,6 +19,7 @@ using Creador_de_ciudades.Clases;
 using Creador_de_ciudades.Clases_estaticas;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
@@ -52,7 +53,7 @@ namespace Creador_de_ciudades
         //Objetivo: Dibujar los planos en todos los lienzos.
 
         private void dibujar()
-        {
+        {   
             Random azar = new Random();
 
             List<Info_forma> datos = new List<Info_forma>();
@@ -76,10 +77,21 @@ namespace Creador_de_ciudades
                 anchos.Add(azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
                 altos.Add(azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
 
-                if (anchos[i] >= altos[i]) 
-                { ancho_lienzo = ancho_lienzo + anchos[i] * 50; } 
-                else 
-                { alto_lienzo = alto_lienzo + altos[i] * 50; }      
+                if (anchos[i] > altos[i])
+                { ancho_lienzo = ancho_lienzo + anchos[i] * 50; }
+                else if (anchos[i] < altos[i])
+                { alto_lienzo = alto_lienzo + altos[i] * 50; }
+                else if (anchos[i] == altos[i])
+                { // Si son iguales. se alternan
+                    if (i % 2 == 0)
+                    { 
+                        ancho_lienzo = ancho_lienzo + anchos[i] * 50; 
+                    }
+                    else if(i % 2 != 0)
+                    {
+                        alto_lienzo = alto_lienzo + altos[i] * 50;
+                    }
+                }
             }
 
             float por_ancho = (float)(ancho_lienzo * (Convert.ToInt32(ui_porcentaje_sin_casas.Value) * 0.01));           
@@ -101,42 +113,80 @@ namespace Creador_de_ciudades
             int largo_calle_hor = ancho_lienzo / 100;
 
             Brush brocha_calle = new SolidBrush(Color.FromArgb(88,88,88));
+            Pen brocha_vereda = new Pen(Color.White, 100);
+            List<Point> guardado_de_puntos = new List<Point>();
+            List<Info_calle> calles = new List<Info_calle>();
+
+            //Obtiene la info para las calles y dibuja las veredas
             
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < Convert.ToInt32(ui_cantidad_calles.Value); i++)
             {   
                 int s = azar.Next(0,2);
-                if (s == 0)
-                { // Calle vertical
-                    Info_calle nueva_calle = new Info_calle(2, azar.Next(10, largo_calle_ver),
-                    Herramienta.seleccionar_punto_cuadricula(ancho_lienzo , alto_lienzo, 1000, 0, 0));
-                    PictureBox pintura = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
-                    Graphics c = Graphics.FromImage(pintura.Image);
-                    c.FillRectangle(brocha_calle,nueva_calle.po.X, nueva_calle.po.Y, nueva_calle.ancho_forma * 100,nueva_calle.alto_forma * 100);
-                    datos_calles.Add(nueva_calle); 
+                Info_calle nv;
+                Point punto_cuadricula = Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 2500, Convert.ToInt32(ui_max_ancho_casa.Value) * 100, Convert.ToInt32(ui_max_alto_casa.Value) * 100);
+
+                if (guardado_de_puntos.Contains(punto_cuadricula))
+                {
+                    i--;
+                    continue;
                 }
-                else 
-                { // Calle horizontal
-                    Info_calle nueva_calle = new Info_calle(azar.Next(10, largo_calle_hor), 2,
-                    Herramienta.seleccionar_punto_cuadricula(ancho_lienzo, alto_lienzo, 1000,0,0));
+                else
+                {
                     PictureBox pintura = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
                     Graphics c = Graphics.FromImage(pintura.Image);
-                    c.FillRectangle(brocha_calle, nueva_calle.po.X, nueva_calle.po.Y, nueva_calle.ancho_forma * 100, nueva_calle.alto_forma * 100);
-                    datos_calles.Add(nueva_calle);
+
+                    if (i % 2 == 0)
+                    { // Calle vertical
+                        nv = new Info_calle(6, largo_calle_ver, punto_cuadricula);
+                        //c.FillRectangle(brocha_calle, nv.po.X, nv.po.Y, nv.ancho_forma * 100, nv.alto_forma * 100);             
+                        c.DrawLine(brocha_vereda, nv.po.X + 50, nv.po.Y, nv.po.X + 50, nv.po.Y + nv.alto_forma * 100);
+                        c.DrawLine(brocha_vereda, nv.po.X - 50 + nv.ancho_forma * 100, nv.po.Y, nv.po.X - 50 + nv.ancho_forma * 100, nv.po.Y + nv.alto_forma * 100);
+                        datos_calles.Add(nv);
+                    }
+                    else
+                    { // Calle horizontal
+                        nv = new Info_calle(largo_calle_hor, 6, punto_cuadricula);
+                        //c.FillRectangle(brocha_calle, nv.po.X, nv.po.Y, nv.ancho_forma * 100, nv.alto_forma * 100);
+                        c.DrawLine(brocha_vereda, nv.po.X, nv.po.Y + 50, nv.po.X + nv.ancho_forma * 100, nv.po.Y + 50);
+                        c.DrawLine(brocha_vereda, nv.po.X, nv.po.Y - 50 + nv.alto_forma * 100, nv.po.X - 50 + nv.ancho_forma * 100, nv.po.Y -50 + nv.alto_forma * 100);
+                        datos_calles.Add(nv);
+                    }                  
+                    calles.Add(nv);
+                    guardado_de_puntos.Add(punto_cuadricula);
                 }
             }
 
+            //Dibujo las calles
 
-            //Subsistema # 3 de recoleccion de datos: casas
+            for (int i = 0; i < Convert.ToInt32(ui_cantidad_calles.Value); i++) 
+            {
+                PictureBox pintura = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
+                Graphics c = Graphics.FromImage(pintura.Image);
+                if (i % 2 == 0)
+                { // Calle vertical
+                    c.FillRectangle(brocha_calle, calles[i].po.X + 100, calles[i].po.Y, (calles[i].ancho_forma - 2) * 100, calles[i].alto_forma * 100);
+                }
+                else
+                { // Calle horizontal
+                    c.FillRectangle(brocha_calle, calles[i].po.X, calles[i].po.Y + 100, calles[i].ancho_forma * 100, (calles[i].alto_forma - 2) * 100);
+                }              
+            }
 
 
-            for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
-            {   
+                //Subsistema # 3 de recoleccion de datos: casas
+
+
+                for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
+            {
+
+               
+
                 //Guardo en una variable el valor para los grados
                 int grados = 0;
                 if (ui_checkbox_girar.Checked) { grados = azar.Next(0, 361); }
                 else 
                 { 
-                    int seleccionar = azar.Next(0, 5);
+                    int seleccionar = azar.Next(0, 4);
                     switch (seleccionar) 
                     { 
                         case 0: grados = 90;
@@ -369,7 +419,6 @@ namespace Creador_de_ciudades
         {
             crear_pages();
             dibujar();
-            
         }
 
        
@@ -417,8 +466,7 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
 
                 Bitmap bmp = new Bitmap(ancho, alto);
-                nuevo_lienzo.Image = bmp;
-                
+                nuevo_lienzo.Image = bmp; 
                 TabControl.TabPages.Add(nueva_pagina);
             }
 
@@ -468,14 +516,58 @@ namespace Creador_de_ciudades
             ui_label_m2.Text = "----";
         }
 
-        private void ui_objetos_ventana_binaria_CheckedChanged(object sender, EventArgs e)
+        //Validación de minimos y maximos
+        private void ui_min_grosor_pared_ValueChanged(object sender, EventArgs e)
         {
-
+            if (Convert.ToInt32(ui_min_grosor_pared.Value) > Convert.ToInt32(ui_max_grosor_pared.Value))
+            {
+                MessageBox.Show("Valor invalido");
+                ui_min_grosor_pared.Value = ui_max_grosor_pared.Value;
+            }
         }
 
-        private void ui_objetos_ventana_total_CheckedChanged(object sender, EventArgs e)
+        private void ui_max_grosor_pared_ValueChanged(object sender, EventArgs e)
         {
+            if (Convert.ToInt32(ui_max_grosor_pared.Value) < Convert.ToInt32(ui_min_grosor_pared.Value))
+            {
+                MessageBox.Show("Valor invalido");
+                ui_max_grosor_pared.Value = ui_min_grosor_pared.Value;
+            }
+        }
+        private void ui_min_ancho_casa_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(ui_min_ancho_casa.Value) > Convert.ToInt32(ui_max_ancho_casa.Value))
+            {
+                MessageBox.Show("Valor invalido");
+                ui_min_ancho_casa.Value = ui_max_ancho_casa.Value;
+            }
+        }
 
+        private void ui_max_ancho_casa_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(ui_max_ancho_casa.Value) < Convert.ToInt32(ui_min_ancho_casa.Value))
+            {
+                MessageBox.Show("Valor invalido");
+                ui_max_ancho_casa.Value = ui_min_ancho_casa.Value;
+            }
+        }
+
+        private void ui_min_alto_casa_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(ui_min_alto_casa.Value) > Convert.ToInt32(ui_max_alto_casa.Value))
+            {
+                MessageBox.Show("Valor invalido");
+                ui_min_alto_casa.Value = ui_max_alto_casa.Value;
+            }
+        }
+
+        private void ui_max_alto_casa_ValueChanged(object sender, EventArgs e)
+        {
+            if (Convert.ToInt32(ui_max_alto_casa.Value) < Convert.ToInt32(ui_min_alto_casa.Value))
+            {
+                MessageBox.Show("Valor invalido");
+                ui_max_alto_casa.Value = ui_min_alto_casa.Value;
+            }
         }
     }
 }

@@ -12,4 +12,6 @@ Este software genera planos en imagenes PNG, estan deben ser llevadas a una herr
 Podrán generar ciudades en pocos minutos
 
 
+Apoyo: Al desarrollo de este y de futuros proyectos, suscribete a mi patreon:
 
+https://www.patreon.com/MRCHEESE97/membership

@@ -27,6 +27,7 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Security.Principal;
+using System.Threading;
 using System.Windows.Forms;
 
 
@@ -71,8 +72,8 @@ namespace Creador_de_ciudades
 
             List<int> anchos = new List<int>();
             List<int> altos = new List<int>();
-                        
-            for (int i = 0; i < ui_cantidad_casas.Value; i++) 
+
+            for (int i = 0; i < ui_cantidad_casas.Value; i++)
             {
                 anchos.Add(azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
                 altos.Add(azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
@@ -84,15 +85,16 @@ namespace Creador_de_ciudades
                 else if (anchos[i] == altos[i])
                 { // Si son iguales. se alternan
                     if (i % 2 == 0)
-                    { 
-                        ancho_lienzo = ancho_lienzo + anchos[i] * 50; 
+                    {
+                        ancho_lienzo = ancho_lienzo + anchos[i] * 50;
                     }
-                    else if(i % 2 != 0)
+                    else if (i % 2 != 0)
                     {
                         alto_lienzo = alto_lienzo + altos[i] * 50;
                     }
                 }
             }
+
 
             float por_ancho = (float)(ancho_lienzo * (Convert.ToInt32(ui_porcentaje_sin_casas.Value) * 0.01));           
             ancho_lienzo = (int)(ancho_lienzo + por_ancho);
@@ -102,9 +104,20 @@ namespace Creador_de_ciudades
             alto_lienzo = (int)(alto_lienzo + por_alto);
             alto_lienzo = alto_lienzo + margen_alto;
 
+            //Mostrar area de ciudad
+
+            ui_label_m2.Text = Convert.ToString((ancho_lienzo * alto_lienzo)/100);
+
             //Llamada a la función que crea los lienzos
 
             crear_pages_area_casas(ancho_lienzo,alto_lienzo);
+
+            //Pintar el fondo del picture box
+
+            PictureBox pic = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
+            Graphics fondo = Graphics.FromImage(pic.Image);
+            Brush brocha_fondo = new SolidBrush(Color.FromArgb(0, 255, 0));
+            fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0,0), new Size(ancho_lienzo, alto_lienzo)));
 
 
             //Subsistema # 2 creación de calles
@@ -123,7 +136,7 @@ namespace Creador_de_ciudades
             {   
                 int s = azar.Next(0,2);
                 Info_calle nv;
-                Point punto_cuadricula = Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 2500, Convert.ToInt32(ui_max_ancho_casa.Value) * 100, Convert.ToInt32(ui_max_alto_casa.Value) * 100);
+                Point punto_cuadricula = Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 100, Convert.ToInt32(ui_min_ancho_casa.Value) * 100, Convert.ToInt32(ui_min_alto_casa.Value) * 100);
 
                 if (guardado_de_puntos.Contains(punto_cuadricula))
                 {
@@ -173,13 +186,20 @@ namespace Creador_de_ciudades
             }
 
 
-                //Subsistema # 3 de recoleccion de datos: casas
+            //Subsistema # 3 de recoleccion de datos: casas
+
+            Stopwatch cronometro = new Stopwatch();
+            cronometro.Start();
 
 
-                for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
+            for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {
-
-               
+                if (cronometro.ElapsedMilliseconds >= 20000)
+                {
+                    MessageBox.Show("Superó el tiempo limite ", "Operación cancelada",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return;
+                }
+            
 
                 //Guardo en una variable el valor para los grados
                 int grados = 0;
@@ -208,6 +228,14 @@ namespace Creador_de_ciudades
 
                 String vano_ventana_seleccionado = ui_group_box_vanos_ventanas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
+                //En caso de que una de las casas no encaje y pasaron mas de 10 segundos cambiara su tamaño
+
+                if (cronometro.ElapsedMilliseconds > 5000) 
+                {
+                 anchos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
+                 altos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);
+                }
+
                 //Aqui empieza la recollecion de la informacion para las casas
 
                 Info_forma info = new Info_forma
@@ -217,7 +245,7 @@ namespace Creador_de_ciudades
                  anchos[ubicacion_datos],
                  altos[ubicacion_datos],
                  azar.Next(Convert.ToInt32(ui_min_grosor_pared.Value), Convert.ToInt32(ui_max_grosor_pared.Value)),
-                 Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 100, Convert.ToInt32(ui_max_ancho_casa.Value) * 100, Convert.ToInt32(ui_max_alto_casa.Value) * 100), //100 es el multiplo 
+                 Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 100, Convert.ToInt32(ui_min_ancho_casa.Value) * 100, Convert.ToInt32(ui_min_alto_casa.Value) * 100), //100 es el multiplo 
                  new Point(),
                  azar.Next(Convert.ToInt32(ui_pilar_cubico_med_min.Value), Convert.ToInt32(ui_pilar_cubico_med_max.Value)),
                  azar.Next(Convert.ToInt32(ui_pilar_round_med_min.Value), Convert.ToInt32(ui_pilar_round_med_max.Value)),
@@ -408,17 +436,19 @@ namespace Creador_de_ciudades
                             datos[recorrer].ubicacion_pb = false;
                         }
 
-                      
+                        
                     }
                 }
-            }    
-            
+            }
+            MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
               
         private void ui_construir_Click(object sender, EventArgs e)
         {
             crear_pages();
+            //Llamo al metodo de dibujo por medio de un hilo
             dibujar();
+           
         }
 
        
@@ -457,13 +487,16 @@ namespace Creador_de_ciudades
                 nueva_pagina.AutoScroll = true;
                 nueva_pagina.BorderStyle = BorderStyle.Fixed3D;
                 nueva_pagina.BackColor = Color.White;
+                
 
 
                 PictureBox nuevo_lienzo = new PictureBox();
                 nuevo_lienzo.Name = "Planta " + i;
 
                 nueva_pagina.Controls.Add(nuevo_lienzo);
-                nuevo_lienzo.Size = new System.Drawing.Size(ancho, alto);
+                nuevo_lienzo.Size = new System.Drawing.Size(tabPage1.Size.Width, tabPage1.Size.Height);
+                nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
+                nuevo_lienzo.Dock = DockStyle.Fill;
 
                 Bitmap bmp = new Bitmap(ancho, alto);
                 nuevo_lienzo.Image = bmp; 
@@ -568,6 +601,11 @@ namespace Creador_de_ciudades
                 MessageBox.Show("Valor invalido");
                 ui_max_alto_casa.Value = ui_min_alto_casa.Value;
             }
+        }
+
+        private void TabControl_SizeChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -154,14 +154,46 @@ namespace Creador_de_ciudades.Clases
         {
             //Rota todos los puntos, con un mismo origen y angulo
             List<Point> puntos = new List<Point>();
-            for (int i = po.X; i <= po.X + ancho * 100; i += 10)
+            for (int i = po.X; i <= po.X + ancho * 100; i += 50)
             {
-                for (int j = po.Y; j <= po.Y + alto * 100; j += 10)
+                for (int j = po.Y; j <= po.Y + alto * 100; j += 50)
                 {
                     puntos.Add(new Point(i,j));
                 }
             }
             return puntos;
+        }
+
+        public static int azar_par_o_impar(int min, int max, bool modo)   
+        {
+
+            Random azar = new Random();
+
+            int encontrado = azar.Next(min, max);
+
+            if (modo == true)
+            {
+                if (encontrado % 2 == 0)
+                {
+                    return azar_par_o_impar(min, max, modo);
+                }
+                else
+                {
+                    return encontrado;
+                }
+            }
+            else
+            {
+                if (encontrado % 2 != 0)
+                {
+                    return azar_par_o_impar(min, max, modo);
+                }
+                else
+                {
+                    return encontrado;
+                }
+            }
+            
         }
 
 

@@ -259,7 +259,7 @@
             this.TabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(540, 469);
+            this.TabControl.Size = new System.Drawing.Size(538, 467);
             this.TabControl.TabIndex = 6;
             // 
             // tabPage1
@@ -269,7 +269,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(532, 440);
+            this.tabPage1.Size = new System.Drawing.Size(530, 438);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Planta 0";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -1344,7 +1344,7 @@
             this.tabControlProp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlProp.Name = "tabControlProp";
             this.tabControlProp.SelectedIndex = 0;
-            this.tabControlProp.Size = new System.Drawing.Size(448, 317);
+            this.tabControlProp.Size = new System.Drawing.Size(446, 315);
             this.tabControlProp.TabIndex = 10;
             // 
             // tabcontrol_propiedades
@@ -1380,7 +1380,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(440, 287);
+            this.tabPage3.Size = new System.Drawing.Size(438, 285);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Distribución";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1582,7 +1582,7 @@
             // splitContainer1
             // 
             this.splitContainer1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 31);
             this.splitContainer1.Name = "splitContainer1";
@@ -1606,9 +1606,9 @@
             this.groupBox2.Controls.Add(this.ui_quitar_todo);
             this.groupBox2.Controls.Add(this.ui_construir);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 317);
+            this.groupBox2.Location = new System.Drawing.Point(0, 315);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(448, 152);
+            this.groupBox2.Size = new System.Drawing.Size(446, 152);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             // 

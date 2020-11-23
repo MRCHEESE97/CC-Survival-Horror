@@ -33,14 +33,15 @@ using System.Windows.Forms;
 
 
 namespace Creador_de_ciudades
-{
+{   
     public partial class Form1 : Form
     {
         public Form1()
         {
-            InitializeComponent();
+            InitializeComponent();    
         }
         
+
         //Subsistema TabControl
         //Objetivo: Esta parte del código instancia las paginas para el tabControl
 
@@ -106,7 +107,7 @@ namespace Creador_de_ciudades
 
             //Mostrar area de ciudad
 
-            ui_label_m2.Text = Convert.ToString((ancho_lienzo * alto_lienzo)/100);
+            ui_label_m2.Text = Convert.ToString((ancho_lienzo/100 * alto_lienzo/100));
 
             //Llamada a la función que crea los lienzos
 

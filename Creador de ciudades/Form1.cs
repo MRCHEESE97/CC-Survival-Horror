@@ -197,7 +197,7 @@ namespace Creador_de_ciudades
 
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {
-                if (cronometro.ElapsedMilliseconds >= 50000)
+                if (cronometro.ElapsedMilliseconds >= Convert.ToInt32( ui_tiempo_espera.Value) * 1000)
                 {
                     MessageBox.Show("Superó el tiempo limite ", "Operación cancelada",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -233,7 +233,7 @@ namespace Creador_de_ciudades
 
                 //En caso de que una de las casas no encaje y pasaron mas de 10 segundos cambiara su tamaño
 
-                if (cronometro.ElapsedMilliseconds > 30000) 
+                if (cronometro.ElapsedMilliseconds > Convert.ToInt32(ui_tiempo_espera.Value) * 1000 - (Convert.ToInt32(ui_tiempo_espera.Value) * 1000 * 0.1)) //Espera el 90% del tiempo de respuesta
                 {
                  anchos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
                  altos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);

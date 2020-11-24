@@ -37,7 +37,6 @@
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
-            this.temaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -142,7 +141,7 @@
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.ui_group_box_distribucion = new System.Windows.Forms.GroupBox();
             this.ui_distribucion_aleatoria = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_filas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_columnas = new System.Windows.Forms.RadioButton();
@@ -189,7 +188,7 @@
             this.groupBox3.SuspendLayout();
             this.groupBox7.SuspendLayout();
             this.groupBox8.SuspendLayout();
-            this.groupBox9.SuspendLayout();
+            this.ui_group_box_distribucion.SuspendLayout();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -204,8 +203,7 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.lenguajeToolStripMenuItem,
-            this.perfilesToolStripMenuItem,
-            this.temaToolStripMenuItem});
+            this.perfilesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 3, 0, 3);
@@ -252,12 +250,6 @@
             // 
             this.toolStripComboBox2.Name = "toolStripComboBox2";
             this.toolStripComboBox2.Size = new System.Drawing.Size(121, 23);
-            // 
-            // temaToolStripMenuItem
-            // 
-            this.temaToolStripMenuItem.Name = "temaToolStripMenuItem";
-            this.temaToolStripMenuItem.Size = new System.Drawing.Size(55, 25);
-            this.temaToolStripMenuItem.Text = "Tema";
             // 
             // TabControl
             // 
@@ -1375,7 +1367,7 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
-            this.tabPage3.Controls.Add(this.groupBox9);
+            this.tabPage3.Controls.Add(this.ui_group_box_distribucion);
             this.tabPage3.Controls.Add(this.groupBox8);
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.groupBox5);
@@ -1677,21 +1669,22 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Red de calles (En desarrollo)";
             // 
-            // groupBox9
+            // ui_group_box_distribucion
             // 
-            this.groupBox9.Controls.Add(this.ui_distribucion_columnas);
-            this.groupBox9.Controls.Add(this.ui_distribucion_filas);
-            this.groupBox9.Controls.Add(this.ui_distribucion_aleatoria);
-            this.groupBox9.Location = new System.Drawing.Point(228, 108);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(185, 166);
-            this.groupBox9.TabIndex = 16;
-            this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Tipo de distribución / casas";
+            this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_columnas);
+            this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_filas);
+            this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_aleatoria);
+            this.ui_group_box_distribucion.Location = new System.Drawing.Point(228, 108);
+            this.ui_group_box_distribucion.Name = "ui_group_box_distribucion";
+            this.ui_group_box_distribucion.Size = new System.Drawing.Size(185, 166);
+            this.ui_group_box_distribucion.TabIndex = 16;
+            this.ui_group_box_distribucion.TabStop = false;
+            this.ui_group_box_distribucion.Text = "Tipo de distribución / casas";
             // 
             // ui_distribucion_aleatoria
             // 
             this.ui_distribucion_aleatoria.AutoSize = true;
+            this.ui_distribucion_aleatoria.Checked = true;
             this.ui_distribucion_aleatoria.Location = new System.Drawing.Point(18, 25);
             this.ui_distribucion_aleatoria.Name = "ui_distribucion_aleatoria";
             this.ui_distribucion_aleatoria.Size = new System.Drawing.Size(75, 21);
@@ -1797,8 +1790,8 @@
             this.groupBox7.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            this.groupBox9.ResumeLayout(false);
-            this.groupBox9.PerformLayout();
+            this.ui_group_box_distribucion.ResumeLayout(false);
+            this.ui_group_box_distribucion.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1809,7 +1802,6 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem archivoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem temaToolStripMenuItem;
         private System.Windows.Forms.TabControl TabControl;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown ui_cantidad_pisos;
@@ -1919,7 +1911,7 @@
         private System.Windows.Forms.RadioButton ui_solo_pares;
         private System.Windows.Forms.GroupBox groupBox8;
         private System.Windows.Forms.GroupBox groupBox7;
-        private System.Windows.Forms.GroupBox groupBox9;
+        private System.Windows.Forms.GroupBox ui_group_box_distribucion;
         private System.Windows.Forms.RadioButton ui_distribucion_columnas;
         private System.Windows.Forms.RadioButton ui_distribucion_filas;
         private System.Windows.Forms.RadioButton ui_distribucion_aleatoria;

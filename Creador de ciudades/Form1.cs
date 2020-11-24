@@ -57,6 +57,8 @@ namespace Creador_de_ciudades
         private void dibujar()
         {   
             Random azar = new Random();
+            //Variable para busqueda de origen
+            int x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100, y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
 
             List<Info_forma> datos = new List<Info_forma>();
             List<Info_calle> datos_calles = new List<Info_calle>();
@@ -195,7 +197,7 @@ namespace Creador_de_ciudades
 
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {
-                if (cronometro.ElapsedMilliseconds >= 20000)
+                if (cronometro.ElapsedMilliseconds >= 50000)
                 {
                     MessageBox.Show("Superó el tiempo limite ", "Operación cancelada",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
@@ -231,10 +233,42 @@ namespace Creador_de_ciudades
 
                 //En caso de que una de las casas no encaje y pasaron mas de 10 segundos cambiara su tamaño
 
-                if (cronometro.ElapsedMilliseconds > 5000) 
+                if (cronometro.ElapsedMilliseconds > 30000) 
                 {
                  anchos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
                  altos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);
+                }
+
+                //Subsistema 3.1 seleccion de punto origen segun la distribución
+
+                Point origen = new Point();
+
+                String distribucion_seleccionado = ui_group_box_distribucion.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
+
+                switch (distribucion_seleccionado)
+                {
+                    case "ui_distribucion_aleatoria":
+                        origen = Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 100, Convert.ToInt32(ui_min_ancho_casa.Value) * 100, Convert.ToInt32(ui_min_alto_casa.Value) * 100);
+                        //100 es el multiplo
+                        break;
+                    case "ui_distribucion_columnas":
+                        if(y_ori >= alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100)
+                        {
+                            x_ori = x_ori + 100;
+                            y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
+                        }
+                        origen = new Point(x_ori, y_ori);
+                        y_ori = y_ori + 100;
+                        break;
+                    case "ui_distribucion_filas":
+                        if (x_ori >= ancho_lienzo - Convert.ToInt32(ui_max_ancho_casa.Value) * 100)
+                        {
+                            x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100;
+                            y_ori = y_ori + 100;
+                        }
+                        origen = new Point(x_ori, y_ori);
+                        x_ori = x_ori + 100;
+                        break;
                 }
 
                 //Aqui empieza la recollecion de la informacion para las casas
@@ -246,7 +280,7 @@ namespace Creador_de_ciudades
                  anchos[ubicacion_datos],
                  altos[ubicacion_datos],
                  azar.Next(Convert.ToInt32(ui_min_grosor_pared.Value), Convert.ToInt32(ui_max_grosor_pared.Value)),
-                 Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 100, Convert.ToInt32(ui_min_ancho_casa.Value) * 100, Convert.ToInt32(ui_min_alto_casa.Value) * 100), //100 es el multiplo 
+                 origen, //origen de la forma (casa) 
                  new Point(),
                  azar.Next(Convert.ToInt32(ui_pilar_cubico_med_min.Value), Convert.ToInt32(ui_pilar_cubico_med_max.Value)),
                  azar.Next(Convert.ToInt32(ui_pilar_round_med_min.Value), Convert.ToInt32(ui_pilar_round_med_max.Value)),
@@ -604,9 +638,5 @@ namespace Creador_de_ciudades
             }
         }
 
-        private void TabControl_SizeChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

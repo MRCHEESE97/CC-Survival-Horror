@@ -706,11 +706,11 @@
             this.ui_groupbox_forma_casas.Controls.Add(this.Posibilidad);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_rectangular);
-            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(14, 281);
+            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(6, 281);
             this.ui_groupbox_forma_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_forma_casas.Name = "ui_groupbox_forma_casas";
             this.ui_groupbox_forma_casas.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(405, 228);
+            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(399, 228);
             this.ui_groupbox_forma_casas.TabIndex = 6;
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Formas/casas";
@@ -1390,7 +1390,7 @@
             this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_columnas);
             this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_filas);
             this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_aleatoria);
-            this.ui_group_box_distribucion.Location = new System.Drawing.Point(228, 108);
+            this.ui_group_box_distribucion.Location = new System.Drawing.Point(220, 108);
             this.ui_group_box_distribucion.Name = "ui_group_box_distribucion";
             this.ui_group_box_distribucion.Size = new System.Drawing.Size(185, 166);
             this.ui_group_box_distribucion.TabIndex = 16;
@@ -1435,7 +1435,7 @@
             // 
             this.groupBox8.Controls.Add(this.label31);
             this.groupBox8.Controls.Add(this.ui_cantidad_calles);
-            this.groupBox8.Location = new System.Drawing.Point(14, 108);
+            this.groupBox8.Location = new System.Drawing.Point(6, 108);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(208, 166);
             this.groupBox8.TabIndex = 15;
@@ -1476,7 +1476,7 @@
             this.groupBox7.Controls.Add(this.label19);
             this.groupBox7.Controls.Add(this.label30);
             this.groupBox7.Controls.Add(this.ui_porcentaje_sin_casas);
-            this.groupBox7.Location = new System.Drawing.Point(14, 7);
+            this.groupBox7.Location = new System.Drawing.Point(6, 7);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(208, 95);
             this.groupBox7.TabIndex = 14;
@@ -1529,7 +1529,7 @@
             this.groupBox5.Controls.Add(this.ui_aislar_casas);
             this.groupBox5.Controls.Add(this.ui_pegar_casas);
             this.groupBox5.Controls.Add(this.ui_checkbox_girar);
-            this.groupBox5.Location = new System.Drawing.Point(229, 7);
+            this.groupBox5.Location = new System.Drawing.Point(221, 7);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(184, 95);
             this.groupBox5.TabIndex = 8;
@@ -1563,9 +1563,9 @@
             this.ui_checkbox_girar.AutoSize = true;
             this.ui_checkbox_girar.Location = new System.Drawing.Point(18, 68);
             this.ui_checkbox_girar.Name = "ui_checkbox_girar";
-            this.ui_checkbox_girar.Size = new System.Drawing.Size(93, 21);
+            this.ui_checkbox_girar.Size = new System.Drawing.Size(103, 21);
             this.ui_checkbox_girar.TabIndex = 7;
-            this.ui_checkbox_girar.Text = "Girar casas ";
+            this.ui_checkbox_girar.Text = "Girar casas ↺";
             this.ui_checkbox_girar.UseVisualStyleBackColor = true;
             // 
             // tabPage2

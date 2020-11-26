@@ -28,6 +28,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Principal;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -302,34 +303,37 @@ namespace Creador_de_ciudades
                 info.resp_ancho_forma = info.ancho_forma;
 
               
-                bool interruptor = false;              
+                bool interruptor = false;
+
+                CancellationTokenSource cts = new CancellationTokenSource();
 
                 //Valida si existe interseccion entre casas
-                for (int i = 0; i < datos.Count; i++)
-                {              
-                 if (info.area_puntos.Intersect(datos[i].area_puntos).Any())
+
+                Parallel.For(0, datos.Count - 1, (i, state) =>
+                {
+                    if (datos[i].area_puntos.Intersect(info.area_puntos).Any())
                     {
                         //Existe interseccion
                         interruptor = true;
-                        info = null;
-                        break;
-                    }                           
-                }
+                        state.Break();
+                    }
+                });
+                
                 //Valida si existe interseccion entre casas en calles
 
                 if (info != null)
                 {
-                    for (int i = 0; i < datos_calles.Count; i++)
+                    Parallel.For(0, datos_calles.Count - 1, (i, state) =>
                     {
                         if (info.area_puntos.Intersect(datos_calles[i].area_puntos).Any())
                         {
                             //Existe interseccion
                             interruptor = true;
-                            info = null;
-                            break;
+                            state.Break();
                         }
-                    }
+                    });             
                 }
+
                 if (interruptor)
                 {
                     ubicacion_datos--;

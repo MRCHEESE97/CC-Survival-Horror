@@ -111,41 +111,47 @@ namespace Creador_de_ciudades.Clases
         private List<Point> area()
         {
             List<Point> recolector = new List<Point>();
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(a.X,a.Y,b.X,b.Y));
+          
+            recolector.AddRange(Herramienta.obtener_puntos_diagonal(a.X, a.Y, b.X, b.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, d.X, d.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(c.X, c.Y, d.X, d.Y));
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(a.X, a.Y, c.X, c.Y));
             //Hasta aqui he encontrado los puntos del cuadrado
+
+            //Encontrar 4 lineas 
+
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(d.X, d.Y, a.X, a.Y));
+
             recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, c.X, c.Y));
             //Encontradas las 2 diagonales
+          
             recolector.AddRange(Herramienta.rotar_lista_puntos(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma), grados, punto_medio));
-            //MessageBox.Show(Convert.ToString(a));
-            return recolector;    
+                       
+            return recolector;
         }
         private Point A()
         {
             Point a = po;
-            if (pegar_casas) { a.X = a.X + 1; a.Y = a.Y + 1;}
+            if (pegar_casas) { a.X = a.X + 2; a.Y = a.Y + 2;}
             return Herramienta.rotarpunto(a, punto_medio, grados);
         }
         private Point B()
         {   
             Point b = new Point(po.X + ancho_forma * 100, po.Y);
-            if (pegar_casas) { b.X = b.X - 1; b.Y = b.Y + 1; }
+            if (pegar_casas) { b.X = b.X - 2; b.Y = b.Y + 2; }
             return Herramienta.rotarpunto(b,punto_medio,grados);
         }
         private Point C()
         {
             Point c = new Point(po.X, po.Y + alto_forma * 100);
-            if (pegar_casas) { c.X = c.X + 1; c.Y = c.Y - 1;}
+            if (pegar_casas) { c.X = c.X + 2; c.Y = c.Y - 2;}
            
             return Herramienta.rotarpunto(c, punto_medio, grados);
         }
         private Point D()
         {
             Point d = new Point(po.X + ancho_forma * 100, po.Y + alto_forma * 100);
-            if (pegar_casas) { d.X = d.X - 1; d.Y = d.Y - 1; }
+            if (pegar_casas) { d.X = d.X - 2; d.Y = d.Y - 2; }
             return Herramienta.rotarpunto(d, punto_medio, grados);
         }
         private Point centro()

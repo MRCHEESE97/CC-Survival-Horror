@@ -61,8 +61,8 @@ namespace Creador_de_ciudades
             //Variable para busqueda de origen
             int x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100, y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
 
-            List<Info_forma> datos = new List<Info_forma>();
-            List<Info_calle> datos_calles = new List<Info_calle>();
+            List<Info_forma> lista_casas = new List<Info_forma>();
+            List<Info_calle> lista_calles = new List<Info_calle>();
 
             //Subsitema #1: calculo de area ciudad
 
@@ -158,7 +158,7 @@ namespace Creador_de_ciudades
                         //c.FillRectangle(brocha_calle, nv.po.X, nv.po.Y, nv.ancho_forma * 100, nv.alto_forma * 100);             
                         c.DrawLine(brocha_vereda, nv.po.X + 50, nv.po.Y, nv.po.X + 50, nv.po.Y + nv.alto_forma * 100);
                         c.DrawLine(brocha_vereda, nv.po.X - 50 + nv.ancho_forma * 100, nv.po.Y, nv.po.X - 50 + nv.ancho_forma * 100, nv.po.Y + nv.alto_forma * 100);
-                        datos_calles.Add(nv);
+                        lista_calles.Add(nv);
                     }
                     else
                     { // Calle horizontal
@@ -166,7 +166,7 @@ namespace Creador_de_ciudades
                         //c.FillRectangle(brocha_calle, nv.po.X, nv.po.Y, nv.ancho_forma * 100, nv.alto_forma * 100);
                         c.DrawLine(brocha_vereda, nv.po.X, nv.po.Y + 50, nv.po.X + nv.ancho_forma * 100, nv.po.Y + 50);
                         c.DrawLine(brocha_vereda, nv.po.X, nv.po.Y - 50 + nv.alto_forma * 100, nv.po.X - 50 + nv.ancho_forma * 100, nv.po.Y -50 + nv.alto_forma * 100);
-                        datos_calles.Add(nv);
+                        lista_calles.Add(nv);
                     }                  
                     calles.Add(nv);
                     guardado_de_puntos.Add(punto_cuadricula);
@@ -274,7 +274,7 @@ namespace Creador_de_ciudades
 
                 //Aqui empieza la recollecion de la informacion para las casas
 
-                Info_forma info = new Info_forma
+                Info_forma nueva_casa = new Info_forma
                 (
                  ancho_lienzo,
                  alto_lienzo,
@@ -299,40 +299,48 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_vano_puerta_cant_min.Value), Convert.ToInt32(ui_vano_puerta_cant_max.Value))
                 );
 
-                info.resp_alto_forma = info.alto_forma;
-                info.resp_ancho_forma = info.ancho_forma;
+                nueva_casa.resp_alto_forma = nueva_casa.alto_forma;
+                nueva_casa.resp_ancho_forma = nueva_casa.ancho_forma;
 
               
+                //Subsistema 3.2 #Filtros
+
                 bool interruptor = false;
 
-                CancellationTokenSource cts = new CancellationTokenSource();
+                //Verificar si existe interseccion entre casas
+                //Esta verificación me deja una gran leccion 29/11/20 :)
 
-                //Valida si existe interseccion entre casas
-
-                Parallel.For(0, datos.Count - 1, (i, state) =>
+                for (int x = 0; x < lista_casas.Count; x++)
                 {
-                    if (datos[i].area_puntos.Intersect(info.area_puntos).Any())
+                    Parallel.For(0, nueva_casa.area_puntos.Count - 1, (i, state) => 
                     {
-                        //Existe interseccion
-                        interruptor = true;
-                        state.Break();
-                    }
-                });
-                
-                //Valida si existe interseccion entre casas en calles
-
-                if (info != null)
-                {
-                    Parallel.For(0, datos_calles.Count - 1, (i, state) =>
-                    {
-                        if (info.area_puntos.Intersect(datos_calles[i].area_puntos).Any())
+                        if (lista_casas[x].area_puntos.Contains(nueva_casa.area_puntos[i]))
                         {
                             //Existe interseccion
                             interruptor = true;
-                            state.Break();
+                            state.Break();                         
                         }
-                    });             
+                    });
                 }
+                
+                
+                //Verifica si existe interseccion entre casas y calles
+
+                if (nueva_casa != null)
+                {
+                    for (int x = 0; x < lista_calles.Count; x++)
+                    {
+                        Parallel.For(0, nueva_casa.area_puntos.Count - 1, (i, state) =>
+                        {
+                            if (lista_calles[x].area_puntos.Contains(nueva_casa.area_puntos[i]))
+                            {
+                                //Existe interseccion
+                                interruptor = true;
+                                state.Break();
+                            }
+                        });
+                    }
+                } 
 
                 if (interruptor)
                 {
@@ -342,7 +350,8 @@ namespace Creador_de_ciudades
                 else
                 {
                     // Si no se encontraron intersecciones agrega la info de forma
-                    datos.Add(info);
+                    //nueva_casa.area_post();
+                    lista_casas.Add(nueva_casa);
 
                     if (ui_objetos_elevador.Checked == true)
                     {
@@ -350,10 +359,10 @@ namespace Creador_de_ciudades
                         bool encontrado = false;
                         do
                         {
-                            info.origen_elevador = Herramienta.seleccionar_punto_cuadricula(info.po.X + info.ancho_forma * 100, info.po.Y + info.alto_forma * 100, 100, info.po.X, info.po.Y);
-                            info.espacio_elevador = new Rectangle(info.origen_elevador.X, info.origen_elevador.Y, 2 * 100, 2 * 100);
-                            Rectangle resultado = Rectangle.Intersect(info.espacio_elevador, info.espacio_forma);
-                            if (resultado == info.espacio_elevador)
+                            nueva_casa.origen_elevador = Herramienta.seleccionar_punto_cuadricula(nueva_casa.po.X + nueva_casa.ancho_forma * 100, nueva_casa.po.Y + nueva_casa.alto_forma * 100, 100, nueva_casa.po.X, nueva_casa.po.Y);
+                            nueva_casa.espacio_elevador = new Rectangle(nueva_casa.origen_elevador.X, nueva_casa.origen_elevador.Y, 2 * 100, 2 * 100);
+                            Rectangle resultado = Rectangle.Intersect(nueva_casa.espacio_elevador, nueva_casa.espacio_forma);
+                            if (resultado == nueva_casa.espacio_elevador)
                             { encontrado = true; }
                         } while (encontrado == false);
                     }
@@ -376,7 +385,7 @@ namespace Creador_de_ciudades
                     {
                         
                         string nombre_page = "Planta " + i;
-                        Formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                        Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
                         //Primero se guardan los nombre de los checkbox activo es una lista
 
@@ -387,10 +396,10 @@ namespace Creador_de_ciudades
                         }
 
                         //Después de pintar las casas, se pintan los objetos
-                        Objetos.objeto(nombres_checkbox,datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                        Objetos.objeto(nombres_checkbox,lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                         
                         //Esta variable es modificada una vez que PB se haya dibujado
-                        datos[recorrer].ubicacion_pb = false;
+                        lista_casas[recorrer].ubicacion_pb = false;
 
                     }
                 }
@@ -401,10 +410,10 @@ namespace Creador_de_ciudades
                 {
                     for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
                     {
-                        if (datos[recorrer].pisos_reales > 0)
+                        if (lista_casas[recorrer].pisos_reales > 0)
                         {
                             string nombre_page = "Planta " + i;
-                            Formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
                             //Primero se guardan los nombre de los checkbox activo es una lista
 
@@ -415,12 +424,12 @@ namespace Creador_de_ciudades
                             }
 
                             //Después de pintar las casas, se pintan los objetos
-                            Objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            Objetos.objeto(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
                             //Esta variable es modificada una vez que PB se haya dibujado
-                            datos[recorrer].ubicacion_pb = false;
+                            lista_casas[recorrer].ubicacion_pb = false;
                         }
-                        datos[recorrer].pisos_reales = datos[recorrer].pisos_reales - 1;
+                        lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1;
                     }
                 }
             }
@@ -440,7 +449,7 @@ namespace Creador_de_ciudades
                             }
                             else if(ui_superposicion_rad_valor_por_rango.Checked == true)
                             {
-                                int limite = Math.Min(datos[recorrer].alto_forma, datos[recorrer].ancho_forma);
+                                int limite = Math.Min(lista_casas[recorrer].alto_forma, lista_casas[recorrer].ancho_forma);
                                 //Esto es para manejar la excepcion probar un break
                                 if (limite < 0)
                                 { limite = 0; }
@@ -448,16 +457,16 @@ namespace Creador_de_ciudades
                                 int modo = 0;
                                 valor_reduccion = azar.Next(modo, limite+1);
                             }
-                            datos[recorrer].nuevo_origen = new Point(datos[recorrer].po.X + ((valor_reduccion * 100) / 2), datos[recorrer].po.Y + ((valor_reduccion * 100) / 2));
-                            datos[recorrer].po = datos[recorrer].nuevo_origen;
-                            datos[recorrer].ancho_forma = datos[recorrer].ancho_forma - valor_reduccion;
-                            datos[recorrer].alto_forma  = datos[recorrer].alto_forma - valor_reduccion;
+                            lista_casas[recorrer].nuevo_origen = new Point(lista_casas[recorrer].po.X + ((valor_reduccion * 100) / 2), lista_casas[recorrer].po.Y + ((valor_reduccion * 100) / 2));
+                            lista_casas[recorrer].po = lista_casas[recorrer].nuevo_origen;
+                            lista_casas[recorrer].ancho_forma = lista_casas[recorrer].ancho_forma - valor_reduccion;
+                            lista_casas[recorrer].alto_forma  = lista_casas[recorrer].alto_forma - valor_reduccion;
                         }                      
 
-                        if (datos[recorrer].ancho_forma > 2 && datos[recorrer].alto_forma > 2) 
+                        if (lista_casas[recorrer].ancho_forma > 2 && lista_casas[recorrer].alto_forma > 2) 
                         {
                             string nombre_page = "Planta " + i;
-                            Formas.forma(forma_seleccionada, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
                             //Después de pintar las casas, se pintan los objetos
 
@@ -469,10 +478,10 @@ namespace Creador_de_ciudades
                                 if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                             }
 
-                            Objetos.objeto(nombres_checkbox, datos[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            Objetos.objeto(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                            
                             //Esta variable es modificada una vez que PB se haya dibujado
-                            datos[recorrer].ubicacion_pb = false;
+                            lista_casas[recorrer].ubicacion_pb = false;
                         }
 
                         

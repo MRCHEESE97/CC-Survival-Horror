@@ -61,18 +61,19 @@ namespace Creador_de_ciudades.Clases
             return existe;
         }
 
-        public static List<Point> rotar_lista_puntos(List<Point> puntos, int angle, Point origen)
+        public static List<Point> rotar_area_puntos(List<Point> puntos, int angle, Point origen)
         {
             //Rota todos los puntos, con un mismo origen y angulo
            
             for (int i = 0; i < puntos.Count; i++)
             {
-                puntos[i] = rotarpunto(puntos[i], origen, angle);
+                puntos[i] = rotarpunto_area(puntos[i], origen, angle);
             }
             return puntos;
         }
-        public static Point rotarpunto(Point P_rotar, Point P_ori, int angle)
+        public static Point rotarpunto_area(Point P_rotar, Point P_ori, int angle)
         {
+            
             double radians = (Math.PI / 180) * angle;
             double sin = Math.Sin(radians);
             double cos = Math.Cos(radians);
@@ -84,52 +85,72 @@ namespace Creador_de_ciudades.Clases
             // Rotate point
             double xnew = P_rotar.X * cos - P_rotar.Y * sin;
             double ynew = P_rotar.X * sin + P_rotar.Y * cos;
+            xnew = Math.Truncate (xnew + P_ori.X);
+            ynew = Math.Truncate (ynew + P_ori.Y);
 
+            //Dado que PI es un numero irracional y los limitados decimales que se pueden usar generan impresicion
+            //En las siguientes lineas añado una mejora, reemplazando las ultimas dos cifras por "0"
+
+
+            string x = Convert.ToString(xnew);
+            if (x.Length > 2)
+            {
+                x = x.Remove(x.Length - 2) + "00";
+                xnew = Convert.ToInt32(x);
+            }
+            
+
+            string y = Convert.ToString(ynew);
+            if (y.Length > 2)
+            {
+                y = y.Remove(y.Length - 2) + "00";
+                ynew = Convert.ToInt32(y);
+            }
+          
+
+           
             // Translate point back
-            Point newPoint = new Point((int)xnew + P_ori.X, (int)ynew + P_ori.Y);
+            Point newPoint = new Point((int)xnew, (int)ynew);
+            //MessageBox.Show(Convert.ToString(newPoint));
+             
+            return newPoint; 
+            
+        }
+        public static List<Point> rotar_puntos_figuras(List<Point> puntos, int angle, Point origen)
+        {
+            //Rota todos los puntos, con un mismo origen y angulo
+
+            for (int i = 0; i < puntos.Count; i++)
+            {
+                puntos[i] = rotarpunto_figura(puntos[i], origen, angle);
+            }
+            return puntos;
+        }
+        public static Point rotarpunto_figura(Point P_rotar, Point P_ori, int angle)
+        {
+
+            double radians = (Math.PI / 180) * angle;
+            double sin = Math.Sin(radians);
+            double cos = Math.Cos(radians);
+
+            // Translate point back to origin
+            P_rotar.X -= P_ori.X;
+            P_rotar.Y -= P_ori.Y;
+
+            // Rotate point
+            double xnew = P_rotar.X * cos - P_rotar.Y * sin;
+            double ynew = P_rotar.X * sin + P_rotar.Y * cos;
+            xnew = xnew + P_ori.X;
+            ynew = ynew + P_ori.Y;
+            
+            // Translate point back
+            Point newPoint = new Point((int)xnew, (int)ynew);
+            //MessageBox.Show(Convert.ToString(newPoint));
+
             return newPoint;
+
         }
 
-        public static IEnumerable<Point> obtener_puntos_diagonal(int x0, int y0, int x1, int y1)
-        {
-            bool steep = Math.Abs(y1 - y0) > Math.Abs(x1 - x0);
-            if (steep)
-            {
-                int t;
-                t = x0; // swap x0 and y0
-                x0 = y0;
-                y0 = t;
-                t = x1; // swap x1 and y1
-                x1 = y1;
-                y1 = t;
-            }
-            if (x0 > x1)
-            {
-                int t;
-                t = x0; // swap x0 and x1
-                x0 = x1;
-                x1 = t;
-                t = y0; // swap y0 and y1
-                y0 = y1;
-                y1 = t;
-            }
-            int dx = x1 - x0;
-            int dy = Math.Abs(y1 - y0);
-            int error = dx / 2;
-            int ystep = (y0 < y1) ? 1 : -1;
-            int y = y0;
-            for (int x = x0; x <= x1; x++)
-            {
-                yield return new Point((steep ? y : x), (steep ? x : y));
-                error = error - dy;
-                if (error < 0)
-                {
-                    y += ystep;
-                    error += dx;
-                }
-            }
-            yield break;
-        }
         public static List<Point> calcular_lado(Point inicio, int longitud, string eje)
         {
             List<Point> puntos = new List<Point>();
@@ -150,14 +171,14 @@ namespace Creador_de_ciudades.Clases
                 return puntos;
             }
         }
-        public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto)
+        public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto, int avance)
         {
            
             List<Point> puntos = new List<Point>();
 
-            for (int i = po.X; i <= po.X + ancho * 100; i += 50)
+            for (int i = po.X; i <= po.X + ancho * 100; i += avance)
             {
-                for (int j = po.Y; j <= po.Y + alto * 100; j += 50)
+                for (int j = po.Y; j <= po.Y + alto * 100; j += avance)
                 {
                     puntos.Add(new Point(i,j));
                 }

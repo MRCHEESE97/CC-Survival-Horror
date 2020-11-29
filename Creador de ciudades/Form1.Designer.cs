@@ -142,12 +142,12 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.ui_tiempo_espera = new System.Windows.Forms.NumericUpDown();
+            this.label33 = new System.Windows.Forms.Label();
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label33 = new System.Windows.Forms.Label();
-            this.ui_tiempo_espera = new System.Windows.Forms.NumericUpDown();
-            this.label34 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -1455,19 +1455,9 @@
             // 
             this.ui_cantidad_calles.Location = new System.Drawing.Point(77, 27);
             this.ui_cantidad_calles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_cantidad_calles.Minimum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
             this.ui_cantidad_calles.Name = "ui_cantidad_calles";
             this.ui_cantidad_calles.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_calles.TabIndex = 13;
-            this.ui_cantidad_calles.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
             // 
             // groupBox7
             // 
@@ -1539,22 +1529,22 @@
             // ui_aislar_casas
             // 
             this.ui_aislar_casas.AutoSize = true;
+            this.ui_aislar_casas.Checked = true;
             this.ui_aislar_casas.Location = new System.Drawing.Point(17, 41);
             this.ui_aislar_casas.Name = "ui_aislar_casas";
             this.ui_aislar_casas.Size = new System.Drawing.Size(89, 21);
             this.ui_aislar_casas.TabIndex = 1;
+            this.ui_aislar_casas.TabStop = true;
             this.ui_aislar_casas.Text = "Aislar casas";
             this.ui_aislar_casas.UseVisualStyleBackColor = true;
             // 
             // ui_pegar_casas
             // 
             this.ui_pegar_casas.AutoSize = true;
-            this.ui_pegar_casas.Checked = true;
             this.ui_pegar_casas.Location = new System.Drawing.Point(17, 19);
             this.ui_pegar_casas.Name = "ui_pegar_casas";
             this.ui_pegar_casas.Size = new System.Drawing.Size(90, 21);
             this.ui_pegar_casas.TabIndex = 0;
-            this.ui_pegar_casas.TabStop = true;
             this.ui_pegar_casas.Text = "Pegar casas";
             this.ui_pegar_casas.UseVisualStyleBackColor = true;
             // 
@@ -1699,37 +1689,14 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información de la ciudad actual:";
             // 
-            // ui_label_m2
+            // label34
             // 
-            this.ui_label_m2.AutoSize = true;
-            this.ui_label_m2.Location = new System.Drawing.Point(40, 23);
-            this.ui_label_m2.Name = "ui_label_m2";
-            this.ui_label_m2.Size = new System.Drawing.Size(32, 17);
-            this.ui_label_m2.TabIndex = 1;
-            this.ui_label_m2.Text = "----";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(10, 23);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(24, 17);
-            this.label16.TabIndex = 0;
-            this.label16.Text = "m²";
-            // 
-            // contextMenuStrip3
-            // 
-            this.contextMenuStrip3.Name = "contextMenuStrip3";
-            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
-            // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(10, 54);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(112, 17);
-            this.label33.TabIndex = 2;
-            this.label33.Text = "Tiempo de espera:";
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(213, 54);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(13, 17);
+            this.label34.TabIndex = 4;
+            this.label34.Text = "s";
             // 
             // ui_tiempo_espera
             // 
@@ -1753,14 +1720,37 @@
             0,
             0});
             // 
-            // label34
+            // label33
             // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(213, 54);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(13, 17);
-            this.label34.TabIndex = 4;
-            this.label34.Text = "s";
+            this.label33.AutoSize = true;
+            this.label33.Location = new System.Drawing.Point(10, 54);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(112, 17);
+            this.label33.TabIndex = 2;
+            this.label33.Text = "Tiempo de espera:";
+            // 
+            // ui_label_m2
+            // 
+            this.ui_label_m2.AutoSize = true;
+            this.ui_label_m2.Location = new System.Drawing.Point(40, 23);
+            this.ui_label_m2.Name = "ui_label_m2";
+            this.ui_label_m2.Size = new System.Drawing.Size(32, 17);
+            this.ui_label_m2.TabIndex = 1;
+            this.ui_label_m2.Text = "----";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(10, 23);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(24, 17);
+            this.label16.TabIndex = 0;
+            this.label16.Text = "m²";
+            // 
+            // contextMenuStrip3
+            // 
+            this.contextMenuStrip3.Name = "contextMenuStrip3";
+            this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
             // Form1
             // 

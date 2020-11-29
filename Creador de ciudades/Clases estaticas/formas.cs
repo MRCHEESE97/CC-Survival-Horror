@@ -106,7 +106,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             Pen borde = new Pen(Color.Black, inf.grosor_pared);
             SolidBrush brocha_pared = new SolidBrush(Color.FromArgb(253, 236, 166));
 
-            rectangulo = Herramienta.rotar_lista_puntos(rectangulo,inf.grados,inf.punto_medio);
+            rectangulo = Herramienta.rotar_puntos_figuras(rectangulo,inf.grados,inf.punto_medio);
 
             //Despues de rotar guardo los puntos en el objeto
             inf.contorno = rectangulo;
@@ -424,7 +424,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             irregular = irregular.Distinct().ToList();
 
             //Se rotan los puntos 
-            irregular = Herramienta.rotar_lista_puntos(irregular, info.grados, info.punto_medio);
+            irregular = Herramienta.rotar_puntos_figuras(irregular, info.grados, info.punto_medio);
 
             //Guardo los puntos en el objeto
             info.contorno = irregular;

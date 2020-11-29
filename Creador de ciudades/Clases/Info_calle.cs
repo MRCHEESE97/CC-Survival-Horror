@@ -36,16 +36,8 @@ namespace Creador_de_ciudades.Clases
         private List<Point> area()
         {
             List<Point> recolector = new List<Point>();
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(a.X, a.Y, b.X, b.Y));
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, d.X, d.Y));
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(c.X, c.Y, d.X, d.Y));
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(a.X, a.Y, c.X, c.Y));
-            //Hasta aqui he encontrado los puntos del cuadrado
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(d.X, d.Y, a.X, a.Y));
 
-            recolector.AddRange(Herramienta.obtener_puntos_diagonal(b.X, b.Y, c.X, c.Y));
-
-            recolector.AddRange(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma));
+            recolector.AddRange(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma, 100));
 
             return recolector;
         }

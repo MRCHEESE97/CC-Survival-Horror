@@ -39,6 +39,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,7 +54,7 @@
     <Compile Include="Clases estaticas\Formas.cs" />
     <Compile Include="Clases estaticas\Herramienta.cs" />
     <Compile Include="Clases estaticas\Objetos.cs" />
-    <Compile Include="Clases\Info_calle.cs" />
+    <Compile Include="Clases\Composicion_calle.cs" />
     <Compile Include="Clases\Info_forma.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -76,6 +77,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

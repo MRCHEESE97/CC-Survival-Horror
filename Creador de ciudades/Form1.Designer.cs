@@ -121,7 +121,21 @@
             this.ui_distribucion_columnas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_filas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_aleatoria = new System.Windows.Forms.RadioButton();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.ui_groupBox_calles = new System.Windows.Forms.GroupBox();
+            this.ui_min_ancho_ver = new System.Windows.Forms.NumericUpDown();
+            this.ui_min_ancho_calle = new System.Windows.Forms.NumericUpDown();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label40 = new System.Windows.Forms.Label();
+            this.ui_espacio_calles = new System.Windows.Forms.NumericUpDown();
+            this.label39 = new System.Windows.Forms.Label();
+            this.label38 = new System.Windows.Forms.Label();
+            this.ui_calle_incompleta = new System.Windows.Forms.RadioButton();
+            this.label36 = new System.Windows.Forms.Label();
+            this.label35 = new System.Windows.Forms.Label();
+            this.label37 = new System.Windows.Forms.Label();
+            this.ui_calle_callejones = new System.Windows.Forms.RadioButton();
+            this.ui_calle_curvilineal = new System.Windows.Forms.RadioButton();
+            this.ui_calle_cuadricula = new System.Windows.Forms.RadioButton();
             this.label31 = new System.Windows.Forms.Label();
             this.ui_cantidad_calles = new System.Windows.Forms.NumericUpDown();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
@@ -148,6 +162,8 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ui_max_ancho_calle = new System.Windows.Forms.NumericUpDown();
+            this.ui_max_ancho_ver = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -179,7 +195,10 @@
             this.tabcontrol_propiedades.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.ui_group_box_distribucion.SuspendLayout();
-            this.groupBox8.SuspendLayout();
+            this.ui_groupBox_calles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_ver)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_calle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_calles)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_porcentaje_sin_casas)).BeginInit();
@@ -193,6 +212,8 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_calle)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -458,7 +479,7 @@
             this.ui_cantidad_casas.Location = new System.Drawing.Point(137, 20);
             this.ui_cantidad_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_cantidad_casas.Minimum = new decimal(new int[] {
-            4,
+            10,
             0,
             0,
             0});
@@ -706,11 +727,11 @@
             this.ui_groupbox_forma_casas.Controls.Add(this.Posibilidad);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_rectangular);
-            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(6, 281);
+            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(6, 516);
             this.ui_groupbox_forma_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_forma_casas.Name = "ui_groupbox_forma_casas";
             this.ui_groupbox_forma_casas.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(399, 228);
+            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(399, 205);
             this.ui_groupbox_forma_casas.TabIndex = 6;
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Formas/casas";
@@ -857,7 +878,7 @@
             // 
             this.label32.AutoSize = true;
             this.label32.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label32.Location = new System.Drawing.Point(34, 262);
+            this.label32.Location = new System.Drawing.Point(32, 257);
             this.label32.Name = "label32";
             this.label32.Size = new System.Drawing.Size(343, 17);
             this.label32.TabIndex = 38;
@@ -1372,7 +1393,7 @@
             // 
             this.tabPage3.AutoScroll = true;
             this.tabPage3.Controls.Add(this.ui_group_box_distribucion);
-            this.tabPage3.Controls.Add(this.groupBox8);
+            this.tabPage3.Controls.Add(this.ui_groupBox_calles);
             this.tabPage3.Controls.Add(this.groupBox7);
             this.tabPage3.Controls.Add(this.groupBox5);
             this.tabPage3.Controls.Add(this.ui_groupbox_forma_casas);
@@ -1390,9 +1411,9 @@
             this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_columnas);
             this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_filas);
             this.ui_group_box_distribucion.Controls.Add(this.ui_distribucion_aleatoria);
-            this.ui_group_box_distribucion.Location = new System.Drawing.Point(220, 108);
+            this.ui_group_box_distribucion.Location = new System.Drawing.Point(6, 74);
             this.ui_group_box_distribucion.Name = "ui_group_box_distribucion";
-            this.ui_group_box_distribucion.Size = new System.Drawing.Size(185, 166);
+            this.ui_group_box_distribucion.Size = new System.Drawing.Size(185, 165);
             this.ui_group_box_distribucion.TabIndex = 16;
             this.ui_group_box_distribucion.TabStop = false;
             this.ui_group_box_distribucion.Text = "Tipo de distribución / casas";
@@ -1431,29 +1452,213 @@
             this.ui_distribucion_aleatoria.Text = "Aleatoria";
             this.ui_distribucion_aleatoria.UseVisualStyleBackColor = true;
             // 
-            // groupBox8
+            // ui_groupBox_calles
             // 
-            this.groupBox8.Controls.Add(this.label31);
-            this.groupBox8.Controls.Add(this.ui_cantidad_calles);
-            this.groupBox8.Location = new System.Drawing.Point(6, 108);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(208, 166);
-            this.groupBox8.TabIndex = 15;
-            this.groupBox8.TabStop = false;
-            this.groupBox8.Text = "Red de calles (En desarrollo)";
+            this.ui_groupBox_calles.Controls.Add(this.ui_max_ancho_ver);
+            this.ui_groupBox_calles.Controls.Add(this.ui_max_ancho_calle);
+            this.ui_groupBox_calles.Controls.Add(this.ui_min_ancho_ver);
+            this.ui_groupBox_calles.Controls.Add(this.ui_min_ancho_calle);
+            this.ui_groupBox_calles.Controls.Add(this.label41);
+            this.ui_groupBox_calles.Controls.Add(this.label40);
+            this.ui_groupBox_calles.Controls.Add(this.ui_espacio_calles);
+            this.ui_groupBox_calles.Controls.Add(this.label39);
+            this.ui_groupBox_calles.Controls.Add(this.label38);
+            this.ui_groupBox_calles.Controls.Add(this.ui_calle_incompleta);
+            this.ui_groupBox_calles.Controls.Add(this.label36);
+            this.ui_groupBox_calles.Controls.Add(this.label35);
+            this.ui_groupBox_calles.Controls.Add(this.label37);
+            this.ui_groupBox_calles.Controls.Add(this.ui_calle_callejones);
+            this.ui_groupBox_calles.Controls.Add(this.ui_calle_curvilineal);
+            this.ui_groupBox_calles.Controls.Add(this.ui_calle_cuadricula);
+            this.ui_groupBox_calles.Controls.Add(this.label31);
+            this.ui_groupBox_calles.Controls.Add(this.ui_cantidad_calles);
+            this.ui_groupBox_calles.Location = new System.Drawing.Point(6, 245);
+            this.ui_groupBox_calles.Name = "ui_groupBox_calles";
+            this.ui_groupBox_calles.Size = new System.Drawing.Size(399, 264);
+            this.ui_groupBox_calles.TabIndex = 15;
+            this.ui_groupBox_calles.TabStop = false;
+            this.ui_groupBox_calles.Text = "Red de calles (En desarrollo)";
+            // 
+            // ui_min_ancho_ver
+            // 
+            this.ui_min_ancho_ver.Location = new System.Drawing.Point(174, 223);
+            this.ui_min_ancho_ver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_min_ancho_ver.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.ui_min_ancho_ver.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_min_ancho_ver.Name = "ui_min_ancho_ver";
+            this.ui_min_ancho_ver.Size = new System.Drawing.Size(54, 27);
+            this.ui_min_ancho_ver.TabIndex = 42;
+            this.ui_min_ancho_ver.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // ui_min_ancho_calle
+            // 
+            this.ui_min_ancho_calle.Location = new System.Drawing.Point(174, 192);
+            this.ui_min_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_min_ancho_calle.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_min_ancho_calle.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.ui_min_ancho_calle.Name = "ui_min_ancho_calle";
+            this.ui_min_ancho_calle.Size = new System.Drawing.Size(54, 27);
+            this.ui_min_ancho_calle.TabIndex = 41;
+            this.ui_min_ancho_calle.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(375, 98);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(18, 17);
+            this.label41.TabIndex = 40;
+            this.label41.Text = "m";
+            // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label40.Location = new System.Drawing.Point(22, 139);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(343, 17);
+            this.label40.TabIndex = 39;
+            this.label40.Text = "___________________________________________________________________";
+            // 
+            // ui_espacio_calles
+            // 
+            this.ui_espacio_calles.Location = new System.Drawing.Point(315, 96);
+            this.ui_espacio_calles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_espacio_calles.Name = "ui_espacio_calles";
+            this.ui_espacio_calles.Size = new System.Drawing.Size(54, 27);
+            this.ui_espacio_calles.TabIndex = 21;
+            this.ui_espacio_calles.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
+            // label39
+            // 
+            this.label39.AutoSize = true;
+            this.label39.Location = new System.Drawing.Point(192, 100);
+            this.label39.Name = "label39";
+            this.label39.Size = new System.Drawing.Size(117, 17);
+            this.label39.TabIndex = 20;
+            this.label39.Text = "Espacio entre calles";
+            // 
+            // label38
+            // 
+            this.label38.AutoSize = true;
+            this.label38.Location = new System.Drawing.Point(32, 225);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(111, 17);
+            this.label38.TabIndex = 19;
+            this.label38.Text = "Ancho de veredas:";
+            // 
+            // ui_calle_incompleta
+            // 
+            this.ui_calle_incompleta.AutoSize = true;
+            this.ui_calle_incompleta.Location = new System.Drawing.Point(6, 51);
+            this.ui_calle_incompleta.Name = "ui_calle_incompleta";
+            this.ui_calle_incompleta.Size = new System.Drawing.Size(147, 21);
+            this.ui_calle_incompleta.TabIndex = 18;
+            this.ui_calle_incompleta.Text = "Cuadricula incompleta";
+            this.ui_calle_incompleta.UseVisualStyleBackColor = true;
+            // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label36.Location = new System.Drawing.Point(281, 171);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(56, 17);
+            this.label36.TabIndex = 14;
+            this.label36.Text = "Máximo";
+            // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(32, 194);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(98, 17);
+            this.label35.TabIndex = 17;
+            this.label35.Text = "Ancho de calles:";
+            // 
+            // label37
+            // 
+            this.label37.AutoSize = true;
+            this.label37.Location = new System.Drawing.Point(178, 171);
+            this.label37.Name = "label37";
+            this.label37.Size = new System.Drawing.Size(48, 17);
+            this.label37.TabIndex = 13;
+            this.label37.Text = "Mínimo";
+            // 
+            // ui_calle_callejones
+            // 
+            this.ui_calle_callejones.AutoSize = true;
+            this.ui_calle_callejones.Location = new System.Drawing.Point(6, 105);
+            this.ui_calle_callejones.Name = "ui_calle_callejones";
+            this.ui_calle_callejones.Size = new System.Drawing.Size(150, 21);
+            this.ui_calle_callejones.TabIndex = 16;
+            this.ui_calle_callejones.Text = "Curvilineal y callejones";
+            this.ui_calle_callejones.UseVisualStyleBackColor = true;
+            // 
+            // ui_calle_curvilineal
+            // 
+            this.ui_calle_curvilineal.AutoSize = true;
+            this.ui_calle_curvilineal.Location = new System.Drawing.Point(6, 78);
+            this.ui_calle_curvilineal.Name = "ui_calle_curvilineal";
+            this.ui_calle_curvilineal.Size = new System.Drawing.Size(82, 21);
+            this.ui_calle_curvilineal.TabIndex = 15;
+            this.ui_calle_curvilineal.Text = "Curvilineal";
+            this.ui_calle_curvilineal.UseVisualStyleBackColor = true;
+            // 
+            // ui_calle_cuadricula
+            // 
+            this.ui_calle_cuadricula.AutoSize = true;
+            this.ui_calle_cuadricula.Checked = true;
+            this.ui_calle_cuadricula.Location = new System.Drawing.Point(6, 24);
+            this.ui_calle_cuadricula.Name = "ui_calle_cuadricula";
+            this.ui_calle_cuadricula.Size = new System.Drawing.Size(155, 21);
+            this.ui_calle_cuadricula.TabIndex = 14;
+            this.ui_calle_cuadricula.TabStop = true;
+            this.ui_calle_cuadricula.Text = "Cuadricula convencional";
+            this.ui_calle_cuadricula.UseVisualStyleBackColor = true;
+            this.ui_calle_cuadricula.CheckedChanged += new System.EventHandler(this.ui_calle_cuadricula_CheckedChanged);
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(14, 29);
+            this.label31.Location = new System.Drawing.Point(195, 63);
             this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(42, 17);
+            this.label31.Size = new System.Drawing.Size(114, 17);
             this.label31.TabIndex = 12;
-            this.label31.Text = "Calles:";
+            this.label31.Text = "Cantidad de calles:";
             // 
             // ui_cantidad_calles
             // 
-            this.ui_cantidad_calles.Location = new System.Drawing.Point(77, 27);
+            this.ui_cantidad_calles.Enabled = false;
+            this.ui_cantidad_calles.Location = new System.Drawing.Point(315, 61);
             this.ui_cantidad_calles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_cantidad_calles.Name = "ui_cantidad_calles";
             this.ui_cantidad_calles.Size = new System.Drawing.Size(54, 27);
@@ -1468,7 +1673,7 @@
             this.groupBox7.Controls.Add(this.ui_porcentaje_sin_casas);
             this.groupBox7.Location = new System.Drawing.Point(6, 7);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(208, 95);
+            this.groupBox7.Size = new System.Drawing.Size(399, 61);
             this.groupBox7.TabIndex = 14;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Espacios";
@@ -1476,7 +1681,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(6, 57);
+            this.label19.Location = new System.Drawing.Point(212, 23);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(91, 17);
             this.label19.TabIndex = 9;
@@ -1485,7 +1690,7 @@
             // label30
             // 
             this.label30.AutoSize = true;
-            this.label30.Location = new System.Drawing.Point(193, 57);
+            this.label30.Location = new System.Drawing.Point(366, 23);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(16, 17);
             this.label30.TabIndex = 11;
@@ -1498,7 +1703,7 @@
             0,
             0,
             0});
-            this.ui_porcentaje_sin_casas.Location = new System.Drawing.Point(137, 53);
+            this.ui_porcentaje_sin_casas.Location = new System.Drawing.Point(306, 20);
             this.ui_porcentaje_sin_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_porcentaje_sin_casas.Minimum = new decimal(new int[] {
             10,
@@ -1519,12 +1724,12 @@
             this.groupBox5.Controls.Add(this.ui_aislar_casas);
             this.groupBox5.Controls.Add(this.ui_pegar_casas);
             this.groupBox5.Controls.Add(this.ui_checkbox_girar);
-            this.groupBox5.Location = new System.Drawing.Point(221, 7);
+            this.groupBox5.Location = new System.Drawing.Point(204, 74);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(184, 95);
+            this.groupBox5.Size = new System.Drawing.Size(201, 95);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Características vecindario";
+            this.groupBox5.Text = "Características /  casas";
             // 
             // ui_aislar_casas
             // 
@@ -1532,10 +1737,10 @@
             this.ui_aislar_casas.Checked = true;
             this.ui_aislar_casas.Location = new System.Drawing.Point(17, 41);
             this.ui_aislar_casas.Name = "ui_aislar_casas";
-            this.ui_aislar_casas.Size = new System.Drawing.Size(89, 21);
+            this.ui_aislar_casas.Size = new System.Drawing.Size(101, 21);
             this.ui_aislar_casas.TabIndex = 1;
             this.ui_aislar_casas.TabStop = true;
-            this.ui_aislar_casas.Text = "Aislar casas";
+            this.ui_aislar_casas.Text = "Separar casas";
             this.ui_aislar_casas.UseVisualStyleBackColor = true;
             // 
             // ui_pegar_casas
@@ -1543,9 +1748,9 @@
             this.ui_pegar_casas.AutoSize = true;
             this.ui_pegar_casas.Location = new System.Drawing.Point(17, 19);
             this.ui_pegar_casas.Name = "ui_pegar_casas";
-            this.ui_pegar_casas.Size = new System.Drawing.Size(90, 21);
+            this.ui_pegar_casas.Size = new System.Drawing.Size(82, 21);
             this.ui_pegar_casas.TabIndex = 0;
-            this.ui_pegar_casas.Text = "Pegar casas";
+            this.ui_pegar_casas.Text = "Unir casas";
             this.ui_pegar_casas.UseVisualStyleBackColor = true;
             // 
             // ui_checkbox_girar
@@ -1621,7 +1826,7 @@
             // ui_construir
             // 
             this.ui_construir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ui_construir.Location = new System.Drawing.Point(45, 115);
+            this.ui_construir.Location = new System.Drawing.Point(316, 56);
             this.ui_construir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_construir.Name = "ui_construir";
             this.ui_construir.Size = new System.Drawing.Size(87, 30);
@@ -1632,7 +1837,7 @@
             // 
             // ui_quitar_todo
             // 
-            this.ui_quitar_todo.Location = new System.Drawing.Point(151, 115);
+            this.ui_quitar_todo.Location = new System.Drawing.Point(316, 103);
             this.ui_quitar_todo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_quitar_todo.Name = "ui_quitar_todo";
             this.ui_quitar_todo.Size = new System.Drawing.Size(87, 30);
@@ -1645,6 +1850,7 @@
             // 
             this.splitContainer1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.splitContainer1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.splitContainer1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 31);
             this.splitContainer1.Name = "splitContainer1";
@@ -1660,6 +1866,8 @@
             this.splitContainer1.Size = new System.Drawing.Size(980, 526);
             this.splitContainer1.SplitterDistance = 533;
             this.splitContainer1.TabIndex = 11;
+            this.splitContainer1.MouseLeave += new System.EventHandler(this.splitContainer1_MouseLeave);
+            this.splitContainer1.MouseHover += new System.EventHandler(this.splitContainer1_MouseHover);
             // 
             // groupBox2
             // 
@@ -1682,9 +1890,9 @@
             this.groupBox3.Controls.Add(this.label33);
             this.groupBox3.Controls.Add(this.ui_label_m2);
             this.groupBox3.Controls.Add(this.label16);
-            this.groupBox3.Location = new System.Drawing.Point(16, 21);
+            this.groupBox3.Location = new System.Drawing.Point(16, 20);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(254, 87);
+            this.groupBox3.Size = new System.Drawing.Size(254, 128);
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información de la ciudad actual:";
@@ -1707,7 +1915,7 @@
             0,
             0});
             this.ui_tiempo_espera.Minimum = new decimal(new int[] {
-            50,
+            20,
             0,
             0,
             0});
@@ -1751,6 +1959,52 @@
             // 
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            // 
+            // ui_max_ancho_calle
+            // 
+            this.ui_max_ancho_calle.Location = new System.Drawing.Point(284, 192);
+            this.ui_max_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_max_ancho_calle.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_max_ancho_calle.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.ui_max_ancho_calle.Name = "ui_max_ancho_calle";
+            this.ui_max_ancho_calle.Size = new System.Drawing.Size(54, 27);
+            this.ui_max_ancho_calle.TabIndex = 43;
+            this.ui_max_ancho_calle.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // ui_max_ancho_ver
+            // 
+            this.ui_max_ancho_ver.Location = new System.Drawing.Point(284, 225);
+            this.ui_max_ancho_ver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_max_ancho_ver.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.ui_max_ancho_ver.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_max_ancho_ver.Name = "ui_max_ancho_ver";
+            this.ui_max_ancho_ver.Size = new System.Drawing.Size(54, 27);
+            this.ui_max_ancho_ver.TabIndex = 44;
+            this.ui_max_ancho_ver.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
             // 
             // Form1
             // 
@@ -1811,8 +2065,11 @@
             this.tabPage3.ResumeLayout(false);
             this.ui_group_box_distribucion.ResumeLayout(false);
             this.ui_group_box_distribucion.PerformLayout();
-            this.groupBox8.ResumeLayout(false);
-            this.groupBox8.PerformLayout();
+            this.ui_groupBox_calles.ResumeLayout(false);
+            this.ui_groupBox_calles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_ver)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_calle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_calles)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -1830,6 +2087,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_calle)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1947,7 +2206,7 @@
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.RadioButton ui_solo_impares;
         private System.Windows.Forms.RadioButton ui_solo_pares;
-        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox ui_groupBox_calles;
         private System.Windows.Forms.GroupBox groupBox7;
         private System.Windows.Forms.GroupBox ui_group_box_distribucion;
         private System.Windows.Forms.RadioButton ui_distribucion_columnas;
@@ -1956,6 +2215,22 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.NumericUpDown ui_tiempo_espera;
         private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.RadioButton ui_calle_callejones;
+        private System.Windows.Forms.RadioButton ui_calle_curvilineal;
+        private System.Windows.Forms.RadioButton ui_calle_cuadricula;
+        private System.Windows.Forms.RadioButton ui_calle_incompleta;
+        private System.Windows.Forms.Label label38;
+        private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.NumericUpDown ui_espacio_calles;
+        private System.Windows.Forms.Label label39;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.NumericUpDown ui_min_ancho_calle;
+        private System.Windows.Forms.NumericUpDown ui_min_ancho_ver;
+        private System.Windows.Forms.NumericUpDown ui_max_ancho_ver;
+        private System.Windows.Forms.NumericUpDown ui_max_ancho_calle;
     }
 }
 

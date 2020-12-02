@@ -217,7 +217,22 @@ namespace Creador_de_ciudades.Clases
             }
             
         }
-
-
+        public static List<Point> obtener_coor_pixel_blancos(Bitmap bitmapImage)
+        {
+            Color pixelColor;
+            List<Point> Blancos = new List<Point>();
+            for (int y = 0; y < bitmapImage.Height; y+=100)
+            {
+                for (int x = 0; x < bitmapImage.Width; x+=100)
+                {
+                    pixelColor = bitmapImage.GetPixel(x, y);
+                    if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
+                    {
+                        Blancos.Add(new Point(x, y));
+                    }
+                }
+            }
+            return Blancos;
+        }
     }
 }

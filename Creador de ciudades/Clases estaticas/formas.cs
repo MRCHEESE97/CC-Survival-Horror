@@ -114,7 +114,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             inf.g.FillPolygon(brocha_pared, rectangulo.ToArray());
             inf.g.DrawPolygon(borde, rectangulo.ToArray());
 
-
+            pintura.Refresh();
         }
        
         private static void rectangulo_deformado(Info_forma info, PictureBox pintura, int modo)
@@ -431,6 +431,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             info.g.FillPolygon(brocha, irregular.ToArray());
             info.g.DrawPolygon(contorno, irregular.ToArray());
 
+            pintura.Refresh();
         }
         static void deformar_lados(List<Point> lado)
         {

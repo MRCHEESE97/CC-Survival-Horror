@@ -149,6 +149,7 @@ namespace Creador_de_ciudades
                 for (int i = 0; i < lista_comp_calles.Count; i++)
                 {
                     fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                    primer_nivel.Refresh();
                 }
 
                 //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de linea base"
@@ -158,6 +159,7 @@ namespace Creador_de_ciudades
                 for (int i = 0; i < lista_comp_calles.Count; i++)
                 {
                     fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                    primer_nivel.Refresh();
                 }
             }
             else if (ui_calle_incompleta.Checked == true)

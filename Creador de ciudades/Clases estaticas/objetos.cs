@@ -36,7 +36,15 @@ namespace Creador_de_ciudades.Clases_estaticas
             {
                 String nombre_objeto = seleccion_objeto[i];
 
-                if (nombre_objeto.Equals("ui_objetos_ventana"))
+                if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
+                {
+                    columna_cuadrada(datos, lienzo);
+                }
+                else if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
+                {
+                    columna_circular(datos, lienzo);
+                }
+                else if (nombre_objeto.Equals("ui_objetos_ventana"))
                 {
                     if (datos.vano_ventana.Equals("ui_objetos_ventana_ale")) 
                     {
@@ -67,14 +75,6 @@ namespace Creador_de_ciudades.Clases_estaticas
                     puerta(datos, lienzo);
                 }
                 
-                else if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
-                {
-                    columna_cuadrada(datos, lienzo);
-                }
-                else if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
-                {
-                    columna_circular(datos, lienzo);
-                }
                 else if (nombre_objeto.Equals("ui_objetos_elevador"))
                 {
                     elevador(datos, lienzo);
@@ -91,7 +91,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             do {
 
-                Pen puerta = new Pen(Color.Red, informacion.grosor_pared);
+                Pen puerta = new Pen(Color.Brown, informacion.grosor_pared);
                 
 
                 int ubicacion_punto = azar.Next(0, informacion.contorno.Count - informacion.ancho_puerta - 1);
@@ -148,7 +148,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void ventanas(Info_forma informacion, PictureBox pintura)
         {
 
-            Pen ventana = new Pen(Color.Cyan, informacion.grosor_pared);
+            Pen ventana = new Pen(Color.Blue, informacion.grosor_pared);
             List<bool> marcar = new List<bool>();
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)
@@ -171,7 +171,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void ventanas_binarias(Info_forma informacion, PictureBox pintura)
         {
 
-            Pen ventana = new Pen(Color.Cyan, informacion.grosor_pared);
+            Pen ventana = new Pen(Color.Blue, informacion.grosor_pared);
             List<bool> marcar = new List<bool>();
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)
@@ -193,7 +193,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void ventanas_totales(Info_forma informacion, PictureBox pintura)
         {
 
-            Pen ventana = new Pen(Color.Cyan, informacion.grosor_pared);
+            Pen ventana = new Pen(Color.Blue, informacion.grosor_pared);
             List<bool> marcar = new List<bool>();
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)

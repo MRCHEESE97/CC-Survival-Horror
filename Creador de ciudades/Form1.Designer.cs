@@ -122,6 +122,8 @@
             this.ui_distribucion_filas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_aleatoria = new System.Windows.Forms.RadioButton();
             this.ui_groupBox_calles = new System.Windows.Forms.GroupBox();
+            this.ui_max_ancho_ver = new System.Windows.Forms.NumericUpDown();
+            this.ui_max_ancho_calle = new System.Windows.Forms.NumericUpDown();
             this.ui_min_ancho_ver = new System.Windows.Forms.NumericUpDown();
             this.ui_min_ancho_calle = new System.Windows.Forms.NumericUpDown();
             this.label41 = new System.Windows.Forms.Label();
@@ -162,8 +164,6 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ui_max_ancho_calle = new System.Windows.Forms.NumericUpDown();
-            this.ui_max_ancho_ver = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -196,6 +196,8 @@
             this.tabPage3.SuspendLayout();
             this.ui_group_box_distribucion.SuspendLayout();
             this.ui_groupBox_calles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_calle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_ver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_calle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles)).BeginInit();
@@ -212,8 +214,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_calle)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -487,7 +487,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            20,
+            30,
             0,
             0,
             0});
@@ -762,6 +762,7 @@
             // ui_forma_casa_deformada_chaflan
             // 
             this.ui_forma_casa_deformada_chaflan.AutoSize = true;
+            this.ui_forma_casa_deformada_chaflan.Checked = true;
             this.ui_forma_casa_deformada_chaflan.Location = new System.Drawing.Point(16, 54);
             this.ui_forma_casa_deformada_chaflan.Name = "ui_forma_casa_deformada_chaflan";
             this.ui_forma_casa_deformada_chaflan.Size = new System.Drawing.Size(195, 21);
@@ -812,12 +813,10 @@
             // ui_forma_casa_deformada
             // 
             this.ui_forma_casa_deformada.AutoSize = true;
-            this.ui_forma_casa_deformada.Checked = true;
             this.ui_forma_casa_deformada.Location = new System.Drawing.Point(16, 27);
             this.ui_forma_casa_deformada.Name = "ui_forma_casa_deformada";
             this.ui_forma_casa_deformada.Size = new System.Drawing.Size(150, 21);
             this.ui_forma_casa_deformada.TabIndex = 2;
-            this.ui_forma_casa_deformada.TabStop = true;
             this.ui_forma_casa_deformada.Text = "Rectangulo deformado";
             this.ui_forma_casa_deformada.UseVisualStyleBackColor = true;
             // 
@@ -1479,6 +1478,52 @@
             this.ui_groupBox_calles.TabStop = false;
             this.ui_groupBox_calles.Text = "Red de calles (En desarrollo)";
             // 
+            // ui_max_ancho_ver
+            // 
+            this.ui_max_ancho_ver.Location = new System.Drawing.Point(284, 225);
+            this.ui_max_ancho_ver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_max_ancho_ver.Maximum = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.ui_max_ancho_ver.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.ui_max_ancho_ver.Name = "ui_max_ancho_ver";
+            this.ui_max_ancho_ver.Size = new System.Drawing.Size(54, 27);
+            this.ui_max_ancho_ver.TabIndex = 44;
+            this.ui_max_ancho_ver.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // ui_max_ancho_calle
+            // 
+            this.ui_max_ancho_calle.Location = new System.Drawing.Point(284, 192);
+            this.ui_max_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_max_ancho_calle.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_max_ancho_calle.Minimum = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            this.ui_max_ancho_calle.Name = "ui_max_ancho_calle";
+            this.ui_max_ancho_calle.Size = new System.Drawing.Size(54, 27);
+            this.ui_max_ancho_calle.TabIndex = 43;
+            this.ui_max_ancho_calle.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            // 
             // ui_min_ancho_ver
             // 
             this.ui_min_ancho_ver.Location = new System.Drawing.Point(174, 223);
@@ -1552,7 +1597,7 @@
             this.ui_espacio_calles.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles.TabIndex = 21;
             this.ui_espacio_calles.Value = new decimal(new int[] {
-            20,
+            31,
             0,
             0,
             0});
@@ -1578,10 +1623,12 @@
             // ui_calle_incompleta
             // 
             this.ui_calle_incompleta.AutoSize = true;
+            this.ui_calle_incompleta.Checked = true;
             this.ui_calle_incompleta.Location = new System.Drawing.Point(6, 51);
             this.ui_calle_incompleta.Name = "ui_calle_incompleta";
             this.ui_calle_incompleta.Size = new System.Drawing.Size(147, 21);
             this.ui_calle_incompleta.TabIndex = 18;
+            this.ui_calle_incompleta.TabStop = true;
             this.ui_calle_incompleta.Text = "Cuadricula incompleta";
             this.ui_calle_incompleta.UseVisualStyleBackColor = true;
             // 
@@ -1636,12 +1683,10 @@
             // ui_calle_cuadricula
             // 
             this.ui_calle_cuadricula.AutoSize = true;
-            this.ui_calle_cuadricula.Checked = true;
             this.ui_calle_cuadricula.Location = new System.Drawing.Point(6, 24);
             this.ui_calle_cuadricula.Name = "ui_calle_cuadricula";
             this.ui_calle_cuadricula.Size = new System.Drawing.Size(155, 21);
             this.ui_calle_cuadricula.TabIndex = 14;
-            this.ui_calle_cuadricula.TabStop = true;
             this.ui_calle_cuadricula.Text = "Cuadricula convencional";
             this.ui_calle_cuadricula.UseVisualStyleBackColor = true;
             this.ui_calle_cuadricula.CheckedChanged += new System.EventHandler(this.ui_calle_cuadricula_CheckedChanged);
@@ -1714,7 +1759,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            60,
+            10,
             0,
             0,
             0});
@@ -1960,52 +2005,6 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // ui_max_ancho_calle
-            // 
-            this.ui_max_ancho_calle.Location = new System.Drawing.Point(284, 192);
-            this.ui_max_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_max_ancho_calle.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_max_ancho_calle.Minimum = new decimal(new int[] {
-            2,
-            0,
-            0,
-            0});
-            this.ui_max_ancho_calle.Name = "ui_max_ancho_calle";
-            this.ui_max_ancho_calle.Size = new System.Drawing.Size(54, 27);
-            this.ui_max_ancho_calle.TabIndex = 43;
-            this.ui_max_ancho_calle.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // ui_max_ancho_ver
-            // 
-            this.ui_max_ancho_ver.Location = new System.Drawing.Point(284, 225);
-            this.ui_max_ancho_ver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_max_ancho_ver.Maximum = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            this.ui_max_ancho_ver.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.ui_max_ancho_ver.Name = "ui_max_ancho_ver";
-            this.ui_max_ancho_ver.Size = new System.Drawing.Size(54, 27);
-            this.ui_max_ancho_ver.TabIndex = 44;
-            this.ui_max_ancho_ver.Value = new decimal(new int[] {
-            4,
-            0,
-            0,
-            0});
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2067,6 +2066,8 @@
             this.ui_group_box_distribucion.PerformLayout();
             this.ui_groupBox_calles.ResumeLayout(false);
             this.ui_groupBox_calles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_calle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_ver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_calle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles)).EndInit();
@@ -2087,8 +2088,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_calle)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

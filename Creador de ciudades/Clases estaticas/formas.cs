@@ -28,7 +28,9 @@ using static Creador_de_ciudades.Form1;
 namespace Creador_de_ciudades.Clases_estaticas
 {
     static class Formas
-    {    
+    {
+
+        public static SolidBrush Brocha = new SolidBrush(Color.FromArgb(253, 236, 166));
         public static void forma( String seleccion_forma, Info_forma datos, PictureBox lienzo)
         {
             if (seleccion_forma.Equals("ui_forma_casa_rectangular"))
@@ -61,7 +63,6 @@ namespace Creador_de_ciudades.Clases_estaticas
         {
            
             informacion.g = Graphics.FromImage((Bitmap)pintura.Image);
-            SolidBrush brocha_pared = new SolidBrush(Color.FromArgb(253, 236, 166));
             Point[] shape = new Point[6];
             Pen borde = new Pen(Color.Black, informacion.grosor_pared);
             int[] array = { informacion.ancho_forma, informacion.alto_forma };
@@ -75,7 +76,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     (int)(informacion.po.Y + r * (float)Math.Sin(a * 60 * Math.PI / 180)));
             }
             informacion.contorno = shape.ToList();
-            informacion.g.FillPolygon(brocha_pared, shape);
+            informacion.g.FillPolygon(Brocha, shape);
             informacion.g.DrawPolygon(borde, shape);
             
             
@@ -104,14 +105,13 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             //Se dibuja la pared
             Pen borde = new Pen(Color.Black, inf.grosor_pared);
-            SolidBrush brocha_pared = new SolidBrush(Color.FromArgb(253, 236, 166));
 
             rectangulo = Herramienta.rotar_puntos_figuras(rectangulo,inf.grados,inf.punto_medio);
 
             //Despues de rotar guardo los puntos en el objeto
             inf.contorno = rectangulo;
 
-            inf.g.FillPolygon(brocha_pared, rectangulo.ToArray());
+            inf.g.FillPolygon(Brocha, rectangulo.ToArray());
             inf.g.DrawPolygon(borde, rectangulo.ToArray());
 
             pintura.Refresh();
@@ -136,7 +136,6 @@ namespace Creador_de_ciudades.Clases_estaticas
             int hund_izq = 0, hund_der = info.ancho_lienzo;
             Point point1 = new Point();
             Point point2 = new Point();
-            SolidBrush brocha = new SolidBrush(Color.FromArgb(253, 236, 166));
             Pen contorno = new Pen(Color.Black,info.grosor_pared);
 
             // Se usan 4 listas para cada lado
@@ -428,7 +427,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             //Guardo los puntos en el objeto
             info.contorno = irregular;
-            info.g.FillPolygon(brocha, irregular.ToArray());
+            info.g.FillPolygon(Brocha, irregular.ToArray());
             info.g.DrawPolygon(contorno, irregular.ToArray());
 
             pintura.Refresh();

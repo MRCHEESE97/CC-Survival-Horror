@@ -73,7 +73,7 @@ namespace Creador_de_ciudades
 
             //-------
 
-            int ancho_lienzo = 0, alto_lienzo = 0;
+            int ancho_lienzo = 0, alto_lienzo = 0, area = 0;
 
             List<int> anchos = new List<int>();
             List<int> altos = new List<int>();
@@ -82,24 +82,14 @@ namespace Creador_de_ciudades
             {
                 anchos.Add(azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
                 altos.Add(azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
-
-                if (anchos[i] > altos[i])
-                { ancho_lienzo = ancho_lienzo + anchos[i] * 50; }
-                else if (anchos[i] < altos[i])
-                { alto_lienzo = alto_lienzo + altos[i] * 50; }
-                else if (anchos[i] == altos[i])
-                { // Si son iguales. se alternan
-                    if (i % 2 == 0)
-                    {
-                        ancho_lienzo = ancho_lienzo + anchos[i] * 50;
-                    }
-                    else if (i % 2 != 0)
-                    {
-                        alto_lienzo = alto_lienzo + altos[i] * 50;
-                    }
-                }
+            }
+            for (int x = 0; x < ui_cantidad_casas.Value; x++)
+            {
+                int precalculo = (anchos[x] * altos[x]) * 100;
+                area = area + precalculo;
             }
 
+            ancho_lienzo = alto_lienzo = (int)Math.Sqrt(area) * 10;
 
             float por_ancho = (float)(ancho_lienzo * (Convert.ToInt32(ui_porcentaje_sin_casas.Value) * 0.01));           
             ancho_lienzo = (int)(ancho_lienzo + por_ancho);
@@ -121,7 +111,7 @@ namespace Creador_de_ciudades
 
             PictureBox primer_nivel = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
             Graphics fondo = Graphics.FromImage(primer_nivel.Image);
-            Brush brocha_fondo = new SolidBrush(Color.FromArgb(0,255,0));
+            Brush brocha_fondo = new SolidBrush(Color.DarkGreen);
             fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0,0), new Size(ancho_lienzo, alto_lienzo)));
 
 
@@ -136,13 +126,13 @@ namespace Creador_de_ciudades
                 {
                     int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
                     int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
-                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(0, y), new Point(ancho_lienzo, y)));                
+                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(0, y), new Point(ancho_lienzo, y)));                
                 }
                 for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
                 {
                     int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
                     int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
-                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, 0), new Point(x, alto_lienzo)));
+                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(x, 0), new Point(x, alto_lienzo)));
                 }
                 for (int i = 0; i < lista_comp_calles.Count; i++)
                 {
@@ -173,13 +163,13 @@ namespace Creador_de_ciudades
                 {
                     int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
                     int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
-                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(azar.Next(0, longitud_x - 1) * dist_entre_cll, y), new Point(azar.Next(3, longitud_x + 2) * dist_entre_cll, y)));
+                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(azar.Next(0, longitud_x - 1) * dist_entre_cll, y), new Point(azar.Next(3, longitud_x + 2) * dist_entre_cll, y)));
                 }
                 for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
                 {
                     int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
                     int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
-                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, azar.Next(0, longitud_y - 1)), new Point(x, azar.Next(3, longitud_y + 2) * dist_entre_cll)));
+                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(x, azar.Next(0, longitud_y - 1)), new Point(x, azar.Next(3, longitud_y + 2) * dist_entre_cll)));
                 }
                 for (int i = 0; i < lista_comp_calles.Count; i++)
                 {
@@ -275,7 +265,7 @@ namespace Creador_de_ciudades
                         //100 es el multiplo
                         break;
                     case "ui_distribucion_columnas":
-                        if(y_ori >= alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100)
+                        if(y_ori >= (alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100) - 400)
                         {
                             x_ori = x_ori + 100;
                             y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
@@ -284,7 +274,7 @@ namespace Creador_de_ciudades
                         y_ori = y_ori + 100;
                         break;
                     case "ui_distribucion_filas":
-                        if (x_ori >= ancho_lienzo - Convert.ToInt32(ui_max_ancho_casa.Value) * 100)
+                        if (x_ori >= (ancho_lienzo - Convert.ToInt32(ui_max_ancho_casa.Value) * 100) - 400)
                         {
                             x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100;
                             y_ori = y_ori + 100;
@@ -537,7 +527,6 @@ namespace Creador_de_ciudades
 
                 PictureBox nuevo_lienzo = new PictureBox();
                 nuevo_lienzo.Name = "Planta "+ i;
-                
                 nueva_pagina.Controls.Add(nuevo_lienzo);
                 TabControl.TabPages.Add(nueva_pagina);
             }           

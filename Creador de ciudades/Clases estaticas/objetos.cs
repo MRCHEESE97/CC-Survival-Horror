@@ -91,7 +91,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             do {
 
-                Pen puerta = new Pen(Color.Brown, informacion.grosor_pared);
+                Pen puerta = new Pen(Color.Purple, informacion.grosor_pared);
                 
 
                 int ubicacion_punto = azar.Next(0, informacion.contorno.Count - informacion.ancho_puerta - 1);

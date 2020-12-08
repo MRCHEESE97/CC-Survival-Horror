@@ -30,7 +30,7 @@ namespace Creador_de_ciudades.Clases_estaticas
     static class Formas
     {
 
-        public static SolidBrush Brocha = new SolidBrush(Color.FromArgb(253, 236, 166));
+        public static SolidBrush Brocha = new SolidBrush(Color.Orange);
         public static void forma( String seleccion_forma, Info_forma datos, PictureBox lienzo)
         {
             if (seleccion_forma.Equals("ui_forma_casa_rectangular"))

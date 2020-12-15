@@ -1,17 +1,20 @@
 #Mi primer proyecto.
 Cada version es enumerada por la secuencia ¨0.XXX¨
 
-El principal objetivo de este software es acortar el tiempo del desarrollo de un videojuego del genero Survival horror con un estilo de antaño, facilitando la creación de ciudades.
+El ejecutable está en:
 
-Cocimientos previos para generar las ciudades:
--Software que vectorice por colores por ejemplo: Inskcape
--Software de modelado 3D, por ejemplo: Blender
+
+
+El principal objetivo de este software es acortar el tiempo de diseño de niveles en los videojuegos del genero Survival horror con un estilo de antaño.
+
+Cocimientos básicos, previos para generar las ciudades:
+-Inskcape
+-Blender
 
 Tutorial:
-Este software genera planos en imagenes PNG, estan deben ser llevadas a una herramienta de vectorizado y luego importarlas en un software de modelado 3D para que sea extruido.
-Podrán generar ciudades en pocos minutos
+Este software genera planos en imagenes PNG, estas deben ser vectorizadas con Inscape y luego importarlos en Blender, posteriormenta se debe extruir por colores.
 
 
-Apoyo: Al desarrollo de este y de futuros proyectos, suscribete a mi patreon:
+Apoyo: Al desarrollo de este y de futuros proyectos, mi paypal:
 
-https://www.patreon.com/MRCHEESE97/membership
+paypal.me/MRCHEESE97

@@ -478,6 +478,11 @@
             // 
             this.ui_cantidad_casas.Location = new System.Drawing.Point(137, 20);
             this.ui_cantidad_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_cantidad_casas.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
             this.ui_cantidad_casas.Minimum = new decimal(new int[] {
             10,
             0,

@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Creador de ciudades.exe" size="66560">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Creador de ciudades.exe" size="67072">
       <assemblyIdentity name="Creador de ciudades" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Dkc+pMrO60y+U+YhaektNlHO/lF1G2binFNTV6bxAAY=</dsig:DigestValue>
+        <dsig:DigestValue>StvX2e+3Xffq2lNGMg2+94mv76knkU5M7F/cC7MIhhQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

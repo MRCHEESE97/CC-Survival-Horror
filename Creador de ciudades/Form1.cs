@@ -33,6 +33,7 @@ using System.Windows.Forms;
 
 
 
+
 namespace Creador_de_ciudades
 {   
     public partial class Form1 : Form
@@ -56,7 +57,13 @@ namespace Creador_de_ciudades
         //Objetivo: Dibujar los planos en todos los lienzos.
 
         private void dibujar()
-        {   
+        {
+            //Cronometro de progress bar
+            Stopwatch cropro = new Stopwatch();
+            cropro.Start();
+
+
+
             Random azar = new Random();
             //Variable para busqueda de origen
             int x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100, y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
@@ -207,9 +214,16 @@ namespace Creador_de_ciudades
             Stopwatch cronometro = new Stopwatch();
             cronometro.Start();
 
-
+          
+       
             for (int ubicacion_datos = 0; ubicacion_datos < ui_cantidad_casas.Value; ubicacion_datos++)
             {
+                //Actualización del progress bar #1
+
+                barra.Value = (int)cropro.Elapsed.TotalSeconds;
+
+                
+
                 if (cronometro.ElapsedMilliseconds >= Convert.ToInt32( ui_tiempo_espera.Value) * 1000)
                 {
                     MessageBox.Show("Superó el tiempo limite ", "Operación cancelada",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -410,6 +424,9 @@ namespace Creador_de_ciudades
                         //Esta variable es modificada una vez que PB se haya dibujado
                         lista_casas[recorrer].ubicacion_pb = false;
 
+                        //Actualización del progress bar #1
+
+                        barra.Value = (int)cropro.Elapsed.TotalSeconds;
                     }
                 }
             }
@@ -439,6 +456,10 @@ namespace Creador_de_ciudades
                             lista_casas[recorrer].ubicacion_pb = false;
                         }
                         lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1;
+
+                        //Actualización del progress bar #1
+
+                        barra.Value = (int)cropro.Elapsed.TotalSeconds;
                     }
                 }
             }
@@ -493,22 +514,24 @@ namespace Creador_de_ciudades
                             lista_casas[recorrer].ubicacion_pb = false;
                         }
 
-                        
+
+                        //Actualización del progress bar #1
+
+                        barra.Value = (int)cropro.Elapsed.TotalSeconds;
+
                     }
                 }
             }
             MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            barra.Value = 0;
         }
               
         private void ui_construir_Click(object sender, EventArgs e)
         {
+            barra.Maximum = Convert.ToInt32(ui_tiempo_espera.Value) + 10; // probar mañana
             crear_pages();
-            //Llamo al metodo de dibujo por medio de un hilo
             dibujar();
-           
         }
-
-       
 
        
         private void crear_pages() 

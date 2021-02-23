@@ -158,6 +158,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.barra = new System.Windows.Forms.ProgressBar();
             this.label34 = new System.Windows.Forms.Label();
             this.ui_tiempo_espera = new System.Windows.Forms.NumericUpDown();
             this.label33 = new System.Windows.Forms.Label();
@@ -1934,6 +1935,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox3.Controls.Add(this.barra);
             this.groupBox3.Controls.Add(this.label34);
             this.groupBox3.Controls.Add(this.ui_tiempo_espera);
             this.groupBox3.Controls.Add(this.label33);
@@ -1945,6 +1947,13 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información de la ciudad actual:";
+            // 
+            // barra
+            // 
+            this.barra.Location = new System.Drawing.Point(13, 90);
+            this.barra.Name = "barra";
+            this.barra.Size = new System.Drawing.Size(224, 23);
+            this.barra.TabIndex = 5;
             // 
             // label34
             // 
@@ -2216,7 +2225,6 @@
         private System.Windows.Forms.RadioButton ui_distribucion_filas;
         private System.Windows.Forms.RadioButton ui_distribucion_aleatoria;
         private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.NumericUpDown ui_tiempo_espera;
         private System.Windows.Forms.Label label33;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label35;
@@ -2234,6 +2242,8 @@
         private System.Windows.Forms.NumericUpDown ui_min_ancho_ver;
         private System.Windows.Forms.NumericUpDown ui_max_ancho_ver;
         private System.Windows.Forms.NumericUpDown ui_max_ancho_calle;
+        private System.Windows.Forms.NumericUpDown ui_tiempo_espera;
+        private System.Windows.Forms.ProgressBar barra;
     }
 }
 

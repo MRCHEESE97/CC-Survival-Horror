@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clases estaticas\Calles.cs" />
     <Compile Include="Clases estaticas\Formas.cs" />
     <Compile Include="Clases estaticas\Herramienta.cs" />
     <Compile Include="Clases estaticas\Objetos.cs" />

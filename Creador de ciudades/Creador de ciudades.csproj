@@ -7,7 +7,7 @@
     <ProjectGuid>{023C0F2D-A5B8-4223-A388-1FBE8FAA2EF4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>Creador_de_ciudades</RootNamespace>
-    <AssemblyName>Creador de ciudades</AssemblyName>
+    <AssemblyName>CCSH</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

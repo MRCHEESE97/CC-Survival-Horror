@@ -1,4 +1,4 @@
-﻿/*  Copyright (c) 2020 José Bravo <galillo1997@gmail.com>
+﻿/*  Copyright (c) 2020 José Bravo <galillo1997@hotmail.com>
     This file is part of creador de ciudades.
 
     Creador de ciudades is free software: you can redistribute it and/or modify
@@ -21,13 +21,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
-using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
-using System.Drawing.Printing;
-using System.IO;
 using System.Linq;
-using System.Security.Principal;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -37,12 +31,17 @@ using System.Windows.Forms;
 namespace Creador_de_ciudades
 {   
     public partial class Form1 : Form
-    {
+    {   
         public Form1()
         {
             InitializeComponent();    
         }
-        
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            // The top panel remains the same size when the form is resized.
+            splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+        }
 
         //Subsistema TabControl
         //Objetivo: Esta parte del código instancia las paginas para el tabControl
@@ -611,13 +610,7 @@ namespace Creador_de_ciudades
                     nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
                 }
             }
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            // The top panel remains the same size when the form is resized.
-            splitContainer1.FixedPanel= System.Windows.Forms.FixedPanel.Panel2;
-        }
+        }     
 
         private void ui_superposicion_esc_cons_var_CheckedChanged(object sender, EventArgs e)
         {

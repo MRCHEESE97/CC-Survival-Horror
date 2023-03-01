@@ -1,5 +1,3 @@
-#Mi primer proyecto.
-Cada version es enumerada por la secuencia ¨0.XXX¨
 
 El ejecutable está en:
 

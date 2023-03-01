@@ -30,7 +30,7 @@ namespace Creador_de_ciudades.Clases_estaticas
     {
         
         public static Random azar = new Random();
-        public static void objeto(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo)
+        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo)
         {
             for (int i = 0; i < seleccion_objeto.Count ; i++)
             {

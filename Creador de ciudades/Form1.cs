@@ -58,8 +58,8 @@ namespace Creador_de_ciudades
         private void dibujar()
         {
             //Cronometro de progress bar
-            Stopwatch cropro = new Stopwatch();
-            cropro.Start();
+            Stopwatch cronometro_proceso = new Stopwatch();
+            cronometro_proceso.Start();
 
 
 
@@ -219,7 +219,7 @@ namespace Creador_de_ciudades
             {
                 //Actualización del progress bar #1
 
-                barra.Value = (int)cropro.Elapsed.TotalSeconds;
+                barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
 
                 
 
@@ -333,7 +333,7 @@ namespace Creador_de_ciudades
                 bool interruptor = false;
 
                 //Verificar si existe interseccion entre casas
-                //Esta verificación me deja una gran leccion 29/11/20 :)
+                //Esta verificación me deja una gran leccion 29/11/20 :)  ME REFERIA AL FOR EN PARALELO <3
 
                 for (int x = 0; x < lista_casas.Count; x++)
                 {
@@ -397,7 +397,24 @@ namespace Creador_de_ciudades
 
             String forma_seleccionada = ui_groupbox_forma_casas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
-            //Pintar lienzos con los datos almacenados, dependiedo de la superposicion
+            //4.1 QUITA PISOS ALEATORIAMENTE EN LAS DISTINTAS CASAS
+
+
+            if (ui_quitar_algunos_pisos.Checked)
+            {
+                foreach (Info_forma c in lista_casas)
+                {
+                    c.pisos_reales = azar.Next(1, c.pisos_reales + 1); //toma una casa y le disminuye un piso?
+                }          
+            }
+
+
+
+
+
+
+
+            //4.2 Pintar lienzos con los datos almacenados, dependiedo de la superposicion
 
             if (ui_superposicion_esc_cons.Checked == true)
             {
@@ -405,27 +422,32 @@ namespace Creador_de_ciudades
                 {
                     for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
                     {
-                        
-                        string nombre_page = "Planta " + i;
-                        Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-
-                        //Primero se guardan los nombre de los checkbox activo es una lista
-
-                        List<String> nombres_checkbox = new List<string>();
-                        foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                        if (lista_casas[recorrer].pisos_reales > 0) // TIENE MAS DE 1 PISO SE SIGUE DIBUJANDO
                         {
-                            if (c.Checked == true){nombres_checkbox.Add(c.Name);}
+                            string nombre_page = "Planta " + i;
+                            Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                            //Primero se guardan los nombre de los checkbox activo es una lista
+
+                            List<String> nombres_checkbox = new List<string>();
+                            foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                            {
+                                if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                            }
+
+                            //Después de pintar las casas, se pintan los objetos
+                            Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                            //Esta variable es modificada una vez que PB se haya dibujado
+                            lista_casas[recorrer].ubicacion_pb = false;
+
+                            lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1;
+
                         }
-
-                        //Después de pintar las casas, se pintan los objetos
-                        Objetos.objeto(nombres_checkbox,lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-                        
-                        //Esta variable es modificada una vez que PB se haya dibujado
-                        lista_casas[recorrer].ubicacion_pb = false;
-
+                       
                         //Actualización del progress bar #1
 
-                        barra.Value = (int)cropro.Elapsed.TotalSeconds;
+                        barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
                     }
                 }
             }
@@ -449,16 +471,17 @@ namespace Creador_de_ciudades
                             }
 
                             //Después de pintar las casas, se pintan los objetos
-                            Objetos.objeto(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
 
                             //Esta variable es modificada una vez que PB se haya dibujado
                             lista_casas[recorrer].ubicacion_pb = false;
                         }
+                        
                         lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1;
 
                         //Actualización del progress bar #1
 
-                        barra.Value = (int)cropro.Elapsed.TotalSeconds;
+                        barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
                     }
                 }
             }
@@ -507,7 +530,7 @@ namespace Creador_de_ciudades
                                 if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                             }
 
-                            Objetos.objeto(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
                            
                             //Esta variable es modificada una vez que PB se haya dibujado
                             lista_casas[recorrer].ubicacion_pb = false;
@@ -516,13 +539,14 @@ namespace Creador_de_ciudades
 
                         //Actualización del progress bar #1
 
-                        barra.Value = (int)cropro.Elapsed.TotalSeconds;
+                        barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
 
                     }
                 }
             }
             MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             barra.Value = 0;
+           
         }
               
         private void ui_construir_Click(object sender, EventArgs e)

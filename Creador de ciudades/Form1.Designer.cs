@@ -40,8 +40,8 @@
             this.TabControl = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.ui_superposicion_esc_var = new System.Windows.Forms.RadioButton();
-            this.ui_superposicion_esc_cons_var = new System.Windows.Forms.RadioButton();
             this.ui_superposicion_esc_cons = new System.Windows.Forms.RadioButton();
             this.ui_superposicion_piramidal = new System.Windows.Forms.RadioButton();
             this.ui_cantidad_pisos = new System.Windows.Forms.NumericUpDown();
@@ -68,6 +68,7 @@
             this.ui_min_ancho_casa = new System.Windows.Forms.NumericUpDown();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
             this.ui_groupbox_forma_casas = new System.Windows.Forms.GroupBox();
             this.ui_forma_casa_combinar = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_hexagonal = new System.Windows.Forms.RadioButton();
@@ -116,6 +117,7 @@
             this.ui_objetos_ventana_binaria = new System.Windows.Forms.RadioButton();
             this.tabControlProp = new System.Windows.Forms.TabControl();
             this.tabcontrol_propiedades = new System.Windows.Forms.TabPage();
+            this.ui_quitar_algunos_pisos = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.ui_group_box_distribucion = new System.Windows.Forms.GroupBox();
             this.ui_distribucion_columnas = new System.Windows.Forms.RadioButton();
@@ -165,9 +167,7 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label42 = new System.Windows.Forms.Label();
-            this.ui_quitar_algunos_pisos = new System.Windows.Forms.CheckBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label43 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -307,44 +307,41 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.radioButton1);
+            this.groupBox4.Controls.Add(this.ui_groupBox_superposicion_modo);
             this.groupBox4.Controls.Add(this.ui_superposicion_esc_var);
-            this.groupBox4.Controls.Add(this.ui_superposicion_esc_cons_var);
             this.groupBox4.Controls.Add(this.ui_superposicion_esc_cons);
             this.groupBox4.Controls.Add(this.ui_superposicion_piramidal);
             this.groupBox4.Location = new System.Drawing.Point(18, 53);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.groupBox4.Size = new System.Drawing.Size(395, 186);
+            this.groupBox4.Size = new System.Drawing.Size(395, 157);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Superposición de pisos";
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Enabled = false;
+            this.radioButton1.Location = new System.Drawing.Point(18, 118);
+            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(167, 21);
+            this.radioButton1.TabIndex = 4;
+            this.radioButton1.Text = "Usar todas las anteriores";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            // 
             // ui_superposicion_esc_var
             // 
             this.ui_superposicion_esc_var.AutoSize = true;
-            this.ui_superposicion_esc_var.Enabled = false;
-            this.ui_superposicion_esc_var.Location = new System.Drawing.Point(18, 118);
+            this.ui_superposicion_esc_var.Location = new System.Drawing.Point(18, 89);
             this.ui_superposicion_esc_var.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_superposicion_esc_var.Name = "ui_superposicion_esc_var";
             this.ui_superposicion_esc_var.Size = new System.Drawing.Size(124, 21);
             this.ui_superposicion_esc_var.TabIndex = 3;
             this.ui_superposicion_esc_var.Text = "Escala alternable ";
             this.ui_superposicion_esc_var.UseVisualStyleBackColor = true;
-            // 
-            // ui_superposicion_esc_cons_var
-            // 
-            this.ui_superposicion_esc_cons_var.AutoSize = true;
-            this.ui_superposicion_esc_cons_var.Checked = true;
-            this.ui_superposicion_esc_cons_var.Location = new System.Drawing.Point(17, 60);
-            this.ui_superposicion_esc_cons_var.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_superposicion_esc_cons_var.Name = "ui_superposicion_esc_cons_var";
-            this.ui_superposicion_esc_cons_var.Size = new System.Drawing.Size(165, 21);
-            this.ui_superposicion_esc_cons_var.TabIndex = 2;
-            this.ui_superposicion_esc_cons_var.TabStop = true;
-            this.ui_superposicion_esc_cons_var.Text = "Escala constante variable";
-            this.ui_superposicion_esc_cons_var.UseVisualStyleBackColor = true;
-            this.ui_superposicion_esc_cons_var.CheckedChanged += new System.EventHandler(this.ui_superposicion_esc_cons_var_CheckedChanged);
             // 
             // ui_superposicion_esc_cons
             // 
@@ -361,11 +358,13 @@
             // ui_superposicion_piramidal
             // 
             this.ui_superposicion_piramidal.AutoSize = true;
-            this.ui_superposicion_piramidal.Location = new System.Drawing.Point(18, 89);
+            this.ui_superposicion_piramidal.Checked = true;
+            this.ui_superposicion_piramidal.Location = new System.Drawing.Point(18, 60);
             this.ui_superposicion_piramidal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_superposicion_piramidal.Name = "ui_superposicion_piramidal";
             this.ui_superposicion_piramidal.Size = new System.Drawing.Size(114, 21);
             this.ui_superposicion_piramidal.TabIndex = 0;
+            this.ui_superposicion_piramidal.TabStop = true;
             this.ui_superposicion_piramidal.Text = "Escala piramidal";
             this.ui_superposicion_piramidal.UseVisualStyleBackColor = true;
             // 
@@ -407,12 +406,13 @@
             this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_rad_valor_por_rango);
             this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_rad_valor_fijo);
             this.ui_groupBox_superposicion_modo.Controls.Add(this.ui_superposicion_valor_fijo);
+            this.ui_groupBox_superposicion_modo.Controls.Add(this.label43);
             this.ui_groupBox_superposicion_modo.Enabled = false;
-            this.ui_groupBox_superposicion_modo.Location = new System.Drawing.Point(249, 105);
+            this.ui_groupBox_superposicion_modo.Location = new System.Drawing.Point(191, 60);
             this.ui_groupBox_superposicion_modo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupBox_superposicion_modo.Name = "ui_groupBox_superposicion_modo";
             this.ui_groupBox_superposicion_modo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_groupBox_superposicion_modo.Size = new System.Drawing.Size(156, 98);
+            this.ui_groupBox_superposicion_modo.Size = new System.Drawing.Size(191, 85);
             this.ui_groupBox_superposicion_modo.TabIndex = 7;
             this.ui_groupBox_superposicion_modo.TabStop = false;
             this.ui_groupBox_superposicion_modo.Text = "Valor de reducción";
@@ -444,7 +444,7 @@
             // 
             // ui_superposicion_valor_fijo
             // 
-            this.ui_superposicion_valor_fijo.Location = new System.Drawing.Point(90, 25);
+            this.ui_superposicion_valor_fijo.Location = new System.Drawing.Point(124, 25);
             this.ui_superposicion_valor_fijo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_superposicion_valor_fijo.Maximum = new decimal(new int[] {
             10,
@@ -457,10 +457,10 @@
             0,
             0});
             this.ui_superposicion_valor_fijo.Name = "ui_superposicion_valor_fijo";
-            this.ui_superposicion_valor_fijo.Size = new System.Drawing.Size(54, 27);
+            this.ui_superposicion_valor_fijo.Size = new System.Drawing.Size(42, 27);
             this.ui_superposicion_valor_fijo.TabIndex = 4;
             this.ui_superposicion_valor_fijo.Value = new decimal(new int[] {
-            1,
+            2,
             0,
             0,
             0});
@@ -726,6 +726,15 @@
             this.label5.Size = new System.Drawing.Size(45, 17);
             this.label5.TabIndex = 0;
             this.label5.Text = "Ancho:";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(17, 54);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(43, 17);
+            this.label42.TabIndex = 13;
+            this.label42.Text = "pared:";
             // 
             // ui_groupbox_forma_casas
             // 
@@ -1388,7 +1397,6 @@
             this.tabcontrol_propiedades.AutoScroll = true;
             this.tabcontrol_propiedades.BackColor = System.Drawing.Color.White;
             this.tabcontrol_propiedades.Controls.Add(this.ui_quitar_algunos_pisos);
-            this.tabcontrol_propiedades.Controls.Add(this.ui_groupBox_superposicion_modo);
             this.tabcontrol_propiedades.Controls.Add(this.groupBox4);
             this.tabcontrol_propiedades.Controls.Add(this.label1);
             this.tabcontrol_propiedades.Controls.Add(this.ui_cantidad_pisos);
@@ -1399,6 +1407,16 @@
             this.tabcontrol_propiedades.Size = new System.Drawing.Size(431, 340);
             this.tabcontrol_propiedades.TabIndex = 0;
             this.tabcontrol_propiedades.Text = "Plantas";
+            // 
+            // ui_quitar_algunos_pisos
+            // 
+            this.ui_quitar_algunos_pisos.AutoSize = true;
+            this.ui_quitar_algunos_pisos.Location = new System.Drawing.Point(260, 78);
+            this.ui_quitar_algunos_pisos.Name = "ui_quitar_algunos_pisos";
+            this.ui_quitar_algunos_pisos.Size = new System.Drawing.Size(140, 21);
+            this.ui_quitar_algunos_pisos.TabIndex = 8;
+            this.ui_quitar_algunos_pisos.Text = "Quitar algunos pisos";
+            this.ui_quitar_algunos_pisos.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -1739,9 +1757,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(195, 23);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(143, 17);
+            this.label19.Size = new System.Drawing.Size(100, 17);
             this.label19.TabIndex = 9;
-            this.label19.Text = "Zonas vacias(sin casas):";
+            this.label19.Text = "Zonas sin casas:";
             // 
             // label30
             // 
@@ -2024,36 +2042,14 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // label42
+            // label43
             // 
-            this.label42.AutoSize = true;
-            this.label42.Location = new System.Drawing.Point(17, 54);
-            this.label42.Name = "label42";
-            this.label42.Size = new System.Drawing.Size(43, 17);
-            this.label42.TabIndex = 13;
-            this.label42.Text = "pared:";
-            // 
-            // ui_quitar_algunos_pisos
-            // 
-            this.ui_quitar_algunos_pisos.AutoSize = true;
-            this.ui_quitar_algunos_pisos.Location = new System.Drawing.Point(260, 78);
-            this.ui_quitar_algunos_pisos.Name = "ui_quitar_algunos_pisos";
-            this.ui_quitar_algunos_pisos.Size = new System.Drawing.Size(140, 21);
-            this.ui_quitar_algunos_pisos.TabIndex = 8;
-            this.ui_quitar_algunos_pisos.Text = "Quitar algunos pisos";
-            this.ui_quitar_algunos_pisos.UseVisualStyleBackColor = true;
-            // 
-            // radioButton1
-            // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Enabled = false;
-            this.radioButton1.Location = new System.Drawing.Point(18, 147);
-            this.radioButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(167, 21);
-            this.radioButton1.TabIndex = 4;
-            this.radioButton1.Text = "Usar todas las anteriores";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(165, 27);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(22, 17);
+            this.label43.TabIndex = 10;
+            this.label43.Text = "m.";
             // 
             // Form1
             // 
@@ -2178,7 +2174,6 @@
         private System.Windows.Forms.RadioButton ui_superposicion_rad_valor_por_rango;
         private System.Windows.Forms.RadioButton ui_superposicion_rad_valor_fijo;
         private System.Windows.Forms.NumericUpDown ui_superposicion_valor_fijo;
-        private System.Windows.Forms.RadioButton ui_superposicion_esc_cons_var;
         private System.Windows.Forms.ToolStripMenuItem guardarCiudadComoCarpetaToolStripMenuItem;
         private System.Windows.Forms.GroupBox ui_groupbox_objetos;
         private System.Windows.Forms.CheckBox ui_objetos_columna_cuadrada;
@@ -2284,6 +2279,7 @@
         private System.Windows.Forms.Label label42;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.CheckBox ui_quitar_algunos_pisos;
+        private System.Windows.Forms.Label label43;
     }
 }
 

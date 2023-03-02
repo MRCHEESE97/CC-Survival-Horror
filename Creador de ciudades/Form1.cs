@@ -310,7 +310,7 @@ namespace Creador_de_ciudades
                  new Point(),
                  azar.Next(Convert.ToInt32(ui_pilar_cubico_med_min.Value), Convert.ToInt32(ui_pilar_cubico_med_max.Value)),
                  azar.Next(Convert.ToInt32(ui_pilar_round_med_min.Value), Convert.ToInt32(ui_pilar_round_med_max.Value)),
-                 azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1),
+                 azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1), //Pisos_reales
                  grados,
                  azar.Next(10, 20), // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
                  azar.Next(1, 5),
@@ -397,153 +397,138 @@ namespace Creador_de_ciudades
 
             String forma_seleccionada = ui_groupbox_forma_casas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
-            //4.1 QUITA PISOS ALEATORIAMENTE EN LAS DISTINTAS CASAS
+           
 
+            //FUNCIONES DE SUPERPOSICIONES
 
-            if (ui_quitar_algunos_pisos.Checked)
+            void superposicion_con(int recorrer, int i) //i es el iterado del piso, recorrer el iterador de una casa
             {
-                foreach (Info_forma c in lista_casas)
+                string nombre_page = "Planta " + i;
+                Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                //Primero se guardan los nombre de los checkbox activo es una lista
+
+                List<String> nombres_checkbox = new List<string>();
+                foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
                 {
-                    c.pisos_reales = azar.Next(1, c.pisos_reales + 1); //toma una casa y le disminuye un piso?
-                }          
+                    if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                }
+
+                //Después de pintar las casas, se pintan los objetos
+                Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                //Esta variable es modificada una vez que PB se haya dibujado
+                lista_casas[recorrer].ubicacion_pb = false;
+
+
+                //Actualización del progress bar #1
+
+                barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
+
             }
 
+            void superposicion_pir(int recorrer, int i) {
+                if (i > 0)
+                {
+                    int valor_reduccion = 0;
+                    if (ui_superposicion_rad_valor_fijo.Checked == true)
+                    {
+                        valor_reduccion = Convert.ToInt32(ui_superposicion_valor_fijo.Value);
+                    }
+                    else if (ui_superposicion_rad_valor_por_rango.Checked == true)
+                    {
+                        int limite = Math.Min(lista_casas[recorrer].alto_forma, lista_casas[recorrer].ancho_forma);
+                        //Esto es para manejar la excepcion probar un break
+                        if (limite < 0)
+                        { limite = 0; }
+
+                        int modo = 0;
+                        valor_reduccion = azar.Next(modo, limite + 1);
+                    }
+                    lista_casas[recorrer].nuevo_origen = new Point(lista_casas[recorrer].po.X + ((valor_reduccion * 100) / 2), lista_casas[recorrer].po.Y + ((valor_reduccion * 100) / 2));
+                    lista_casas[recorrer].po = lista_casas[recorrer].nuevo_origen;
+                    lista_casas[recorrer].ancho_forma = lista_casas[recorrer].ancho_forma - valor_reduccion;
+                    lista_casas[recorrer].alto_forma = lista_casas[recorrer].alto_forma - valor_reduccion;
+                }
+
+                if (lista_casas[recorrer].ancho_forma > 1 && lista_casas[recorrer].alto_forma > 1)  // Solo se dibuja si es mayor a 1 el ancho o el alto
+                {
+                    string nombre_page = "Planta " + i;
+                    Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                    //Después de pintar las casas, se pintan los objetos
+
+                    //Primero se guardan los nombre de los checkbox activo es una lista
+
+                    List<String> nombres_checkbox = new List<string>();
+                    foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                    {
+                        if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                    }
+
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                    //Esta variable es modificada una vez que PB se haya dibujado
+                    lista_casas[recorrer].ubicacion_pb = false;
+                }
 
 
+                //Actualización del progress bar #1
 
+                barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
+            }
 
 
 
             //4.2 Pintar lienzos con los datos almacenados, dependiedo de la superposicion
 
-            if (ui_superposicion_esc_cons.Checked == true)
+           
+            for (int i = 0; i < ui_cantidad_pisos.Value; i++)
             {
-                for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+                for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
                 {
-                    for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
+                    if (ui_superposicion_esc_cons.Checked == true)
                     {
-                        if (lista_casas[recorrer].pisos_reales > 0) // TIENE MAS DE 1 PISO SE SIGUE DIBUJANDO
+
+                        if (ui_quitar_algunos_pisos.Checked)
                         {
-                            string nombre_page = "Planta " + i;
-                            Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-
-                            //Primero se guardan los nombre de los checkbox activo es una lista
-
-                            List<String> nombres_checkbox = new List<string>();
-                            foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                            if (lista_casas[recorrer].pisos_reales > 0)
                             {
-                                if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                                superposicion_con(recorrer, i);
                             }
 
-                            //Después de pintar las casas, se pintan los objetos
-                            Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                            lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1; // disminuye un piso
 
-                            //Esta variable es modificada una vez que PB se haya dibujado
-                            lista_casas[recorrer].ubicacion_pb = false;
+                        }
+                        else
+                        {
+                            superposicion_con(recorrer, i);
+                        }
+                    }
+                    if (ui_superposicion_piramidal.Checked == true) //este modo puede hacer parecer que quitar algunos pisos parezca activo
+                    {
+                        if (ui_quitar_algunos_pisos.Checked)
+                        {
+                            if (lista_casas[recorrer].pisos_reales > 0)
+                            {
+                                superposicion_pir(recorrer, i);
+                            }
 
-                            lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1;
+                            lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1; // disminuye un piso
 
+                        }
+                        else
+                        {
+                            superposicion_pir(recorrer, i); ;
                         }
                        
-                        //Actualización del progress bar #1
-
-                        barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
                     }
+                    //4.1 QUITA PISOS ALEATORIAMENTE EN LAS DISTINTAS CASAS
                 }
             }
-            else if (ui_superposicion_esc_cons_var.Checked == true)
-            {
-                for (int i = 0; i < ui_cantidad_pisos.Value; i++)
-                {
-                    for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
-                    {
-                        if (lista_casas[recorrer].pisos_reales > 0)
-                        {
-                            string nombre_page = "Planta " + i;
-                            Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-
-                            //Primero se guardan los nombre de los checkbox activo es una lista
-
-                            List<String> nombres_checkbox = new List<string>();
-                            foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
-                            {
-                                if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
-                            }
-
-                            //Después de pintar las casas, se pintan los objetos
-                            Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-
-                            //Esta variable es modificada una vez que PB se haya dibujado
-                            lista_casas[recorrer].ubicacion_pb = false;
-                        }
-                        
-                        lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1;
-
-                        //Actualización del progress bar #1
-
-                        barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
-                    }
-                }
-            }
-            else if (ui_superposicion_piramidal.Checked == true) 
-            {
-                for (int i = 0; i < ui_cantidad_pisos.Value; i++)
-                {
-
-                    for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
-                    {                                                           
-                        if (i>0)
-                        {
-                            int valor_reduccion = 0;
-                            if (ui_superposicion_rad_valor_fijo.Checked == true)
-                            {
-                                valor_reduccion = Convert.ToInt32(ui_superposicion_valor_fijo.Value);
-                            }
-                            else if(ui_superposicion_rad_valor_por_rango.Checked == true)
-                            {
-                                int limite = Math.Min(lista_casas[recorrer].alto_forma, lista_casas[recorrer].ancho_forma);
-                                //Esto es para manejar la excepcion probar un break
-                                if (limite < 0)
-                                { limite = 0; }
-
-                                int modo = 0;
-                                valor_reduccion = azar.Next(modo, limite+1);
-                            }
-                            lista_casas[recorrer].nuevo_origen = new Point(lista_casas[recorrer].po.X + ((valor_reduccion * 100) / 2), lista_casas[recorrer].po.Y + ((valor_reduccion * 100) / 2));
-                            lista_casas[recorrer].po = lista_casas[recorrer].nuevo_origen;
-                            lista_casas[recorrer].ancho_forma = lista_casas[recorrer].ancho_forma - valor_reduccion;
-                            lista_casas[recorrer].alto_forma  = lista_casas[recorrer].alto_forma - valor_reduccion;
-                        }                      
-
-                        if (lista_casas[recorrer].ancho_forma > 2 && lista_casas[recorrer].alto_forma > 2) 
-                        {
-                            string nombre_page = "Planta " + i;
-                            Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-
-                            //Después de pintar las casas, se pintan los objetos
-
-                            //Primero se guardan los nombre de los checkbox activo es una lista
-
-                            List<String> nombres_checkbox = new List<string>();
-                            foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
-                            {
-                                if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
-                            }
-
-                            Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-                           
-                            //Esta variable es modificada una vez que PB se haya dibujado
-                            lista_casas[recorrer].ubicacion_pb = false;
-                        }
-
-
-                        //Actualización del progress bar #1
-
-                        barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
-
-                    }
-                }
-            }
+            
+            
+           
             MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             barra.Value = 0;
            
@@ -636,11 +621,7 @@ namespace Creador_de_ciudades
             }
         }     
 
-        private void ui_superposicion_esc_cons_var_CheckedChanged(object sender, EventArgs e)
-        {
-            ui_groupBox_superposicion_modo.Enabled = !ui_superposicion_esc_cons_var.Checked;
-        }
-
+       
         private void ui_quitar_todo_Click(object sender, EventArgs e)
         {
             ui_label_m2.Text = "----";

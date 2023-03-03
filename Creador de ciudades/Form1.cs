@@ -26,10 +26,6 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
-
-
 namespace Creador_de_ciudades
 {   
     public partial class Form1 : Form
@@ -120,112 +116,116 @@ namespace Creador_de_ciudades
             PictureBox primer_nivel = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
             Graphics fondo = Graphics.FromImage(primer_nivel.Image);
             Brush brocha_fondo = new SolidBrush(Color.DarkGreen);
-            fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0,0), new Size(ancho_lienzo, alto_lienzo)));
+            
 
 
             //Subsistema # 2 creación de calles
 
             int dist_entre_cll = 0;
 
-            //aqui se define la lejania o distancia de una calle y otra 
-            if (ui_autoajustar_dist_calles.Checked)
-            {
-                dist_entre_cll = Convert.ToInt32(ui_espacio_calles.Value) * 100;
-            }
-            else
-            {
-                dist_entre_cll = Convert.ToInt32(Herramienta.retornar_mayor((int)ui_max_ancho_casa.Value, (int)ui_max_alto_casa.Value)) * 100;
-            }
 
+            do {
 
+                lista_comp_calles.Clear(); //revisar mañana 
+                fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0, 0), new Size(ancho_lienzo, alto_lienzo)));
 
-
-            if (ui_calle_cuadricula.Checked == true)
-            {
-                         
-                for (int y= dist_entre_cll; y < alto_lienzo ; y += dist_entre_cll)
+                //aqui se define la lejania o distancia de una calle y otra 
+                if (ui_autoajustar_dist_calles.Checked)
                 {
-                    int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
-                    int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
-                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(0, y), new Point(ancho_lienzo, y)));                
+                    dist_entre_cll = Convert.ToInt32(ui_espacio_calles.Value) * 100;
                 }
-                for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
+                else
                 {
-                    int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
-                    int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
-                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(x, 0), new Point(x, alto_lienzo)));
+                    dist_entre_cll = Convert.ToInt32(Herramienta.retornar_mayor((int)ui_max_ancho_casa.Value, (int)ui_max_alto_casa.Value)) * 100;
                 }
 
-                //Se dibujan las veredas (Calle base)
 
-                for (int i = 0; i < lista_comp_calles.Count; i++)
+                if (ui_calle_cuadricula.Checked == true)
                 {
-                    fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
-                    primer_nivel.Refresh();
+
+                    for (int y = dist_entre_cll; y < alto_lienzo; y += dist_entre_cll)
+                    {
+                        int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
+                        int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
+                        lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(0, y), new Point(ancho_lienzo, y)));
+                    }
+                    for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
+                    {
+                        int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
+                        int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
+                        lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, 0), new Point(x, alto_lienzo)));
+                    }
+
+                    //Se dibujan las veredas (Calle base)
+
+                    for (int i = 0; i < lista_comp_calles.Count; i++)
+                    {
+                        fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                        primer_nivel.Refresh();
+                    }
+
+                    //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de la linea base"
+                    lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
+
+                    //Se dibujan las calles
+                    for (int i = 0; i < lista_comp_calles.Count; i++)
+                    {
+                        fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                        primer_nivel.Refresh();
+                    }
                 }
-
-                //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de linea base"
-                lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
-
-                //Se dibujan las calles
-                for (int i = 0; i < lista_comp_calles.Count; i++)
+                else if (ui_calle_incompleta.Checked == true)
                 {
-                    fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
-                    primer_nivel.Refresh();
-                }
-            }
-            else if (ui_calle_incompleta.Checked == true)
-            {
-                //Se dibujan las veredas (Calle base)
-               
-                int longitud_x = ancho_lienzo / dist_entre_cll;
-                int longitud_y = alto_lienzo / dist_entre_cll;
-               //Pen dash_street = new Pen(Color.Yellow,20);
-               //dash_street.DashStyle = DashStyle.Dash;
+                    //Se dibujan las veredas (Calle base)
 
-                for (int y = dist_entre_cll; y < alto_lienzo; y += dist_entre_cll)
+                    int longitud_x = ancho_lienzo / dist_entre_cll;
+                    int longitud_y = alto_lienzo / dist_entre_cll;
+                    //Pen dash_street = new Pen(Color.Yellow,20);
+                    //dash_street.DashStyle = DashStyle.Dash;
+
+                    for (int y = dist_entre_cll; y < alto_lienzo; y += dist_entre_cll)
+                    {
+                        int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
+                        int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
+                        lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(azar.Next(0, longitud_x - 1) * dist_entre_cll, y), new Point(azar.Next(3, longitud_x + 2) * dist_entre_cll, y)));
+                    }
+                    for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
+                    {
+                        int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
+                        int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
+                        lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, azar.Next(0, longitud_y - 1)), new Point(x, azar.Next(3, longitud_y + 2) * dist_entre_cll)));
+                    }
+                    for (int i = 0; i < lista_comp_calles.Count; i++)
+                    {
+                        fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                        primer_nivel.Refresh();
+                    }
+
+                    //Subsistema # 2.1 Deteccion de pixeles blancos"
+                    lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
+
+                    //Se dibujan las calles
+                    for (int i = 0; i < lista_comp_calles.Count; i++)
+                    {
+                        fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                        //fondo.DrawLine(dash_street, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                        primer_nivel.Refresh();
+                    }
+                }
+                else if (ui_calle_curvilineal.Checked == true)
                 {
-                    int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
-                    int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
-                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(azar.Next(0, longitud_x - 1) * dist_entre_cll, y), new Point(azar.Next(3, longitud_x + 2) * dist_entre_cll, y)));
+
                 }
-                for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
+                else if (ui_calle_callejones.Checked == true)
                 {
-                    int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
-                    int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
-                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(x, azar.Next(0, longitud_y - 1)), new Point(x, azar.Next(3, longitud_y + 2) * dist_entre_cll)));
+
                 }
-                for (int i = 0; i < lista_comp_calles.Count; i++)
-                {
-                    fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
-                    primer_nivel.Refresh();
-                }
-
-                //Subsistema # 2.1 Deteccion de pixeles blancos"
-                lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
-
-                //Se dibujan las calles
-                for (int i = 0; i < lista_comp_calles.Count; i++)
-                {
-                    fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
-                    //fondo.DrawLine(dash_street, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
-                    primer_nivel.Refresh();
-                }
-            }
-            else if (ui_calle_curvilineal.Checked == true)
-            {
-
-            }
-            else if (ui_calle_callejones.Checked == true)
-            {
-
-            }
-
+            } while (MessageBox.Show("¿Desea volver a generar calles?", "Sistema", MessageBoxButtons.YesNo) == DialogResult.Yes);
 
 
             //MessageBox.Show(Convert.ToString(lista_puntos_calles.Count));
 
-            
+
             //Subsistema # 3 de recoleccion de datos: casas
 
             Stopwatch cronometro = new Stopwatch();
@@ -258,7 +258,7 @@ namespace Creador_de_ciudades
                         {
                             grados = azar.Next(0, 361);
                         }
-                        else 
+                        else if (seleccionar == 1)
                         {
 
                             int selec = azar.Next(0, 4);

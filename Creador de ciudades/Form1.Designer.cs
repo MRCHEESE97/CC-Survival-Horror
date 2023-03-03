@@ -511,7 +511,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            60,
+            70,
             0,
             0,
             0});
@@ -640,7 +640,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            25,
+            20,
             0,
             0,
             0});
@@ -660,7 +660,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            25,
+            20,
             0,
             0,
             0});
@@ -773,11 +773,13 @@
             // ui_forma_casa_combinar
             // 
             this.ui_forma_casa_combinar.AutoSize = true;
+            this.ui_forma_casa_combinar.Checked = true;
             this.ui_forma_casa_combinar.Location = new System.Drawing.Point(241, 78);
             this.ui_forma_casa_combinar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_combinar.Name = "ui_forma_casa_combinar";
             this.ui_forma_casa_combinar.Size = new System.Drawing.Size(119, 21);
             this.ui_forma_casa_combinar.TabIndex = 9;
+            this.ui_forma_casa_combinar.TabStop = true;
             this.ui_forma_casa_combinar.Text = "Combinar formas";
             this.ui_forma_casa_combinar.UseVisualStyleBackColor = true;
             // 
@@ -796,12 +798,10 @@
             // ui_forma_casa_deformada_chaflan
             // 
             this.ui_forma_casa_deformada_chaflan.AutoSize = true;
-            this.ui_forma_casa_deformada_chaflan.Checked = true;
             this.ui_forma_casa_deformada_chaflan.Location = new System.Drawing.Point(16, 54);
             this.ui_forma_casa_deformada_chaflan.Name = "ui_forma_casa_deformada_chaflan";
             this.ui_forma_casa_deformada_chaflan.Size = new System.Drawing.Size(195, 21);
             this.ui_forma_casa_deformada_chaflan.TabIndex = 7;
-            this.ui_forma_casa_deformada_chaflan.TabStop = true;
             this.ui_forma_casa_deformada_chaflan.Text = "Rectangulo deformado chaflán";
             this.ui_forma_casa_deformada_chaflan.UseVisualStyleBackColor = true;
             // 
@@ -813,7 +813,7 @@
             this.Distancia.Name = "Distancia";
             this.Distancia.Size = new System.Drawing.Size(212, 45);
             this.Distancia.TabIndex = 6;
-            this.Distancia.Value = 4;
+            this.Distancia.Value = 8;
             // 
             // label18
             // 
@@ -1640,7 +1640,7 @@
             this.ui_espacio_calles.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles.TabIndex = 21;
             this.ui_espacio_calles.Value = new decimal(new int[] {
-            31,
+            40,
             0,
             0,
             0});
@@ -1802,7 +1802,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            50,
+            60,
             0,
             0,
             0});

@@ -18,9 +18,11 @@
 using Creador_de_ciudades.Clases;
 using Creador_de_ciudades.Clases_estaticas;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -123,11 +125,24 @@ namespace Creador_de_ciudades
 
             //Subsistema # 2 creación de calles
 
-            if (ui_calle_cuadricula.Checked == true)
-            {        
-                //Se dibujan las veredas (Calle base)
-                int dist_entre_cll = Convert.ToInt32(ui_espacio_calles.Value) * 100;
+            int dist_entre_cll = 0;
 
+            //aqui se define la lejania o distancia de una calle y otra 
+            if (ui_autoajustar_dist_calles.Checked)
+            {
+                dist_entre_cll = Convert.ToInt32(ui_espacio_calles.Value) * 100;
+            }
+            else
+            {
+                dist_entre_cll = Convert.ToInt32(Herramienta.retornar_mayor((int)ui_max_ancho_casa.Value, (int)ui_max_alto_casa.Value)) * 100;
+            }
+
+
+
+
+            if (ui_calle_cuadricula.Checked == true)
+            {
+                         
                 for (int y= dist_entre_cll; y < alto_lienzo ; y += dist_entre_cll)
                 {
                     int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
@@ -140,6 +155,9 @@ namespace Creador_de_ciudades
                     int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
                     lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88,88,88), ancho_calle * 100), new Point(x, 0), new Point(x, alto_lienzo)));
                 }
+
+                //Se dibujan las veredas (Calle base)
+
                 for (int i = 0; i < lista_comp_calles.Count; i++)
                 {
                     fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
@@ -159,7 +177,7 @@ namespace Creador_de_ciudades
             else if (ui_calle_incompleta.Checked == true)
             {
                 //Se dibujan las veredas (Calle base)
-                int dist_entre_cll = Convert.ToInt32(ui_espacio_calles.Value) * 100;
+               
                 int longitud_x = ancho_lienzo / dist_entre_cll;
                 int longitud_y = alto_lienzo / dist_entre_cll;
                //Pen dash_street = new Pen(Color.Yellow,20);
@@ -183,7 +201,7 @@ namespace Creador_de_ciudades
                     primer_nivel.Refresh();
                 }
 
-                //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de linea base"
+                //Subsistema # 2.1 Deteccion de pixeles blancos"
                 lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
 
                 //Se dibujan las calles
@@ -219,9 +237,8 @@ namespace Creador_de_ciudades
             {
                 //Actualización del progress bar #1
 
-                barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
-
-                
+                //barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
+            
 
                 if (cronometro.ElapsedMilliseconds >= Convert.ToInt32( ui_tiempo_espera.Value) * 1000)
                 {
@@ -232,7 +249,41 @@ namespace Creador_de_ciudades
 
                 //Guardo en una variable el valor para los grados
                 int grados = 0;
-                if (ui_checkbox_girar.Checked) { grados = azar.Next(0, 361); }
+                if (ui_checkbox_girar.Checked)
+                {
+                    if (ui_checkbox_girar_ordenar.Checked)
+                    {
+                        int seleccionar = azar.Next(0, 2);  //casa gira o rota al azar dependiendo de esta variable
+                        if (seleccionar == 0)
+                        {
+                            grados = azar.Next(0, 361);
+                        }
+                        else 
+                        {
+
+                            int selec = azar.Next(0, 4);
+                            switch (selec)
+                            {
+                                case 0:
+                                    grados = 90;
+                                    break;
+                                case 1:
+                                    grados = 180;
+                                    break;
+                                case 2:
+                                    grados = 270;
+                                    break;
+                                case 3:
+                                    grados = 360;
+                                    break;
+                            }
+                        }
+                    }
+                    else 
+                    {
+                        grados = azar.Next(0, 361);
+                    }                                 
+                }
                 else 
                 { 
                     int seleccionar = azar.Next(0, 4);
@@ -249,21 +300,27 @@ namespace Creador_de_ciudades
                     }
                 }
 
-                List<String> nombres_de_formas = new List<string>();
-                nombres_de_formas.Add("ui_forma_casa_rectangular");
-                //nombres_de_formas.Add("ui_forma_casa_hexagonal");
-                nombres_de_formas.Add("ui_forma_casa_deformada");
-                nombres_de_formas.Add("ui_forma_casa_deformada_chaflan");
+                List<String> nombres_de_formas = new List<string>
+                {
+                    "ui_forma_casa_rectangular",
+                    //nombres_de_formas.Add("ui_forma_casa_hexagonal");
+                    "ui_forma_casa_deformada",
+                    "ui_forma_casa_deformada_chaflan"
+                };
 
                 String vano_ventana_seleccionado = ui_group_box_vanos_ventanas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
-                //En caso de que una de las casas no encaje y pasaron mas de 10 segundos cambiara su tamaño
+                //En caso de que una de las casas no encaje y pasaron mas de 3 segundos cambiara su tamaño
 
-                if (cronometro.ElapsedMilliseconds > Convert.ToInt32(ui_tiempo_espera.Value) * 1000 - (Convert.ToInt32(ui_tiempo_espera.Value) * 1000 * 0.1)) //Espera el 90% del tiempo de respuesta
+                if (cronometro.ElapsedMilliseconds > Convert.ToInt32(ui_tiempo_espera.Value) * 1000 - (Convert.ToInt32(ui_tiempo_espera.Value) * 1000 * 0.03)) //Espera el 90% del tiempo de respuesta
                 {
                  anchos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
                  altos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);
                 }
+
+                //actualizacion de label info ubicaciones
+
+                label45.Text = ubicacion_datos.ToString()+" de "+ui_cantidad_casas.Value.ToString();
 
                 //Subsistema 3.1 seleccion de punto origen segun la distribución
 
@@ -475,6 +532,8 @@ namespace Creador_de_ciudades
                 barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
             }
 
+
+
             void superposicion_alternable(int recorrer, int i) 
             {
                 if (i > 0) // A PARTIR DEL PRIMER PISO EMPIEZA LA VARIACION 
@@ -537,6 +596,56 @@ namespace Creador_de_ciudades
 
             }
 
+            void superposicion_ascendente(int recorrer, int i)  // esta funcion es lo opuesto a piramidal 
+            {
+                if (i > 0)
+                {
+                    int valor_reduccion = 0;
+                    if (ui_superposicion_rad_valor_fijo.Checked == true)
+                    {
+                        valor_reduccion = Convert.ToInt32(ui_superposicion_valor_fijo.Value);
+                    }
+                    else if (ui_superposicion_rad_valor_por_rango.Checked == true)
+                    {
+                        int limite = Math.Min(lista_casas[recorrer].alto_forma, lista_casas[recorrer].ancho_forma);
+                        //Esto es para manejar la excepcion probar un break
+                        if (limite < 0)
+                        { limite = 0; }
+
+                        int modo = 0;
+                        valor_reduccion = azar.Next(modo, limite + 1);
+                    }
+                    lista_casas[recorrer].nuevo_origen = new Point(lista_casas[recorrer].po.X - ((valor_reduccion * 100) / 2), lista_casas[recorrer].po.Y - ((valor_reduccion * 100) / 2));
+                    lista_casas[recorrer].po = lista_casas[recorrer].nuevo_origen;
+                    lista_casas[recorrer].ancho_forma = lista_casas[recorrer].ancho_forma + valor_reduccion;
+                    lista_casas[recorrer].alto_forma = lista_casas[recorrer].alto_forma + valor_reduccion;
+                }
+
+                if (lista_casas[recorrer].ancho_forma != 0 && lista_casas[recorrer].alto_forma !=0)  // Solo se dibuja si el piso anterior existe por eso !=0
+                {
+                    string nombre_page = "Planta " + i;
+                    Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                    //Después de pintar las casas, se pintan los objetos
+
+                    //Primero se guardan los nombre de los checkbox activo es una lista
+
+                    List<String> nombres_checkbox = new List<string>();
+                    foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
+                    {
+                        if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
+                    }
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                    //Esta variable es modificada una vez que PB se haya dibujado
+                    lista_casas[recorrer].ubicacion_pb = false;
+                }
+                //Actualización del progress bar #1
+
+                barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
+            }
+
+
 
 
             //4.2 Pintar lienzos con los datos almacenados, dependiedo de la superposicion
@@ -582,7 +691,7 @@ namespace Creador_de_ciudades
                         }
                        
                     }
-                    if (ui_superposicion_esc_var.Checked == true) 
+                    if (ui_superposicion_alternable.Checked == true) 
                     {
                         if (ui_quitar_algunos_pisos.Checked)
                         {
@@ -600,6 +709,80 @@ namespace Creador_de_ciudades
                         }
 
                     }
+                    if (ui_superposicion_combinar.Checked == true)
+                    {
+                        int x = azar.Next(1, 5);
+                        switch(x)
+                        {
+                          case 1:
+                                if (ui_quitar_algunos_pisos.Checked)
+                                {
+                                    if (lista_casas[recorrer].pisos_reales > 0)
+                                    {
+                                        superposicion_con(recorrer, i);
+                                    }
+
+                                    lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1; // disminuye un piso
+
+                                }
+                                else
+                                {
+                                    superposicion_con(recorrer, i);
+                                }
+                                break;
+                          case 2:
+                                if (ui_quitar_algunos_pisos.Checked)
+                                {
+                                    if (lista_casas[recorrer].pisos_reales > 0)
+                                    {
+                                        superposicion_pir(recorrer, i);
+                                    }
+
+                                    lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1; // disminuye un piso
+
+                                }
+                                else
+                                {
+                                    superposicion_pir(recorrer, i); ;
+                                }
+                                break;
+                           case 3:
+                                if (ui_quitar_algunos_pisos.Checked)
+                                {
+                                    if (lista_casas[recorrer].pisos_reales > 0)
+                                    {
+                                        superposicion_alternable(recorrer, i);
+                                    }
+
+                                    lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1; // disminuye un piso
+
+                                }
+                                else
+                                {
+                                    superposicion_alternable(recorrer, i); ;
+                                }
+                                break;
+                            case 4: //superposicion ascendente no lo considero coherente y solo lo es para la combinacion
+                                if (ui_quitar_algunos_pisos.Checked)
+                                {
+                                    if (lista_casas[recorrer].pisos_reales > 0)
+                                    {
+                                        superposicion_ascendente(recorrer, i);
+                                    }
+
+                                    lista_casas[recorrer].pisos_reales = lista_casas[recorrer].pisos_reales - 1; // disminuye un piso
+
+                                }
+                                else
+                                {
+                                    superposicion_ascendente(recorrer, i); ;
+                                }
+                                break; 
+
+                        }
+                        
+                    }
+
                     //4.1 QUITA PISOS ALEATORIAMENTE EN LAS DISTINTAS CASAS
                 }
             }
@@ -616,6 +799,7 @@ namespace Creador_de_ciudades
             barra.Maximum = Convert.ToInt32(ui_tiempo_espera.Value) + 10; // probar mañana
             crear_pages();
             dibujar();
+            label45.Text = "---";
         }
 
        
@@ -662,10 +846,12 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
                 nuevo_lienzo.Dock = DockStyle.Fill;
 
-                Bitmap bmp = new Bitmap(ancho, alto);
-                nuevo_lienzo.Image = bmp; 
+              
+                Bitmap bmp = new Bitmap(ancho, alto, PixelFormat.Format16bppRgb555);  //He cambiado el formato porque por el peso se producia una exepcion
+                nuevo_lienzo.Image = bmp;
                 TabControl.TabPages.Add(nueva_pagina);
-               
+                
+              
             }
 
         }
@@ -771,6 +957,16 @@ namespace Creador_de_ciudades
         private void ui_calle_cuadricula_CheckedChanged(object sender, EventArgs e)
         {
             ui_cantidad_calles.Enabled = !ui_calle_cuadricula.Checked;
+        }
+
+        private void ui_autoajustar_dist_calles_CheckedChanged(object sender, EventArgs e)
+        {
+            ui_espacio_calles.Enabled = !ui_autoajustar_dist_calles.Checked;
+        }
+
+        private void ui_checkbox_girar_CheckedChanged(object sender, EventArgs e)
+        {
+            ui_checkbox_girar_ordenar.Enabled = !ui_checkbox_girar.Checked;
         }
     }
 }

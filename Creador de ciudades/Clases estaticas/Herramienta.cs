@@ -64,7 +64,7 @@ namespace Creador_de_ciudades.Clases
         public static List<Point> rotar_area_puntos(List<Point> puntos, int angle, Point origen)
         {
             //Rota todos los puntos, con un mismo origen y angulo
-           
+
             for (int i = 0; i < puntos.Count; i++)
             {
                 puntos[i] = rotarpunto_area(puntos[i], origen, angle);
@@ -73,7 +73,7 @@ namespace Creador_de_ciudades.Clases
         }
         public static Point rotarpunto_area(Point P_rotar, Point P_ori, int angle)
         {
-            
+
             double radians = (Math.PI / 180) * angle;
             double sin = Math.Sin(radians);
             double cos = Math.Cos(radians);
@@ -85,8 +85,8 @@ namespace Creador_de_ciudades.Clases
             // Rotate point
             double xnew = P_rotar.X * cos - P_rotar.Y * sin;
             double ynew = P_rotar.X * sin + P_rotar.Y * cos;
-            xnew = Math.Truncate (xnew + P_ori.X);
-            ynew = Math.Truncate (ynew + P_ori.Y);
+            xnew = Math.Truncate(xnew + P_ori.X);
+            ynew = Math.Truncate(ynew + P_ori.Y);
 
             //Dado que PI es un numero irracional y los limitados decimales que se pueden usar generan impresicion
             //En las siguientes lineas añado una mejora, reemplazando las ultimas dos cifras por "0"
@@ -98,7 +98,7 @@ namespace Creador_de_ciudades.Clases
                 x = x.Remove(x.Length - 2) + "00";
                 xnew = Convert.ToInt32(x);
             }
-            
+
 
             string y = Convert.ToString(ynew);
             if (y.Length > 2)
@@ -106,15 +106,15 @@ namespace Creador_de_ciudades.Clases
                 y = y.Remove(y.Length - 2) + "00";
                 ynew = Convert.ToInt32(y);
             }
-          
 
-           
+
+
             // Translate point back
             Point newPoint = new Point((int)xnew, (int)ynew);
             //MessageBox.Show(Convert.ToString(newPoint));
-             
-            return newPoint; 
-            
+
+            return newPoint;
+
         }
         public static List<Point> rotar_puntos_figuras(List<Point> puntos, int angle, Point origen)
         {
@@ -142,7 +142,7 @@ namespace Creador_de_ciudades.Clases
             double ynew = P_rotar.X * sin + P_rotar.Y * cos;
             xnew = xnew + P_ori.X;
             ynew = ynew + P_ori.Y;
-            
+
             // Translate point back
             Point newPoint = new Point((int)xnew, (int)ynew);
             //MessageBox.Show(Convert.ToString(newPoint));
@@ -156,13 +156,13 @@ namespace Creador_de_ciudades.Clases
             List<Point> puntos = new List<Point>();
             if (eje == "x")
             {
-                for (int i = inicio.X; i <= inicio.X + (longitud * 100); i+= 100)
+                for (int i = inicio.X; i <= inicio.X + (longitud * 100); i += 100)
                 {
-                    puntos.Add(new Point(i,inicio.Y));
+                    puntos.Add(new Point(i, inicio.Y));
                 }
-                return puntos; 
+                return puntos;
             }
-            else 
+            else
             {
                 for (int i = inicio.Y; i <= inicio.Y + (longitud * 100); i += 100)
                 {
@@ -173,20 +173,20 @@ namespace Creador_de_ciudades.Clases
         }
         public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto, int avance)
         {
-           
+
             List<Point> puntos = new List<Point>();
 
             for (int i = po.X; i <= po.X + ancho * 100; i += avance)
             {
                 for (int j = po.Y; j <= po.Y + alto * 100; j += avance)
                 {
-                    puntos.Add(new Point(i,j));
+                    puntos.Add(new Point(i, j));
                 }
             }
             return puntos;
         }
 
-        public static int azar_par_o_impar(int min, int max, bool modo)   
+        public static int azar_par_o_impar(int min, int max, bool modo)
         {
 
             Random azar = new Random();
@@ -215,15 +215,15 @@ namespace Creador_de_ciudades.Clases
                     return encontrado;
                 }
             }
-            
+
         }
         public static List<Point> obtener_coor_pixel_blancos(Bitmap bitmapImage)
         {
             Color pixelColor;
             List<Point> Blancos = new List<Point>();
-            for (int y = 0; y < bitmapImage.Height; y+=100)
+            for (int y = 0; y < bitmapImage.Height; y += 100)
             {
-                for (int x = 0; x < bitmapImage.Width; x+=100)
+                for (int x = 0; x < bitmapImage.Width; x += 100)
                 {
                     pixelColor = bitmapImage.GetPixel(x, y);
                     if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
@@ -234,5 +234,14 @@ namespace Creador_de_ciudades.Clases
             }
             return Blancos;
         }
+
+        public static int retornar_mayor(int a, int b)
+        {
+            if (a > b)
+            {  return a;  }
+            else
+            {   return b; }
+        }
+
     }
 }

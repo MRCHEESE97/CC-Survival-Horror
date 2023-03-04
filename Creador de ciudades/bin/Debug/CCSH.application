@@ -4,17 +4,17 @@
   <description asmv2:publisher="CCSH" asmv2:product="CCSH" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="CCSH.exe.manifest" size="3507">
+    <dependentAssembly dependencyType="install" codebase="CCSH.exe.manifest" size="6258">
       <assemblyIdentity name="CCSH.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="amd64" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>OyxdxG6/SV9INjmMVGK6OeX1A23/NOS0qoSpWdWwp3s=</dsig:DigestValue>
+        <dsig:DigestValue>hK1Opv8G2ycgL+PKU7Z+rLG0QXOkYLsQNsqQWl3BCp4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

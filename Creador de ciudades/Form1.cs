@@ -354,7 +354,7 @@ namespace Creador_de_ciudades
                         break;
                 }
 
-                //Aqui empieza la recollecion de la informacion para las casas
+                //Aqui empieza la recoleccion de la informacion para las casas
 
                 Info_forma nueva_casa = new Info_forma
                 (
@@ -448,7 +448,27 @@ namespace Creador_de_ciudades
 
                 }     
             }
-           
+
+            //Tomo la poblacion de los objetos 
+             int Poblacion_objetos = 0;
+
+            switch (ui_groupbox_poblacion_objetos.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name) 
+            { 
+                case "ui_poblacion_objetos_baja":
+                    Poblacion_objetos = 33;
+                    break;
+                case "ui_poblacion_objetos_media":
+                    Poblacion_objetos = 66;
+                    break;
+                case "ui_poblacion_objetos_alta":
+                    Poblacion_objetos = 99;
+                    break;
+                case "ui_poblacion_objetos_aleatoria":
+                    Poblacion_objetos = 100;
+                    break;
+            }
+
+
             //Subsistema #4 superposiciones
             //Encuentro el nombre del radiobutton de la forma que ha escogido el usuario
 
@@ -472,7 +492,7 @@ namespace Creador_de_ciudades
                 }
 
                 //Después de pintar las casas, se pintan los objetos
-                Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0],Poblacion_objetos);
 
                 //Esta variable es modificada una vez que PB se haya dibujado
                 lista_casas[recorrer].ubicacion_pb = false;
@@ -522,7 +542,7 @@ namespace Creador_de_ciudades
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -585,7 +605,7 @@ namespace Creador_de_ciudades
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -635,7 +655,7 @@ namespace Creador_de_ciudades
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -967,6 +987,11 @@ namespace Creador_de_ciudades
         private void ui_checkbox_girar_CheckedChanged(object sender, EventArgs e)
         {
             ui_checkbox_girar_ordenar.Enabled = !ui_checkbox_girar.Checked;
+        }
+
+        private void archivoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

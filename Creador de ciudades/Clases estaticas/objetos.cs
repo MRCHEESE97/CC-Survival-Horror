@@ -30,61 +30,77 @@ namespace Creador_de_ciudades.Clases_estaticas
     {
         
         public static Random azar = new Random();
-        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo)
+        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion)   
         {
             for (int i = 0; i < seleccion_objeto.Count ; i++)
             {
-                String nombre_objeto = seleccion_objeto[i];
-
-                if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
+                //POBLACION SI ES ALEATORIA
+                if (poblacion == 100)
                 {
-                    columna_cuadrada(datos, lienzo);
-                }
-                else if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
-                {
-                    columna_circular(datos, lienzo);
-                }
-                else if (nombre_objeto.Equals("ui_objetos_ventana"))
-                {
-                    if (datos.vano_ventana.Equals("ui_objetos_ventana_ale")) 
-                    {
-                        ventanas(datos, lienzo);
-                    } 
-                    else if (datos.vano_ventana.Equals("ui_objetos_ventana_binaria")) 
-                    {
-                        ventanas_binarias(datos, lienzo); 
-                    } 
-                    else if (datos.vano_ventana.Equals("ui_objetos_ventana_total")) 
-                    { 
-                        ventanas_totales(datos, lienzo); 
-                    }
-                    else if (datos.vano_ventana.Equals("ui_objetos_ventana_todos")) 
-                    {
-                        int s = azar.Next(0,3);
-                        if (s == 0)
-                        { ventanas_binarias(datos, lienzo); }
-                        else if (s == 1)
-                        { ventanas_binarias(datos, lienzo); }
-                        else if (s == 2)
-                        { ventanas_totales(datos, lienzo); }
-                    }
+                    poblacion =  azar.Next(0, 99);
                 }
 
-                else if (nombre_objeto.Equals("ui_objetos_puerta") && datos.ubicacion_pb)
+                int numerin = azar.Next(0,99);
+                if (numerin <= poblacion)
                 {
-                    puerta(datos, lienzo);
+                    //A PARTIR DE AQUI SE EMPIEZAN A DIBUJAR TODOS
+
+                    String nombre_objeto = seleccion_objeto[i];
+
+                    if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
+                    {
+                        columna_cuadrada(datos, lienzo);
+                    }
+                    else if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
+                    {
+                        columna_circular(datos, lienzo);
+                    }
+                    else if (nombre_objeto.Equals("ui_objetos_ventana"))
+                    {
+                        if (datos.vano_ventana.Equals("ui_objetos_ventana_ale"))
+                        {
+                            ventanas(datos, lienzo);
+                        }
+                        else if (datos.vano_ventana.Equals("ui_objetos_ventana_binaria"))
+                        {
+                            ventanas_binarias(datos, lienzo);
+                        }
+                        else if (datos.vano_ventana.Equals("ui_objetos_ventana_total"))
+                        {
+                            ventanas_totales(datos, lienzo);
+                        }
+                        else if (datos.vano_ventana.Equals("ui_objetos_ventana_todos"))
+                        {
+                            int s = azar.Next(0, 3);
+                            if (s == 0)
+                            { ventanas_binarias(datos, lienzo); }
+                            else if (s == 1)
+                            { ventanas_binarias(datos, lienzo); }
+                            else if (s == 2)
+                            { ventanas_totales(datos, lienzo); }
+                        }
+                    }
+
+                    else if (nombre_objeto.Equals("ui_objetos_puerta") && datos.ubicacion_pb)
+                    {
+                        puerta(datos, lienzo);
+                    }
+
+                    else if (nombre_objeto.Equals("ui_objetos_elevador"))
+                    {
+                        elevador(datos, lienzo);
+                    }
                 }
-                
-                else if (nombre_objeto.Equals("ui_objetos_elevador"))
+                else 
                 {
-                    elevador(datos, lienzo);
+                    continue;
                 }
                
             }          
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
         {
-            //Por limitaciones de la API no se puede usar decimales para la puerta
+            //Por limitaciones tecnicas no se puede usar decimales para la puerta
             //debido a eso tendré que fijar una medida 1,2,3 m maximo
             int cantidad = 0;
             List<Point> borrador = new List<Point>();
@@ -98,11 +114,14 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 Point punto_inicio;
                 Point punto_fin;
-                
-               
 
+
+                // se define el inicio y el fin
                 punto_inicio = informacion.contorno[ubicacion_punto];
                 punto_fin = informacion.contorno[ubicacion_punto + 1];
+
+
+
                 informacion.g.DrawLine(puerta, punto_inicio, punto_fin);
                
 

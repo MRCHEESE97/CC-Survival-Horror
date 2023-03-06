@@ -993,5 +993,22 @@ namespace Creador_de_ciudades
         {
 
         }
+
+        private void guardarCiudadEMFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //En las siguientes lineas recolecto las imagenes de los TabControls para guardarlas         
+            for (int i = 0; i < TabControl.TabCount; i++)
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "( *.emf) | *.emf";
+                dialog.FileName = "Planta " + i;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];
+                    nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Emf);
+                }
+            }
+        }
     }
 }

@@ -867,7 +867,7 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.Dock = DockStyle.Fill;
 
               
-                Bitmap bmp = new Bitmap(ancho, alto, PixelFormat.Format16bppRgb555);  //He cambiado el formato porque por el peso se producia una exepcion
+                Bitmap bmp = new Bitmap(ancho, alto);  //Aqui como segundo parametro se puede cambia el Format
                 nuevo_lienzo.Image = bmp;
                 TabControl.TabPages.Add(nueva_pagina);
                 

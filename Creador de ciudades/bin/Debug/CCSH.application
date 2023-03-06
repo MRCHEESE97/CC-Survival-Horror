@@ -7,14 +7,14 @@
     <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="CCSH.exe.manifest" size="6258">
+    <dependentAssembly dependencyType="install" codebase="CCSH.exe.manifest" size="3507">
       <assemblyIdentity name="CCSH.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="amd64" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>hK1Opv8G2ycgL+PKU7Z+rLG0QXOkYLsQNsqQWl3BCp4=</dsig:DigestValue>
+        <dsig:DigestValue>T9XkuI44Ils8/AuBfsS/sk2M6EwP3DjwdnqIi/D/4n0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -42,42 +42,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Aspose.SVG.dll" size="5909264">
-      <assemblyIdentity name="Aspose.SVG" version="23.2.0.0" publicKeyToken="716FCC553A201E56" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>kikJCPRgOEhWw03HXyLNPwytSbDB7aWadmh2S5eblzc=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Aspose.Words.dll" size="17108320">
-      <assemblyIdentity name="Aspose.Words" version="23.2.0.0" publicKeyToken="716FCC553A201E56" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>vQhznYacuzNAKvAWYQ4qa8vM0ynmCf0if2v2V/1lOwE=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Aspose.Words.Pdf2Word.dll" size="9092448">
-      <assemblyIdentity name="Aspose.Words.Pdf2Word" version="23.2.0.0" publicKeyToken="716FCC553A201E56" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LCFJPZYcyxmtN39OdcwKIH1YTulYvDN066KbQgrNzMs=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CCSH.exe" size="76800">
       <assemblyIdentity name="CCSH" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
@@ -85,19 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>e/Uqg637tJ2jL+sJB/ejJ618GVUawYbLxTmugGsWNt4=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="DocumentFormat.OpenXml.dll" size="6093200">
-      <assemblyIdentity name="DocumentFormat.OpenXml" version="2.19.0.0" publicKeyToken="8FB06CB64D019A17" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>q2gFVq+bjQ5cESM0hlB/0nGngvmzYQ4483wEnN2CMFA=</dsig:DigestValue>
+        <dsig:DigestValue>o4Jo9suQX+4o+tUxnAvbzEyhTjubxEAs4LPj7GVd3C4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

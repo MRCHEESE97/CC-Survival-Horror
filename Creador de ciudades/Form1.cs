@@ -167,8 +167,34 @@ namespace Creador_de_ciudades
 
             do {
 
-                lista_comp_calles.Clear(); //revisar mañana 
+                lista_comp_calles.Clear();
                 fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0, 0), new Size(ancho_lienzo, alto_lienzo)));
+
+                if (ui_calle_diagonal.Checked)
+                {
+                    int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
+                    int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
+
+                    Point a, b;
+                    int lado = azar.Next(0, 2);
+                    if (lado == 0)
+                    {
+                        a = new Point(0, 0);
+                        b = new Point(ancho_lienzo, alto_lienzo);
+                    }
+                    else 
+                    {
+                        a = new Point(ancho_lienzo, 0);
+                        b = new Point(0, alto_lienzo);
+                    }
+
+                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), a, b));
+                    fondo.DrawLine(lista_comp_calles[0].calle_base, lista_comp_calles[0].inicio, lista_comp_calles[0].fin);
+                    primer_nivel.Refresh();
+                    lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
+                    fondo.DrawLine(lista_comp_calles[0].calle, lista_comp_calles[0].inicio, lista_comp_calles[0].fin);
+                    primer_nivel.Refresh();                
+                }
 
                 //aqui se define la lejania o distancia de una calle y otra 
                 if (ui_autoajustar_dist_calles.Checked)
@@ -847,9 +873,7 @@ namespace Creador_de_ciudades
                     //4.1 QUITA PISOS ALEATORIAMENTE EN LAS DISTINTAS CASAS
                 }
             }
-            
-            
-           
+                   
             MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             barra.Value = 0;
            

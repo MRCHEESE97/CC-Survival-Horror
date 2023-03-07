@@ -179,6 +179,9 @@
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.guardarCiudadEMFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ui_ambos = new System.Windows.Forms.RadioButton();
+            this.ui_multiplo_de = new System.Windows.Forms.RadioButton();
+            this.ui_multiplo_valor = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -231,6 +234,7 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -1987,7 +1991,7 @@
             this.groupBox5.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox5.Size = new System.Drawing.Size(402, 262);
+            this.groupBox5.Size = new System.Drawing.Size(402, 251);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "General /  casas";
@@ -2060,21 +2064,24 @@
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.ui_multiplo_valor);
+            this.groupBox6.Controls.Add(this.ui_multiplo_de);
+            this.groupBox6.Controls.Add(this.ui_ambos);
             this.groupBox6.Controls.Add(this.ui_solo_impares);
             this.groupBox6.Controls.Add(this.ui_solo_pares);
-            this.groupBox6.Location = new System.Drawing.Point(552, 114);
+            this.groupBox6.Location = new System.Drawing.Point(516, 29);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox6.Size = new System.Drawing.Size(262, 222);
+            this.groupBox6.Size = new System.Drawing.Size(298, 307);
             this.groupBox6.TabIndex = 10;
             this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Modo de busqueda";
+            this.groupBox6.Text = "Filtro de medidas";
             // 
             // ui_solo_impares
             // 
             this.ui_solo_impares.AutoSize = true;
-            this.ui_solo_impares.Location = new System.Drawing.Point(44, 106);
+            this.ui_solo_impares.Location = new System.Drawing.Point(30, 172);
             this.ui_solo_impares.Margin = new System.Windows.Forms.Padding(6);
             this.ui_solo_impares.Name = "ui_solo_impares";
             this.ui_solo_impares.Size = new System.Drawing.Size(189, 35);
@@ -2086,7 +2093,7 @@
             // ui_solo_pares
             // 
             this.ui_solo_pares.AutoSize = true;
-            this.ui_solo_pares.Location = new System.Drawing.Point(44, 52);
+            this.ui_solo_pares.Location = new System.Drawing.Point(30, 118);
             this.ui_solo_pares.Margin = new System.Windows.Forms.Padding(6);
             this.ui_solo_pares.Name = "ui_solo_pares";
             this.ui_solo_pares.Size = new System.Drawing.Size(162, 35);
@@ -2294,6 +2301,54 @@
             this.guardarCiudadEMFToolStripMenuItem.Text = "Guardar c‍‍iudad EMF";
             this.guardarCiudadEMFToolStripMenuItem.Click += new System.EventHandler(this.guardarCiudadEMFToolStripMenuItem_Click);
             // 
+            // ui_ambos
+            // 
+            this.ui_ambos.AutoSize = true;
+            this.ui_ambos.Location = new System.Drawing.Point(30, 219);
+            this.ui_ambos.Margin = new System.Windows.Forms.Padding(6);
+            this.ui_ambos.Name = "ui_ambos";
+            this.ui_ambos.Size = new System.Drawing.Size(119, 35);
+            this.ui_ambos.TabIndex = 10;
+            this.ui_ambos.TabStop = true;
+            this.ui_ambos.Text = "Ambos";
+            this.ui_ambos.UseVisualStyleBackColor = true;
+            // 
+            // ui_multiplo_de
+            // 
+            this.ui_multiplo_de.AutoSize = true;
+            this.ui_multiplo_de.Checked = true;
+            this.ui_multiplo_de.Location = new System.Drawing.Point(30, 71);
+            this.ui_multiplo_de.Margin = new System.Windows.Forms.Padding(6);
+            this.ui_multiplo_de.Name = "ui_multiplo_de";
+            this.ui_multiplo_de.Size = new System.Drawing.Size(138, 35);
+            this.ui_multiplo_de.TabIndex = 11;
+            this.ui_multiplo_de.TabStop = true;
+            this.ui_multiplo_de.Text = "Multiplo";
+            this.ui_multiplo_de.UseVisualStyleBackColor = true;
+            // 
+            // ui_multiplo_valor
+            // 
+            this.ui_multiplo_valor.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.ui_multiplo_valor.Location = new System.Drawing.Point(174, 71);
+            this.ui_multiplo_valor.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
+            this.ui_multiplo_valor.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_multiplo_valor.Name = "ui_multiplo_valor";
+            this.ui_multiplo_valor.Size = new System.Drawing.Size(108, 46);
+            this.ui_multiplo_valor.TabIndex = 12;
+            this.ui_multiplo_valor.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(192F, 192F);
@@ -2381,6 +2436,7 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2538,6 +2594,9 @@
         private System.Windows.Forms.RadioButton ui_poblacion_objetos_alta;
         private System.Windows.Forms.RadioButton ui_poblacion_objetos_media;
         private System.Windows.Forms.ToolStripMenuItem guardarCiudadEMFToolStripMenuItem;
+        private System.Windows.Forms.NumericUpDown ui_multiplo_valor;
+        private System.Windows.Forms.RadioButton ui_multiplo_de;
+        private System.Windows.Forms.RadioButton ui_ambos;
     }
 }
 

@@ -79,13 +79,54 @@ namespace Creador_de_ciudades
 
             int ancho_lienzo = 0, alto_lienzo = 0, area = 0;
 
+            //Se llenan los altos y los anchos de las casas
+
             List<int> anchos = new List<int>();
             List<int> altos = new List<int>();
 
             for (int i = 0; i < ui_cantidad_casas.Value; i++)
             {
-                anchos.Add(azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
-                altos.Add(azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
+                if (ui_ambos.Checked)
+                {
+                    anchos.Add(azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
+                    altos.Add(azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
+                }
+                else if (ui_solo_pares.Checked)
+                {
+                    int anchito = 0, altito = 0;
+                    do
+                    {
+                        anchito = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
+                        altito = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);
+                    }
+                    while (anchito % 2 != 0 || altito % 2 != 0);
+                    anchos.Add(anchito);
+                    altos.Add(altito);
+                }
+                else if (ui_solo_impares.Checked)
+                {
+                    int anchito = 0, altito = 0;
+                    do
+                    {
+                        anchito = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
+                        altito = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);
+                    }
+                    while (anchito % 2 == 0 || altito % 2 == 0);
+                    anchos.Add(anchito);
+                    altos.Add(altito);
+                }
+                else if (ui_multiplo_de.Checked)
+                {
+                    int anchito = 0, altito = 0;
+                    do
+                    {
+                        anchito = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
+                        altito = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);
+                    }
+                    while (anchito % Convert.ToInt32(ui_multiplo_valor.Value) != 0 || altito % Convert.ToInt32(ui_multiplo_valor.Value) != 0);
+                    anchos.Add(anchito);
+                    altos.Add(altito);
+                }
             }
             for (int x = 0; x < ui_cantidad_casas.Value; x++)
             {

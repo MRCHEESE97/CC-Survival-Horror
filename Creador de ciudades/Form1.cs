@@ -68,6 +68,7 @@ namespace Creador_de_ciudades
             List<Info_forma> lista_casas = new List<Info_forma>();
             List<Composicion_calle> lista_comp_calles = new List<Composicion_calle>();
             List<Point> lista_puntos_calles = new List<Point>();
+            bool h_o_v = true;
 
             //Subsitema #1: calculo de area ciudad
 
@@ -402,7 +403,7 @@ namespace Creador_de_ciudades
                         //100 es el multiplo
                         break;
                     case "ui_distribucion_columnas":
-                        if(y_ori >= (alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100) - 400)
+                        if(y_ori >= (alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100) - 400)  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
                         {
                             x_ori = x_ori + 100;
                             y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
@@ -419,6 +420,33 @@ namespace Creador_de_ciudades
                         origen = new Point(x_ori, y_ori);
                         x_ori = x_ori + 100;
                         break;
+                    case "ui_distribucion_alternable": // SOLO TOMA LO ANTERIOR Y LO ALTERNA AL LLEGAR LA FINAL, COLUMNA O FILA.
+
+                        //bool h_o_v = true; esta variable estará al principio de esta funcion
+                        if (h_o_v) 
+                        {
+                            if (y_ori >= (alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100) - 400)  
+                            {
+                                x_ori = x_ori + 100;
+                                y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100; // vuelve al origen
+                                h_o_v = false; 
+                            }
+                            origen = new Point(x_ori, y_ori);
+                            y_ori = y_ori + 100;                        
+                        }
+                        else
+                        {
+                            if (x_ori >= (ancho_lienzo - Convert.ToInt32(ui_max_ancho_casa.Value) * 100) - 400)
+                            {                         
+                                y_ori = y_ori + 100;
+                                x_ori = y_ori;  //vuelve al origen
+                                h_o_v = true;
+                            }
+                            origen = new Point(x_ori, y_ori);
+                            x_ori = x_ori + 100;                        
+                        }
+
+                    break;
                 }
 
                 //Aqui empieza la recoleccion de la informacion para las casas

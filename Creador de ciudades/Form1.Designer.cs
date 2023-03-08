@@ -1434,19 +1434,21 @@
             this.ui_objetos_ventana_todos.AutoSize = true;
             this.ui_objetos_ventana_todos.Location = new System.Drawing.Point(11, 107);
             this.ui_objetos_ventana_todos.Name = "ui_objetos_ventana_todos";
-            this.ui_objetos_ventana_todos.Size = new System.Drawing.Size(185, 21);
+            this.ui_objetos_ventana_todos.Size = new System.Drawing.Size(165, 21);
             this.ui_objetos_ventana_todos.TabIndex = 36;
             this.ui_objetos_ventana_todos.TabStop = true;
-            this.ui_objetos_ventana_todos.Text = "Vano ventana (combinación)";
+            this.ui_objetos_ventana_todos.Text = "Combinar todos los tipos";
             this.ui_objetos_ventana_todos.UseVisualStyleBackColor = true;
             // 
             // ui_objetos_ventana_ale
             // 
             this.ui_objetos_ventana_ale.AutoSize = true;
+            this.ui_objetos_ventana_ale.Checked = true;
             this.ui_objetos_ventana_ale.Location = new System.Drawing.Point(11, 26);
             this.ui_objetos_ventana_ale.Name = "ui_objetos_ventana_ale";
             this.ui_objetos_ventana_ale.Size = new System.Drawing.Size(156, 21);
             this.ui_objetos_ventana_ale.TabIndex = 33;
+            this.ui_objetos_ventana_ale.TabStop = true;
             this.ui_objetos_ventana_ale.Text = "Vano ventana aleatoria";
             this.ui_objetos_ventana_ale.UseVisualStyleBackColor = true;
             // 
@@ -1463,12 +1465,10 @@
             // ui_objetos_ventana_binaria
             // 
             this.ui_objetos_ventana_binaria.AutoSize = true;
-            this.ui_objetos_ventana_binaria.Checked = true;
             this.ui_objetos_ventana_binaria.Location = new System.Drawing.Point(11, 53);
             this.ui_objetos_ventana_binaria.Name = "ui_objetos_ventana_binaria";
             this.ui_objetos_ventana_binaria.Size = new System.Drawing.Size(145, 21);
             this.ui_objetos_ventana_binaria.TabIndex = 34;
-            this.ui_objetos_ventana_binaria.TabStop = true;
             this.ui_objetos_ventana_binaria.Text = "Vano ventana binaria";
             this.ui_objetos_ventana_binaria.UseVisualStyleBackColor = true;
             // 
@@ -1620,7 +1620,7 @@
             this.ui_max_ancho_ver.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_ver.TabIndex = 44;
             this.ui_max_ancho_ver.Value = new decimal(new int[] {
-            4,
+            3,
             0,
             0,
             0});
@@ -1630,7 +1630,7 @@
             this.ui_max_ancho_calle.Location = new System.Drawing.Point(284, 192);
             this.ui_max_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_max_ancho_calle.Maximum = new decimal(new int[] {
-            10,
+            12,
             0,
             0,
             0});
@@ -1643,7 +1643,7 @@
             this.ui_max_ancho_calle.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_calle.TabIndex = 43;
             this.ui_max_ancho_calle.Value = new decimal(new int[] {
-            6,
+            12,
             0,
             0,
             0});
@@ -1689,7 +1689,7 @@
             this.ui_min_ancho_calle.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_calle.TabIndex = 41;
             this.ui_min_ancho_calle.Value = new decimal(new int[] {
-            2,
+            8,
             0,
             0,
             0});
@@ -1984,7 +1984,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(433, 344);
+            this.tabPage2.Size = new System.Drawing.Size(431, 283);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2256,9 +2256,9 @@
             this.ui_calle_diagonal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_calle_diagonal.Location = new System.Drawing.Point(192, 30);
             this.ui_calle_diagonal.Name = "ui_calle_diagonal";
-            this.ui_calle_diagonal.Size = new System.Drawing.Size(118, 21);
+            this.ui_calle_diagonal.Size = new System.Drawing.Size(120, 21);
             this.ui_calle_diagonal.TabIndex = 42;
-            this.ui_calle_diagonal.Text = "General diagonal";
+            this.ui_calle_diagonal.Text = "Generar diagonal";
             this.ui_calle_diagonal.UseVisualStyleBackColor = true;
             // 
             // Form1

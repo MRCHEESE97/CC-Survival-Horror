@@ -68,9 +68,14 @@ namespace Creador_de_ciudades
             List<Info_forma> lista_casas = new List<Info_forma>();
             List<Composicion_calle> lista_comp_calles = new List<Composicion_calle>();
             List<Point> lista_puntos_calles = new List<Point>();
-
+         
+            //Estas varias pertencen a distribución
             bool h_o_v = true;
             int respaldo_x_ori=0, respaldo_y_ori=0;
+
+            int avance_en_x = 100;
+            int avance_en_y = 100;
+
             //Subsitema #1: calculo de area ciudad
 
             //Calculo del margen del area de dibujo, para que las formas no sobresalgan
@@ -159,6 +164,7 @@ namespace Creador_de_ciudades
             PictureBox primer_nivel = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
             Graphics fondo = Graphics.FromImage(primer_nivel.Image);
             Brush brocha_fondo = new SolidBrush(Color.DarkGreen);
+            fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0, 0), new Size(ancho_lienzo, alto_lienzo)));
             primer_nivel.Refresh();
 
 
@@ -172,8 +178,7 @@ namespace Creador_de_ciudades
                 {
 
                     lista_comp_calles.Clear();
-                    fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0, 0), new Size(ancho_lienzo, alto_lienzo)));
-
+                   
                     if (ui_calle_diagonal.Checked)
                     {
                         int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
@@ -324,8 +329,8 @@ namespace Creador_de_ciudades
                 {
                     if (ui_checkbox_girar_ordenar.Checked)
                     {
-                        int seleccionar = azar.Next(0, 2);  //casa gira o rota al azar dependiendo de esta variable
-                        if (seleccionar == 0)
+                        int seleccionar = azar.Next(1, 3);  //casa gira o rota al azar dependiendo de esta variable
+                        if (seleccionar != 1)
                         {
                             grados = azar.Next(0, 361);
                         }
@@ -395,33 +400,33 @@ namespace Creador_de_ciudades
 
                 //Subsistema 3.1 seleccion de punto origen segun la distribución
 
-                Point origen = new Point();
+                Point origen_CASA = new Point();
 
                 String distribucion_seleccionado = ui_group_box_distribucion.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
                 switch (distribucion_seleccionado)
                 {
                     case "ui_distribucion_aleatoria":
-                        origen = Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 100, Convert.ToInt32(ui_min_ancho_casa.Value) * 100, Convert.ToInt32(ui_min_alto_casa.Value) * 100);
+                        origen_CASA = Herramienta.seleccionar_punto_cuadricula(ancho_lienzo - margen_ancho, alto_lienzo - margen_alto, 100, Convert.ToInt32(ui_min_ancho_casa.Value) * 100, Convert.ToInt32(ui_min_alto_casa.Value) * 100);
                         //100 es el multiplo
                         break;
                     case "ui_distribucion_columnas":
                         if(y_ori >= (alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100) - 400)  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
                         {
-                            x_ori = x_ori + 100;
+                            x_ori = x_ori + avance_en_x;
                             y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
                         }
-                        origen = new Point(x_ori, y_ori);
-                        y_ori = y_ori + 100;
+                        origen_CASA = new Point(x_ori, y_ori);
+                        y_ori = y_ori + avance_en_y;   // antes de avance se usaba 100
                         break;
                     case "ui_distribucion_filas":
                         if (x_ori >= (ancho_lienzo - Convert.ToInt32(ui_max_ancho_casa.Value) * 100) - 400)
                         {
                             x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100;
-                            y_ori = y_ori + 100;
+                            y_ori = y_ori + avance_en_y;
                         }
-                        origen = new Point(x_ori, y_ori);
-                        x_ori = x_ori + 100;
+                        origen_CASA = new Point(x_ori, y_ori);
+                        x_ori = x_ori + avance_en_x;
                         break;
                     case "ui_distribucion_alternable": // SOLO TOMA LO ANTERIOR Y LO ALTERNA AL LLEGAR LA FINAL, COLUMNA O FILA.
 
@@ -431,24 +436,24 @@ namespace Creador_de_ciudades
                             if (y_ori >= (alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100) - 400)  
                             {                           
                                 respaldo_x_ori = x_ori;
-                                x_ori = x_ori + 100;
+                                x_ori = x_ori + avance_en_x;
                                 y_ori = respaldo_y_ori; // vuelve al origen
                                 h_o_v = false; 
                             }
-                            origen = new Point(x_ori, y_ori);
-                            y_ori = y_ori + 100;                        
+                            origen_CASA = new Point(x_ori, y_ori);
+                            y_ori = y_ori + avance_en_y;                        
                         }
                         else
                         {
                             if (x_ori >= (ancho_lienzo - Convert.ToInt32(ui_max_ancho_casa.Value) * 100) - 400)
                             {
                                 respaldo_y_ori = y_ori;
-                                y_ori= y_ori + 100; 
+                                y_ori= y_ori + avance_en_y; 
                                 x_ori = respaldo_x_ori;  //vuelve al origen
                                 h_o_v = true;
                             }
-                            origen = new Point(x_ori, y_ori);
-                            x_ori = x_ori + 100;                        
+                            origen_CASA = new Point(x_ori, y_ori);
+                            x_ori = x_ori + avance_en_x;                        
                         }
 
                     break;
@@ -463,7 +468,7 @@ namespace Creador_de_ciudades
                  anchos[ubicacion_datos],
                  altos[ubicacion_datos],
                  azar.Next(Convert.ToInt32(ui_min_grosor_pared.Value), Convert.ToInt32(ui_max_grosor_pared.Value)),
-                 origen, //origen de la forma (casa) 
+                 origen_CASA, //origen de la forma (casa) 
                  new Point(),
                  azar.Next(Convert.ToInt32(ui_pilar_cubico_med_min.Value), Convert.ToInt32(ui_pilar_cubico_med_max.Value)),
                  azar.Next(Convert.ToInt32(ui_pilar_round_med_min.Value), Convert.ToInt32(ui_pilar_round_med_max.Value)),
@@ -933,12 +938,14 @@ namespace Creador_de_ciudades
                 nueva_pagina.AutoScroll = true;
                 nueva_pagina.BorderStyle = BorderStyle.Fixed3D;
                 nueva_pagina.BackColor = Color.White;
+               
                 
 
                 PictureBox nuevo_lienzo = new PictureBox();
                 nuevo_lienzo.Name = "Planta "+ i;
                 nueva_pagina.Controls.Add(nuevo_lienzo);
                 TabControl.TabPages.Add(nueva_pagina);
+         
             }           
 
         }
@@ -964,12 +971,22 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
                 nuevo_lienzo.Dock = DockStyle.Fill;
 
+                Bitmap bmp;
+
+             
+                bmp = new Bitmap(ancho, alto,PixelFormat.Format16bppRgb555);  //Aqui como tercer parametro se puede cambia el Format
               
-                Bitmap bmp = new Bitmap(ancho, alto);  //Aqui como segundo parametro se puede cambia el Format
+                           
                 nuevo_lienzo.Image = bmp;
                 TabControl.TabPages.Add(nueva_pagina);
-                
-              
+
+                //Se pinta el fondo de cage page de blanco
+
+                Graphics fondo = Graphics.FromImage(nuevo_lienzo.Image);
+                Brush brocha_fondo = new SolidBrush(Color.White);
+                fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0, 0), new Size(ancho, alto)));
+
+
             }
 
         }

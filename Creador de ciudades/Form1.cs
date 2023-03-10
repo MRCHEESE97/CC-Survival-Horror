@@ -210,18 +210,18 @@ namespace Creador_de_ciudades
 
                         lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), a, b));
                         lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
-
                     }
 
-                    //aqui se define la lejania o distancia de una calle y otra, lo que indirectamente define el tamanio de una manzana
-                    //if (ui_autoajustar_dist_calles.Checked)
-                    //{
-                        dist_entre_cll = Convert.ToInt32(ui_espacio_calles_minimo.Value) * 100;
-                    //}
-                    //else
-                    //{
-                    //    dist_entre_cll = Convert.ToInt32(Herramienta.retornar_mayor((int)ui_max_ancho_casa.Value, (int)ui_max_alto_casa.Value)) * 100;
-                    //}
+                    // aqui se define la lejania o distancia de una calle y otra, lo que indirectamente define el tamanio de una manzana
+                    // Hay un detalle el ancho no es exacto debito a aque la linea pasa en medio de los puntos, ocupando la calle una parte de esa distancia
+                    if (ui_autoajustar_dist_calles.Checked)
+                    {
+                        dist_entre_cll = Convert.ToInt32(ui_espacio_calles_minimo.Value) * 100 * 4;
+                    }
+                    else
+                    {
+                        dist_entre_cll = Convert.ToInt32(Herramienta.retornar_mayor((int)ui_max_ancho_casa.Value, (int)ui_max_alto_casa.Value)) * 100;
+                    }
 
 
                     if (ui_calle_cuadricula.Checked == true)
@@ -314,6 +314,69 @@ namespace Creador_de_ciudades
                         {
                             fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
                             //fondo.DrawLine(dash_street, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                            primer_nivel.Refresh();
+                        }
+                    }
+                    else if (ui_calle_incompleta_v2.Checked == true)
+                    {
+                        //FILAS
+                        for (int y = dist_entre_cll; y <= alto_lienzo; y += dist_entre_cll)
+                        {
+                            int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
+                            int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
+                            if (ui_autoajustar_dist_calles.Checked == false)
+                            {
+                                dist_entre_cll = (cambiar_distancia_calle((int)ui_espacio_calles_minimo.Value, (int)ui_espacio_calles_maximo.Value)) * 100;
+                            }
+
+
+                            for (int x = dist_entre_cll; x <= ancho_lienzo; x += dist_entre_cll)
+                            {
+                                int poblacion = 60;
+                                int numerin = azar.Next(0, 99);
+                                if (numerin <= poblacion)
+                                {
+                                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x - (dist_entre_cll), y), new Point(x, y)));
+                                }                          
+                            }
+                        }
+                        //COLUMNAS
+                        for (int x = dist_entre_cll; x <= ancho_lienzo; x += dist_entre_cll)
+                        {
+                            int ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value));
+                            int ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value));
+
+                            if (ui_autoajustar_dist_calles.Checked == false)
+                            {
+                                dist_entre_cll = (cambiar_distancia_calle((int)ui_espacio_calles_minimo.Value, (int)ui_espacio_calles_maximo.Value)) * 100;
+                            }
+
+                            for (int y = dist_entre_cll; y <= alto_lienzo; y += dist_entre_cll)
+                            {
+                                int poblacion = 60;
+                                int numerin = azar.Next(0, 99);
+                                if (numerin <= poblacion)
+                                {
+                                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, y - (dist_entre_cll)), new Point(x, y)));
+                                }                            
+                            }
+                        }
+
+                        //Se dibujan las veredas (Calle base)
+
+                        for (int i = 0; i < lista_comp_calles.Count; i++)
+                        {
+                            fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                            primer_nivel.Refresh();
+                        }
+
+                        //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de la linea base"
+                        lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
+
+                        //Se dibujan las calles
+                        for (int i = 0; i < lista_comp_calles.Count; i++)
+                        {
+                            fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
                             primer_nivel.Refresh();
                         }
                     }

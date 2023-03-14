@@ -366,8 +366,7 @@ namespace Creador_de_ciudades
 
                         for (int i = 0; i < lista_comp_calles.Count; i++)
                         {
-                            fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
-                            primer_nivel.Refresh();
+                            fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);                           
                         }
 
                         //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de la linea base"
@@ -376,9 +375,9 @@ namespace Creador_de_ciudades
                         //Se dibujan las calles
                         for (int i = 0; i < lista_comp_calles.Count; i++)
                         {
-                            fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
-                            primer_nivel.Refresh();
+                            fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);                          
                         }
+                        primer_nivel.Refresh();
                     }
                     else if (ui_calle_curvilineal.Checked == true)
                     {
@@ -1069,7 +1068,7 @@ namespace Creador_de_ciudades
                 Bitmap bmp;
 
              
-                bmp = new Bitmap(ancho, alto,PixelFormat.Format16bppRgb555);  //Aqui como tercer parametro se puede cambia el Format
+                bmp = new Bitmap(ancho, alto);  //Aqui como tercer parametro se puede cambia el Format
               
                            
                 nuevo_lienzo.Image = bmp;

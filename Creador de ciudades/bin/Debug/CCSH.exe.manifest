@@ -49,17 +49,17 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>DjwPmdiPf6FM2a86VxjfraoIQ734W6JNMYPQQLiZtSM=</dsig:DigestValue>
+        <dsig:DigestValue>5Z/fjGrb7dfqTlHr3ifuS7JJ2UqGIIgxKAf8wSxcudI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="CCSH.exe.config" size="184">
+  <file name="CCSH.exe.config" size="255">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>FihlZtVNgcNyH37Pf0Jtll3jZOm+L55ijXNjtoS2/mo=</dsig:DigestValue>
+      <dsig:DigestValue>n19uLxkcr7UAdfSo+vN4bcMHCKh4H1+bS2pu4537jE8=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

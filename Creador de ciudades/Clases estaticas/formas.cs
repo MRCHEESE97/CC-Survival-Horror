@@ -66,7 +66,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             Point[] shape = new Point[6];
             Pen borde = new Pen(Color.Black, informacion.grosor_pared);
             int[] array = { informacion.ancho_forma, informacion.alto_forma };
-            int r = array.Min() * 100; 
+            int r = array.Min() * 10; 
 
             //Create 6 points
             for (int a = 0; a < 6; a++)
@@ -90,8 +90,8 @@ namespace Creador_de_ciudades.Clases_estaticas
             // Se usan 4 listas para cada lado
             List<Point> lado_superior = Herramienta.calcular_lado(inf.po,inf.ancho_forma,"x");
             List<Point> lado_izquierdo = Herramienta.calcular_lado(inf.po, inf.alto_forma, "y");
-            List<Point> lado_derecho = Herramienta.calcular_lado(new Point(inf.po.X + inf.ancho_forma * 100, inf.po.Y), inf.alto_forma, "y");
-            List<Point> lado_inferior = Herramienta.calcular_lado(new Point(inf.po.X, inf.po.Y + inf.alto_forma * 100), inf.ancho_forma, "x");
+            List<Point> lado_derecho = Herramienta.calcular_lado(new Point(inf.po.X + inf.ancho_forma * 10, inf.po.Y), inf.alto_forma, "y");
+            List<Point> lado_inferior = Herramienta.calcular_lado(new Point(inf.po.X, inf.po.Y + inf.alto_forma * 10), inf.ancho_forma, "x");
 
             rectangulo.AddRange(lado_superior);
             rectangulo.AddRange(lado_derecho);
@@ -184,14 +184,14 @@ namespace Creador_de_ciudades.Clases_estaticas
                     {
                         point1.X = x;
                         point1.Y = y;
-                        point2.X = (100 * contador) + x;
+                        point2.X = (10 * contador) + x;
                         point2.Y = point1.Y;
                     }
                     else
                     {
                         point1.X = point2.X;
                         point1.Y = y;
-                        point2.X = (100 * contador) + x;
+                        point2.X = (10 * contador) + x;
                         point2.Y = point1.Y;
                     }
                 }
@@ -200,15 +200,15 @@ namespace Creador_de_ciudades.Clases_estaticas
                     if (contador == 1)
                     {
                         point1.X = x;
-                        point1.Y = y + (random_profundidad * 100);
-                        point2.X = (100 * contador) + x;
+                        point1.Y = y + (random_profundidad * 10);
+                        point2.X = (10 * contador) + x;
                         point2.Y = point1.Y;
                     }
                     else
                     {
                         point1.X = point2.X;
-                        point1.Y = y + (random_profundidad * 100);
-                        point2.X = (100 * contador) + x;
+                        point1.Y = y + (random_profundidad * 10);
+                        point2.X = (10 * contador) + x;
                         point2.Y = point1.Y;
                     }
                 }
@@ -227,7 +227,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             //lado derecho
             while (contador <= alto)
             {
-                int punto_inicial_x = (100 * ancho) + x;
+                int punto_inicial_x = (10 * ancho) + x;
                 //Esta parte fue agragada para la distancia
                 if (conteo == 0)
                 {
@@ -249,7 +249,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     point1.X = punto_inicial_x;
                     point1.Y = ultimay;
                     point2.X = point1.X;
-                    point2.Y = (100* contador) + y;
+                    point2.Y = (10* contador) + y;
                 }
                 else
                 {
@@ -258,18 +258,18 @@ namespace Creador_de_ciudades.Clases_estaticas
                         point1.X = punto_inicial_x;
                         point1.Y = point2.Y;
                         point2.X = point1.X;
-                        point2.Y = (100 * contador) + y;
+                        point2.Y = (10 * contador) + y;
                     }
                     else
                     {
-                        point1.X = punto_inicial_x - (random_profundidad * 100);
+                        point1.X = punto_inicial_x - (random_profundidad * 10);
                         point1.Y = point2.Y;
                         point2.X = point1.X;
-                        point2.Y = (100 * contador) + y;
+                        point2.Y = (10 * contador) + y;
                     }
                 }
                 if (point2.X <= hund_der)
-                { hund_der = point2.X - 100; }
+                { hund_der = point2.X - 10; }
 
                 contador = contador + 1;
                 lado_derecho.Add(point1);
@@ -305,7 +305,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     point1.X = x;
                     point1.Y = inicioy;
                     point2.X = point1.X;
-                    point2.Y = (100 * contador) + y;
+                    point2.Y = (10 * contador) + y;
                 }
                 else
                 {
@@ -314,18 +314,18 @@ namespace Creador_de_ciudades.Clases_estaticas
                         point1.X = x;
                         point1.Y = point2.Y;
                         point2.X = point1.X;
-                        point2.Y = (100 * contador) + y;
+                        point2.Y = (10 * contador) + y;
                     }
                     else
                     {
-                        point1.X = x + (random_profundidad * 100);
+                        point1.X = x + (random_profundidad * 10);
                         point1.Y = point2.Y;
                         point2.X = point1.X;
-                        point2.Y = (100 * contador) + y;
+                        point2.Y = (10 * contador) + y;
                     }
                 }
                 if (point2.X >= hund_izq)
-                { hund_izq = point2.X + 100; }
+                { hund_izq = point2.X + 10; }
 
                 contador = contador + 1;
                 lado_izquierdo.Add(point1);
@@ -342,7 +342,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             while (contador <= ancho + 1)
             {
-                int punto_inicial_y = (100 * alto) + y;
+                int punto_inicial_y = (10 * alto) + y;
                 //Esta parte fue agragada para la distancia
                 if (conteo == 0)
                 {
@@ -359,7 +359,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     { conteo = 0; }
                 }
                 //-------------------------------------------
-                if (point2.X >= hund_der - 100)
+                if (point2.X >= hund_der - 10)
                 {
                     point1.X = point2.X;
                     point1.Y = punto_inicial_y;
@@ -382,14 +382,14 @@ namespace Creador_de_ciudades.Clases_estaticas
                     {
                         point1.X = point2.X;
                         point1.Y = punto_inicial_y;
-                        point2.X = (100 * contador) + x;
+                        point2.X = (10 * contador) + x;
                         point2.Y = point1.Y;
                     }
                     else
                     {
                         point1.X = point2.X;
-                        point1.Y = punto_inicial_y - (random_profundidad * 100);
-                        point2.X = (100 * contador) + x;
+                        point1.Y = punto_inicial_y - (random_profundidad * 10);
+                        point2.X = (10 * contador) + x;
                         point2.Y = point1.Y;
                     }
                 }
@@ -484,7 +484,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     distancia = Math.Pow(puede_quitarse[i].X - puede_quitarse[i + 1].X, 2) + Math.Pow(puede_quitarse[i].Y - puede_quitarse[i + 1].Y, 2);
                     distancia = Math.Sqrt(distancia);
-                    if (distancia <= 100 * 2 + 10)
+                    if (distancia <= 10 * 2 + 10)
                     {
                         tomar_vertice = random.Next(0, 2);
                         if (tomar_vertice == 0)

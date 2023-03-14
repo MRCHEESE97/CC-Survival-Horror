@@ -155,6 +155,7 @@
             this.label39 = new System.Windows.Forms.Label();
             this.ui_espacio_calles_minimo = new System.Windows.Forms.NumericUpDown();
             this.label40 = new System.Windows.Forms.Label();
+            this.ui_calle_incompleta_v2 = new System.Windows.Forms.RadioButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.label46 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -189,7 +190,6 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ui_calle_incompleta_v2 = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -496,7 +496,7 @@
             this.ui_cantidad_pisos.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_pisos.TabIndex = 1;
             this.ui_cantidad_pisos.Value = new decimal(new int[] {
-            6,
+            4,
             0,
             0,
             0});
@@ -544,7 +544,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            70,
+            40,
             0,
             0,
             0});
@@ -673,7 +673,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            20,
+            30,
             0,
             0,
             0});
@@ -693,7 +693,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            20,
+            30,
             0,
             0,
             0});
@@ -712,7 +712,7 @@
             this.ui_min_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_alto_casa.TabIndex = 5;
             this.ui_min_alto_casa.Value = new decimal(new int[] {
-            5,
+            10,
             0,
             0,
             0});
@@ -1535,7 +1535,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(432, 228);
+            this.tabPage3.Size = new System.Drawing.Size(492, 228);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Opciones territoriales";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1565,12 +1565,10 @@
             // ui_distribucion_alternable
             // 
             this.ui_distribucion_alternable.AutoSize = true;
-            this.ui_distribucion_alternable.Checked = true;
             this.ui_distribucion_alternable.Location = new System.Drawing.Point(13, 122);
             this.ui_distribucion_alternable.Name = "ui_distribucion_alternable";
             this.ui_distribucion_alternable.Size = new System.Drawing.Size(167, 21);
             this.ui_distribucion_alternable.TabIndex = 3;
-            this.ui_distribucion_alternable.TabStop = true;
             this.ui_distribucion_alternable.Text = "Alternar filas y columnas";
             this.ui_distribucion_alternable.UseVisualStyleBackColor = true;
             // 
@@ -1587,10 +1585,12 @@
             // ui_distribucion_filas
             // 
             this.ui_distribucion_filas.AutoSize = true;
+            this.ui_distribucion_filas.Checked = true;
             this.ui_distribucion_filas.Location = new System.Drawing.Point(13, 95);
             this.ui_distribucion_filas.Name = "ui_distribucion_filas";
             this.ui_distribucion_filas.Size = new System.Drawing.Size(50, 21);
             this.ui_distribucion_filas.TabIndex = 1;
+            this.ui_distribucion_filas.TabStop = true;
             this.ui_distribucion_filas.Text = "Filas";
             this.ui_distribucion_filas.UseVisualStyleBackColor = true;
             // 
@@ -1659,7 +1659,7 @@
             this.ui_max_ancho_ver.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_ver.TabIndex = 44;
             this.ui_max_ancho_ver.Value = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -1669,7 +1669,7 @@
             this.ui_max_ancho_calle.Location = new System.Drawing.Point(284, 192);
             this.ui_max_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_max_ancho_calle.Maximum = new decimal(new int[] {
-            12,
+            20,
             0,
             0,
             0});
@@ -1682,7 +1682,7 @@
             this.ui_max_ancho_calle.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_calle.TabIndex = 43;
             this.ui_max_ancho_calle.Value = new decimal(new int[] {
-            12,
+            14,
             0,
             0,
             0});
@@ -1715,7 +1715,7 @@
             this.ui_min_ancho_calle.Location = new System.Drawing.Point(174, 192);
             this.ui_min_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_min_ancho_calle.Maximum = new decimal(new int[] {
-            10,
+            20,
             0,
             0,
             0});
@@ -1728,7 +1728,7 @@
             this.ui_min_ancho_calle.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_calle.TabIndex = 41;
             this.ui_min_ancho_calle.Value = new decimal(new int[] {
-            6,
+            8,
             0,
             0,
             0});
@@ -1909,6 +1909,18 @@
             this.label40.TabIndex = 39;
             this.label40.Text = "___________________________________________________________________";
             // 
+            // ui_calle_incompleta_v2
+            // 
+            this.ui_calle_incompleta_v2.AutoSize = true;
+            this.ui_calle_incompleta_v2.Checked = true;
+            this.ui_calle_incompleta_v2.Location = new System.Drawing.Point(13, 80);
+            this.ui_calle_incompleta_v2.Name = "ui_calle_incompleta_v2";
+            this.ui_calle_incompleta_v2.Size = new System.Drawing.Size(169, 21);
+            this.ui_calle_incompleta_v2.TabIndex = 46;
+            this.ui_calle_incompleta_v2.TabStop = true;
+            this.ui_calle_incompleta_v2.Text = "Cuadricula incompleta V2";
+            this.ui_calle_incompleta_v2.UseVisualStyleBackColor = true;
+            // 
             // groupBox7
             // 
             this.groupBox7.Controls.Add(this.label46);
@@ -1960,6 +1972,11 @@
             0});
             this.ui_porcentaje_sin_casas.Location = new System.Drawing.Point(306, 20);
             this.ui_porcentaje_sin_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_porcentaje_sin_casas.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.ui_porcentaje_sin_casas.Minimum = new decimal(new int[] {
             10,
             0,
@@ -1969,7 +1986,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            60,
+            90,
             0,
             0,
             0});
@@ -2045,7 +2062,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(432, 228);
+            this.tabPage2.Size = new System.Drawing.Size(492, 228);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2139,7 +2156,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage4.Size = new System.Drawing.Size(433, 287);
+            this.tabPage4.Size = new System.Drawing.Size(492, 228);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Interiores";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2149,8 +2166,8 @@
             this.tabPage5.Controls.Add(this.ui_quitar_calles);
             this.tabPage5.Location = new System.Drawing.Point(4, 26);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage5.Size = new System.Drawing.Size(433, 287);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(492, 228);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Experimental";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2330,17 +2347,6 @@
             this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
-            // 
-            // ui_calle_incompleta_v2
-            // 
-            this.ui_calle_incompleta_v2.AutoSize = true;
-            this.ui_calle_incompleta_v2.Checked = true;
-            this.ui_calle_incompleta_v2.Location = new System.Drawing.Point(13, 80);
-            this.ui_calle_incompleta_v2.Name = "ui_calle_incompleta_v2";
-            this.ui_calle_incompleta_v2.Size = new System.Drawing.Size(169, 21);
-            this.ui_calle_incompleta_v2.TabIndex = 46;
-            this.ui_calle_incompleta_v2.Text = "Cuadricula incompleta V2";
-            this.ui_calle_incompleta_v2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

@@ -33,7 +33,6 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarCiudadComoCarpetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.guardarCiudadEMFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lenguajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
@@ -82,6 +81,11 @@
             this.ui_forma_casa_deformada = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.ui_groupbox_objetos = new System.Windows.Forms.GroupBox();
+            this.ui_groupbox_poblacion_objetos = new System.Windows.Forms.GroupBox();
+            this.ui_poblacion_objetos_aleatoria = new System.Windows.Forms.RadioButton();
+            this.ui_poblacion_objetos_baja = new System.Windows.Forms.RadioButton();
+            this.ui_poblacion_objetos_alta = new System.Windows.Forms.RadioButton();
+            this.ui_poblacion_objetos_media = new System.Windows.Forms.RadioButton();
             this.label32 = new System.Windows.Forms.Label();
             this.ui_objetos_ventana = new System.Windows.Forms.CheckBox();
             this.label28 = new System.Windows.Forms.Label();
@@ -117,27 +121,20 @@
             this.ui_objetos_ventana_ale = new System.Windows.Forms.RadioButton();
             this.ui_objetos_ventana_total = new System.Windows.Forms.RadioButton();
             this.ui_objetos_ventana_binaria = new System.Windows.Forms.RadioButton();
-            this.ui_groupbox_poblacion_objetos = new System.Windows.Forms.GroupBox();
-            this.ui_poblacion_objetos_aleatoria = new System.Windows.Forms.RadioButton();
-            this.ui_poblacion_objetos_baja = new System.Windows.Forms.RadioButton();
-            this.ui_poblacion_objetos_alta = new System.Windows.Forms.RadioButton();
-            this.ui_poblacion_objetos_media = new System.Windows.Forms.RadioButton();
             this.tabControlProp = new System.Windows.Forms.TabControl();
             this.tabcontrol_propiedades = new System.Windows.Forms.TabPage();
             this.ui_quitar_algunos_pisos = new System.Windows.Forms.CheckBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.ui_groupbox_objetos_ciudad = new System.Windows.Forms.GroupBox();
             this.ui_group_box_distribucion = new System.Windows.Forms.GroupBox();
-            this.ui_distribucion_alternable = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_columnas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_filas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_aleatoria = new System.Windows.Forms.RadioButton();
             this.ui_groupBox_calles = new System.Windows.Forms.GroupBox();
-            this.ui_calle_diagonal = new System.Windows.Forms.CheckBox();
             this.ui_max_ancho_ver = new System.Windows.Forms.NumericUpDown();
             this.ui_max_ancho_calle = new System.Windows.Forms.NumericUpDown();
             this.ui_min_ancho_ver = new System.Windows.Forms.NumericUpDown();
             this.ui_min_ancho_calle = new System.Windows.Forms.NumericUpDown();
+            this.label40 = new System.Windows.Forms.Label();
             this.label38 = new System.Windows.Forms.Label();
             this.ui_calle_incompleta = new System.Windows.Forms.RadioButton();
             this.label36 = new System.Windows.Forms.Label();
@@ -149,15 +146,10 @@
             this.label31 = new System.Windows.Forms.Label();
             this.ui_cantidad_calles = new System.Windows.Forms.NumericUpDown();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.ui_espacio_calles_maximo = new System.Windows.Forms.NumericUpDown();
             this.ui_autoajustar_dist_calles = new System.Windows.Forms.CheckBox();
-            this.label41 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.ui_espacio_calles_minimo = new System.Windows.Forms.NumericUpDown();
-            this.label40 = new System.Windows.Forms.Label();
-            this.ui_calle_incompleta_v2 = new System.Windows.Forms.RadioButton();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
-            this.label46 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.ui_porcentaje_sin_casas = new System.Windows.Forms.NumericUpDown();
@@ -168,14 +160,9 @@
             this.ui_checkbox_girar = new System.Windows.Forms.CheckBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.ui_multiplo_valor = new System.Windows.Forms.NumericUpDown();
-            this.ui_multiplo_de = new System.Windows.Forms.RadioButton();
-            this.ui_ambos = new System.Windows.Forms.RadioButton();
             this.ui_solo_impares = new System.Windows.Forms.RadioButton();
             this.ui_solo_pares = new System.Windows.Forms.RadioButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.ui_quitar_calles = new System.Windows.Forms.CheckBox();
             this.ui_construir = new System.Windows.Forms.Button();
             this.ui_quitar_todo = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -190,6 +177,16 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ui_distribucion_alternable = new System.Windows.Forms.RadioButton();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.ui_quitar_calles = new System.Windows.Forms.CheckBox();
+            this.ui_calle_diagonal = new System.Windows.Forms.CheckBox();
+            this.ui_espacio_calles_maximo = new System.Windows.Forms.NumericUpDown();
+            this.label46 = new System.Windows.Forms.Label();
+            this.ui_calle_incompleta_v2 = new System.Windows.Forms.RadioButton();
+            this.ui_objetos_data = new System.Windows.Forms.CheckBox();
+            this.ui_multiplo_valor = new System.Windows.Forms.NumericUpDown();
+            this.ui_multiplo_de = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -208,6 +205,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Distancia)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).BeginInit();
             this.ui_groupbox_objetos.SuspendLayout();
+            this.ui_groupbox_poblacion_objetos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).BeginInit();
@@ -217,7 +215,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_round_med_min)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_min)).BeginInit();
             this.ui_group_box_vanos_ventanas.SuspendLayout();
-            this.ui_groupbox_poblacion_objetos.SuspendLayout();
             this.tabControlProp.SuspendLayout();
             this.tabcontrol_propiedades.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -229,15 +226,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_calle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_calles)).BeginInit();
             this.groupBox8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles_maximo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles_minimo)).BeginInit();
             this.groupBox7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_porcentaje_sin_casas)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).BeginInit();
-            this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -245,6 +239,9 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).BeginInit();
+            this.tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles_maximo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -272,8 +269,7 @@
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.guardarCiudadComoCarpetaToolStripMenuItem,
-            this.guardarCiudadEMFToolStripMenuItem});
+            this.guardarCiudadComoCarpetaToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(68, 25);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -285,13 +281,6 @@
             this.guardarCiudadComoCarpetaToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
             this.guardarCiudadComoCarpetaToolStripMenuItem.Text = "Guardar ciudad (PNG en carpeta)";
             this.guardarCiudadComoCarpetaToolStripMenuItem.Click += new System.EventHandler(this.guardarCiudadComoCarpetaToolStripMenuItem_Click);
-            // 
-            // guardarCiudadEMFToolStripMenuItem
-            // 
-            this.guardarCiudadEMFToolStripMenuItem.Name = "guardarCiudadEMFToolStripMenuItem";
-            this.guardarCiudadEMFToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
-            this.guardarCiudadEMFToolStripMenuItem.Text = "Guardar c‍‍iudad EMF";
-            this.guardarCiudadEMFToolStripMenuItem.Click += new System.EventHandler(this.guardarCiudadEMFToolStripMenuItem_Click);
             // 
             // lenguajeToolStripMenuItem
             // 
@@ -327,7 +316,7 @@
             this.TabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(468, 410);
+            this.TabControl.Size = new System.Drawing.Size(529, 465);
             this.TabControl.TabIndex = 6;
             // 
             // tabPage1
@@ -337,7 +326,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(460, 381);
+            this.tabPage1.Size = new System.Drawing.Size(521, 436);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Planta 0";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -544,7 +533,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            40,
+            70,
             0,
             0,
             0});
@@ -673,7 +662,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            30,
+            20,
             0,
             0,
             0});
@@ -693,7 +682,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            30,
+            20,
             0,
             0,
             0});
@@ -712,7 +701,7 @@
             this.ui_min_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_alto_casa.TabIndex = 5;
             this.ui_min_alto_casa.Value = new decimal(new int[] {
-            10,
+            5,
             0,
             0,
             0});
@@ -794,11 +783,11 @@
             this.ui_groupbox_forma_casas.Controls.Add(this.Posibilidad);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_rectangular);
-            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(6, 517);
+            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(6, 516);
             this.ui_groupbox_forma_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_forma_casas.Name = "ui_groupbox_forma_casas";
             this.ui_groupbox_forma_casas.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(399, 210);
+            this.ui_groupbox_forma_casas.Size = new System.Drawing.Size(399, 205);
             this.ui_groupbox_forma_casas.TabIndex = 6;
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Formas/casas";
@@ -900,6 +889,8 @@
             // 
             // ui_groupbox_objetos
             // 
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_data);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_groupbox_poblacion_objetos);
             this.ui_groupbox_objetos.Controls.Add(this.label32);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_ventana);
             this.ui_groupbox_objetos.Controls.Add(this.label28);
@@ -931,14 +922,69 @@
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_columna_cuadrada);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_columna_redonda);
             this.ui_groupbox_objetos.Controls.Add(this.ui_group_box_vanos_ventanas);
-            this.ui_groupbox_objetos.Location = new System.Drawing.Point(6, 302);
+            this.ui_groupbox_objetos.Location = new System.Drawing.Point(6, 180);
             this.ui_groupbox_objetos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_objetos.Name = "ui_groupbox_objetos";
             this.ui_groupbox_objetos.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_groupbox_objetos.Size = new System.Drawing.Size(401, 584);
+            this.ui_groupbox_objetos.Size = new System.Drawing.Size(401, 706);
             this.ui_groupbox_objetos.TabIndex = 7;
             this.ui_groupbox_objetos.TabStop = false;
             this.ui_groupbox_objetos.Text = "Objetos";
+            // 
+            // ui_groupbox_poblacion_objetos
+            // 
+            this.ui_groupbox_poblacion_objetos.Controls.Add(this.ui_poblacion_objetos_aleatoria);
+            this.ui_groupbox_poblacion_objetos.Controls.Add(this.ui_poblacion_objetos_baja);
+            this.ui_groupbox_poblacion_objetos.Controls.Add(this.ui_poblacion_objetos_alta);
+            this.ui_groupbox_poblacion_objetos.Controls.Add(this.ui_poblacion_objetos_media);
+            this.ui_groupbox_poblacion_objetos.Location = new System.Drawing.Point(72, 492);
+            this.ui_groupbox_poblacion_objetos.Name = "ui_groupbox_poblacion_objetos";
+            this.ui_groupbox_poblacion_objetos.Size = new System.Drawing.Size(217, 194);
+            this.ui_groupbox_poblacion_objetos.TabIndex = 38;
+            this.ui_groupbox_poblacion_objetos.TabStop = false;
+            this.ui_groupbox_poblacion_objetos.Text = "Poblacion Objetos";
+            // 
+            // ui_poblacion_objetos_aleatoria
+            // 
+            this.ui_poblacion_objetos_aleatoria.AutoSize = true;
+            this.ui_poblacion_objetos_aleatoria.Checked = true;
+            this.ui_poblacion_objetos_aleatoria.Location = new System.Drawing.Point(11, 107);
+            this.ui_poblacion_objetos_aleatoria.Name = "ui_poblacion_objetos_aleatoria";
+            this.ui_poblacion_objetos_aleatoria.Size = new System.Drawing.Size(129, 21);
+            this.ui_poblacion_objetos_aleatoria.TabIndex = 36;
+            this.ui_poblacion_objetos_aleatoria.TabStop = true;
+            this.ui_poblacion_objetos_aleatoria.Text = "Poblacion aleatoria";
+            this.ui_poblacion_objetos_aleatoria.UseVisualStyleBackColor = true;
+            // 
+            // ui_poblacion_objetos_baja
+            // 
+            this.ui_poblacion_objetos_baja.AutoSize = true;
+            this.ui_poblacion_objetos_baja.Location = new System.Drawing.Point(11, 26);
+            this.ui_poblacion_objetos_baja.Name = "ui_poblacion_objetos_baja";
+            this.ui_poblacion_objetos_baja.Size = new System.Drawing.Size(103, 21);
+            this.ui_poblacion_objetos_baja.TabIndex = 33;
+            this.ui_poblacion_objetos_baja.Text = "Poblacion baja";
+            this.ui_poblacion_objetos_baja.UseVisualStyleBackColor = true;
+            // 
+            // ui_poblacion_objetos_alta
+            // 
+            this.ui_poblacion_objetos_alta.AutoSize = true;
+            this.ui_poblacion_objetos_alta.Location = new System.Drawing.Point(11, 80);
+            this.ui_poblacion_objetos_alta.Name = "ui_poblacion_objetos_alta";
+            this.ui_poblacion_objetos_alta.Size = new System.Drawing.Size(103, 21);
+            this.ui_poblacion_objetos_alta.TabIndex = 35;
+            this.ui_poblacion_objetos_alta.Text = "Poblacion alta";
+            this.ui_poblacion_objetos_alta.UseVisualStyleBackColor = true;
+            // 
+            // ui_poblacion_objetos_media
+            // 
+            this.ui_poblacion_objetos_media.AutoSize = true;
+            this.ui_poblacion_objetos_media.Location = new System.Drawing.Point(11, 53);
+            this.ui_poblacion_objetos_media.Name = "ui_poblacion_objetos_media";
+            this.ui_poblacion_objetos_media.Size = new System.Drawing.Size(114, 21);
+            this.ui_poblacion_objetos_media.TabIndex = 34;
+            this.ui_poblacion_objetos_media.Text = "Poblacion media";
+            this.ui_poblacion_objetos_media.UseVisualStyleBackColor = true;
             // 
             // label32
             // 
@@ -1387,20 +1433,19 @@
             this.ui_objetos_ventana_todos.AutoSize = true;
             this.ui_objetos_ventana_todos.Location = new System.Drawing.Point(11, 107);
             this.ui_objetos_ventana_todos.Name = "ui_objetos_ventana_todos";
-            this.ui_objetos_ventana_todos.Size = new System.Drawing.Size(165, 21);
+            this.ui_objetos_ventana_todos.Size = new System.Drawing.Size(185, 21);
             this.ui_objetos_ventana_todos.TabIndex = 36;
-            this.ui_objetos_ventana_todos.Text = "Combinar todos los tipos";
+            this.ui_objetos_ventana_todos.TabStop = true;
+            this.ui_objetos_ventana_todos.Text = "Vano ventana (combinación)";
             this.ui_objetos_ventana_todos.UseVisualStyleBackColor = true;
             // 
             // ui_objetos_ventana_ale
             // 
             this.ui_objetos_ventana_ale.AutoSize = true;
-            this.ui_objetos_ventana_ale.Checked = true;
             this.ui_objetos_ventana_ale.Location = new System.Drawing.Point(11, 26);
             this.ui_objetos_ventana_ale.Name = "ui_objetos_ventana_ale";
             this.ui_objetos_ventana_ale.Size = new System.Drawing.Size(156, 21);
             this.ui_objetos_ventana_ale.TabIndex = 33;
-            this.ui_objetos_ventana_ale.TabStop = true;
             this.ui_objetos_ventana_ale.Text = "Vano ventana aleatoria";
             this.ui_objetos_ventana_ale.UseVisualStyleBackColor = true;
             // 
@@ -1417,67 +1462,14 @@
             // ui_objetos_ventana_binaria
             // 
             this.ui_objetos_ventana_binaria.AutoSize = true;
+            this.ui_objetos_ventana_binaria.Checked = true;
             this.ui_objetos_ventana_binaria.Location = new System.Drawing.Point(11, 53);
             this.ui_objetos_ventana_binaria.Name = "ui_objetos_ventana_binaria";
             this.ui_objetos_ventana_binaria.Size = new System.Drawing.Size(145, 21);
             this.ui_objetos_ventana_binaria.TabIndex = 34;
+            this.ui_objetos_ventana_binaria.TabStop = true;
             this.ui_objetos_ventana_binaria.Text = "Vano ventana binaria";
             this.ui_objetos_ventana_binaria.UseVisualStyleBackColor = true;
-            // 
-            // ui_groupbox_poblacion_objetos
-            // 
-            this.ui_groupbox_poblacion_objetos.Controls.Add(this.ui_poblacion_objetos_aleatoria);
-            this.ui_groupbox_poblacion_objetos.Controls.Add(this.ui_poblacion_objetos_baja);
-            this.ui_groupbox_poblacion_objetos.Controls.Add(this.ui_poblacion_objetos_alta);
-            this.ui_groupbox_poblacion_objetos.Controls.Add(this.ui_poblacion_objetos_media);
-            this.ui_groupbox_poblacion_objetos.Location = new System.Drawing.Point(190, 169);
-            this.ui_groupbox_poblacion_objetos.Name = "ui_groupbox_poblacion_objetos";
-            this.ui_groupbox_poblacion_objetos.Size = new System.Drawing.Size(217, 136);
-            this.ui_groupbox_poblacion_objetos.TabIndex = 38;
-            this.ui_groupbox_poblacion_objetos.TabStop = false;
-            this.ui_groupbox_poblacion_objetos.Text = "Poblacion de Objetos";
-            // 
-            // ui_poblacion_objetos_aleatoria
-            // 
-            this.ui_poblacion_objetos_aleatoria.AutoSize = true;
-            this.ui_poblacion_objetos_aleatoria.Checked = true;
-            this.ui_poblacion_objetos_aleatoria.Location = new System.Drawing.Point(11, 107);
-            this.ui_poblacion_objetos_aleatoria.Name = "ui_poblacion_objetos_aleatoria";
-            this.ui_poblacion_objetos_aleatoria.Size = new System.Drawing.Size(129, 21);
-            this.ui_poblacion_objetos_aleatoria.TabIndex = 36;
-            this.ui_poblacion_objetos_aleatoria.TabStop = true;
-            this.ui_poblacion_objetos_aleatoria.Text = "Poblacion aleatoria";
-            this.ui_poblacion_objetos_aleatoria.UseVisualStyleBackColor = true;
-            // 
-            // ui_poblacion_objetos_baja
-            // 
-            this.ui_poblacion_objetos_baja.AutoSize = true;
-            this.ui_poblacion_objetos_baja.Location = new System.Drawing.Point(11, 26);
-            this.ui_poblacion_objetos_baja.Name = "ui_poblacion_objetos_baja";
-            this.ui_poblacion_objetos_baja.Size = new System.Drawing.Size(103, 21);
-            this.ui_poblacion_objetos_baja.TabIndex = 33;
-            this.ui_poblacion_objetos_baja.Text = "Poblacion baja";
-            this.ui_poblacion_objetos_baja.UseVisualStyleBackColor = true;
-            // 
-            // ui_poblacion_objetos_alta
-            // 
-            this.ui_poblacion_objetos_alta.AutoSize = true;
-            this.ui_poblacion_objetos_alta.Location = new System.Drawing.Point(11, 80);
-            this.ui_poblacion_objetos_alta.Name = "ui_poblacion_objetos_alta";
-            this.ui_poblacion_objetos_alta.Size = new System.Drawing.Size(103, 21);
-            this.ui_poblacion_objetos_alta.TabIndex = 35;
-            this.ui_poblacion_objetos_alta.Text = "Poblacion alta";
-            this.ui_poblacion_objetos_alta.UseVisualStyleBackColor = true;
-            // 
-            // ui_poblacion_objetos_media
-            // 
-            this.ui_poblacion_objetos_media.AutoSize = true;
-            this.ui_poblacion_objetos_media.Location = new System.Drawing.Point(11, 53);
-            this.ui_poblacion_objetos_media.Name = "ui_poblacion_objetos_media";
-            this.ui_poblacion_objetos_media.Size = new System.Drawing.Size(114, 21);
-            this.ui_poblacion_objetos_media.TabIndex = 34;
-            this.ui_poblacion_objetos_media.Text = "Poblacion media";
-            this.ui_poblacion_objetos_media.UseVisualStyleBackColor = true;
             // 
             // tabControlProp
             // 
@@ -1491,7 +1483,7 @@
             this.tabControlProp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlProp.Name = "tabControlProp";
             this.tabControlProp.SelectedIndex = 0;
-            this.tabControlProp.Size = new System.Drawing.Size(500, 258);
+            this.tabControlProp.Size = new System.Drawing.Size(439, 313);
             this.tabControlProp.TabIndex = 10;
             // 
             // tabcontrol_propiedades
@@ -1506,7 +1498,7 @@
             this.tabcontrol_propiedades.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabcontrol_propiedades.Name = "tabcontrol_propiedades";
             this.tabcontrol_propiedades.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabcontrol_propiedades.Size = new System.Drawing.Size(492, 228);
+            this.tabcontrol_propiedades.Size = new System.Drawing.Size(431, 283);
             this.tabcontrol_propiedades.TabIndex = 0;
             this.tabcontrol_propiedades.Text = "Plantas";
             // 
@@ -1525,7 +1517,6 @@
             // tabPage3
             // 
             this.tabPage3.AutoScroll = true;
-            this.tabPage3.Controls.Add(this.ui_groupbox_objetos_ciudad);
             this.tabPage3.Controls.Add(this.ui_group_box_distribucion);
             this.tabPage3.Controls.Add(this.ui_groupBox_calles);
             this.tabPage3.Controls.Add(this.groupBox7);
@@ -1535,19 +1526,10 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(492, 228);
+            this.tabPage3.Size = new System.Drawing.Size(431, 283);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Opciones territoriales";
             this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // ui_groupbox_objetos_ciudad
-            // 
-            this.ui_groupbox_objetos_ciudad.Location = new System.Drawing.Point(6, 734);
-            this.ui_groupbox_objetos_ciudad.Name = "ui_groupbox_objetos_ciudad";
-            this.ui_groupbox_objetos_ciudad.Size = new System.Drawing.Size(399, 178);
-            this.ui_groupbox_objetos_ciudad.TabIndex = 17;
-            this.ui_groupbox_objetos_ciudad.TabStop = false;
-            this.ui_groupbox_objetos_ciudad.Text = "Objetos ciudad";
             // 
             // ui_group_box_distribucion
             // 
@@ -1562,20 +1544,10 @@
             this.ui_group_box_distribucion.TabStop = false;
             this.ui_group_box_distribucion.Text = "Tipo de distribución / casas";
             // 
-            // ui_distribucion_alternable
-            // 
-            this.ui_distribucion_alternable.AutoSize = true;
-            this.ui_distribucion_alternable.Location = new System.Drawing.Point(13, 122);
-            this.ui_distribucion_alternable.Name = "ui_distribucion_alternable";
-            this.ui_distribucion_alternable.Size = new System.Drawing.Size(167, 21);
-            this.ui_distribucion_alternable.TabIndex = 3;
-            this.ui_distribucion_alternable.Text = "Alternar filas y columnas";
-            this.ui_distribucion_alternable.UseVisualStyleBackColor = true;
-            // 
             // ui_distribucion_columnas
             // 
             this.ui_distribucion_columnas.AutoSize = true;
-            this.ui_distribucion_columnas.Location = new System.Drawing.Point(12, 68);
+            this.ui_distribucion_columnas.Location = new System.Drawing.Point(18, 52);
             this.ui_distribucion_columnas.Name = "ui_distribucion_columnas";
             this.ui_distribucion_columnas.Size = new System.Drawing.Size(77, 21);
             this.ui_distribucion_columnas.TabIndex = 2;
@@ -1585,19 +1557,17 @@
             // ui_distribucion_filas
             // 
             this.ui_distribucion_filas.AutoSize = true;
-            this.ui_distribucion_filas.Checked = true;
-            this.ui_distribucion_filas.Location = new System.Drawing.Point(13, 95);
+            this.ui_distribucion_filas.Location = new System.Drawing.Point(19, 79);
             this.ui_distribucion_filas.Name = "ui_distribucion_filas";
             this.ui_distribucion_filas.Size = new System.Drawing.Size(50, 21);
             this.ui_distribucion_filas.TabIndex = 1;
-            this.ui_distribucion_filas.TabStop = true;
             this.ui_distribucion_filas.Text = "Filas";
             this.ui_distribucion_filas.UseVisualStyleBackColor = true;
             // 
             // ui_distribucion_aleatoria
             // 
             this.ui_distribucion_aleatoria.AutoSize = true;
-            this.ui_distribucion_aleatoria.Location = new System.Drawing.Point(12, 41);
+            this.ui_distribucion_aleatoria.Location = new System.Drawing.Point(18, 25);
             this.ui_distribucion_aleatoria.Name = "ui_distribucion_aleatoria";
             this.ui_distribucion_aleatoria.Size = new System.Drawing.Size(75, 21);
             this.ui_distribucion_aleatoria.TabIndex = 0;
@@ -1606,11 +1576,13 @@
             // 
             // ui_groupBox_calles
             // 
+            this.ui_groupBox_calles.Controls.Add(this.ui_calle_incompleta_v2);
             this.ui_groupBox_calles.Controls.Add(this.ui_calle_diagonal);
             this.ui_groupBox_calles.Controls.Add(this.ui_max_ancho_ver);
             this.ui_groupBox_calles.Controls.Add(this.ui_max_ancho_calle);
             this.ui_groupBox_calles.Controls.Add(this.ui_min_ancho_ver);
             this.ui_groupBox_calles.Controls.Add(this.ui_min_ancho_calle);
+            this.ui_groupBox_calles.Controls.Add(this.label40);
             this.ui_groupBox_calles.Controls.Add(this.label38);
             this.ui_groupBox_calles.Controls.Add(this.ui_calle_incompleta);
             this.ui_groupBox_calles.Controls.Add(this.label36);
@@ -1622,31 +1594,19 @@
             this.ui_groupBox_calles.Controls.Add(this.label31);
             this.ui_groupBox_calles.Controls.Add(this.ui_cantidad_calles);
             this.ui_groupBox_calles.Controls.Add(this.groupBox8);
-            this.ui_groupBox_calles.Controls.Add(this.label40);
-            this.ui_groupBox_calles.Controls.Add(this.ui_calle_incompleta_v2);
             this.ui_groupBox_calles.Location = new System.Drawing.Point(6, 245);
             this.ui_groupBox_calles.Name = "ui_groupBox_calles";
-            this.ui_groupBox_calles.Size = new System.Drawing.Size(399, 264);
+            this.ui_groupBox_calles.Size = new System.Drawing.Size(399, 272);
             this.ui_groupBox_calles.TabIndex = 15;
             this.ui_groupBox_calles.TabStop = false;
             this.ui_groupBox_calles.Text = "Red de calles (En desarrollo)";
-            // 
-            // ui_calle_diagonal
-            // 
-            this.ui_calle_diagonal.AutoSize = true;
-            this.ui_calle_diagonal.Location = new System.Drawing.Point(192, 30);
-            this.ui_calle_diagonal.Name = "ui_calle_diagonal";
-            this.ui_calle_diagonal.Size = new System.Drawing.Size(120, 21);
-            this.ui_calle_diagonal.TabIndex = 42;
-            this.ui_calle_diagonal.Text = "Generar diagonal";
-            this.ui_calle_diagonal.UseVisualStyleBackColor = true;
             // 
             // ui_max_ancho_ver
             // 
             this.ui_max_ancho_ver.Location = new System.Drawing.Point(284, 225);
             this.ui_max_ancho_ver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_max_ancho_ver.Maximum = new decimal(new int[] {
-            4,
+            20,
             0,
             0,
             0});
@@ -1715,7 +1675,7 @@
             this.ui_min_ancho_calle.Location = new System.Drawing.Point(174, 192);
             this.ui_min_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_min_ancho_calle.Maximum = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});
@@ -1733,6 +1693,16 @@
             0,
             0});
             // 
+            // label40
+            // 
+            this.label40.AutoSize = true;
+            this.label40.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.label40.Location = new System.Drawing.Point(22, 139);
+            this.label40.Name = "label40";
+            this.label40.Size = new System.Drawing.Size(343, 17);
+            this.label40.TabIndex = 39;
+            this.label40.Text = "___________________________________________________________________";
+            // 
             // label38
             // 
             this.label38.AutoSize = true;
@@ -1745,7 +1715,7 @@
             // ui_calle_incompleta
             // 
             this.ui_calle_incompleta.AutoSize = true;
-            this.ui_calle_incompleta.Location = new System.Drawing.Point(13, 56);
+            this.ui_calle_incompleta.Location = new System.Drawing.Point(6, 47);
             this.ui_calle_incompleta.Name = "ui_calle_incompleta";
             this.ui_calle_incompleta.Size = new System.Drawing.Size(147, 21);
             this.ui_calle_incompleta.TabIndex = 18;
@@ -1783,7 +1753,7 @@
             // ui_calle_callejones
             // 
             this.ui_calle_callejones.AutoSize = true;
-            this.ui_calle_callejones.Location = new System.Drawing.Point(13, 131);
+            this.ui_calle_callejones.Location = new System.Drawing.Point(6, 121);
             this.ui_calle_callejones.Name = "ui_calle_callejones";
             this.ui_calle_callejones.Size = new System.Drawing.Size(150, 21);
             this.ui_calle_callejones.TabIndex = 16;
@@ -1793,7 +1763,7 @@
             // ui_calle_curvilineal
             // 
             this.ui_calle_curvilineal.AutoSize = true;
-            this.ui_calle_curvilineal.Location = new System.Drawing.Point(13, 105);
+            this.ui_calle_curvilineal.Location = new System.Drawing.Point(6, 94);
             this.ui_calle_curvilineal.Name = "ui_calle_curvilineal";
             this.ui_calle_curvilineal.Size = new System.Drawing.Size(82, 21);
             this.ui_calle_curvilineal.TabIndex = 15;
@@ -1803,7 +1773,7 @@
             // ui_calle_cuadricula
             // 
             this.ui_calle_cuadricula.AutoSize = true;
-            this.ui_calle_cuadricula.Location = new System.Drawing.Point(13, 31);
+            this.ui_calle_cuadricula.Location = new System.Drawing.Point(6, 24);
             this.ui_calle_cuadricula.Name = "ui_calle_cuadricula";
             this.ui_calle_cuadricula.Size = new System.Drawing.Size(155, 21);
             this.ui_calle_cuadricula.TabIndex = 14;
@@ -1814,7 +1784,7 @@
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(188, 52);
+            this.label31.Location = new System.Drawing.Point(193, 37);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(114, 17);
             this.label31.TabIndex = 12;
@@ -1823,7 +1793,7 @@
             // ui_cantidad_calles
             // 
             this.ui_cantidad_calles.Enabled = false;
-            this.ui_cantidad_calles.Location = new System.Drawing.Point(315, 50);
+            this.ui_cantidad_calles.Location = new System.Drawing.Point(315, 34);
             this.ui_cantidad_calles.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_cantidad_calles.Name = "ui_cantidad_calles";
             this.ui_cantidad_calles.Size = new System.Drawing.Size(54, 27);
@@ -1832,34 +1802,23 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.ui_espacio_calles_maximo);
+            this.groupBox8.Controls.Add(this.label46);
             this.groupBox8.Controls.Add(this.ui_autoajustar_dist_calles);
-            this.groupBox8.Controls.Add(this.label41);
             this.groupBox8.Controls.Add(this.label39);
             this.groupBox8.Controls.Add(this.ui_espacio_calles_minimo);
-            this.groupBox8.Location = new System.Drawing.Point(181, 75);
+            this.groupBox8.Location = new System.Drawing.Point(181, 59);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(201, 85);
             this.groupBox8.TabIndex = 45;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lejania de las calles";
             // 
-            // ui_espacio_calles_maximo
-            // 
-            this.ui_espacio_calles_maximo.Location = new System.Drawing.Point(123, 50);
-            this.ui_espacio_calles_maximo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_espacio_calles_maximo.Name = "ui_espacio_calles_maximo";
-            this.ui_espacio_calles_maximo.Size = new System.Drawing.Size(54, 27);
-            this.ui_espacio_calles_maximo.TabIndex = 42;
-            this.ui_espacio_calles_maximo.Value = new decimal(new int[] {
-            60,
-            0,
-            0,
-            0});
-            // 
             // ui_autoajustar_dist_calles
             // 
             this.ui_autoajustar_dist_calles.AutoSize = true;
-            this.ui_autoajustar_dist_calles.Location = new System.Drawing.Point(27, 25);
+            this.ui_autoajustar_dist_calles.Checked = true;
+            this.ui_autoajustar_dist_calles.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_autoajustar_dist_calles.Location = new System.Drawing.Point(27, 24);
             this.ui_autoajustar_dist_calles.Name = "ui_autoajustar_dist_calles";
             this.ui_autoajustar_dist_calles.Size = new System.Drawing.Size(92, 21);
             this.ui_autoajustar_dist_calles.TabIndex = 41;
@@ -1867,19 +1826,10 @@
             this.ui_autoajustar_dist_calles.UseVisualStyleBackColor = true;
             this.ui_autoajustar_dist_calles.CheckedChanged += new System.EventHandler(this.ui_autoajustar_dist_calles_CheckedChanged);
             // 
-            // label41
-            // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(184, 51);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(18, 17);
-            this.label41.TabIndex = 40;
-            this.label41.Text = "m";
-            // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(17, 51);
+            this.label39.Location = new System.Drawing.Point(26, 52);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(31, 17);
             this.label39.TabIndex = 20;
@@ -1887,7 +1837,7 @@
             // 
             // ui_espacio_calles_minimo
             // 
-            this.ui_espacio_calles_minimo.Location = new System.Drawing.Point(58, 50);
+            this.ui_espacio_calles_minimo.Location = new System.Drawing.Point(64, 50);
             this.ui_espacio_calles_minimo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_espacio_calles_minimo.Name = "ui_espacio_calles_minimo";
             this.ui_espacio_calles_minimo.Size = new System.Drawing.Size(54, 27);
@@ -1897,33 +1847,9 @@
             0,
             0,
             0});
-            this.ui_espacio_calles_minimo.ValueChanged += new System.EventHandler(this.ui_espacio_calles_minimo_ValueChanged);
-            // 
-            // label40
-            // 
-            this.label40.AutoSize = true;
-            this.label40.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label40.Location = new System.Drawing.Point(22, 152);
-            this.label40.Name = "label40";
-            this.label40.Size = new System.Drawing.Size(343, 17);
-            this.label40.TabIndex = 39;
-            this.label40.Text = "___________________________________________________________________";
-            // 
-            // ui_calle_incompleta_v2
-            // 
-            this.ui_calle_incompleta_v2.AutoSize = true;
-            this.ui_calle_incompleta_v2.Checked = true;
-            this.ui_calle_incompleta_v2.Location = new System.Drawing.Point(13, 80);
-            this.ui_calle_incompleta_v2.Name = "ui_calle_incompleta_v2";
-            this.ui_calle_incompleta_v2.Size = new System.Drawing.Size(169, 21);
-            this.ui_calle_incompleta_v2.TabIndex = 46;
-            this.ui_calle_incompleta_v2.TabStop = true;
-            this.ui_calle_incompleta_v2.Text = "Cuadricula incompleta V2";
-            this.ui_calle_incompleta_v2.UseVisualStyleBackColor = true;
             // 
             // groupBox7
             // 
-            this.groupBox7.Controls.Add(this.label46);
             this.groupBox7.Controls.Add(this.label2);
             this.groupBox7.Controls.Add(this.ui_cantidad_casas);
             this.groupBox7.Controls.Add(this.label19);
@@ -1936,23 +1862,14 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Entidades";
             // 
-            // label46
-            // 
-            this.label46.AutoSize = true;
-            this.label46.Location = new System.Drawing.Point(197, 31);
-            this.label46.Name = "label46";
-            this.label46.Size = new System.Drawing.Size(92, 17);
-            this.label46.TabIndex = 12;
-            this.label46.Text = "(Incluye calles)";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(195, 16);
+            this.label19.Location = new System.Drawing.Point(195, 23);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(91, 17);
+            this.label19.Size = new System.Drawing.Size(100, 17);
             this.label19.TabIndex = 9;
-            this.label19.Text = "Área sin casas:";
+            this.label19.Text = "Zonas sin casas:";
             // 
             // label30
             // 
@@ -1972,11 +1889,6 @@
             0});
             this.ui_porcentaje_sin_casas.Location = new System.Drawing.Point(306, 20);
             this.ui_porcentaje_sin_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_porcentaje_sin_casas.Maximum = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
             this.ui_porcentaje_sin_casas.Minimum = new decimal(new int[] {
             10,
             0,
@@ -1986,7 +1898,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            90,
+            60,
             0,
             0,
             0});
@@ -1999,7 +1911,7 @@
             this.groupBox5.Controls.Add(this.ui_checkbox_girar);
             this.groupBox5.Location = new System.Drawing.Point(204, 74);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(201, 126);
+            this.groupBox5.Size = new System.Drawing.Size(201, 131);
             this.groupBox5.TabIndex = 8;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "General /  casas";
@@ -2054,7 +1966,6 @@
             // tabPage2
             // 
             this.tabPage2.AutoScroll = true;
-            this.tabPage2.Controls.Add(this.ui_groupbox_poblacion_objetos);
             this.tabPage2.Controls.Add(this.ui_groupbox_objetos);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.groupBox6);
@@ -2062,7 +1973,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(492, 228);
+            this.tabPage2.Size = new System.Drawing.Size(431, 283);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2071,77 +1982,30 @@
             // 
             this.groupBox6.Controls.Add(this.ui_multiplo_valor);
             this.groupBox6.Controls.Add(this.ui_multiplo_de);
-            this.groupBox6.Controls.Add(this.ui_ambos);
             this.groupBox6.Controls.Add(this.ui_solo_impares);
             this.groupBox6.Controls.Add(this.ui_solo_pares);
-            this.groupBox6.Location = new System.Drawing.Point(258, 14);
+            this.groupBox6.Location = new System.Drawing.Point(269, 8);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(149, 154);
+            this.groupBox6.Size = new System.Drawing.Size(138, 160);
             this.groupBox6.TabIndex = 10;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Filtro de medidas";
             // 
-            // ui_multiplo_valor
-            // 
-            this.ui_multiplo_valor.Increment = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
-            this.ui_multiplo_valor.Location = new System.Drawing.Point(87, 35);
-            this.ui_multiplo_valor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_multiplo_valor.Minimum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.ui_multiplo_valor.Name = "ui_multiplo_valor";
-            this.ui_multiplo_valor.Size = new System.Drawing.Size(54, 27);
-            this.ui_multiplo_valor.TabIndex = 12;
-            this.ui_multiplo_valor.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // ui_multiplo_de
-            // 
-            this.ui_multiplo_de.AutoSize = true;
-            this.ui_multiplo_de.Checked = true;
-            this.ui_multiplo_de.Location = new System.Drawing.Point(15, 35);
-            this.ui_multiplo_de.Name = "ui_multiplo_de";
-            this.ui_multiplo_de.Size = new System.Drawing.Size(72, 21);
-            this.ui_multiplo_de.TabIndex = 11;
-            this.ui_multiplo_de.TabStop = true;
-            this.ui_multiplo_de.Text = "Multiplo";
-            this.ui_multiplo_de.UseVisualStyleBackColor = true;
-            // 
-            // ui_ambos
-            // 
-            this.ui_ambos.AutoSize = true;
-            this.ui_ambos.Location = new System.Drawing.Point(15, 109);
-            this.ui_ambos.Name = "ui_ambos";
-            this.ui_ambos.Size = new System.Drawing.Size(107, 21);
-            this.ui_ambos.TabIndex = 10;
-            this.ui_ambos.TabStop = true;
-            this.ui_ambos.Text = "Ambos (lento)";
-            this.ui_ambos.UseVisualStyleBackColor = true;
-            // 
             // ui_solo_impares
             // 
             this.ui_solo_impares.AutoSize = true;
-            this.ui_solo_impares.Location = new System.Drawing.Point(15, 85);
+            this.ui_solo_impares.Location = new System.Drawing.Point(22, 113);
             this.ui_solo_impares.Name = "ui_solo_impares";
-            this.ui_solo_impares.Size = new System.Drawing.Size(142, 21);
+            this.ui_solo_impares.Size = new System.Drawing.Size(96, 21);
             this.ui_solo_impares.TabIndex = 9;
             this.ui_solo_impares.TabStop = true;
-            this.ui_solo_impares.Text = "Solo impares (lento)";
+            this.ui_solo_impares.Text = "Solo impares";
             this.ui_solo_impares.UseVisualStyleBackColor = true;
             // 
             // ui_solo_pares
             // 
             this.ui_solo_pares.AutoSize = true;
-            this.ui_solo_pares.Location = new System.Drawing.Point(15, 58);
+            this.ui_solo_pares.Location = new System.Drawing.Point(22, 86);
             this.ui_solo_pares.Name = "ui_solo_pares";
             this.ui_solo_pares.Size = new System.Drawing.Size(83, 21);
             this.ui_solo_pares.TabIndex = 8;
@@ -2156,31 +2020,10 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage4.Size = new System.Drawing.Size(492, 228);
+            this.tabPage4.Size = new System.Drawing.Size(431, 283);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Interiores";
             this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // tabPage5
-            // 
-            this.tabPage5.Controls.Add(this.ui_quitar_calles);
-            this.tabPage5.Location = new System.Drawing.Point(4, 26);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(492, 228);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Experimental";
-            this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // ui_quitar_calles
-            // 
-            this.ui_quitar_calles.AutoSize = true;
-            this.ui_quitar_calles.Location = new System.Drawing.Point(12, 6);
-            this.ui_quitar_calles.Name = "ui_quitar_calles";
-            this.ui_quitar_calles.Size = new System.Drawing.Size(96, 21);
-            this.ui_quitar_calles.TabIndex = 0;
-            this.ui_quitar_calles.Text = "Quitar calles";
-            this.ui_quitar_calles.UseVisualStyleBackColor = true;
             // 
             // ui_construir
             // 
@@ -2222,8 +2065,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControlProp);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(980, 414);
-            this.splitContainer1.SplitterDistance = 472;
+            this.splitContainer1.Size = new System.Drawing.Size(980, 469);
+            this.splitContainer1.SplitterDistance = 533;
             this.splitContainer1.TabIndex = 11;
             this.splitContainer1.MouseLeave += new System.EventHandler(this.splitContainer1_MouseLeave);
             this.splitContainer1.MouseHover += new System.EventHandler(this.splitContainer1_MouseHover);
@@ -2235,9 +2078,9 @@
             this.groupBox2.Controls.Add(this.ui_quitar_todo);
             this.groupBox2.Controls.Add(this.ui_construir);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 258);
+            this.groupBox2.Location = new System.Drawing.Point(0, 313);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(500, 152);
+            this.groupBox2.Size = new System.Drawing.Size(439, 152);
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             // 
@@ -2273,9 +2116,9 @@
             this.label44.AutoSize = true;
             this.label44.Location = new System.Drawing.Point(9, 38);
             this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(193, 17);
+            this.label44.Size = new System.Drawing.Size(204, 17);
             this.label44.TabIndex = 6;
-            this.label44.Text = "Ubicaciones reservadas en casas: ";
+            this.label44.Text = "Ubicaciones reservadas para casas: ";
             // 
             // barra
             // 
@@ -2348,13 +2191,137 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
+            // ui_distribucion_alternable
+            // 
+            this.ui_distribucion_alternable.AutoSize = true;
+            this.ui_distribucion_alternable.Checked = true;
+            this.ui_distribucion_alternable.Location = new System.Drawing.Point(19, 106);
+            this.ui_distribucion_alternable.Name = "ui_distribucion_alternable";
+            this.ui_distribucion_alternable.Size = new System.Drawing.Size(167, 21);
+            this.ui_distribucion_alternable.TabIndex = 4;
+            this.ui_distribucion_alternable.TabStop = true;
+            this.ui_distribucion_alternable.Text = "Alternar filas y columnas";
+            this.ui_distribucion_alternable.UseVisualStyleBackColor = true;
+            this.ui_distribucion_alternable.CheckedChanged += new System.EventHandler(this.ui_distribucion_alternable_CheckedChanged);
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.ui_quitar_calles);
+            this.tabPage5.Location = new System.Drawing.Point(4, 26);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(431, 283);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Experimental";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // ui_quitar_calles
+            // 
+            this.ui_quitar_calles.AutoSize = true;
+            this.ui_quitar_calles.Checked = true;
+            this.ui_quitar_calles.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_quitar_calles.Location = new System.Drawing.Point(12, 15);
+            this.ui_quitar_calles.Name = "ui_quitar_calles";
+            this.ui_quitar_calles.Size = new System.Drawing.Size(96, 21);
+            this.ui_quitar_calles.TabIndex = 1;
+            this.ui_quitar_calles.Text = "Quitar calles";
+            this.ui_quitar_calles.UseVisualStyleBackColor = true;
+            // 
+            // ui_calle_diagonal
+            // 
+            this.ui_calle_diagonal.AutoSize = true;
+            this.ui_calle_diagonal.Location = new System.Drawing.Point(195, 13);
+            this.ui_calle_diagonal.Name = "ui_calle_diagonal";
+            this.ui_calle_diagonal.Size = new System.Drawing.Size(120, 21);
+            this.ui_calle_diagonal.TabIndex = 43;
+            this.ui_calle_diagonal.Text = "Generar diagonal";
+            this.ui_calle_diagonal.UseVisualStyleBackColor = true;
+            // 
+            // ui_espacio_calles_maximo
+            // 
+            this.ui_espacio_calles_maximo.Location = new System.Drawing.Point(124, 50);
+            this.ui_espacio_calles_maximo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_espacio_calles_maximo.Name = "ui_espacio_calles_maximo";
+            this.ui_espacio_calles_maximo.Size = new System.Drawing.Size(54, 27);
+            this.ui_espacio_calles_maximo.TabIndex = 44;
+            this.ui_espacio_calles_maximo.Value = new decimal(new int[] {
+            60,
+            0,
+            0,
+            0});
+            // 
+            // label46
+            // 
+            this.label46.AutoSize = true;
+            this.label46.Location = new System.Drawing.Point(183, 52);
+            this.label46.Name = "label46";
+            this.label46.Size = new System.Drawing.Size(18, 17);
+            this.label46.TabIndex = 43;
+            this.label46.Text = "m";
+            // 
+            // ui_calle_incompleta_v2
+            // 
+            this.ui_calle_incompleta_v2.AutoSize = true;
+            this.ui_calle_incompleta_v2.Checked = true;
+            this.ui_calle_incompleta_v2.Location = new System.Drawing.Point(6, 70);
+            this.ui_calle_incompleta_v2.Name = "ui_calle_incompleta_v2";
+            this.ui_calle_incompleta_v2.Size = new System.Drawing.Size(169, 21);
+            this.ui_calle_incompleta_v2.TabIndex = 47;
+            this.ui_calle_incompleta_v2.Text = "Cuadricula incompleta V2";
+            this.ui_calle_incompleta_v2.UseVisualStyleBackColor = true;
+            // 
+            // ui_objetos_data
+            // 
+            this.ui_objetos_data.AutoSize = true;
+            this.ui_objetos_data.Location = new System.Drawing.Point(11, 319);
+            this.ui_objetos_data.Name = "ui_objetos_data";
+            this.ui_objetos_data.Size = new System.Drawing.Size(53, 21);
+            this.ui_objetos_data.TabIndex = 40;
+            this.ui_objetos_data.Text = "Data";
+            this.ui_objetos_data.UseVisualStyleBackColor = true;
+            // 
+            // ui_multiplo_valor
+            // 
+            this.ui_multiplo_valor.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            this.ui_multiplo_valor.Location = new System.Drawing.Point(44, 54);
+            this.ui_multiplo_valor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_multiplo_valor.Minimum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.ui_multiplo_valor.Name = "ui_multiplo_valor";
+            this.ui_multiplo_valor.Size = new System.Drawing.Size(54, 27);
+            this.ui_multiplo_valor.TabIndex = 14;
+            this.ui_multiplo_valor.Value = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            // 
+            // ui_multiplo_de
+            // 
+            this.ui_multiplo_de.AutoSize = true;
+            this.ui_multiplo_de.Checked = true;
+            this.ui_multiplo_de.Location = new System.Drawing.Point(22, 26);
+            this.ui_multiplo_de.Name = "ui_multiplo_de";
+            this.ui_multiplo_de.Size = new System.Drawing.Size(72, 21);
+            this.ui_multiplo_de.TabIndex = 13;
+            this.ui_multiplo_de.TabStop = true;
+            this.ui_multiplo_de.Text = "Multiplo";
+            this.ui_multiplo_de.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(980, 445);
+            this.ClientSize = new System.Drawing.Size(980, 500);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -2391,6 +2358,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).EndInit();
             this.ui_groupbox_objetos.ResumeLayout(false);
             this.ui_groupbox_objetos.PerformLayout();
+            this.ui_groupbox_poblacion_objetos.ResumeLayout(false);
+            this.ui_groupbox_poblacion_objetos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_max)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vano_puerta_cant_min)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_prox_max)).EndInit();
@@ -2401,8 +2370,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ui_pilar_cubico_med_min)).EndInit();
             this.ui_group_box_vanos_ventanas.ResumeLayout(false);
             this.ui_group_box_vanos_ventanas.PerformLayout();
-            this.ui_groupbox_poblacion_objetos.ResumeLayout(false);
-            this.ui_groupbox_poblacion_objetos.PerformLayout();
             this.tabControlProp.ResumeLayout(false);
             this.tabcontrol_propiedades.ResumeLayout(false);
             this.tabcontrol_propiedades.PerformLayout();
@@ -2418,7 +2385,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.ui_cantidad_calles)).EndInit();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles_maximo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles_minimo)).EndInit();
             this.groupBox7.ResumeLayout(false);
             this.groupBox7.PerformLayout();
@@ -2428,9 +2394,6 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).EndInit();
-            this.tabPage5.ResumeLayout(false);
-            this.tabPage5.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -2439,6 +2402,10 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_espacio_calles_maximo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2574,7 +2541,6 @@
         private System.Windows.Forms.Label label40;
         private System.Windows.Forms.NumericUpDown ui_espacio_calles_minimo;
         private System.Windows.Forms.Label label39;
-        private System.Windows.Forms.Label label41;
         private System.Windows.Forms.NumericUpDown ui_min_ancho_calle;
         private System.Windows.Forms.NumericUpDown ui_min_ancho_ver;
         private System.Windows.Forms.NumericUpDown ui_max_ancho_ver;
@@ -2595,18 +2561,16 @@
         private System.Windows.Forms.RadioButton ui_poblacion_objetos_baja;
         private System.Windows.Forms.RadioButton ui_poblacion_objetos_alta;
         private System.Windows.Forms.RadioButton ui_poblacion_objetos_media;
-        private System.Windows.Forms.ToolStripMenuItem guardarCiudadEMFToolStripMenuItem;
-        private System.Windows.Forms.NumericUpDown ui_multiplo_valor;
-        private System.Windows.Forms.RadioButton ui_multiplo_de;
-        private System.Windows.Forms.RadioButton ui_ambos;
-        private System.Windows.Forms.CheckBox ui_calle_diagonal;
         private System.Windows.Forms.RadioButton ui_distribucion_alternable;
-        private System.Windows.Forms.Label label46;
         private System.Windows.Forms.TabPage tabPage5;
         private System.Windows.Forms.CheckBox ui_quitar_calles;
-        private System.Windows.Forms.GroupBox ui_groupbox_objetos_ciudad;
-        private System.Windows.Forms.NumericUpDown ui_espacio_calles_maximo;
+        private System.Windows.Forms.CheckBox ui_calle_diagonal;
+        private System.Windows.Forms.CheckBox ui_objetos_data;
         private System.Windows.Forms.RadioButton ui_calle_incompleta_v2;
+        private System.Windows.Forms.NumericUpDown ui_espacio_calles_maximo;
+        private System.Windows.Forms.Label label46;
+        private System.Windows.Forms.NumericUpDown ui_multiplo_valor;
+        private System.Windows.Forms.RadioButton ui_multiplo_de;
     }
 }
 

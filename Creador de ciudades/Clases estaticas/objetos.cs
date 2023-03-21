@@ -90,6 +90,10 @@ namespace Creador_de_ciudades.Clases_estaticas
                     {
                         elevador(datos, lienzo);
                     }
+                    else if (nombre_objeto.Equals("ui_objetos_data"))
+                    {
+                        data(datos, lienzo);
+                    }
                 }
                 else 
                 {
@@ -273,6 +277,17 @@ namespace Creador_de_ciudades.Clases_estaticas
             else { brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent); }
             
             informacion.g.FillRectangle(brocha_suelo, suelo); */
+        }
+        private static void data(Info_forma informacion, PictureBox pintura)
+        {
+
+            SolidBrush ventana = new SolidBrush(Color.Blue);
+            string Data = informacion.ancho_forma.ToString() + " x " + informacion.alto_forma.ToString();
+            Font drawFont = new Font("Arial", 16);
+
+            informacion.g.DrawString(Data, drawFont, ventana, informacion.nuevo_origen.X + (informacion.ancho_forma * 100), informacion.nuevo_origen.Y + (informacion.alto_forma * 100  ));
+
+
         }
 
     }

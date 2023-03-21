@@ -1,8 +1,8 @@
 ﻿
 /*  Copyright (c) 2020 José Bravo <galillo1997@gmail.com>
-    This file is part of CCSH.
+    This file is part of creador de ciudades.
 
-    CCSH is free software: you can redistribute it and/or modify
+    Creador de ciudades is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.

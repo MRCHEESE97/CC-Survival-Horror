@@ -156,7 +156,7 @@ namespace Creador_de_ciudades.Clases
             List<Point> puntos = new List<Point>();
             if (eje == "x")
             {
-                for (int i = inicio.X; i <= inicio.X + (longitud * 10); i += 10)
+                for (int i = inicio.X; i <= inicio.X + (longitud * 100); i += 100)
                 {
                     puntos.Add(new Point(i, inicio.Y));
                 }
@@ -164,7 +164,7 @@ namespace Creador_de_ciudades.Clases
             }
             else
             {
-                for (int i = inicio.Y; i <= inicio.Y + (longitud * 10); i += 10)
+                for (int i = inicio.Y; i <= inicio.Y + (longitud * 100); i += 100)
                 {
                     puntos.Add(new Point(inicio.X, i));
                 }
@@ -176,9 +176,9 @@ namespace Creador_de_ciudades.Clases
 
             List<Point> puntos = new List<Point>();
 
-            for (int i = po.X; i <= po.X + ancho * 10; i += avance)
+            for (int i = po.X; i <= po.X + ancho * 100; i += avance)
             {
-                for (int j = po.Y; j <= po.Y + alto * 10; j += avance)
+                for (int j = po.Y; j <= po.Y + alto * 100; j += avance)
                 {
                     puntos.Add(new Point(i, j));
                 }
@@ -221,9 +221,9 @@ namespace Creador_de_ciudades.Clases
         {
             Color pixelColor;
             List<Point> Blancos = new List<Point>();
-            for (int y = 0; y < bitmapImage.Height; y += 10)
+            for (int y = 0; y < bitmapImage.Height; y += 100)
             {
-                for (int x = 0; x < bitmapImage.Width; x += 10)
+                for (int x = 0; x < bitmapImage.Width; x += 100)
                 {
                     pixelColor = bitmapImage.GetPixel(x, y);
                     if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
@@ -241,6 +241,12 @@ namespace Creador_de_ciudades.Clases
             {  return a;  }
             else
             {   return b; }
+        }
+
+        public static int cambiar_distancia_calle(int minimo, int maximo)
+        {
+            Random azar = new Random();
+            return azar.Next(minimo, maximo + 1);
         }
 
     }

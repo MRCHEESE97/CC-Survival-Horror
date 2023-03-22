@@ -18,7 +18,7 @@
 using Creador_de_ciudades.Clases;
 using Creador_de_ciudades.Clases_estaticas;
 using System;
-using System.Collections;
+using System.Collections;   
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
@@ -26,6 +26,8 @@ using System.Drawing.Imaging;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
+
 namespace Creador_de_ciudades
 {   
     public partial class Form1 : Form
@@ -69,11 +71,13 @@ namespace Creador_de_ciudades
             List<Composicion_calle> lista_comp_calles = new List<Composicion_calle>();
             List<Point> lista_puntos_calles = new List<Point>();
 
+            List<Point> lista_puntos_origen = new List<Point>(); // Esta lista sirve para que los puntos de origen de una forma, no se repitan. 
+
             //Estas varias pertencen a distribución
             bool h_o_v = true;
             int respaldo_x_ori = 0, respaldo_y_ori = 0;
 
-            int avance_en_x = 100;
+            int avance_en_x = 100;  //10 es un metro
             int avance_en_y = 100;
 
 
@@ -219,7 +223,7 @@ namespace Creador_de_ciudades
                     // Hay un detalle el ancho no es exacto debito a aque la linea pasa en medio de los puntos, ocupando la calle una parte de esa distancia por eso puse el 4
                     if (ui_autoajustar_dist_calles.Checked)
                     {
-                        dist_entre_cll = Convert.ToInt32(ui_espacio_calles_minimo.Value) * 100;
+                        dist_entre_cll = Convert.ToInt32(ui_espacio_calles_minimo.Value) * 100 + ((int)ui_max_ancho_calle.Value * 100 );
                     }
                     else
                     {
@@ -531,7 +535,8 @@ namespace Creador_de_ciudades
 
                         break;
                 }
-
+              
+         
                 //Aqui empieza la recoleccion de la informacion para las casas
 
                 Info_forma nueva_casa = new Info_forma
@@ -562,28 +567,47 @@ namespace Creador_de_ciudades
                 nueva_casa.resp_alto_forma = nueva_casa.alto_forma;
                 nueva_casa.resp_ancho_forma = nueva_casa.ancho_forma;
 
-              
-                //Subsistema 3.2 #Filtros
+                //Subsistema 3.2 #Filtro de puntos ocupados
 
-                bool interruptor = false;
+                //Verifica si punto de origen ya apareció
+
+                bool existe = false;
+
+                if (lista_puntos_origen.Contains(origen))
+                {
+                    existe = true;
+                }
+                 if (existe)
+                {
+                    ubicacion_datos--;
+                    continue;
+                }
+                else
+                {
+                    lista_puntos_origen.Add(origen);
+                }
+
 
                 //Verificar si existe interseccion entre casas
-                //Esta verificación me deja una gran leccion 29/11/20 :)  ME REFERIA AL FOR EN PARALELO <3
+                //Esta verificación me deja una gran leccion 29/11/20 :)  ME REFERIA AL FOR EN PARALELO 
 
-                for (int x = 0; x < lista_casas.Count; x++)
+                bool interruptor = false;
+                if ( ui_montar_casas.Checked == false)  // añadí este if el 22/03/2023
                 {
-                    Parallel.For(0, nueva_casa.area_puntos.Count - 1, (i, state) => 
+                    for (int x = 0; x < lista_casas.Count; x++)
                     {
-                        if (lista_casas[x].area_puntos.Contains(nueva_casa.area_puntos[i]))
+                        Parallel.For(0, nueva_casa.area_puntos.Count - 1, (i,state) =>
                         {
-                            //Existe interseccion
-                            interruptor = true;
-                            state.Break();                         
-                        }
-                    });
+                            if (lista_casas[x].area_puntos.Contains(nueva_casa.area_puntos[i]))
+                            {
+                                //Existe interseccion
+                                interruptor = true;
+                                state.Break();
+                            }
+                        });
+                    }
                 }
-                
-                
+                             
                 //Verifica si existe interseccion entre casas y calles
 
                 if (nueva_casa != null)

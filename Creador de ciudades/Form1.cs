@@ -65,7 +65,7 @@ namespace Creador_de_ciudades
 
             Random azar = new Random();
             //Variable para busqueda de origen
-            int x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100, y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
+            int x_ori =  100, y_ori = 100;
 
             List<Info_forma> lista_casas = new List<Info_forma>();
             List<Composicion_calle> lista_comp_calles = new List<Composicion_calle>();
@@ -77,8 +77,8 @@ namespace Creador_de_ciudades
             bool h_o_v = true;
             int respaldo_x_ori = 0, respaldo_y_ori = 0;
 
-            int avance_en_x = 200;  //100 es un metro
-            int avance_en_y = 200;
+            int avance_en_x = 100;  //100 es un metro
+            int avance_en_y = 100;
 
 
             //Subsitema #1: calculo de area ciudad
@@ -202,7 +202,7 @@ namespace Creador_de_ciudades
                         int ancho_calle = 0;
                         int ancho_vereda =0;
                         do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
-                        do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1); } while (ancho_vereda % 2 != 0);
+                        do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
  
 
                         Point a, b;
@@ -242,7 +242,7 @@ namespace Creador_de_ciudades
                             int ancho_calle = 0;
                             int ancho_vereda = 0;
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
-                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1); } while (ancho_vereda % 2 != 0);
+                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
                             lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(0, y), new Point(ancho_lienzo, y)));
                         }
                         for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
@@ -250,7 +250,7 @@ namespace Creador_de_ciudades
                             int ancho_calle = 0;
                             int ancho_vereda = 0;
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
-                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1); } while (ancho_vereda % 2 != 0);
+                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
                             lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, 0), new Point(x, alto_lienzo)));
                         }
 
@@ -286,7 +286,7 @@ namespace Creador_de_ciudades
                             int ancho_calle = 0;
                             int ancho_vereda = 0;
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
-                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1); } while (ancho_vereda % 2 != 0);
+                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
                             lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(azar.Next(0, longitud_x - 1) * dist_entre_cll, y), new Point(azar.Next(3, longitud_x + 2) * dist_entre_cll, y)));
                         }
                         for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
@@ -294,7 +294,7 @@ namespace Creador_de_ciudades
                             int ancho_calle = 0;
                             int ancho_vereda = 0;
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
-                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1); } while (ancho_vereda % 2 != 0);
+                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
                             lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, azar.Next(0, longitud_y - 1)), new Point(x, azar.Next(3, longitud_y + 2) * dist_entre_cll)));
                         }
                         for (int i = 0; i < lista_comp_calles.Count; i++)
@@ -322,7 +322,7 @@ namespace Creador_de_ciudades
                             int ancho_calle = 0;
                             int ancho_vereda = 0;
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
-                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1); } while (ancho_vereda % 2 != 0);
+                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
                             if (ui_autoajustar_dist_calles.Checked == false)
                             {
                                 dist_entre_cll = (Herramienta.cambiar_distancia_calle((int)ui_espacio_calles_minimo.Value, (int)ui_espacio_calles_maximo.Value)) * 100;
@@ -335,7 +335,7 @@ namespace Creador_de_ciudades
                                 int numerin = azar.Next(0, 99);
                                 if (numerin <= poblacion)
                                 {
-                                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x - (dist_entre_cll), y), new Point(x, y)));
+                                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x - (100+(dist_entre_cll) + (ancho_calle*100)/2), y), new Point(x +200+ (ancho_calle*100)/2, y)));
                                 }
                             }
                         }
@@ -345,7 +345,7 @@ namespace Creador_de_ciudades
                             int ancho_calle = 0;
                             int ancho_vereda = 0;
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
-                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1); } while (ancho_vereda % 2 != 0);
+                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
 
                             if (ui_autoajustar_dist_calles.Checked == false)
                             {
@@ -358,7 +358,7 @@ namespace Creador_de_ciudades
                                 int numerin = azar.Next(0, 99);
                                 if (numerin <= poblacion)
                                 {
-                                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, y - (dist_entre_cll)), new Point(x, y)));
+                                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, y - (100+(dist_entre_cll)+(ancho_calle*100)/2)), new Point(x, y +200+(ancho_calle*100)/2)));
                                 }
                             }
                         }
@@ -370,12 +370,13 @@ namespace Creador_de_ciudades
                             fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
                         }
 
-                        //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de la linea base"
+                        //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de las lineas blancas"
                         lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
 
                         //Se dibujan las calles
                         for (int i = 0; i < lista_comp_calles.Count; i++)
                         {
+                            
                             fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
                         }
                         primer_nivel.Refresh();
@@ -452,22 +453,7 @@ namespace Creador_de_ciudades
                         grados = azar.Next(0, 361);
                     }                                 
                 }
-                else 
-                { 
-                    int seleccionar = azar.Next(0, 4);
-                    switch (seleccionar) 
-                    { 
-                        case 0: grados = 90;
-                            break;
-                        case 1: grados = 180;
-                            break;
-                        case 2: grados = 270;
-                            break;
-                        case 3: grados = 360;
-                            break;
-                    }
-                }
-
+                
                 List<String> nombres_de_formas = new List<string>
                 {
                     "ui_forma_casa_rectangular",
@@ -478,9 +464,9 @@ namespace Creador_de_ciudades
 
                 String vano_ventana_seleccionado = ui_group_box_vanos_ventanas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
-                //En caso de que una de las casas no encaje y pasaron mas de 3 segundos cambiara su tamaño
+                //En caso de que una de las casas no encaje y pasaron mas de 1 segundo cambiara su tamaño
 
-                if (cronometro.ElapsedMilliseconds > Convert.ToInt32(ui_tiempo_espera.Value) * 1000 - (Convert.ToInt32(ui_tiempo_espera.Value) * 1000 * 0.03)) //Espera el 90% del tiempo de respuesta
+                if (cronometro.ElapsedMilliseconds > Convert.ToInt32(ui_tiempo_espera.Value) * 1000 - (Convert.ToInt32(ui_tiempo_espera.Value) * 1000 * 0.01)) //Espera el 90% del tiempo de respuesta
                 {
                  anchos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
                  altos[ubicacion_datos] = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);
@@ -503,7 +489,7 @@ namespace Creador_de_ciudades
                         //100 es el multiplo
                         break;
                     case "ui_distribucion_columnas":
-                        if (y_ori >= (alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100) - 400)  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
+                        if (y_ori >= (alto_lienzo - (Convert.ToInt32(ui_max_alto_casa.Value) * 100)))  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
                         {
                             x_ori = x_ori + avance_en_x;
                             y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
@@ -512,7 +498,7 @@ namespace Creador_de_ciudades
                         y_ori = y_ori + avance_en_y;   // antes de avance se usaba 100
                         break;
                     case "ui_distribucion_filas":
-                        if (x_ori >= (ancho_lienzo - Convert.ToInt32(ui_max_ancho_casa.Value) * 100) - 400)
+                        if (x_ori >= (ancho_lienzo - (Convert.ToInt32(ui_max_ancho_casa.Value) * 100)))
                         {
                             x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100;
                             y_ori = y_ori + avance_en_y;
@@ -525,7 +511,7 @@ namespace Creador_de_ciudades
                         //bool h_o_v = true; esta variable estará al principio de esta funcion
                         if (h_o_v)
                         {
-                            if (y_ori >= (alto_lienzo - Convert.ToInt32(ui_max_alto_casa.Value) * 100) - 400)
+                            if (y_ori >= (alto_lienzo - (Convert.ToInt32(ui_max_alto_casa.Value) * 100)))
                             {
                                 respaldo_x_ori = x_ori;
                                 x_ori = x_ori + avance_en_x;
@@ -537,7 +523,7 @@ namespace Creador_de_ciudades
                         }
                         else
                         {
-                            if (x_ori >= (ancho_lienzo - Convert.ToInt32(ui_max_ancho_casa.Value) * 100) - 400)
+                            if (x_ori >= (ancho_lienzo - (Convert.ToInt32(ui_max_ancho_casa.Value) * 100)))
                             {
                                 respaldo_y_ori = y_ori;
                                 y_ori = y_ori + avance_en_y;
@@ -567,7 +553,7 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_pilar_round_med_min.Value), Convert.ToInt32(ui_pilar_round_med_max.Value)),
                  azar.Next(1, Convert.ToInt32(ui_cantidad_pisos.Value) + 1), //Pisos_reales
                  grados,
-                 azar.Next(10, 20), // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
+                 10, // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
                  azar.Next(1, 5),
                  ui_checkbox_girar.Checked,
                  Posibilidad,

@@ -836,7 +836,7 @@
             this.Distancia.Name = "Distancia";
             this.Distancia.Size = new System.Drawing.Size(212, 45);
             this.Distancia.TabIndex = 6;
-            this.Distancia.Value = 8;
+            this.Distancia.Value = 10;
             // 
             // label18
             // 
@@ -865,7 +865,7 @@
             this.Posibilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Posibilidad.Size = new System.Drawing.Size(211, 45);
             this.Posibilidad.TabIndex = 3;
-            this.Posibilidad.Value = 5;
+            this.Posibilidad.Value = 3;
             // 
             // ui_forma_casa_deformada
             // 
@@ -958,12 +958,10 @@
             // ui_poblacion_objetos_aleatoria
             // 
             this.ui_poblacion_objetos_aleatoria.AutoSize = true;
-            this.ui_poblacion_objetos_aleatoria.Checked = true;
             this.ui_poblacion_objetos_aleatoria.Location = new System.Drawing.Point(11, 107);
             this.ui_poblacion_objetos_aleatoria.Name = "ui_poblacion_objetos_aleatoria";
             this.ui_poblacion_objetos_aleatoria.Size = new System.Drawing.Size(129, 21);
             this.ui_poblacion_objetos_aleatoria.TabIndex = 36;
-            this.ui_poblacion_objetos_aleatoria.TabStop = true;
             this.ui_poblacion_objetos_aleatoria.Text = "Poblacion aleatoria";
             this.ui_poblacion_objetos_aleatoria.UseVisualStyleBackColor = true;
             // 
@@ -980,10 +978,12 @@
             // ui_poblacion_objetos_alta
             // 
             this.ui_poblacion_objetos_alta.AutoSize = true;
+            this.ui_poblacion_objetos_alta.Checked = true;
             this.ui_poblacion_objetos_alta.Location = new System.Drawing.Point(11, 80);
             this.ui_poblacion_objetos_alta.Name = "ui_poblacion_objetos_alta";
             this.ui_poblacion_objetos_alta.Size = new System.Drawing.Size(103, 21);
             this.ui_poblacion_objetos_alta.TabIndex = 35;
+            this.ui_poblacion_objetos_alta.TabStop = true;
             this.ui_poblacion_objetos_alta.Text = "Poblacion alta";
             this.ui_poblacion_objetos_alta.UseVisualStyleBackColor = true;
             // 
@@ -1190,7 +1190,7 @@
             this.ui_pilar_cubico_med_max.Size = new System.Drawing.Size(54, 27);
             this.ui_pilar_cubico_med_max.TabIndex = 22;
             this.ui_pilar_cubico_med_max.Value = new decimal(new int[] {
-            30,
+            40,
             0,
             0,
             0});
@@ -1384,7 +1384,7 @@
             this.ui_pilar_cubico_med_min.Size = new System.Drawing.Size(54, 27);
             this.ui_pilar_cubico_med_min.TabIndex = 3;
             this.ui_pilar_cubico_med_min.Value = new decimal(new int[] {
-            20,
+            30,
             0,
             0,
             0});
@@ -1557,12 +1557,10 @@
             // ui_distribucion_alternable
             // 
             this.ui_distribucion_alternable.AutoSize = true;
-            this.ui_distribucion_alternable.Checked = true;
             this.ui_distribucion_alternable.Location = new System.Drawing.Point(19, 106);
             this.ui_distribucion_alternable.Name = "ui_distribucion_alternable";
             this.ui_distribucion_alternable.Size = new System.Drawing.Size(167, 21);
             this.ui_distribucion_alternable.TabIndex = 4;
-            this.ui_distribucion_alternable.TabStop = true;
             this.ui_distribucion_alternable.Text = "Alternar filas y columnas";
             this.ui_distribucion_alternable.UseVisualStyleBackColor = true;
             this.ui_distribucion_alternable.CheckedChanged += new System.EventHandler(this.ui_distribucion_alternable_CheckedChanged);
@@ -1580,10 +1578,12 @@
             // ui_distribucion_filas
             // 
             this.ui_distribucion_filas.AutoSize = true;
+            this.ui_distribucion_filas.Checked = true;
             this.ui_distribucion_filas.Location = new System.Drawing.Point(19, 79);
             this.ui_distribucion_filas.Name = "ui_distribucion_filas";
             this.ui_distribucion_filas.Size = new System.Drawing.Size(50, 21);
             this.ui_distribucion_filas.TabIndex = 1;
+            this.ui_distribucion_filas.TabStop = true;
             this.ui_distribucion_filas.Text = "Filas";
             this.ui_distribucion_filas.UseVisualStyleBackColor = true;
             // 

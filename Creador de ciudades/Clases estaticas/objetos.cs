@@ -45,7 +45,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     //A PARTIR DE AQUI SE EMPIEZAN A DIBUJAR TODOS
 
-                    String nombre_objeto = seleccion_objeto[i];
+                    string nombre_objeto = seleccion_objeto[i];
 
                     if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
                     {

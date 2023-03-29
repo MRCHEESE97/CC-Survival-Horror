@@ -475,6 +475,7 @@ namespace Creador_de_ciudades
                 //actualizacion de label info ubicaciones
 
                 label45.Text = ubicacion_datos.ToString()+" de "+ui_cantidad_casas.Value.ToString();
+                label45.Refresh();
 
                 //Subsistema 3.1 seleccion de punto origen segun la distribución
 
@@ -505,7 +506,7 @@ namespace Creador_de_ciudades
 
                             if (y_ori >= (alto_lienzo - (Convert.ToInt32(ui_max_alto_casa.Value) * 100)))  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
                             {
-                                MessageBox.Show(("ha alcanzado el limite" + ubicacion_datos.ToString()));
+                             // MessageBox.Show(("ha alcanzado el limite" + ubicacion_datos.ToString()));
                                 x_ori = 100;
                                 y_ori = 100;
 
@@ -517,6 +518,8 @@ namespace Creador_de_ciudades
                                     anchos.Add (azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
                                     altos.Add (azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
                                 }
+
+                                label48.Text = "Más de una";
                             }
                         }
                         origen = new Point(x_ori, y_ori);
@@ -626,19 +629,24 @@ namespace Creador_de_ciudades
                 }
 
                 //Verificar si existe interseccion entre casas
-                //Esta verificación me deja una gran leccion 29/11/20 :)  ME REFERIA AL FOR EN PARALELO 
+                //Esta verificación me deja una gran leccion 29/11/20 :)  
              
                 if ( ui_montar_casas.Checked == false)  // añadí este if el 22/03/2023
                 {
-                    for (int x = 0; x < lista_casas.Count; x++)
+                    for (int x = lista_casas.Count - 1; x >= 0; x--)  // Inverso, para aumentar la velocidad 
                     {
+                        if (interruptor) //break cuando hay intersección en el bucle anterior 29/03/2023
+                        {
+                            break;
+                        }
+                        
                         Parallel.For(0, nueva_casa.area_puntos.Count - 1, (i,state) =>
                         {
                             if (lista_casas[x].area_puntos.Contains(nueva_casa.area_puntos[i]))
                             {
                                 //Existe interseccion
                                 interruptor = true;
-                                state.Break();
+                                state.Break();                              
                             }
                         });
                     }
@@ -1091,11 +1099,10 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
                 nuevo_lienzo.Dock = DockStyle.Fill;
 
-              
-                Bitmap bmp = new Bitmap(ancho, alto);  //Aqui como segundo parametro se puede cambia el Format
+                Bitmap bmp = new Bitmap(ancho, alto);  //Aqui como segundo parametro se puede cambia el Format           
                 nuevo_lienzo.Image = bmp;
-                TabControl.TabPages.Add(nueva_pagina);
-                
+
+                TabControl.TabPages.Add(nueva_pagina);                
               
             }
 
@@ -1127,9 +1134,25 @@ namespace Creador_de_ciudades
                     nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
                 }
             }
-        }     
+        }
 
-       
+
+        private void emfToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < TabControl.TabCount; i++)
+            {
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.Filter = "( *.emf) | *.emf";
+                dialog.FileName = "Planta " + i;
+
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];
+                    nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Emf);
+                }
+            }
+        }
+
         private void ui_quitar_todo_Click(object sender, EventArgs e)
         {
             ui_label_m2.Text = "----";
@@ -1233,5 +1256,7 @@ namespace Creador_de_ciudades
         {
             ui_distribucion_aleatoria.Checked = ui_montar_casas.Checked;
         }
+
+       
     }
 }

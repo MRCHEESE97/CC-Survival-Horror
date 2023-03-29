@@ -192,6 +192,7 @@
             this.label47 = new System.Windows.Forms.Label();
             this.label48 = new System.Windows.Forms.Label();
             this.label49 = new System.Windows.Forms.Label();
+            this.emfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -274,7 +275,8 @@
             // archivoToolStripMenuItem
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.guardarCiudadComoCarpetaToolStripMenuItem});
+            this.guardarCiudadComoCarpetaToolStripMenuItem,
+            this.emfToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             this.archivoToolStripMenuItem.Size = new System.Drawing.Size(68, 25);
             this.archivoToolStripMenuItem.Text = "Archivo";
@@ -538,7 +540,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            80,
+            60,
             0,
             0,
             0});
@@ -667,7 +669,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            22,
+            25,
             0,
             0,
             0});
@@ -687,7 +689,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            22,
+            25,
             0,
             0,
             0});
@@ -1972,6 +1974,11 @@
             0});
             this.ui_porcentaje_sin_casas.Location = new System.Drawing.Point(306, 20);
             this.ui_porcentaje_sin_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_porcentaje_sin_casas.Maximum = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
             this.ui_porcentaje_sin_casas.Minimum = new decimal(new int[] {
             10,
             0,
@@ -1981,7 +1988,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            40,
+            65,
             0,
             0,
             0});
@@ -2303,7 +2310,7 @@
             this.ui_tiempo_espera.Size = new System.Drawing.Size(60, 27);
             this.ui_tiempo_espera.TabIndex = 3;
             this.ui_tiempo_espera.Value = new decimal(new int[] {
-            2000,
+            3000,
             0,
             0,
             0});
@@ -2377,6 +2384,13 @@
             this.label49.Size = new System.Drawing.Size(92, 17);
             this.label49.TabIndex = 12;
             this.label49.Text = "(Incluye calles)";
+            // 
+            // emfToolStripMenuItem
+            // 
+            this.emfToolStripMenuItem.Name = "emfToolStripMenuItem";
+            this.emfToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
+            this.emfToolStripMenuItem.Text = "Emf";
+            this.emfToolStripMenuItem.Click += new System.EventHandler(this.emfToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -2639,6 +2653,7 @@
         private System.Windows.Forms.Label label48;
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label49;
+        private System.Windows.Forms.ToolStripMenuItem emfToolStripMenuItem;
     }
 }
 

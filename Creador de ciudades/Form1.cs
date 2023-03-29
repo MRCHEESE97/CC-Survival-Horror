@@ -226,7 +226,7 @@ namespace Creador_de_ciudades
                     // Hay un detalle el ancho no es exacto debito a aque la linea pasa en medio de los puntos, ocupando la calle una parte de esa distancia por eso puse el 4
                     if (ui_autoajustar_dist_calles.Checked)
                     {
-                        dist_entre_cll = Convert.ToInt32(ui_espacio_calles_minimo.Value) * 100 + ((int)ui_max_ancho_calle.Value * 100 );
+                        dist_entre_cll = (int)(Convert.ToInt32(ui_espacio_calles_maximo.Value)/1.5) * 100; // esta formula sola la obtuve con pruebas y la mas exacta
                     }
                     else
                     {
@@ -502,6 +502,22 @@ namespace Creador_de_ciudades
                         {
                             x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100;
                             y_ori = y_ori + avance_en_y;
+
+                            if (y_ori >= (alto_lienzo - (Convert.ToInt32(ui_max_alto_casa.Value) * 100)))  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
+                            {
+                                MessageBox.Show(("ha alcanzado el limite" + ubicacion_datos.ToString()));
+                                x_ori = 100;
+                                y_ori = 100;
+
+                                anchos = new List<int>();
+                                altos = new List<int>();
+
+                                for (int i = 0; i < ui_cantidad_casas.Value; i++)
+                                {
+                                    anchos.Add (azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1));
+                                    altos.Add (azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
+                                }
+                            }
                         }
                         origen = new Point(x_ori, y_ori);
                         x_ori = x_ori + avance_en_x;
@@ -570,23 +586,28 @@ namespace Creador_de_ciudades
 
                 //Subsistema 3.2 #Filtro de puntos ocupados
 
-                //Verifica si punto de origen ya apareció
+                //Verifica si punto de origen ya apareció      -------------- Solo en distribución aleatoria
 
-                bool existe = false;
+                if (ui_distribucion_aleatoria.Checked)
+                {
+                    bool existe = false;
 
-                if (lista_puntos_origen.Contains(origen))
-                {
-                    existe = true;
+                    if (lista_puntos_origen.Contains(origen))
+                    {
+                        existe = true;
+                    }
+                    if (existe)
+                    {
+                        ubicacion_datos--;
+                        continue;
+                    }
+                    else
+                    {
+                        lista_puntos_origen.Add(origen);
+                    }
                 }
-                 if (existe)
-                {
-                    ubicacion_datos--;
-                    continue;
-                }
-                else
-                {
-                    lista_puntos_origen.Add(origen);
-                }
+
+               
 
                 //Verifica si existe interseccion entre casas y calles
                 bool interruptor = false;
@@ -1023,6 +1044,7 @@ namespace Creador_de_ciudades
             crear_pages();
             dibujar();
             label45.Text = "---";
+            label48.Text = "1";
         }
 
        
@@ -1200,6 +1222,16 @@ namespace Creador_de_ciudades
         private void ui_distribucion_alternable_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void label48_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ui_montar_casas_CheckedChanged(object sender, EventArgs e)
+        {
+            ui_distribucion_aleatoria.Checked = ui_montar_casas.Checked;
         }
     }
 }

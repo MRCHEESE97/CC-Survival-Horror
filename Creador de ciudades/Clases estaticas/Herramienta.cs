@@ -176,9 +176,9 @@ namespace Creador_de_ciudades.Clases
 
             List<Point> puntos = new List<Point>();
 
-            for (int i = po.X; i <= po.X + (ancho - 1)  * 100; i += avance)
+            for (int i = po.X; i <= po.X + (ancho - 2)  * 100; i += avance)
             {
-                for (int j = po.Y; j <= po.Y + (alto - 1) * 100; j += avance)
+                for (int j = po.Y; j <= po.Y + (alto - 2) * 100; j += avance)
                 {
                     puntos.Add(new Point(i, j));
                 }

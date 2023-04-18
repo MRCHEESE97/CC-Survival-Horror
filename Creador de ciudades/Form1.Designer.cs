@@ -33,6 +33,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarCiudadComoCarpetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.emfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lenguajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
@@ -150,6 +151,7 @@
             this.label31 = new System.Windows.Forms.Label();
             this.ui_cantidad_calles = new System.Windows.Forms.NumericUpDown();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.label47 = new System.Windows.Forms.Label();
             this.ui_espacio_calles_maximo = new System.Windows.Forms.NumericUpDown();
             this.label46 = new System.Windows.Forms.Label();
             this.ui_autoajustar_dist_calles = new System.Windows.Forms.CheckBox();
@@ -159,6 +161,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
             this.ui_porcentaje_sin_casas = new System.Windows.Forms.NumericUpDown();
+            this.label49 = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.ui_montar_casas = new System.Windows.Forms.CheckBox();
             this.ui_checkbox_girar_ordenar = new System.Windows.Forms.CheckBox();
@@ -179,6 +182,8 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label48 = new System.Windows.Forms.Label();
+            this.label41 = new System.Windows.Forms.Label();
             this.label45 = new System.Windows.Forms.Label();
             this.label44 = new System.Windows.Forms.Label();
             this.barra = new System.Windows.Forms.ProgressBar();
@@ -188,11 +193,7 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label41 = new System.Windows.Forms.Label();
-            this.label47 = new System.Windows.Forms.Label();
-            this.label48 = new System.Windows.Forms.Label();
-            this.label49 = new System.Windows.Forms.Label();
-            this.emfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ui_detener = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -288,6 +289,13 @@
             this.guardarCiudadComoCarpetaToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
             this.guardarCiudadComoCarpetaToolStripMenuItem.Text = "Guardar ciudad (PNG en carpeta)";
             this.guardarCiudadComoCarpetaToolStripMenuItem.Click += new System.EventHandler(this.guardarCiudadComoCarpetaToolStripMenuItem_Click);
+            // 
+            // emfToolStripMenuItem
+            // 
+            this.emfToolStripMenuItem.Name = "emfToolStripMenuItem";
+            this.emfToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
+            this.emfToolStripMenuItem.Text = "Emf";
+            this.emfToolStripMenuItem.Click += new System.EventHandler(this.emfToolStripMenuItem_Click);
             // 
             // lenguajeToolStripMenuItem
             // 
@@ -1875,6 +1883,15 @@
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "Lejania de las calles";
             // 
+            // label47
+            // 
+            this.label47.AutoSize = true;
+            this.label47.Location = new System.Drawing.Point(32, 25);
+            this.label47.Name = "label47";
+            this.label47.Size = new System.Drawing.Size(13, 17);
+            this.label47.TabIndex = 9;
+            this.label47.Text = "1";
+            // 
             // ui_espacio_calles_maximo
             // 
             this.ui_espacio_calles_maximo.Location = new System.Drawing.Point(124, 50);
@@ -1992,6 +2009,15 @@
             0,
             0,
             0});
+            // 
+            // label49
+            // 
+            this.label49.AutoSize = true;
+            this.label49.Location = new System.Drawing.Point(199, 30);
+            this.label49.Name = "label49";
+            this.label49.Size = new System.Drawing.Size(92, 17);
+            this.label49.TabIndex = 12;
+            this.label49.Text = "(Incluye calles)";
             // 
             // groupBox5
             // 
@@ -2183,7 +2209,7 @@
             // ui_construir
             // 
             this.ui_construir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ui_construir.Location = new System.Drawing.Point(316, 56);
+            this.ui_construir.Location = new System.Drawing.Point(316, 31);
             this.ui_construir.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_construir.Name = "ui_construir";
             this.ui_construir.Size = new System.Drawing.Size(87, 30);
@@ -2194,7 +2220,7 @@
             // 
             // ui_quitar_todo
             // 
-            this.ui_quitar_todo.Location = new System.Drawing.Point(316, 103);
+            this.ui_quitar_todo.Location = new System.Drawing.Point(316, 116);
             this.ui_quitar_todo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_quitar_todo.Name = "ui_quitar_todo";
             this.ui_quitar_todo.Size = new System.Drawing.Size(87, 30);
@@ -2229,6 +2255,7 @@
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.groupBox2.Controls.Add(this.ui_detener);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.ui_quitar_todo);
             this.groupBox2.Controls.Add(this.ui_construir);
@@ -2258,6 +2285,25 @@
             this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Información del proceso actual:";
+            // 
+            // label48
+            // 
+            this.label48.AutoSize = true;
+            this.label48.Location = new System.Drawing.Point(222, 20);
+            this.label48.Name = "label48";
+            this.label48.Size = new System.Drawing.Size(13, 17);
+            this.label48.TabIndex = 9;
+            this.label48.Text = "1";
+            this.label48.Click += new System.EventHandler(this.label48_Click);
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(136, 19);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(74, 17);
+            this.label41.TabIndex = 8;
+            this.label41.Text = "Vuelta N°: ";
             // 
             // label45
             // 
@@ -2348,49 +2394,16 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // label41
+            // ui_detener
             // 
-            this.label41.AutoSize = true;
-            this.label41.Location = new System.Drawing.Point(136, 19);
-            this.label41.Name = "label41";
-            this.label41.Size = new System.Drawing.Size(74, 17);
-            this.label41.TabIndex = 8;
-            this.label41.Text = "Vuelta N°: ";
-            // 
-            // label47
-            // 
-            this.label47.AutoSize = true;
-            this.label47.Location = new System.Drawing.Point(32, 25);
-            this.label47.Name = "label47";
-            this.label47.Size = new System.Drawing.Size(13, 17);
-            this.label47.TabIndex = 9;
-            this.label47.Text = "1";
-            // 
-            // label48
-            // 
-            this.label48.AutoSize = true;
-            this.label48.Location = new System.Drawing.Point(222, 20);
-            this.label48.Name = "label48";
-            this.label48.Size = new System.Drawing.Size(13, 17);
-            this.label48.TabIndex = 9;
-            this.label48.Text = "1";
-            this.label48.Click += new System.EventHandler(this.label48_Click);
-            // 
-            // label49
-            // 
-            this.label49.AutoSize = true;
-            this.label49.Location = new System.Drawing.Point(199, 30);
-            this.label49.Name = "label49";
-            this.label49.Size = new System.Drawing.Size(92, 17);
-            this.label49.TabIndex = 12;
-            this.label49.Text = "(Incluye calles)";
-            // 
-            // emfToolStripMenuItem
-            // 
-            this.emfToolStripMenuItem.Name = "emfToolStripMenuItem";
-            this.emfToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
-            this.emfToolStripMenuItem.Text = "Emf";
-            this.emfToolStripMenuItem.Click += new System.EventHandler(this.emfToolStripMenuItem_Click);
+            this.ui_detener.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ui_detener.Location = new System.Drawing.Point(316, 65);
+            this.ui_detener.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_detener.Name = "ui_detener";
+            this.ui_detener.Size = new System.Drawing.Size(87, 30);
+            this.ui_detener.TabIndex = 10;
+            this.ui_detener.Text = "Detener";
+            this.ui_detener.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -2654,6 +2667,7 @@
         private System.Windows.Forms.Label label41;
         private System.Windows.Forms.Label label49;
         private System.Windows.Forms.ToolStripMenuItem emfToolStripMenuItem;
+        private System.Windows.Forms.Button ui_detener;
     }
 }
 

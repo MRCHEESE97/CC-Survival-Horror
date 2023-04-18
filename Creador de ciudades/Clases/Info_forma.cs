@@ -101,6 +101,24 @@ namespace Creador_de_ciudades.Clases
             forma = Forma;
             vano_ventana = Vano_ventana;
         }
+
+        public Info_forma( int Ancho_forma, int Alto_forma, int Grados, int Grosor_pared, Point Punto_origen)
+        {
+          
+            ancho_forma = Ancho_forma;
+            alto_forma = Alto_forma;
+            grosor_pared = Grosor_pared;
+            po = Punto_origen;
+            punto_medio = centro();
+            grados = Grados;
+            a = A();
+            b = B();
+            c = C();
+            d = D();
+            espacio_forma = rectangulo();          
+        }
+
+
         // Toda figura geometrica tendrá un limite para que no haya una interseccion con otras, la forma de este limite será un rectangulo
         private Rectangle rectangulo()
         {

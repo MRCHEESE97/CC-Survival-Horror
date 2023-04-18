@@ -55,6 +55,9 @@ namespace Creador_de_ciudades.Clases_estaticas
             }
         }
 
+
+      
+
         private static void combinar(Info_forma informacion, PictureBox pintura)
         {   
             forma(informacion.forma, informacion, pintura);

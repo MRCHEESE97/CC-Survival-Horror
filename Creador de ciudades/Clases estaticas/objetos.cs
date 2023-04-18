@@ -22,6 +22,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Media.Imaging;
 using static Creador_de_ciudades.Form1;
 
 namespace Creador_de_ciudades.Clases_estaticas
@@ -32,6 +33,9 @@ namespace Creador_de_ciudades.Clases_estaticas
         public static Random azar = new Random();
         public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion)   
         {
+           
+            //Lama a objetos exteriores: 
+
             for (int i = 0; i < seleccion_objeto.Count ; i++)
             {
                 //POBLACION SI ES ALEATORIA
@@ -100,7 +104,11 @@ namespace Creador_de_ciudades.Clases_estaticas
                     continue;
                 }
                
-            }          
+            }
+
+            //Llama a interiores:
+            divisiones(datos, lienzo);
+
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
         {
@@ -278,6 +286,73 @@ namespace Creador_de_ciudades.Clases_estaticas
             
             informacion.g.FillRectangle(brocha_suelo, suelo); */
         }
+
+        private static void banios(Info_forma informacion, PictureBox pintura)
+        {
+
+            Pen pared = new Pen(Color.Black, informacion.grosor_pared);
+
+
+        }
+
+        private static void divisiones(Info_forma informacion, PictureBox pintura)
+        {
+
+            Pen pared = new Pen(Color.Black, informacion.grosor_pared);
+
+            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una casa solo será hasta un tamaño de la mitad de la capa 
+            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) / 3; //Veces que se puede instancia una habitacion de 3 metros
+            int cantidad_maxima = azar.Next(2, cantidad_limite+1);
+
+            //Faltaria dividir por area 
+            
+            for (int i = 0; i < cantidad_maxima; i++)
+            {  
+                Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 200, informacion.a.X, informacion.a.Y);
+                int ancho_esta_div = azar.Next(3, tamaño_limite + 1);
+                int alto_esta_div = azar.Next(3, tamaño_limite + 1);
+             
+                if (origen_division.X <= informacion.punto_medio.X && origen_division.Y <= informacion.punto_medio.Y)  //izq arriba
+                {
+                  
+                }
+                else if (origen_division.X <= informacion.punto_medio.X && origen_division.Y >= informacion.punto_medio.Y)   //izq abajo
+                {
+                    origen_division.Y = origen_division.Y - (informacion.alto_forma / 2) * 100;
+                }
+                else if (origen_division.X >= informacion.punto_medio.X && origen_division.Y <= informacion.punto_medio.Y)   //der arriba
+                {
+                    origen_division.X = origen_division.X - (informacion.ancho_forma / 2) * 100;
+                }
+                else if (origen_division.X >= informacion.punto_medio.X && origen_division.Y >= informacion.punto_medio.Y)   //der abajo
+                {
+                    origen_division.Y = origen_division.Y - (informacion.alto_forma / 2)*100;
+                    origen_division.X = origen_division.X - (informacion.ancho_forma / 2)*100;
+                }
+
+                // si los pixeles son grises o blancos, continue.
+                Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, 20, origen_division);
+
+                if (Herramienta.pixel_es_de_un_color(D.a, (Bitmap)pintura.Image, 255, 255, 255)
+                  ||Herramienta.pixel_es_de_un_color(D.b, (Bitmap)pintura.Image, 255, 255, 255)
+                  ||Herramienta.pixel_es_de_un_color(D.c, (Bitmap)pintura.Image, 255, 255, 255)
+                  ||Herramienta.pixel_es_de_un_color(D.d, (Bitmap)pintura.Image, 255, 255, 255)
+                  || Herramienta.pixel_es_de_un_color(D.a, (Bitmap)pintura.Image, 88, 88, 88)
+                  || Herramienta.pixel_es_de_un_color(D.b, (Bitmap)pintura.Image, 88, 88, 88)
+                  || Herramienta.pixel_es_de_un_color(D.c, (Bitmap)pintura.Image, 88, 88, 88)
+                  || Herramienta.pixel_es_de_un_color(D.d, (Bitmap)pintura.Image, 88, 88, 88))
+                {
+                    continue;
+                }
+                else
+                {
+                    Formas.forma("ui_forma_casa_rectangular", D, pintura);
+                }
+            
+            }
+
+        }
+       
         private static void data(Info_forma informacion, PictureBox pintura)
         {
 
@@ -285,7 +360,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             string Data = informacion.ancho_forma.ToString() + " x " + informacion.alto_forma.ToString();
             Font drawFont = new Font("Arial", 16);
 
-            informacion.g.DrawString(Data, drawFont, ventana, informacion.nuevo_origen.X + (informacion.ancho_forma * 100), informacion.nuevo_origen.Y + (informacion.alto_forma * 100  ));
+            informacion.g.DrawString(Data, drawFont, ventana, informacion.nuevo_origen.X + (informacion.ancho_forma * 100), informacion.nuevo_origen.Y + (informacion.alto_forma * 100));
 
 
         }

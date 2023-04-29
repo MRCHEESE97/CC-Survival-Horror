@@ -181,6 +181,7 @@
             this.ui_quitar_todo = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.ui_detener = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label48 = new System.Windows.Forms.Label();
             this.label41 = new System.Windows.Forms.Label();
@@ -193,7 +194,6 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ui_detener = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -2266,6 +2266,18 @@
             this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             // 
+            // ui_detener
+            // 
+            this.ui_detener.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ui_detener.Location = new System.Drawing.Point(316, 65);
+            this.ui_detener.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_detener.Name = "ui_detener";
+            this.ui_detener.Size = new System.Drawing.Size(87, 30);
+            this.ui_detener.TabIndex = 10;
+            this.ui_detener.Text = "Detener";
+            this.ui_detener.UseVisualStyleBackColor = true;
+            this.ui_detener.Click += new System.EventHandler(this.ui_detener_Click);
+            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.Color.WhiteSmoke;
@@ -2393,17 +2405,6 @@
             this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
-            // 
-            // ui_detener
-            // 
-            this.ui_detener.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ui_detener.Location = new System.Drawing.Point(316, 65);
-            this.ui_detener.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_detener.Name = "ui_detener";
-            this.ui_detener.Size = new System.Drawing.Size(87, 30);
-            this.ui_detener.TabIndex = 10;
-            this.ui_detener.Text = "Detener";
-            this.ui_detener.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 

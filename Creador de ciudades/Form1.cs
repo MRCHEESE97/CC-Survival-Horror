@@ -1048,11 +1048,13 @@ namespace Creador_de_ciudades
               
         private void ui_construir_Click(object sender, EventArgs e)
         {
-            barra.Maximum = Convert.ToInt32(ui_tiempo_espera.Value) + 10; // probar mañana
-            crear_pages();
-            dibujar();
-            label45.Text = "---";
-            label48.Text = "1";
+           
+                barra.Maximum = Convert.ToInt32(ui_tiempo_espera.Value) + 10; // probar mañana
+                crear_pages();        
+                dibujar();     
+                label45.Text = "---";
+                label48.Text = "1";
+          
         }
 
        
@@ -1257,6 +1259,10 @@ namespace Creador_de_ciudades
             ui_distribucion_aleatoria.Checked = ui_montar_casas.Checked;
         }
 
-       
+        private void ui_detener_Click(object sender, EventArgs e)
+        {
+            ui_construir.Click -= new EventHandler(ui_construir_Click);
+            MessageBox.Show("Operación cancelada.");
+        }
     }
 }

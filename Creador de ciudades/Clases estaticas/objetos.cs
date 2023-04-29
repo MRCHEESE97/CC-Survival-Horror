@@ -302,7 +302,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una casa solo será hasta un tamaño de la mitad de la capa 
             int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) / 3; //Veces que se puede instancia una habitacion de 3 metros
-            int cantidad_maxima = azar.Next(2, cantidad_limite+1);
+            int cantidad_maxima = azar.Next(2, cantidad_limite+2);
 
             //Faltaria dividir por area 
             

@@ -276,26 +276,48 @@ namespace Creador_de_ciudades
                     {
                         //Se dibujan las veredas (Calle base)
 
-                        int longitud_x = ancho_lienzo / dist_entre_cll;
+                        int longitud_x = ancho_lienzo / dist_entre_cll; //DETERMINA EL ESPACIO ENTRE UNA CALLE Y OTRA 
                         int longitud_y = alto_lienzo / dist_entre_cll;
                         //Pen dash_street = new Pen(Color.Yellow,20);
                         //dash_street.DashStyle = DashStyle.Dash;
 
-                        for (int y = dist_entre_cll; y < alto_lienzo; y += dist_entre_cll)
+                        List <Point> desplz_diagonal = new List<Point>();
+
+
+                        for (int y = 0; y < alto_lienzo; y += dist_entre_cll)  //LINEAS VERTICALES 
                         {
                             int ancho_calle = 0;
                             int ancho_vereda = 0;
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
                             do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
-                            lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(azar.Next(0, longitud_x - 1) * dist_entre_cll, y), new Point(azar.Next(3, longitud_x + 2) * dist_entre_cll, y)));
+
+                            desplz_diagonal.Add(new Point (azar.Next(0, dist_entre_cll/2), azar.Next(0, dist_entre_cll/2)));  
+
+                            Point ini, fin;
+                            do {
+                                ini = new Point(azar.Next(0, ancho_lienzo), y + desplz_diagonal[desplz_diagonal.Count - 1 ].X);
+                                fin = new Point(azar.Next(0, ancho_lienzo), y + desplz_diagonal[desplz_diagonal.Count - 1].Y);
+
+                            } while (Math.Abs(ini.X - fin.X)<dist_entre_cll * 2);
+
+                            lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), ini, fin));
                         }
-                        for (int x = dist_entre_cll; x < ancho_lienzo; x += dist_entre_cll)
+                        for (int x = 0; x < ancho_lienzo; x += dist_entre_cll) //LINEAS HORIZONTALES  
                         {
                             int ancho_calle = 0;
                             int ancho_vereda = 0;
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
                             do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
-                            lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, azar.Next(0, longitud_y - 1)), new Point(x, azar.Next(3, longitud_y + 2) * dist_entre_cll)));
+
+                            Point ini, fin;
+                            do
+                            {
+                                ini = new Point(x + desplz_diagonal[desplz_diagonal.Count - 1].X, azar.Next(0, alto_lienzo));
+                                fin = new Point(x + desplz_diagonal[desplz_diagonal.Count - 1].Y, azar.Next(0, alto_lienzo));
+
+                            } while (Math.Abs(ini.Y - fin.Y) < dist_entre_cll * 2);
+
+                            lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100),ini,fin));
                         }
                         for (int i = 0; i < lista_comp_calles.Count; i++)
                         {

@@ -102,7 +102,7 @@ namespace Creador_de_ciudades.Clases
             vano_ventana = Vano_ventana;
         }
 
-        public Info_forma( int Ancho_forma, int Alto_forma, int Grados, int Grosor_pared, Point Punto_origen)
+        public Info_forma( int Ancho_forma, int Alto_forma, int Grados, int Grosor_pared, Point Punto_origen, int Cant_puerta)
         {
           
             ancho_forma = Ancho_forma;
@@ -115,7 +115,8 @@ namespace Creador_de_ciudades.Clases
             b = B();
             c = C();
             d = D();
-            espacio_forma = rectangulo();          
+            espacio_forma = rectangulo();
+            cant_puerta = Cant_puerta;
         }
 
 

@@ -38,7 +38,17 @@ namespace Creador_de_ciudades.Clases
 
             int buscar_multiplo(float minimo, float maximo)
             {
-                encontrado = azar.Next((int)minimo, (int)maximo);
+                //Este if lo añadí por un error
+                if (minimo>maximo)
+                {
+                    encontrado = azar.Next((int)maximo, (int)minimo);
+                }
+                else
+                {
+                    encontrado = azar.Next((int)minimo, (int)maximo);
+                }
+                
+               //Esta es la verdadera funcion importante 
                 if (!(encontrado % multiplo == 0))
                 {
                     return buscar_multiplo(minimo, maximo);
@@ -240,7 +250,7 @@ namespace Creador_de_ciudades.Clases
         public static bool pixel_es_de_un_color(Point Z, Bitmap bitmapImage,int R,int G,int B)
         {
            
-            Color color = bitmapImage.GetPixel(Z.X, Z.Y);
+            Color color = bitmapImage.GetPixel(Z.X, Math.Abs(Z.Y));
             if (color.R == R && color.G == G && color.B == B)
             {
                 return true;

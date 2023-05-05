@@ -31,7 +31,7 @@ namespace Creador_de_ciudades.Clases_estaticas
     {
         
         public static Random azar = new Random();
-        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion)   
+        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division)   
         {
            
             //Lama a objetos exteriores: 
@@ -105,9 +105,12 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
                
             }
-
-            //Llama a interiores:
-            divisiones(datos, lienzo);
+            if (division)
+            {
+                //Llama a interiores:
+                divisiones(datos, lienzo);
+            }
+          
 
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
@@ -309,8 +312,8 @@ namespace Creador_de_ciudades.Clases_estaticas
             for (int i = 0; i < cantidad_maxima; i++)
             {  
                 Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 200, informacion.a.X, informacion.a.Y);
-                int ancho_esta_div = azar.Next(3, tamaño_limite + 1);
-                int alto_esta_div = azar.Next(3, tamaño_limite + 1);
+                int ancho_esta_div = azar.Next(2, tamaño_limite + 1);
+                int alto_esta_div = azar.Next(2, tamaño_limite + 1);
              
                 if (origen_division.X <= informacion.punto_medio.X && origen_division.Y <= informacion.punto_medio.Y)  //izq arriba
                 {
@@ -331,7 +334,10 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
 
                 // si los pixeles son grises o blancos, continue.
-                Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, 20, origen_division);
+                Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, 20, origen_division, 3);
+
+
+
 
                 if (Herramienta.pixel_es_de_un_color(D.a, (Bitmap)pintura.Image, 255, 255, 255)
                   ||Herramienta.pixel_es_de_un_color(D.b, (Bitmap)pintura.Image, 255, 255, 255)
@@ -347,8 +353,16 @@ namespace Creador_de_ciudades.Clases_estaticas
                 else
                 {
                     Formas.forma("ui_forma_casa_rectangular", D, pintura);
+
+                    //objetos. 1 puerta 
+                    List<String> seleccion_objeto = new List<string> { "ui_objetos_puerta" };
+                    Objetos.seleccionados(seleccion_objeto, D, pintura, 99,false);
+                    //objetos. 1 columna
+                    //seleccion_objeto = new List<string> { "ui_objetos_columna_cuadrada" };
+                    //Objetos.seleccionados(seleccion_objeto, D, pintura, 75);
+
                 }
-            
+
             }
 
         }

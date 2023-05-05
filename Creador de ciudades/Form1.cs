@@ -291,7 +291,7 @@ namespace Creador_de_ciudades
                             do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
                             do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
 
-                            desplz_diagonal.Add(new Point (azar.Next(0, dist_entre_cll/2), azar.Next(0, dist_entre_cll/2)));  
+                            desplz_diagonal.Add(new Point (azar.Next(0, dist_entre_cll), azar.Next(0, dist_entre_cll/2)));  
 
                             Point ini, fin;
                             do {
@@ -700,7 +700,7 @@ namespace Creador_de_ciudades
                         } while (encontrado == false);
                     }
 
-                }     
+                }
             }
 
             //Tomo la poblacion de los objetos 
@@ -746,7 +746,7 @@ namespace Creador_de_ciudades
                 }
 
                 //Después de pintar las casas, se pintan los objetos
-                Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0],Poblacion_objetos);
+                Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0],Poblacion_objetos, true);
 
                 //Esta variable es modificada una vez que PB se haya dibujado
                 lista_casas[recorrer].ubicacion_pb = false;
@@ -796,7 +796,7 @@ namespace Creador_de_ciudades
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -859,7 +859,7 @@ namespace Creador_de_ciudades
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -909,7 +909,7 @@ namespace Creador_de_ciudades
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -1283,8 +1283,8 @@ namespace Creador_de_ciudades
 
         private void ui_detener_Click(object sender, EventArgs e)
         {
-            ui_construir.Click -= new EventHandler(ui_construir_Click);
-            MessageBox.Show("Operación cancelada.");
+            
         }
+        
     }
 }

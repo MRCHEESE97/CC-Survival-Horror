@@ -31,87 +31,115 @@ namespace Creador_de_ciudades.Clases_estaticas
     {
         
         public static Random azar = new Random();
-        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division)   
+        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division)
         {
-           
+
+
+
             //Lama a objetos exteriores: 
 
-            for (int i = 0; i < seleccion_objeto.Count ; i++)
+            for (int i = 0; i < seleccion_objeto.Count; i++)
             {
-                //POBLACION SI ES ALEATORIA
-                if (poblacion == 100)
+
+                string nombre_objeto = seleccion_objeto[i];
+
+                //Objetos con poblacion especifica
+
+                    if (nombre_objeto.Equals("ui_objetos_puerta_zotano") && datos.ubicacion_pb && datos.prob_zot < 20) //si casa es 20... solo pb
+                    {           
+                        zotano(datos, lienzo);
+                    }
+
+                    if (nombre_objeto.Equals("ui_objetos_ascensor") && datos.prob_asc < 30) //si casa es 30... 
+                    {
+                        if (datos.ubicacion_pb)
+                        {
+                            datos.origen_asc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 200, datos.a.X, datos.a.Y); // el mismo origen
+                        }
+
+                        ascensor(datos, lienzo);
+                    }
+                    if (nombre_objeto.Equals("ui_objetos_escalera")) // siempre y todos los pisos 
+                    {
+                        escalera(datos, lienzo);
+                    }
+
+                    //POBLACION SI ES ALEATORIA
+                    if (poblacion == 100)
+                    {
+                        poblacion = azar.Next(0, 99);
+                    }
+
+                    int numerin = azar.Next(0, 99);
+                    if (numerin <= poblacion)
+                    {
+                        //A PARTIR DE AQUI SE EMPIEZAN A DIBUJAR TODOS
+
+
+
+                        if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
+                        {
+                            columna_cuadrada(datos, lienzo);
+                        }
+                        else if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
+                        {
+                            columna_circular(datos, lienzo);
+                        }
+                        else if (nombre_objeto.Equals("ui_objetos_ventana"))
+                        {
+                            if (datos.vano_ventana.Equals("ui_objetos_ventana_ale"))
+                            {
+                                ventanas(datos, lienzo);
+                            }
+                            else if (datos.vano_ventana.Equals("ui_objetos_ventana_binaria"))
+                            {
+                                ventanas_binarias(datos, lienzo);
+                            }
+                            else if (datos.vano_ventana.Equals("ui_objetos_ventana_total"))
+                            {
+                                ventanas_totales(datos, lienzo);
+                            }
+                            else if (datos.vano_ventana.Equals("ui_objetos_ventana_todos"))
+                            {
+                                int s = azar.Next(0, 3);
+                                if (s == 0)
+                                { ventanas_binarias(datos, lienzo); }
+                                else if (s == 1)
+                                { ventanas_binarias(datos, lienzo); }
+                                else if (s == 2)
+                                { ventanas_totales(datos, lienzo); }
+                            }
+                        }
+
+                        else if (nombre_objeto.Equals("ui_objetos_puerta") && datos.ubicacion_pb)
+                        {
+                            puerta(datos, lienzo);
+                        }
+
+
+                        else if (nombre_objeto.Equals("ui_objetos_elevador"))
+                        {
+                            elevador(datos, lienzo);
+                        }
+                        else if (nombre_objeto.Equals("ui_objetos_data"))
+                        {
+                            data(datos, lienzo);
+                        }
+                    }
+                    else
+                    {
+                        continue;
+                    }
+
+                }
+                if (division)
                 {
-                    poblacion =  azar.Next(0, 99);
+                    //Llama a interiores:
+                    divisiones(datos, lienzo);
                 }
 
-                int numerin = azar.Next(0,99);
-                if (numerin <= poblacion)
-                {
-                    //A PARTIR DE AQUI SE EMPIEZAN A DIBUJAR TODOS
 
-                    string nombre_objeto = seleccion_objeto[i];
-
-                    if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
-                    {
-                        columna_cuadrada(datos, lienzo);
-                    }
-                    else if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
-                    {
-                        columna_circular(datos, lienzo);
-                    }
-                    else if (nombre_objeto.Equals("ui_objetos_ventana"))
-                    {
-                        if (datos.vano_ventana.Equals("ui_objetos_ventana_ale"))
-                        {
-                            ventanas(datos, lienzo);
-                        }
-                        else if (datos.vano_ventana.Equals("ui_objetos_ventana_binaria"))
-                        {
-                            ventanas_binarias(datos, lienzo);
-                        }
-                        else if (datos.vano_ventana.Equals("ui_objetos_ventana_total"))
-                        {
-                            ventanas_totales(datos, lienzo);
-                        }
-                        else if (datos.vano_ventana.Equals("ui_objetos_ventana_todos"))
-                        {
-                            int s = azar.Next(0, 3);
-                            if (s == 0)
-                            { ventanas_binarias(datos, lienzo); }
-                            else if (s == 1)
-                            { ventanas_binarias(datos, lienzo); }
-                            else if (s == 2)
-                            { ventanas_totales(datos, lienzo); }
-                        }
-                    }
-
-                    else if (nombre_objeto.Equals("ui_objetos_puerta") && datos.ubicacion_pb)
-                    {
-                        puerta(datos, lienzo);
-                    }
-
-                    else if (nombre_objeto.Equals("ui_objetos_elevador"))
-                    {
-                        elevador(datos, lienzo);
-                    }
-                    else if (nombre_objeto.Equals("ui_objetos_data"))
-                    {
-                        data(datos, lienzo);
-                    }
-                }
-                else 
-                {
-                    continue;
-                }
-               
-            }
-            if (division)
-            {
-                //Llama a interiores:
-                divisiones(datos, lienzo);
-            }
-          
-
+            
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
         {
@@ -375,6 +403,28 @@ namespace Creador_de_ciudades.Clases_estaticas
             Font drawFont = new Font("Arial", 16);
 
             informacion.g.DrawString(Data, drawFont, ventana, informacion.nuevo_origen.X + (informacion.ancho_forma * 100), informacion.nuevo_origen.Y + (informacion.alto_forma * 100));
+
+
+        }
+
+        private static void zotano(Info_forma informacion, PictureBox pintura)
+        {
+
+
+
+
+        }
+        private static void ascensor(Info_forma informacion, PictureBox pintura)
+        {
+
+          
+
+
+        }
+        private static void escalera(Info_forma informacion, PictureBox pintura)
+        {
+
+
 
 
         }

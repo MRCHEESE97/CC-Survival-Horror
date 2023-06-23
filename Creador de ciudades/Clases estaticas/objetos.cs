@@ -24,46 +24,27 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using static Creador_de_ciudades.Form1;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Creador_de_ciudades.Clases_estaticas
 {
     static class Objetos
     {
         
+        //NOTA: ESTA CLASE ES LLAMADA UNA VEZ POR CASA, LO QUE PERMITE ALTERAR LA "INFO_FORMA" ACTUAL
+
         public static Random azar = new Random();
         public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division)
         {
-
-
 
             //Lama a objetos exteriores: 
 
             for (int i = 0; i < seleccion_objeto.Count; i++)
             {
 
-                string nombre_objeto = seleccion_objeto[i];
+                    string nombre_objeto = seleccion_objeto[i];
 
-                //Objetos con poblacion especifica
-
-                    if (nombre_objeto.Equals("ui_objetos_puerta_zotano") && datos.ubicacion_pb && datos.prob_zot < 20) //si casa es 20... solo pb
-                    {           
-                        zotano(datos, lienzo);
-                    }
-
-                    if (nombre_objeto.Equals("ui_objetos_ascensor") && datos.prob_asc < 30) //si casa es 30... 
-                    {
-                        if (datos.ubicacion_pb)
-                        {
-                            datos.origen_asc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 200, datos.a.X, datos.a.Y); // el mismo origen
-                        }
-
-                        ascensor(datos, lienzo);
-                    }
-                    if (nombre_objeto.Equals("ui_objetos_escalera")) // siempre y todos los pisos 
-                    {
-                        escalera(datos, lienzo);
-                    }
-
+                  
                     //POBLACION SI ES ALEATORIA
                     if (poblacion == 100)
                     {
@@ -136,10 +117,71 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     //Llama a interiores:
                     divisiones(datos, lienzo);
+
                 }
 
+            //Lama a objetos zot, asc, esc: 
 
-            
+            for (int i = 0; i < seleccion_objeto.Count; i++)
+            {
+
+                string nombre_objeto = seleccion_objeto[i];
+
+                //Objetos con poblacion especifica
+
+                if (nombre_objeto.Equals("ui_objetos_puerta_zotano") && datos.ubicacion_pb && datos.prob_zot < 20) //si casa es 20... solo pb
+                {
+                    zotano(datos, lienzo);
+                }
+
+                if (nombre_objeto.Equals("ui_objetos_ascensor") && datos.prob_asc < 30) //si casa es 30... 
+                {
+                    if (datos.ubicacion_pb)
+                    {
+                        datos.origen_asc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 200, datos.a.X, datos.a.Y); // el mismo origen
+
+                        if (datos.origen_asc.X >= datos.punto_medio.X && datos.origen_asc.Y <= datos.punto_medio.Y)   //der arriba
+                        {
+                            datos.origen_asc.X = datos.origen_asc.X - (2 * 100);
+                        }
+                        else if (datos.origen_asc.X >= datos.punto_medio.X && datos.origen_asc.Y >= datos.punto_medio.Y)   //der abajo
+                        {
+                            datos.origen_asc.Y = datos.origen_asc.Y - (2 * 100);
+                            datos.origen_asc.X = datos.origen_asc.X - (2 * 100);
+                        }
+
+                    }
+                    else if (datos.ubicacion_pb == false)
+                    {
+                        ascensor(datos, lienzo);
+                    }
+                
+                }
+                if (nombre_objeto.Equals("ui_objetos_escalera") ) // siempre y todos los pisos 
+                {
+                    if (datos.ubicacion_pb)
+                    {
+                        datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 200, datos.a.X, datos.a.Y); // el mismo origen
+                       
+                        if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y <= datos.punto_medio.Y)   //der arriba
+                        {
+                            datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
+                        }
+                        else if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y >= datos.punto_medio.Y)   //der abajo
+                        {
+                            datos.origen_esc.Y = datos.origen_esc.Y - (3 * 100);
+                            datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
+                        }
+                    }
+                    else if (datos.ubicacion_pb == false)
+                    {
+                        escalera(datos, lienzo);
+                    }
+                }
+            }
+
+
+
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
         {
@@ -275,7 +317,6 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void elevador(Info_forma informacion, PictureBox pintura)
         {
            /*
-
             //Aqui se dibuja la pared
             Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             Rectangle pared = new Rectangle(informacion.origen_elevador, new Size(2 * 100, 2 * 100));
@@ -323,7 +364,6 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             Pen pared = new Pen(Color.Black, informacion.grosor_pared);
 
-
         }
 
         private static void divisiones(Info_forma informacion, PictureBox pintura)
@@ -333,7 +373,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una casa solo será hasta un tamaño de la mitad de la capa 
             int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) / 3; //Veces que se puede instancia una habitacion de 3 metros
-            int cantidad_maxima = azar.Next(2, cantidad_limite+2);
+            int cantidad_maxima = azar.Next(2, cantidad_limite+2); 
 
             //Faltaria dividir por area 
             
@@ -345,7 +385,7 @@ namespace Creador_de_ciudades.Clases_estaticas
              
                 if (origen_division.X <= informacion.punto_medio.X && origen_division.Y <= informacion.punto_medio.Y)  //izq arriba
                 {
-                  
+                    
                 }
                 else if (origen_division.X <= informacion.punto_medio.X && origen_division.Y >= informacion.punto_medio.Y)   //izq abajo
                 {
@@ -363,8 +403,6 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 // si los pixeles son grises o blancos, continue.
                 Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, 20, origen_division, 3);
-
-
 
 
                 if (Herramienta.pixel_es_de_un_color(D.a, (Bitmap)pintura.Image, 255, 255, 255)
@@ -404,29 +442,119 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             informacion.g.DrawString(Data, drawFont, ventana, informacion.nuevo_origen.X + (informacion.ancho_forma * 100), informacion.nuevo_origen.Y + (informacion.alto_forma * 100));
 
-
         }
 
         private static void zotano(Info_forma informacion, PictureBox pintura)
         {
+            Point origen_zotano = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 200, informacion.a.X, informacion.a.Y);
+            SolidBrush Transparencia = new SolidBrush(Color.DarkGreen);   
+            List<Point> rectangulo = new List<Point>();
 
+            // Se usan 4 listas para cada lado
+            List<Point> lado_superior = Herramienta.calcular_lado(origen_zotano, 1, "x");
+            List<Point> lado_izquierdo = Herramienta.calcular_lado(origen_zotano, 1, "y");
+            List<Point> lado_derecho = Herramienta.calcular_lado(new Point(origen_zotano.X + 1 * 100, origen_zotano.Y), 1, "y");
+            List<Point> lado_inferior = Herramienta.calcular_lado(new Point(origen_zotano.X, origen_zotano.Y + 1 * 100), 1, "x");
 
+            rectangulo.AddRange(lado_superior);
+            rectangulo.AddRange(lado_derecho);
+            lado_inferior.Reverse();
+            rectangulo.AddRange(lado_inferior);
+            lado_izquierdo.Reverse();
+            rectangulo.AddRange(lado_izquierdo);
 
+            //Elimino los puntos repetidos
+            rectangulo = rectangulo.Distinct().ToList();
+
+            informacion.g.FillPolygon(Transparencia, rectangulo.ToArray());
+            //pintura.Refresh();
 
         }
         private static void ascensor(Info_forma informacion, PictureBox pintura)
         {
+            //Se dibuja la pared
+            Pen borde = new Pen(Color.Black, informacion.grosor_pared);
+            Point origen = informacion.origen_asc;
+            SolidBrush Transparencia = new SolidBrush(Color.DarkGreen);
+            List<Point> rectangulo = new List<Point>();
 
-          
+            // Se usan 4 listas para cada lado
+            List<Point> lado_superior = Herramienta.calcular_lado(origen, 2, "x");
+            List<Point> lado_izquierdo = Herramienta.calcular_lado(origen, 2, "y");
+            List<Point> lado_derecho = Herramienta.calcular_lado(new Point(origen.X + 2 * 100, origen.Y), 2, "y");
+            List<Point> lado_inferior = Herramienta.calcular_lado(new Point(origen.X, origen.Y + 2 * 100), 2, "x");
 
+            rectangulo.AddRange(lado_superior);
+            rectangulo.AddRange(lado_derecho);
+            lado_inferior.Reverse();
+            rectangulo.AddRange(lado_inferior);
+            lado_izquierdo.Reverse();
+            rectangulo.AddRange(lado_izquierdo);
+
+            //Elimino los puntos repetidos
+            rectangulo = rectangulo.Distinct().ToList();
+
+            informacion.g.FillPolygon(Transparencia, rectangulo.ToArray());
+
+            Point[] a = lado_izquierdo.ToArray();
+            Point[] b = lado_derecho.ToArray();
+            Point[] c = lado_inferior.ToArray();
+            Point[] d = lado_superior.ToArray();
+
+            int lado = azar.Next(1, 5);
+
+            if (lado == 1)
+            { //abc
+                informacion.g.DrawLines(borde, a);
+                informacion.g.DrawLines(borde, b);
+                informacion.g.DrawLines(borde, c);
+            }
+            else if (lado == 2)
+            { //bcd
+                informacion.g.DrawLines(borde, b);
+                informacion.g.DrawLines(borde, c);
+                informacion.g.DrawLines(borde, d);
+            }
+            else if (lado == 3)
+            { //cda
+                informacion.g.DrawLines(borde, c);
+                informacion.g.DrawLines(borde, d);
+                informacion.g.DrawLines(borde, a);
+            }
+            else if (lado == 4)
+            { //dac
+                informacion.g.DrawLines(borde, d);
+                informacion.g.DrawLines(borde, a);
+                informacion.g.DrawLines(borde, c);
+            }
 
         }
         private static void escalera(Info_forma informacion, PictureBox pintura)
         {
+            //Se dibuja la pared
+            Pen borde = new Pen(Color.Black, informacion.grosor_pared);
+            Point origen_zotano = informacion.origen_esc;
+            SolidBrush Transparencia = new SolidBrush(Color.DarkGreen);
+            List<Point> rectangulo = new List<Point>();
 
+            // Se usan 4 listas para cada lado
+            List<Point> lado_superior = Herramienta.calcular_lado(origen_zotano, 3, "x");
+            List<Point> lado_izquierdo = Herramienta.calcular_lado(origen_zotano, 3, "y");
+            List<Point> lado_derecho = Herramienta.calcular_lado(new Point(origen_zotano.X + 3 * 100, origen_zotano.Y), 3, "y");
+            List<Point> lado_inferior = Herramienta.calcular_lado(new Point(origen_zotano.X, origen_zotano.Y + 3 * 100), 3, "x");
 
+            rectangulo.AddRange(lado_superior);
+            rectangulo.AddRange(lado_derecho);
+            lado_inferior.Reverse();
+            rectangulo.AddRange(lado_inferior);
+            lado_izquierdo.Reverse();
+            rectangulo.AddRange(lado_izquierdo);
 
+            //Elimino los puntos repetidos
+            rectangulo = rectangulo.Distinct().ToList();
 
+            informacion.g.FillPolygon(Transparencia, rectangulo.ToArray());
+    
         }
 
     }

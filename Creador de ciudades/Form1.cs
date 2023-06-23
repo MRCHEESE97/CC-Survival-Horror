@@ -1,4 +1,4 @@
-﻿/*  Copyright (c) 2020 José Bravo <galillo1997@hotmail.com>
+﻿/*  Copyright (c) 2020 José Bravo <galil******@hotmail.com>
     This file is part of creador de ciudades.
 
     Creador de ciudades is free software: you can redistribute it and/or modify
@@ -14,6 +14,14 @@
     You should have received a copy of the GNU General Public License
     along with this program.  If not, see<https://www.gnu.org/licenses/>.
 */
+
+/*PUNTOS A TENER EN CUENTA.
+ A) ES MEJOR QUITAR EL SUELO (VERDE) EN EL MOTOR GRAFICO Y REEMPLAZARLO POR UN TERRAIN.
+ B) LAS CASAS DEBEN SER REUBICADAS DEBIDO A LA ESTETICA DEL JUEGO Y LOS GUSTOS DEL DISEÑADOR DEL JUEGO.
+ C) SE DEBE COMPROBAR QUE LOS PISOS (AMARILLOS) NO TENGAN LAS NORMALES INVERTIDAS EN BLENDER.
+ */
+
+
 
 using Creador_de_ciudades.Clases;
 using Creador_de_ciudades.Clases_estaticas;
@@ -613,7 +621,7 @@ namespace Creador_de_ciudades
 
                 //Subsistema 3.2 #Filtro de puntos ocupados
 
-                //Verifica si punto de origen ya apareció      -------------- Solo en distribución aleatoria
+                //Verifica si punto de origen ya apareció      <--------------> Solo en distribución aleatoria
 
                 if (ui_distribucion_aleatoria.Checked)
                 {

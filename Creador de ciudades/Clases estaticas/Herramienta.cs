@@ -32,7 +32,7 @@ namespace Creador_de_ciudades.Clases
             Random azar = new Random();
 
             int x = buscar_multiplo(minimox, maximox);
-            int y = buscar_multiplo(minimoy, maximoy);
+            int y = buscar_multiplo(minimoy, maximoy); 
 
             int encontrado;
 
@@ -41,11 +41,11 @@ namespace Creador_de_ciudades.Clases
                 //Este if lo añadí por un error
                 if (minimo>maximo)
                 {
-                    encontrado = azar.Next((int)maximo, (int)minimo);
+                    encontrado = azar.Next((int)maximo, (int)minimo+1);
                 }
                 else
                 {
-                    encontrado = azar.Next((int)minimo, (int)maximo);
+                    encontrado = azar.Next((int)minimo, (int)maximo+1);
                 }
                 
                //Esta es la verdadera funcion importante 
@@ -182,6 +182,30 @@ namespace Creador_de_ciudades.Clases
                 return puntos;
             }
         }
+        
+        
+        // NO SE USA, QUIZA EN EL FUTURO SI
+        public static List<PointF> calcular_ladoF(PointF inicio, float longitud, string eje)
+        {
+            List<PointF> puntos = new List<PointF>();
+            if (eje == "x")
+            {
+                for (float i = inicio.X; i <= inicio.X + (longitud *100); i += 100)
+                {
+                    puntos.Add(new PointF(i, inicio.Y));
+                }
+                return puntos;
+            }
+            else
+            {
+                for (float i = inicio.Y; i <= inicio.Y + (longitud * 100); i += 100)
+                {
+                    puntos.Add(new PointF(inicio.X, i));
+                }
+                return puntos;
+            }
+        }
+
         public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto, int avance)
         {
 

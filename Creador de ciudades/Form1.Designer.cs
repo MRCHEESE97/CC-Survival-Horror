@@ -194,6 +194,9 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ui_objetos_puerta_zotano = new System.Windows.Forms.CheckBox();
+            this.ui_objetos_ascensor = new System.Windows.Forms.CheckBox();
+            this.ui_objetos_escalera = new System.Windows.Forms.CheckBox();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -789,6 +792,9 @@
             // 
             // ui_groupbox_objetos
             // 
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_escalera);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_ascensor);
+            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_puerta_zotano);
             this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_data);
             this.ui_groupbox_objetos.Controls.Add(this.ui_groupbox_poblacion_objetos);
             this.ui_groupbox_objetos.Controls.Add(this.label32);
@@ -834,7 +840,7 @@
             // ui_objetos_data
             // 
             this.ui_objetos_data.AutoSize = true;
-            this.ui_objetos_data.Location = new System.Drawing.Point(11, 319);
+            this.ui_objetos_data.Location = new System.Drawing.Point(11, 396);
             this.ui_objetos_data.Name = "ui_objetos_data";
             this.ui_objetos_data.Size = new System.Drawing.Size(53, 21);
             this.ui_objetos_data.TabIndex = 40;
@@ -2192,8 +2198,8 @@
             this.tabPage5.Controls.Add(this.ui_quitar_calles);
             this.tabPage5.Location = new System.Drawing.Point(4, 26);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage5.Size = new System.Drawing.Size(423, 399);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(422, 355);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Experimental";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2407,6 +2413,42 @@
             this.contextMenuStrip3.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
+            // 
+            // ui_objetos_puerta_zotano
+            // 
+            this.ui_objetos_puerta_zotano.AutoSize = true;
+            this.ui_objetos_puerta_zotano.Checked = true;
+            this.ui_objetos_puerta_zotano.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_objetos_puerta_zotano.Location = new System.Drawing.Point(11, 307);
+            this.ui_objetos_puerta_zotano.Name = "ui_objetos_puerta_zotano";
+            this.ui_objetos_puerta_zotano.Size = new System.Drawing.Size(68, 21);
+            this.ui_objetos_puerta_zotano.TabIndex = 41;
+            this.ui_objetos_puerta_zotano.Text = "Zotano";
+            this.ui_objetos_puerta_zotano.UseVisualStyleBackColor = true;
+            // 
+            // ui_objetos_ascensor
+            // 
+            this.ui_objetos_ascensor.AutoSize = true;
+            this.ui_objetos_ascensor.Checked = true;
+            this.ui_objetos_ascensor.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_objetos_ascensor.Location = new System.Drawing.Point(11, 333);
+            this.ui_objetos_ascensor.Name = "ui_objetos_ascensor";
+            this.ui_objetos_ascensor.Size = new System.Drawing.Size(74, 21);
+            this.ui_objetos_ascensor.TabIndex = 42;
+            this.ui_objetos_ascensor.Text = "Ascensor";
+            this.ui_objetos_ascensor.UseVisualStyleBackColor = true;
+            // 
+            // ui_objetos_escalera
+            // 
+            this.ui_objetos_escalera.AutoSize = true;
+            this.ui_objetos_escalera.Checked = true;
+            this.ui_objetos_escalera.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_objetos_escalera.Location = new System.Drawing.Point(11, 361);
+            this.ui_objetos_escalera.Name = "ui_objetos_escalera";
+            this.ui_objetos_escalera.Size = new System.Drawing.Size(70, 21);
+            this.ui_objetos_escalera.TabIndex = 43;
+            this.ui_objetos_escalera.Text = "Escalera";
+            this.ui_objetos_escalera.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -2671,6 +2713,9 @@
         private System.Windows.Forms.TrackBar Posibilidad;
         private System.Windows.Forms.RadioButton ui_forma_casa_deformada;
         private System.Windows.Forms.RadioButton ui_forma_casa_rectangular;
+        private System.Windows.Forms.CheckBox ui_objetos_puerta_zotano;
+        private System.Windows.Forms.CheckBox ui_objetos_ascensor;
+        private System.Windows.Forms.CheckBox ui_objetos_escalera;
     }
 }
 

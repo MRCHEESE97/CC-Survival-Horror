@@ -53,6 +53,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             {
                 combinar(datos, lienzo);
             }
+           
         }
 
 
@@ -119,7 +120,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             pintura.Refresh();
         }
-       
+      
         private static void rectangulo_deformado(Info_forma info, PictureBox pintura, int modo)
         {
             

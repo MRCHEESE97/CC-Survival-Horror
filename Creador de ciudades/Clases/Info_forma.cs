@@ -72,6 +72,7 @@ namespace Creador_de_ciudades.Clases
         public int prob_zot;
 
         public Point origen_asc = new Point();
+        public Point origen_esc = new Point();
 
 
 

@@ -70,13 +70,14 @@ namespace Creador_de_ciudades.Clases
         public int prob_asc;
         public int prob_esc;
         public int prob_zot;
+        public int Lado_asc;
 
         public Point origen_asc = new Point();
         public Point origen_esc = new Point();
 
 
 
-        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas, string Vano_ventana, String Forma, int Col_prox, int Cant_puerta, int Prob_asc, int Prob_zot) 
+        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas, string Vano_ventana, String Forma, int Col_prox, int Cant_puerta, int Prob_asc, int Prob_zot, int lado_asc) 
         {
             ancho_lienzo = Ancho_lienzo;
             alto_lienzo = Alto_Lienzo;
@@ -108,6 +109,7 @@ namespace Creador_de_ciudades.Clases
             vano_ventana = Vano_ventana;
             prob_asc = Prob_asc;
             prob_zot = Prob_zot;
+            Lado_asc = lado_asc;
         }
 
         public Info_forma( int Ancho_forma, int Alto_forma, int Grados, int Grosor_pared, Point Punto_origen, int Cant_puerta)

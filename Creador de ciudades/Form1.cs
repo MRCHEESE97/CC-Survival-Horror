@@ -613,7 +613,8 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_pilar_prox_min.Value), Convert.ToInt32(ui_pilar_prox_max.Value)),
                  azar.Next(Convert.ToInt32(ui_vano_puerta_cant_min.Value), Convert.ToInt32(ui_vano_puerta_cant_max.Value)),
                  azar.Next(0, 99),
-                 azar.Next(0, 99)
+                 azar.Next(0, 99),
+                 azar.Next(1, 5)
                 );
 
                 nueva_casa.resp_alto_forma = nueva_casa.alto_forma;

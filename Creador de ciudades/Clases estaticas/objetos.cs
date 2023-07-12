@@ -134,35 +134,12 @@ namespace Creador_de_ciudades.Clases_estaticas
                     zotano(datos, lienzo);
                 }
 
-                if (nombre_objeto.Equals("ui_objetos_ascensor") && datos.prob_asc < 30) //si casa es 30... 
+                if (nombre_objeto.Equals("ui_objetos_escalera")) // siempre y todos los pisos 
                 {
                     if (datos.ubicacion_pb)
                     {
-                        datos.origen_asc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 200, datos.a.X, datos.a.Y); // el mismo origen
+                        datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 100, datos.a.X, datos.a.Y); // el mismo origen
 
-                        if (datos.origen_asc.X >= datos.punto_medio.X && datos.origen_asc.Y <= datos.punto_medio.Y)   //der arriba
-                        {
-                            datos.origen_asc.X = datos.origen_asc.X - (2 * 100);
-                        }
-                        else if (datos.origen_asc.X >= datos.punto_medio.X && datos.origen_asc.Y >= datos.punto_medio.Y)   //der abajo
-                        {
-                            datos.origen_asc.Y = datos.origen_asc.Y - (2 * 100);
-                            datos.origen_asc.X = datos.origen_asc.X - (2 * 100);
-                        }
-
-                    }
-                    else if (datos.ubicacion_pb == false)
-                    {
-                        ascensor(datos, lienzo);
-                    }
-                
-                }
-                if (nombre_objeto.Equals("ui_objetos_escalera") ) // siempre y todos los pisos 
-                {
-                    if (datos.ubicacion_pb)
-                    {
-                        datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 200, datos.a.X, datos.a.Y); // el mismo origen
-                       
                         if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y <= datos.punto_medio.Y)   //der arriba
                         {
                             datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
@@ -178,6 +155,30 @@ namespace Creador_de_ciudades.Clases_estaticas
                         escalera(datos, lienzo);
                     }
                 }
+
+                if (nombre_objeto.Equals("ui_objetos_ascensor") && datos.prob_asc < 30) //si casa es 30... 
+                {
+                    if (datos.ubicacion_pb)
+                    {
+                        datos.origen_asc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 200, datos.a.X, datos.a.Y); // el mismo origen
+
+                        if (datos.origen_asc.X >= datos.punto_medio.X && datos.origen_asc.Y <= datos.punto_medio.Y)   //der arriba
+                        {
+                            datos.origen_asc.X = datos.origen_asc.X - (2 * 100);
+                        }
+                        else if (datos.origen_asc.X >= datos.punto_medio.X && datos.origen_asc.Y >= datos.punto_medio.Y)   //der abajo
+                        {
+                            datos.origen_asc.Y = datos.origen_asc.Y - (2 * 100);
+                            datos.origen_asc.X = datos.origen_asc.X - (2 * 100);
+                        }
+                    }
+                    else if (datos.ubicacion_pb == false)
+                    {
+                        ascensor(datos, lienzo);
+                    }
+                
+                }
+                
             }
 
 
@@ -501,7 +502,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             Point[] c = lado_inferior.ToArray();
             Point[] d = lado_superior.ToArray();
 
-            int lado = azar.Next(1, 5);
+            int lado = informacion.Lado_asc;
 
             if (lado == 1)
             { //abc

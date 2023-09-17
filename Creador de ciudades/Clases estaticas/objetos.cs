@@ -194,22 +194,41 @@ namespace Creador_de_ciudades.Clases_estaticas
             do {
 
                 Pen puerta = new Pen(Color.Purple, informacion.grosor_pared);
-                
+                Pen ensamble = new Pen(Color.Purple, informacion.grosor_pared/2);
 
                 int ubicacion_punto = azar.Next(0, informacion.contorno.Count - informacion.ancho_puerta - 1);
 
                 Point punto_inicio;
                 Point punto_fin;
 
+               
+
 
                 // se define el inicio y el fin
                 punto_inicio = informacion.contorno[ubicacion_punto];
                 punto_fin = informacion.contorno[ubicacion_punto + 1];
-
-
+               
 
                 informacion.g.DrawLine(puerta, punto_inicio, punto_fin);
-               
+                Point a, b;
+
+                // Ensamble 16/09/2023 al tener el problema de la abertura se me ocurrio emplear una tecnica del ensamble de madera
+                bool orientacion = (punto_inicio.X == punto_fin.X) ? false : true;
+                if (orientacion)
+                {
+
+                    a = new Point(punto_inicio.X - informacion.grosor_pared / 4, punto_inicio.Y + informacion.grosor_pared / 32);
+                    b = new Point(punto_fin.X + informacion.grosor_pared / 4, punto_fin.Y + informacion.grosor_pared / 32);
+                }
+                else 
+                {
+                    a = new Point(punto_inicio.X + informacion.grosor_pared / 32, punto_inicio.Y - informacion.grosor_pared / 4);
+                    b = new Point(punto_fin.X + informacion.grosor_pared / 32, punto_fin.Y + informacion.grosor_pared / 4);
+                }
+
+                informacion.g.DrawLine(ensamble, a, b);
+
+
 
                 //Para que no se dibuje otro objeto encima, tendré que borrar los puntos
                 borrador.Add(punto_inicio);
@@ -254,6 +273,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         {
 
             Pen ventana = new Pen(Color.Blue, informacion.grosor_pared);
+            Pen ensamble = new Pen(Color.Blue, informacion.grosor_pared/2);
             List<bool> marcar = new List<bool>();
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)
@@ -269,7 +289,26 @@ namespace Creador_de_ciudades.Clases_estaticas
             {
                 if (marcar[i])
                 {
-                    informacion.g.DrawLine(ventana, informacion.contorno[i], informacion.contorno[i+1]);                  
+                    informacion.g.DrawLine(ventana, informacion.contorno[i], informacion.contorno[i+1]);
+
+                    Point a, b;
+                    // Ensamble 16/09/2023 al tener el problema de la abertura se me ocurrio emplear una tecnica del ensamble de madera
+                    bool orientacion = (informacion.contorno[i].X == informacion.contorno[i + 1].X) ? false : true;
+                    if (orientacion)
+                    {
+
+                        a = new Point(informacion.contorno[i].X - informacion.grosor_pared / 4, informacion.contorno[i].Y + informacion.grosor_pared / 32);
+                        b = new Point(informacion.contorno[i + 1].X + informacion.grosor_pared / 4, informacion.contorno[i + 1].Y + informacion.grosor_pared / 32);
+                    }
+                    else
+                    {
+                        a = new Point(informacion.contorno[i].X + informacion.grosor_pared / 32, informacion.contorno[i].Y - informacion.grosor_pared / 4);
+                        b = new Point(informacion.contorno[i + 1].X + informacion.grosor_pared / 32, informacion.contorno[i + 1].Y + informacion.grosor_pared / 4);
+                    }
+
+                    informacion.g.DrawLine(ensamble, a, b);
+
+
                 }       
             }         
         }
@@ -370,7 +409,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void divisiones(Info_forma informacion, PictureBox pintura)
         {
 
-            Pen pared = new Pen(Color.Black, informacion.grosor_pared);
+            Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
             int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una casa solo será hasta un tamaño de la mitad de la capa 
             int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) / 3; //Veces que se puede instancia una habitacion de 3 metros

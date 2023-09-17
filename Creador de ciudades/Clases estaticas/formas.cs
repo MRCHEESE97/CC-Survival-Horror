@@ -110,7 +110,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             //Se dibuja la pared
             Pen borde = new Pen(Color.Black, inf.grosor_pared);
 
-            rectangulo = Herramienta.rotar_puntos_figuras(rectangulo,inf.grados,inf.punto_medio);
+            rectangulo = Herramienta.rotar_puntos_figuras(rectangulo,0,inf.punto_medio);
 
             //Despues de rotar guardo los puntos en el objeto
             inf.contorno = rectangulo;

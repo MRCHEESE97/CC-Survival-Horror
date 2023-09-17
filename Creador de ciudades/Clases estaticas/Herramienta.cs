@@ -263,7 +263,7 @@ namespace Creador_de_ciudades.Clases
                     pixelColor = bitmapImage.GetPixel(x, y);
                     if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
                     {
-                        bitmapImage.SetPixel(x, y, Color.Red);
+                       // bitmapImage.SetPixel(x, y, Color.Red);   comentado 17/09/2023
                         Blancos.Add(new Point(x, y));
                     }
                 }

@@ -34,6 +34,48 @@ namespace Creador_de_ciudades.Clases_estaticas
         //NOTA: ESTA CLASE ES LLAMADA UNA VEZ POR CASA, LO QUE PERMITE ALTERAR LA "INFO_FORMA" ACTUAL
 
         public static Random azar = new Random();
+
+        public static void seleccionados_primer_plano(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division)
+        {
+
+            //Lama a objetos exteriores: 
+
+            for (int i = 0; i < seleccion_objeto.Count; i++)
+            {
+
+                string nombre_objeto = seleccion_objeto[i];
+
+
+                //POBLACION SI ES ALEATORIA
+                if (poblacion == 100)
+                {
+                    poblacion = azar.Next(0, 99);
+                }
+
+                int numerin = azar.Next(0, 99);
+                if (numerin <= poblacion)
+                {
+                    //A PARTIR DE AQUI SE EMPIEZAN A DIBUJAR TODOS
+
+
+
+                    if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
+                    {
+                        columna_cuadrada(datos, lienzo);
+                    }
+
+                }
+                else
+                {
+                    continue;
+                }
+
+            }
+
+
+        }
+
+
         public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division)
         {
 
@@ -57,12 +99,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                         //A PARTIR DE AQUI SE EMPIEZAN A DIBUJAR TODOS
 
 
-
-                        if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
-                        {
-                            columna_cuadrada(datos, lienzo);
-                        }
-                        else if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
+                        if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
                         {
                             columna_circular(datos, lienzo);
                         }
@@ -196,7 +233,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 Pen puerta = new Pen(Color.Purple, informacion.grosor_pared);
                 Pen ensamble = new Pen(Color.Purple, informacion.grosor_pared/2);
 
-                int ubicacion_punto = azar.Next(0, informacion.contorno.Count - informacion.ancho_puerta - 1);
+                int ubicacion_punto = azar.Next(0, informacion.contorno.Count - 1);
 
                 Point punto_inicio;
                 Point punto_fin;
@@ -292,7 +329,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     informacion.g.DrawLine(ventana, informacion.contorno[i], informacion.contorno[i+1]);
 
                     Point a, b;
-                    // Ensamble 16/09/2023 al tener el problema de la abertura se me ocurrio emplear una tecnica del ensamble de madera
+                    // Ensamble 16/09/2023 al tener el problema de la abertura se me ocurrio emplear la tecnica del ensamble de madera
                     bool orientacion = (informacion.contorno[i].X == informacion.contorno[i + 1].X) ? false : true;
                     if (orientacion)
                     {
@@ -307,7 +344,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     }
 
                     informacion.g.DrawLine(ensamble, a, b);
-
+                   
 
                 }       
             }         
@@ -442,7 +479,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
 
                 // si los pixeles son grises o blancos, continue.
-                Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, 20, origen_division, 3);
+                Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, informacion.grosor_pared, origen_division, 3);
 
 
                 if (Herramienta.pixel_es_de_un_color(D.a, (Bitmap)pintura.Image, 255, 255, 255)
@@ -461,8 +498,8 @@ namespace Creador_de_ciudades.Clases_estaticas
                     Formas.forma("ui_forma_casa_rectangular", D, pintura);
 
                     //objetos. 1 puerta 
-                    List<String> seleccion_objeto = new List<string> { "ui_objetos_puerta" };
-                    Objetos.seleccionados(seleccion_objeto, D, pintura, 99,false);
+                    List<string> seleccion_objeto = new List<string> { "ui_objetos_puerta" };
+                    seleccionados(seleccion_objeto, D, pintura, 99,false);
                     //objetos. 1 columna
                     //seleccion_objeto = new List<string> { "ui_objetos_columna_cuadrada" };
                     //Objetos.seleccionados(seleccion_objeto, D, pintura, 75);

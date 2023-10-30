@@ -746,19 +746,23 @@ namespace Creador_de_ciudades
             void superposicion_con(int recorrer, int i) //i es el iterado del piso, recorrer el iterador de una casa
             {
                 string nombre_page = "Planta " + i;
-                Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-
-                //Primero se guardan los nombre de los checkbox activo es una lista
 
                 List<String> nombres_checkbox = new List<string>();
                 foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
                 {
                     if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                 }
+                
+               
+                Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                //Primero se guardan los nombre de los checkbox activo es una lista
+
+              
 
                 //Después de pintar las casas, se pintan los objetos
                 Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0],Poblacion_objetos, true);
-
+                Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
                 //Esta variable es modificada una vez que PB se haya dibujado
                 lista_casas[recorrer].ubicacion_pb = false;
 
@@ -796,18 +800,24 @@ namespace Creador_de_ciudades
                 if (lista_casas[recorrer].ancho_forma > 1 && lista_casas[recorrer].alto_forma > 1)  // Solo se dibuja si es mayor a 1 el ancho o el alto
                 {
                     string nombre_page = "Planta " + i;
-                    Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-
-                    //Después de pintar las casas, se pintan los objetos
-
-                    //Primero se guardan los nombre de los checkbox activo es una lista
 
                     List<String> nombres_checkbox = new List<string>();
                     foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
+                    
+
+                    Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                    //Después de pintar las casas, se pintan los objetos
+
+                    //Primero se guardan los nombre de los checkbox activo es una lista
+
+             
+                    
                     Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
+                    Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -859,18 +869,22 @@ namespace Creador_de_ciudades
                 if (lista_casas[recorrer].ancho_forma > 1 && lista_casas[recorrer].alto_forma > 1)  // Solo se dibuja si es mayor a 1 el ancho o el alto
                 {
                     string nombre_page = "Planta " + i;
-                    Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
-
-                    //Después de pintar las casas, se pintan los objetos
-
-                    //Primero se guardan los nombre de los checkbox activo es una lista
 
                     List<String> nombres_checkbox = new List<string>();
                     foreach (CheckBox c in ui_groupbox_objetos.Controls.OfType<CheckBox>())
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
+                    
+                    Formas.forma(forma_seleccionada, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0]);
+
+                    //Después de pintar las casas, se pintan los objetos
+
+                    //Primero se guardan los nombre de los checkbox activo es una lista
+
+                    
                     Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
+                    Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;

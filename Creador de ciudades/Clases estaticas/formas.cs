@@ -427,7 +427,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             irregular = irregular.Distinct().ToList();
 
             //Se rotan los puntos 
-            irregular = Herramienta.rotar_puntos_figuras(irregular, info.grados, info.punto_medio);
+            //irregular = Herramienta.rotar_puntos_figuras(irregular, info.grados, info.punto_medio);
 
             //Guardo los puntos en el objeto
             info.contorno = irregular;

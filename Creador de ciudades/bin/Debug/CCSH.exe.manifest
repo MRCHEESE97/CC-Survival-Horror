@@ -49,7 +49,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dU6vmgLHVZbvtXXPQ34NPI1GLWDCCi2k1QL1oFpv0f8=</dsig:DigestValue>
+        <dsig:DigestValue>SrtdIeN2+Tv/o4g4/BVkwL5WGaoQuZYwO66fSuJc700=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ExCSS.dll" size="343040">
+      <assemblyIdentity name="ExCSS" version="4.2.3.0" publicKeyToken="BDBE16BE9B936B9A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>+GYW6oMnEH+Rj+TrCAQPbVDqTXZfb57FIWQ+oqrYxIA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,6 +74,18 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>FYnMES+OrfTY9BM5of/X+vYA26ziK0OGBK9vdtnyJNk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Svg.dll" size="685056">
+      <assemblyIdentity name="Svg" version="3.4.0.0" publicKeyToken="12A0BAC221EDEAE2" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>8hPqu1gngaKHg2HDGHnF9HvoGFp2xaXUv/IBCBMXeYU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -25,6 +25,8 @@
 
 using Creador_de_ciudades.Clases;
 using Creador_de_ciudades.Clases_estaticas;
+using SkiaSharp;
+using Svg;
 using System;
 using System.Collections;   
 using System.Collections.Generic;
@@ -35,6 +37,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.AxHost;
+
 
 namespace Creador_de_ciudades
 {   
@@ -1181,6 +1184,7 @@ namespace Creador_de_ciudades
                 {
                     PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];             
                     nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+
                 }
             }
         }

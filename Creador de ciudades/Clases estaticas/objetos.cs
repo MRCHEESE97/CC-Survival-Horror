@@ -129,8 +129,8 @@ namespace Creador_de_ciudades.Clases_estaticas
                             }
                         }
 
-                        else if (nombre_objeto.Equals("ui_objetos_puerta") && datos.ubicacion_pb)
-                        {
+                        else if (nombre_objeto.Equals("ui_objetos_puerta"))  //Antes estaba: && datos.ubicacion_pb
+                    {
                             puerta(datos, lienzo);
                         }
 

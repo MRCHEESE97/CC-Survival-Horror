@@ -680,7 +680,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            25,
+            20,
             0,
             0,
             0});
@@ -700,7 +700,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            25,
+            20,
             0,
             0,
             0});
@@ -719,7 +719,7 @@
             this.ui_min_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_alto_casa.TabIndex = 5;
             this.ui_min_alto_casa.Value = new decimal(new int[] {
-            10,
+            15,
             0,
             0,
             0});
@@ -757,7 +757,7 @@
             this.ui_min_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_casa.TabIndex = 2;
             this.ui_min_ancho_casa.Value = new decimal(new int[] {
-            10,
+            15,
             0,
             0,
             0});
@@ -1932,7 +1932,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            85,
+            82,
             0,
             0,
             0});

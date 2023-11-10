@@ -448,8 +448,8 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
-            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una casa solo será hasta un tamaño de la mitad de la capa 
-            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) / 3; //Veces que se puede instancia una habitacion de 3 metros
+            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño mazimo de la mitad de la casa
+            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) / 2; //Veces que se puede instancia una habitacion de 3 metros
             int cantidad_maxima = azar.Next(2, cantidad_limite+2); 
 
             //Faltaria dividir por area 
@@ -457,8 +457,8 @@ namespace Creador_de_ciudades.Clases_estaticas
             for (int i = 0; i < cantidad_maxima; i++)
             {  
                 Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 200, informacion.a.X, informacion.a.Y);
-                int ancho_esta_div = azar.Next(2, tamaño_limite + 1);
-                int alto_esta_div = azar.Next(2, tamaño_limite + 1);
+                int ancho_esta_div = azar.Next(3, tamaño_limite + 1);
+                int alto_esta_div = azar.Next(3, tamaño_limite + 1);
              
                 if (origen_division.X <= informacion.punto_medio.X && origen_division.Y <= informacion.punto_medio.Y)  //izq arriba
                 {

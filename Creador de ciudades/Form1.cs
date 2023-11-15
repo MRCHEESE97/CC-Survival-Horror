@@ -608,7 +608,7 @@ namespace Creador_de_ciudades
                  10, // Este numero se multiplica por el valor de la columna Ej 3 espacio = 90 (30CM)
                  azar.Next(1, 5),
                  ui_checkbox_girar.Checked,
-                 Posibilidad,
+                 Probabilidad,
                  Distancia,
                  ui_pegar_casas.Checked,
                  vano_ventana_seleccionado,

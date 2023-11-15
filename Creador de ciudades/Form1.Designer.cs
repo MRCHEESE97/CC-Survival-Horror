@@ -168,7 +168,7 @@
             this.Distancia = new System.Windows.Forms.TrackBar();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.Posibilidad = new System.Windows.Forms.TrackBar();
+            this.Probabilidad = new System.Windows.Forms.TrackBar();
             this.ui_forma_casa_deformada = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
@@ -240,7 +240,7 @@
             this.groupBox5.SuspendLayout();
             this.ui_groupbox_forma_casas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Distancia)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Probabilidad)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).BeginInit();
@@ -919,22 +919,22 @@
             // ui_poblacion_objetos_alta
             // 
             this.ui_poblacion_objetos_alta.AutoSize = true;
-            this.ui_poblacion_objetos_alta.Checked = true;
             this.ui_poblacion_objetos_alta.Location = new System.Drawing.Point(11, 80);
             this.ui_poblacion_objetos_alta.Name = "ui_poblacion_objetos_alta";
             this.ui_poblacion_objetos_alta.Size = new System.Drawing.Size(103, 21);
             this.ui_poblacion_objetos_alta.TabIndex = 35;
-            this.ui_poblacion_objetos_alta.TabStop = true;
             this.ui_poblacion_objetos_alta.Text = "Poblacion alta";
             this.ui_poblacion_objetos_alta.UseVisualStyleBackColor = true;
             // 
             // ui_poblacion_objetos_media
             // 
             this.ui_poblacion_objetos_media.AutoSize = true;
+            this.ui_poblacion_objetos_media.Checked = true;
             this.ui_poblacion_objetos_media.Location = new System.Drawing.Point(11, 53);
             this.ui_poblacion_objetos_media.Name = "ui_poblacion_objetos_media";
             this.ui_poblacion_objetos_media.Size = new System.Drawing.Size(114, 21);
             this.ui_poblacion_objetos_media.TabIndex = 34;
+            this.ui_poblacion_objetos_media.TabStop = true;
             this.ui_poblacion_objetos_media.Text = "Poblacion media";
             this.ui_poblacion_objetos_media.UseVisualStyleBackColor = true;
             // 
@@ -1932,7 +1932,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            82,
+            50,
             0,
             0,
             0});
@@ -2022,7 +2022,7 @@
             this.ui_groupbox_forma_casas.Controls.Add(this.Distancia);
             this.ui_groupbox_forma_casas.Controls.Add(this.label18);
             this.ui_groupbox_forma_casas.Controls.Add(this.label17);
-            this.ui_groupbox_forma_casas.Controls.Add(this.Posibilidad);
+            this.ui_groupbox_forma_casas.Controls.Add(this.Probabilidad);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_rectangular);
             this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(3, 513);
@@ -2097,16 +2097,16 @@
             this.label17.TabIndex = 4;
             this.label17.Text = "Probabilidad de deformación (%)";
             // 
-            // Posibilidad
+            // Probabilidad
             // 
-            this.Posibilidad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Posibilidad.Location = new System.Drawing.Point(17, 107);
-            this.Posibilidad.Minimum = 1;
-            this.Posibilidad.Name = "Posibilidad";
-            this.Posibilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.Posibilidad.Size = new System.Drawing.Size(211, 45);
-            this.Posibilidad.TabIndex = 3;
-            this.Posibilidad.Value = 3;
+            this.Probabilidad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Probabilidad.Location = new System.Drawing.Point(17, 107);
+            this.Probabilidad.Minimum = 1;
+            this.Probabilidad.Name = "Probabilidad";
+            this.Probabilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.Probabilidad.Size = new System.Drawing.Size(211, 45);
+            this.Probabilidad.TabIndex = 3;
+            this.Probabilidad.Value = 2;
             // 
             // ui_forma_casa_deformada
             // 
@@ -2522,7 +2522,7 @@
             this.ui_groupbox_forma_casas.ResumeLayout(false);
             this.ui_groupbox_forma_casas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Distancia)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Posibilidad)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Probabilidad)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
@@ -2706,7 +2706,7 @@
         private System.Windows.Forms.TrackBar Distancia;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TrackBar Posibilidad;
+        private System.Windows.Forms.TrackBar Probabilidad;
         private System.Windows.Forms.RadioButton ui_forma_casa_deformada;
         private System.Windows.Forms.RadioButton ui_forma_casa_rectangular;
         private System.Windows.Forms.CheckBox ui_objetos_puerta_zotano;

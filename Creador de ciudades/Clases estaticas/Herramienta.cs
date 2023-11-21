@@ -276,9 +276,9 @@ namespace Creador_de_ciudades.Clases
         {
             Color pixelColor;
             List<Point> verdes = new List<Point>();
-            for (int y = inicio.Y; y < fin.Y; y += 100)
+            for (int y = inicio.Y; y <= fin.Y; y += 100)
             {
-                for (int x = inicio.X; x < fin.X; x += 100)
+                for (int x = inicio.X; x <= fin.X; x += 100)
                 {
                     pixelColor = bitmapImage.GetPixel(x, y);
                     if (pixelColor.R == 0 && pixelColor.G == 100 && pixelColor.B == 0)

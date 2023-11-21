@@ -437,7 +437,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
-            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
+            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/3; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
             int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*20; //Veces que se puede instancia una habitacion de 3 metros
             int cantidad_maxima = cantidad_limite; //azar.Next(cantidad_limite/2, cantidad_limite+2); 
 

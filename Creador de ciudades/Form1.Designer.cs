@@ -334,7 +334,7 @@
             this.TabControl.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabControl.Name = "TabControl";
             this.TabControl.SelectedIndex = 0;
-            this.TabControl.Size = new System.Drawing.Size(466, 299);
+            this.TabControl.Size = new System.Drawing.Size(466, 472);
             this.TabControl.TabIndex = 6;
             // 
             // tabPage1
@@ -344,7 +344,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(458, 270);
+            this.tabPage1.Size = new System.Drawing.Size(458, 443);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Planta 0";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -551,7 +551,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            40,
+            35,
             0,
             0,
             0});
@@ -1434,7 +1434,7 @@
             this.tabControlProp.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabControlProp.Name = "tabControlProp";
             this.tabControlProp.SelectedIndex = 0;
-            this.tabControlProp.Size = new System.Drawing.Size(404, 147);
+            this.tabControlProp.Size = new System.Drawing.Size(404, 320);
             this.tabControlProp.TabIndex = 10;
             // 
             // tabcontrol_propiedades
@@ -1477,7 +1477,7 @@
             this.tabPage3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage3.Size = new System.Drawing.Size(396, 117);
+            this.tabPage3.Size = new System.Drawing.Size(396, 290);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Opciones territoriales";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -1580,6 +1580,8 @@
             // ui_calle_diagonal
             // 
             this.ui_calle_diagonal.AutoSize = true;
+            this.ui_calle_diagonal.Checked = true;
+            this.ui_calle_diagonal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_calle_diagonal.Location = new System.Drawing.Point(195, 13);
             this.ui_calle_diagonal.Name = "ui_calle_diagonal";
             this.ui_calle_diagonal.Size = new System.Drawing.Size(120, 21);
@@ -1932,7 +1934,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            65,
+            90,
             0,
             0,
             0});
@@ -2139,7 +2141,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(396, 117);
+            this.tabPage2.Size = new System.Drawing.Size(396, 379);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2286,7 +2288,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.tabControlProp);
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(882, 303);
+            this.splitContainer1.Size = new System.Drawing.Size(882, 476);
             this.splitContainer1.SplitterDistance = 470;
             this.splitContainer1.TabIndex = 11;
             this.splitContainer1.MouseLeave += new System.EventHandler(this.splitContainer1_MouseLeave);
@@ -2300,7 +2302,7 @@
             this.groupBox2.Controls.Add(this.ui_quitar_todo);
             this.groupBox2.Controls.Add(this.ui_construir);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 147);
+            this.groupBox2.Location = new System.Drawing.Point(0, 320);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(404, 152);
             this.groupBox2.TabIndex = 11;
@@ -2452,7 +2454,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.ClientSize = new System.Drawing.Size(882, 334);
+            this.ClientSize = new System.Drawing.Size(882, 507);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.Cursor = System.Windows.Forms.Cursors.Hand;

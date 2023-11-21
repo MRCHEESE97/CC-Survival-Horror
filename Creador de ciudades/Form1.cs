@@ -552,6 +552,7 @@ namespace Creador_de_ciudades
                                 }
 
                                 label48.Text = "Más de una";
+                                
                             }
                         }
                         origen = new Point(x_ori, y_ori);
@@ -587,8 +588,7 @@ namespace Creador_de_ciudades
 
                         break;
                 }
-              
-         
+                  
                 //Aqui empieza la recoleccion de la informacion para las casas
 
                 Info_forma nueva_casa = new Info_forma

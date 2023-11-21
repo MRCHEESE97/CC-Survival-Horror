@@ -276,16 +276,25 @@ namespace Creador_de_ciudades.Clases
         {
             Color pixelColor;
             List<Point> verdes = new List<Point>();
-            for (int y = inicio.Y; y <= fin.Y; y += 100)
+            for (int y = inicio.Y; y <= fin.Y-100; y += 100)
             {
-                for (int x = inicio.X; x <= fin.X; x += 100)
+                for (int x = inicio.X; x <= fin.X-100; x += 100)
                 {
-                    pixelColor = bitmapImage.GetPixel(x, y);
-                    if (pixelColor.R == 0 && pixelColor.G == 100 && pixelColor.B == 0)
+                    try
                     {
-                       // bitmapImage.SetPixel(x, y, Color.Red);  // comentado 17/09/2023
-                        verdes.Add(new Point(x, y));
+                        pixelColor = bitmapImage.GetPixel(x, y);
+                        if (pixelColor.R == 0 && pixelColor.G == 100 && pixelColor.B == 0)
+                        {
+                            // bitmapImage.SetPixel(x, y, Color.Red);  // comentado 17/09/2023
+                            verdes.Add(new Point(x, y));
+                        }
                     }
+                    catch (ArgumentOutOfRangeException e) when (e.ParamName == "y")
+                    {
+                        continue;
+                    }
+                   
+                   
                 }
             }
             return verdes;
@@ -295,15 +304,22 @@ namespace Creador_de_ciudades.Clases
         {
             Color pixelColor;
             List<Point> verdes = new List<Point>();
-            for (int y = inicio.Y; y < fin.Y; y += 100)
+            for (int y = inicio.Y; y <= fin.Y - 100; y += 100)
             {
-                for (int x = inicio.X; x < fin.X; x += 100)
+                for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
-                    pixelColor = bitmapImage.GetPixel(x, y);
-                    if (pixelColor.R ==255 && pixelColor.G == 0 && pixelColor.B == 0)
+                    try
                     {
-                       // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
-                        verdes.Add(new Point(x, y));
+                        pixelColor = bitmapImage.GetPixel(x, y);
+                        if (pixelColor.R == 0 && pixelColor.G == 100 && pixelColor.B == 0)
+                        {
+                            // bitmapImage.SetPixel(x, y, Color.Red);  // comentado 17/09/2023
+                            verdes.Add(new Point(x, y));
+                        }
+                    }
+                    catch (ArgumentOutOfRangeException e) when (e.ParamName == "y")
+                    {
+                        continue;
                     }
                 }
             }
@@ -314,9 +330,9 @@ namespace Creador_de_ciudades.Clases
         {
             Color pixelColor;
             List<Point> verdes = new List<Point>();
-            for (int y = inicio.Y; y < fin.Y; y += 100)
+            for (int y = inicio.Y; y <= fin.Y - 100; y += 100)
             {
-                for (int x = inicio.X; x < fin.X; x += 100)
+                for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
                     pixelColor = bitmapImage.GetPixel(x, y);
                     if (pixelColor.R == 88 && pixelColor.G == 88 && pixelColor.B == 88)
@@ -333,9 +349,9 @@ namespace Creador_de_ciudades.Clases
         {
             Color pixelColor;
             List<Point> verdes = new List<Point>();
-            for (int y = inicio.Y; y < fin.Y; y += 100)
+            for (int y = inicio.Y; y <= fin.Y - 100; y += 100)
             {
-                for (int x = inicio.X; x < fin.X; x += 100)
+                for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
                     pixelColor = bitmapImage.GetPixel(x, y);
                     if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
@@ -352,9 +368,9 @@ namespace Creador_de_ciudades.Clases
         {
             Color pixelColor;
             List<Point> verdes = new List<Point>();
-            for (int y = inicio.Y; y < fin.Y; y += 100)
+            for (int y = inicio.Y; y <= fin.Y - 100; y += 100)
             {
-                for (int x = inicio.X; x < fin.X; x += 100)
+                for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
                     pixelColor = bitmapImage.GetPixel(x, y);
                     if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 255)
@@ -371,9 +387,9 @@ namespace Creador_de_ciudades.Clases
         {
             Color pixelColor;
             List<Point> verdes = new List<Point>();
-            for (int y = inicio.Y; y < fin.Y; y += 100)
-            {
-                for (int x = inicio.X; x < fin.X; x += 100)
+            for (int y = inicio.Y; y <= fin.Y - 100; y += 100)
+            {   
+                for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
                     pixelColor = bitmapImage.GetPixel(x, y);
                     if (pixelColor.R == 245 && pixelColor.G == 245 && pixelColor.B == 220)

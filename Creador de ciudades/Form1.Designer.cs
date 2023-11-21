@@ -34,7 +34,6 @@
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.guardarCiudadComoCarpetaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.emfToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lenguajeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.perfilesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripComboBox2 = new System.Windows.Forms.ToolStripComboBox();
@@ -267,7 +266,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
-            this.lenguajeToolStripMenuItem,
             this.perfilesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -299,12 +297,6 @@
             this.emfToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
             this.emfToolStripMenuItem.Text = "Emf";
             this.emfToolStripMenuItem.Click += new System.EventHandler(this.emfToolStripMenuItem_Click);
-            // 
-            // lenguajeToolStripMenuItem
-            // 
-            this.lenguajeToolStripMenuItem.Name = "lenguajeToolStripMenuItem";
-            this.lenguajeToolStripMenuItem.Size = new System.Drawing.Size(75, 25);
-            this.lenguajeToolStripMenuItem.Text = "Lenguaje";
             // 
             // perfilesToolStripMenuItem
             // 
@@ -551,7 +543,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            35,
+            40,
             0,
             0,
             0});
@@ -1449,7 +1441,7 @@
             this.tabcontrol_propiedades.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabcontrol_propiedades.Name = "tabcontrol_propiedades";
             this.tabcontrol_propiedades.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabcontrol_propiedades.Size = new System.Drawing.Size(396, 117);
+            this.tabcontrol_propiedades.Size = new System.Drawing.Size(396, 290);
             this.tabcontrol_propiedades.TabIndex = 0;
             this.tabcontrol_propiedades.Text = "Plantas";
             // 
@@ -1498,10 +1490,12 @@
             // ui_distribucion_alternable
             // 
             this.ui_distribucion_alternable.AutoSize = true;
+            this.ui_distribucion_alternable.Checked = true;
             this.ui_distribucion_alternable.Location = new System.Drawing.Point(19, 106);
             this.ui_distribucion_alternable.Name = "ui_distribucion_alternable";
             this.ui_distribucion_alternable.Size = new System.Drawing.Size(167, 21);
             this.ui_distribucion_alternable.TabIndex = 4;
+            this.ui_distribucion_alternable.TabStop = true;
             this.ui_distribucion_alternable.Text = "Alternar filas y columnas";
             this.ui_distribucion_alternable.UseVisualStyleBackColor = true;
             this.ui_distribucion_alternable.CheckedChanged += new System.EventHandler(this.ui_distribucion_alternable_CheckedChanged);
@@ -1519,12 +1513,10 @@
             // ui_distribucion_filas
             // 
             this.ui_distribucion_filas.AutoSize = true;
-            this.ui_distribucion_filas.Checked = true;
             this.ui_distribucion_filas.Location = new System.Drawing.Point(19, 79);
             this.ui_distribucion_filas.Name = "ui_distribucion_filas";
             this.ui_distribucion_filas.Size = new System.Drawing.Size(50, 21);
             this.ui_distribucion_filas.TabIndex = 1;
-            this.ui_distribucion_filas.TabStop = true;
             this.ui_distribucion_filas.Text = "Filas";
             this.ui_distribucion_filas.UseVisualStyleBackColor = true;
             // 
@@ -1580,8 +1572,6 @@
             // ui_calle_diagonal
             // 
             this.ui_calle_diagonal.AutoSize = true;
-            this.ui_calle_diagonal.Checked = true;
-            this.ui_calle_diagonal.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_calle_diagonal.Location = new System.Drawing.Point(195, 13);
             this.ui_calle_diagonal.Name = "ui_calle_diagonal";
             this.ui_calle_diagonal.Size = new System.Drawing.Size(120, 21);
@@ -1934,7 +1924,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            90,
+            80,
             0,
             0,
             0});
@@ -2141,7 +2131,7 @@
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage2.Size = new System.Drawing.Size(396, 379);
+            this.tabPage2.Size = new System.Drawing.Size(396, 290);
             this.tabPage2.TabIndex = 2;
             this.tabPage2.Text = "Casas";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -2222,7 +2212,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage4.Size = new System.Drawing.Size(396, 117);
+            this.tabPage4.Size = new System.Drawing.Size(396, 290);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Interiores";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2233,7 +2223,7 @@
             this.tabPage5.Location = new System.Drawing.Point(4, 26);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(396, 117);
+            this.tabPage5.Size = new System.Drawing.Size(396, 290);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Experimental";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2586,7 +2576,6 @@
         private System.Windows.Forms.NumericUpDown ui_pilar_round_med_min;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown ui_pilar_cubico_med_min;
-        private System.Windows.Forms.ToolStripMenuItem lenguajeToolStripMenuItem;
         private System.Windows.Forms.CheckBox ui_objetos_elevador;
         private System.Windows.Forms.TabControl tabControlProp;
         private System.Windows.Forms.TabPage tabcontrol_propiedades;

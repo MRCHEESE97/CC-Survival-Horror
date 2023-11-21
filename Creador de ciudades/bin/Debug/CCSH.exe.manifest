@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CCSH.exe" size="91136">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="CCSH.exe" size="90624">
       <assemblyIdentity name="CCSH" version="1.0.0.0" language="neutral" processorArchitecture="amd64" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>62Ev8RdpYRCe9NeXv474psnyClzfTZbZhK1aylzNJ0M=</dsig:DigestValue>
+        <dsig:DigestValue>sumuu0J2Q7r9gAmz0NAtP0lr5HNfoCz5vzUTCtExsy4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

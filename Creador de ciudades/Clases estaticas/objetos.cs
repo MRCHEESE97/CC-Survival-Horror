@@ -670,7 +670,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             List<Point> lado_superior, lado_inferior, lado_derecho, lado_izquierdo;
 
-            int ale1 = azar.Next(1, 3);
+            int ale1 = 2;
             int ale2 = 3;
 
             // Se cambio el 20 de noviembre segun la arquitectura de la comisaria en RE2

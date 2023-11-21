@@ -26,7 +26,7 @@ using System.Windows.Forms;
 
 namespace Creador_de_ciudades.Clases
 {
-    //Esta clase almacena la información casa forma se esta de cualquier tipo
+    //Esta clase almacena la información casa forma, sea esta de cualquier tipo
     public class Info_forma
     {
         public int ancho_lienzo;

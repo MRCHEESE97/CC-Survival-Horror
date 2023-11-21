@@ -21,9 +21,11 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI;
 using System.Windows.Forms;
 using System.Windows.Media.Imaging;
 using static Creador_de_ciudades.Form1;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Tab;
 
 namespace Creador_de_ciudades.Clases_estaticas
@@ -98,7 +100,6 @@ namespace Creador_de_ciudades.Clases_estaticas
                     {
                         //A PARTIR DE AQUI SE EMPIEZAN A DIBUJAR TODOS
 
-
                         if (nombre_objeto.Equals("ui_objetos_columna_redonda"))
                         {
                             columna_circular(datos, lienzo);
@@ -130,15 +131,11 @@ namespace Creador_de_ciudades.Clases_estaticas
                         }
 
                         else if (nombre_objeto.Equals("ui_objetos_puerta"))  //Antes estaba: && datos.ubicacion_pb
-                    {
+                        {
                             puerta(datos, lienzo);
                         }
 
-
-                        else if (nombre_objeto.Equals("ui_objetos_elevador"))
-                        {
-                            elevador(datos, lienzo);
-                        }
+                      
                         else if (nombre_objeto.Equals("ui_objetos_data"))
                         {
                             data(datos, lienzo);
@@ -149,13 +146,8 @@ namespace Creador_de_ciudades.Clases_estaticas
                         continue;
                     }
 
-                }
-                if (division)
-                {
-                    //Llama a interiores:
-                    divisiones(datos, lienzo);
-
-                }
+            }
+            
 
             //Lama a objetos zot, asc, esc: 
 
@@ -175,8 +167,11 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     if (datos.ubicacion_pb)
                     {
+                       
 
                         datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 100, datos.a.X, datos.a.Y); // el mismo origen
+
+                        // ajustar la ubicacion para no salir de la forma en planta baja 
 
                         if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y <= datos.punto_medio.Y)   //der arriba
                         {
@@ -189,7 +184,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                         }
                     }
 
-                    escalera(datos, lienzo);
+                    pozo_escalera(datos, lienzo);
 
                 }
 
@@ -217,6 +212,14 @@ namespace Creador_de_ciudades.Clases_estaticas
                 
             }
 
+            //esto estaba antes del for anterior
+            if (division)
+            {
+                //Son las habitaciones
+                divisiones(datos, lienzo);
+
+            }
+
 
 
         }
@@ -237,8 +240,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 Point punto_inicio;
                 Point punto_fin;
 
-               
-
+              
 
                 // se define el inicio y el fin
                 punto_inicio = informacion.contorno[ubicacion_punto];
@@ -390,50 +392,6 @@ namespace Creador_de_ciudades.Clases_estaticas
             }
         }
 
-        private static void elevador(Info_forma informacion, PictureBox pintura)
-        {
-           /*
-            //Aqui se dibuja la pared
-            Brush brocha_pared = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
-            Rectangle pared = new Rectangle(informacion.origen_elevador, new Size(2 * 100, 2 * 100));
-            informacion.g.FillRectangle(brocha_pared, pared);
-
-            Point punto_origen_suelo = new Point(informacion.origen_elevador.X + informacion.grosor_pared, informacion.origen_elevador.Y + informacion.grosor_pared);
-
-            //Aqui se dibuja el agujero del suelo
-            int ancho_suelo = 2 * 100 - informacion.grosor_pared * 2;
-            int alto_suelo = 2 * 100 - informacion.grosor_pared * 2;
-            Rectangle suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            Brush brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent);
-
-            if (informacion.ubicacion_pb)
-            {
-                brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));
-            }
-            else 
-            {
-                //Cambiando el modo de composicion paso a modo forzado de pintado. Predeterminado: SourceOver
-                informacion.g.CompositingMode = System.Drawing.Drawing2D.CompositingMode.SourceCopy;
-            }
-            
-            informacion.g.FillRectangle(brocha_suelo, suelo);
-
-            //Aqui cambia el punto para que el agujero se desplace, vuelve a dibujar otro agujero
-            switch (informacion.mover_ascensor)
-            {
-                case 1: punto_origen_suelo.Y = punto_origen_suelo.Y - informacion.grosor_pared; break;
-                case 2: punto_origen_suelo.X = punto_origen_suelo.X + informacion.grosor_pared; break;
-                case 3: punto_origen_suelo.Y = punto_origen_suelo.Y + informacion.grosor_pared; break;
-                case 4: punto_origen_suelo.X = punto_origen_suelo.X - informacion.grosor_pared; break;
-            }
-            suelo = new Rectangle(punto_origen_suelo, new Size(ancho_suelo, alto_suelo));
-            
-            if (informacion.ubicacion_pb)
-            {  brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(209, 209, 135));}
-            else { brocha_suelo = new System.Drawing.SolidBrush(System.Drawing.Color.Transparent); }
-            
-            informacion.g.FillRectangle(brocha_suelo, suelo); */
-        }
 
         private static void banios(Info_forma informacion, PictureBox pintura)
         {
@@ -445,13 +403,47 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void divisiones(Info_forma informacion, PictureBox pintura)
         {
 
+            Pen myPen = new Pen(Color.Beige);
+            myPen.Width = 100;
+
+
+            int numLines = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma); // Número de líneas a dibujar
+
+            //for (int i = 0; i < numLines; i++)
+            //{
+            //    // Generar posiciones aleatorias para las líneas
+            //    int x1 = azar.Next(informacion.po.X, informacion.po.X + 100 * informacion.ancho_forma);
+            //    int y1 = azar.Next(informacion.po.Y, informacion.po.Y + 100 * informacion.alto_forma);
+            //    int x2 = azar.Next(informacion.po.X, informacion.po.X + 100 * informacion.ancho_forma);
+            //    int y2 = azar.Next(informacion.po.Y, informacion.po.Y + 100 * informacion.alto_forma);
+            //    List<Point> div = Herramienta.obtener_puntos_internos(informacion.po, informacion.ancho_forma, informacion.alto_forma, 10);
+            //    List<Point> internos_verdes = Herramienta.obtener_coor_pixel_verde_interior((Bitmap)pintura.Image, informacion.po, new Point(informacion.po.X + (informacion.ancho_forma * 100), informacion.po.Y + (informacion.alto_forma * 100)));
+
+
+            //    // Dibujar una línea horizontal o vertical
+            //    if (azar.Next(2) == 0)
+            //    {
+            //        //Linea horizontal
+            //        informacion.g.DrawLine(myPen, x1, y1, x2, y1);
+            //    }
+            //    else
+            //    {
+            //        // Línea vertical
+            //        informacion.g.DrawLine(myPen, x1, y1, x1, y2);
+            //    }
+            //}
+
+            //
+
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
-            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño mazimo de la mitad de la casa
-            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) / 2; //Veces que se puede instancia una habitacion de 3 metros
-            int cantidad_maxima = azar.Next(2, cantidad_limite+2); 
+            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
+            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*20; //Veces que se puede instancia una habitacion de 3 metros
+            int cantidad_maxima = cantidad_limite; //azar.Next(cantidad_limite/2, cantidad_limite+2); 
 
             //Faltaria dividir por area 
+
+            int maxima_reales = 0;
             
             for (int i = 0; i < cantidad_maxima; i++)
             {  
@@ -459,41 +451,98 @@ namespace Creador_de_ciudades.Clases_estaticas
                 int ancho_esta_div = azar.Next(3, tamaño_limite + 1);
                 int alto_esta_div = azar.Next(3, tamaño_limite + 1);
              
-                if (origen_division.X <= informacion.punto_medio.X && origen_division.Y <= informacion.punto_medio.Y)  //izq arriba
-                {
-                    
-                }
-                else if (origen_division.X <= informacion.punto_medio.X && origen_division.Y >= informacion.punto_medio.Y)   //izq abajo
-                {
-                    origen_division.Y = origen_division.Y - (informacion.alto_forma / 2) * 100;
-                }
-                else if (origen_division.X >= informacion.punto_medio.X && origen_division.Y <= informacion.punto_medio.Y)   //der arriba
-                {
-                    origen_division.X = origen_division.X - (informacion.ancho_forma / 2) * 100;
-                }
-                else if (origen_division.X >= informacion.punto_medio.X && origen_division.Y >= informacion.punto_medio.Y)   //der abajo
-                {
-                    origen_division.Y = origen_division.Y - (informacion.alto_forma / 2)*100;
-                    origen_division.X = origen_division.X - (informacion.ancho_forma / 2)*100;
-                }
-
-                // si los pixeles son grises o blancos, continue.
+               
+               
                 Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, informacion.grosor_pared, origen_division, 3);
 
+                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 10);
+                List<Point> internos_verdes = Herramienta.obtener_coor_pixel_verde_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
+                List<Point> internos_rojos = Herramienta.obtener_coor_pixel_rojos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
+                List<Point> internos_grises = Herramienta.obtener_coor_pixel_grises_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
+                List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
+                List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
+                List<Point> internos_beige = Herramienta.obtener_coor_pixel_beige_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
+                bool salir = false;
 
-                if (Herramienta.pixel_es_de_un_color(D.a, (Bitmap)pintura.Image, 255, 255, 255)
-                  ||Herramienta.pixel_es_de_un_color(D.b, (Bitmap)pintura.Image, 255, 255, 255)
-                  ||Herramienta.pixel_es_de_un_color(D.c, (Bitmap)pintura.Image, 255, 255, 255)
-                  ||Herramienta.pixel_es_de_un_color(D.d, (Bitmap)pintura.Image, 255, 255, 255)
-                  || Herramienta.pixel_es_de_un_color(D.a, (Bitmap)pintura.Image, 88, 88, 88)
-                  || Herramienta.pixel_es_de_un_color(D.b, (Bitmap)pintura.Image, 88, 88, 88)
-                  || Herramienta.pixel_es_de_un_color(D.c, (Bitmap)pintura.Image, 88, 88, 88)
-                  || Herramienta.pixel_es_de_un_color(D.d, (Bitmap)pintura.Image, 88, 88, 88))
+                Parallel.For(0, div.Count - 1, (r, state) =>
                 {
+                    if (internos_beige.Contains(div[r]))
+                    {
+                        salir = true; //Existe interseccion
+                        state.Break();
+                    }
+                });
+                if (salir)
+                {
+                    continue;
+                }
+
+                Parallel.For(0, div.Count - 1, (r, state) =>
+                {
+                    if (internos_verdes.Contains(div[r]))
+                    {
+                        salir = true; //Existe interseccion
+                        state.Break();
+                    }
+                });
+                if (salir)
+                {
+                    continue;
+                }
+                Parallel.For(0, div.Count - 1, (r, state) =>
+                {
+                    if (internos_rojos.Contains(div[r]))
+                    {
+                        salir = true; //Existe interseccion
+                        state.Break();
+                    }
+                });
+                if (salir)
+                {
+                    continue;
+                }
+                Parallel.For(0, div.Count - 1, (r, state) =>
+                {
+                    if (internos_grises.Contains(div[r]))
+                    {
+                        salir = true; //Existe interseccion
+                        state.Break();
+                    }
+                });
+                if (salir)
+                {
+                    continue;
+                }
+                Parallel.For(0, div.Count - 1, (r, state) =>
+                {
+                    if (internos_blancos.Contains(div[r]))
+                    {
+                        salir = true; //Existe interseccion
+                        state.Break();
+                    }
+                });
+                if (salir)
+                {
+                    continue;
+                }
+                Parallel.For(0, div.Count - 1, (r, state) =>
+                {
+                    if (internos_azules.Contains(div[r]))
+                    {
+                        salir = true; //Existe interseccion
+                        state.Break();
+                    }
+                });
+
+                if (salir)
+                {
+                    
                     continue;
                 }
                 else
                 {
+                   
+                    
                     Formas.forma("ui_forma_casa_rectangular", D, pintura);
 
                     //objetos. 1 puerta 
@@ -502,6 +551,12 @@ namespace Creador_de_ciudades.Clases_estaticas
                     //objetos. 1 columna
                     //seleccion_objeto = new List<string> { "ui_objetos_columna_cuadrada" };
                     //Objetos.seleccionados(seleccion_objeto, D, pintura, 75);
+
+                    maxima_reales++;
+                    if (maxima_reales > 10)
+                    {
+                        break;
+                    }
 
                 }
 
@@ -605,7 +660,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             }
 
         }
-        private static void escalera(Info_forma informacion, PictureBox pintura)
+        private static void pozo_escalera(Info_forma informacion, PictureBox pintura)
         {
             //Se dibuja la pared
             Pen borde = new Pen(Color.Black, informacion.grosor_pared);
@@ -613,11 +668,41 @@ namespace Creador_de_ciudades.Clases_estaticas
             SolidBrush Transparencia = new SolidBrush(Color.DarkGreen);
             List<Point> rectangulo = new List<Point>();
 
-            // Se usan 4 listas para cada lado
-            List<Point> lado_superior = Herramienta.calcular_lado(origen_zotano, 3, "x");
-            List<Point> lado_izquierdo = Herramienta.calcular_lado(origen_zotano, 3, "y");
-            List<Point> lado_derecho = Herramienta.calcular_lado(new Point(origen_zotano.X + 3 * 100, origen_zotano.Y), 3, "y");
-            List<Point> lado_inferior = Herramienta.calcular_lado(new Point(origen_zotano.X, origen_zotano.Y + 3 * 100), 3, "x");
+            List<Point> lado_superior, lado_inferior, lado_derecho, lado_izquierdo;
+
+            int ale1 = azar.Next(1, 3);
+            int ale2 = 3;
+
+            // Se cambio el 20 de noviembre segun la arquitectura de la comisaria en RE2
+
+            int decision = azar.Next(1, 3);
+            if (decision == 1)
+            {
+
+                // Se usan 4 listas para cada lado
+              lado_superior = Herramienta.calcular_lado(origen_zotano, ale2, "x");
+              lado_inferior = Herramienta.calcular_lado(new Point(origen_zotano.X, origen_zotano.Y + ale1 * 100), ale2, "x");
+
+
+              lado_izquierdo = Herramienta.calcular_lado(origen_zotano, ale1, "y");
+              lado_derecho = Herramienta.calcular_lado(new Point(origen_zotano.X + ale2 * 100, origen_zotano.Y), ale1, "y");
+            }
+            else 
+            
+            {
+
+                // Se usan 4 listas para cada lado
+               lado_superior = Herramienta.calcular_lado(origen_zotano, ale1, "x");
+               lado_inferior = Herramienta.calcular_lado(new Point(origen_zotano.X, origen_zotano.Y + ale2 * 100), ale1, "x");
+
+
+               lado_izquierdo = Herramienta.calcular_lado(origen_zotano, ale2, "y");
+               lado_derecho = Herramienta.calcular_lado(new Point(origen_zotano.X + ale1 * 100, origen_zotano.Y), ale2, "y");
+
+            }
+
+
+          
 
             rectangulo.AddRange(lado_superior);
             rectangulo.AddRange(lado_derecho);

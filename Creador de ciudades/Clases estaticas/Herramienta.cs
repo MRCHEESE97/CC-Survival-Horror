@@ -206,7 +206,7 @@ namespace Creador_de_ciudades.Clases
             }
         }
 
-        public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto, int avance)
+        public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto, int avance) // 1m = 10 avance
         {
 
             List<Point> puntos = new List<Point>();
@@ -269,6 +269,121 @@ namespace Creador_de_ciudades.Clases
                 }
             }
             return Blancos;
+        }
+
+
+        public static List<Point> obtener_coor_pixel_verde_interior(Bitmap bitmapImage, Point inicio, Point fin)
+        {
+            Color pixelColor;
+            List<Point> verdes = new List<Point>();
+            for (int y = inicio.Y; y < fin.Y; y += 100)
+            {
+                for (int x = inicio.X; x < fin.X; x += 100)
+                {
+                    pixelColor = bitmapImage.GetPixel(x, y);
+                    if (pixelColor.R == 0 && pixelColor.G == 100 && pixelColor.B == 0)
+                    {
+                       // bitmapImage.SetPixel(x, y, Color.Red);  // comentado 17/09/2023
+                        verdes.Add(new Point(x, y));
+                    }
+                }
+            }
+            return verdes;
+        }
+
+        public static List<Point> obtener_coor_pixel_rojos_interior(Bitmap bitmapImage, Point inicio, Point fin)
+        {
+            Color pixelColor;
+            List<Point> verdes = new List<Point>();
+            for (int y = inicio.Y; y < fin.Y; y += 100)
+            {
+                for (int x = inicio.X; x < fin.X; x += 100)
+                {
+                    pixelColor = bitmapImage.GetPixel(x, y);
+                    if (pixelColor.R ==255 && pixelColor.G == 0 && pixelColor.B == 0)
+                    {
+                       // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
+                        verdes.Add(new Point(x, y));
+                    }
+                }
+            }
+            return verdes;
+        }
+
+        public static List<Point> obtener_coor_pixel_grises_interior(Bitmap bitmapImage, Point inicio, Point fin)
+        {
+            Color pixelColor;
+            List<Point> verdes = new List<Point>();
+            for (int y = inicio.Y; y < fin.Y; y += 100)
+            {
+                for (int x = inicio.X; x < fin.X; x += 100)
+                {
+                    pixelColor = bitmapImage.GetPixel(x, y);
+                    if (pixelColor.R == 88 && pixelColor.G == 88 && pixelColor.B == 88)
+                    {
+                        // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
+                        verdes.Add(new Point(x, y));
+                    }
+                }
+            }
+            return verdes;
+        }
+
+        public static List<Point> obtener_coor_pixel_blancos_interior(Bitmap bitmapImage, Point inicio, Point fin)
+        {
+            Color pixelColor;
+            List<Point> verdes = new List<Point>();
+            for (int y = inicio.Y; y < fin.Y; y += 100)
+            {
+                for (int x = inicio.X; x < fin.X; x += 100)
+                {
+                    pixelColor = bitmapImage.GetPixel(x, y);
+                    if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
+                    {
+                        // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
+                        verdes.Add(new Point(x, y));
+                    }
+                }
+            }
+            return verdes;
+        }
+
+        public static List<Point> obtener_coor_pixel_azules_interior(Bitmap bitmapImage, Point inicio, Point fin)
+        {
+            Color pixelColor;
+            List<Point> verdes = new List<Point>();
+            for (int y = inicio.Y; y < fin.Y; y += 100)
+            {
+                for (int x = inicio.X; x < fin.X; x += 100)
+                {
+                    pixelColor = bitmapImage.GetPixel(x, y);
+                    if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 255)
+                    {
+                        // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
+                        verdes.Add(new Point(x, y));
+                    }
+                }
+            }
+            return verdes;
+        }
+
+        public static List<Point> obtener_coor_pixel_beige_interior(Bitmap bitmapImage, Point inicio, Point fin)
+        {
+            Color pixelColor;
+            List<Point> verdes = new List<Point>();
+            for (int y = inicio.Y; y < fin.Y; y += 100)
+            {
+                for (int x = inicio.X; x < fin.X; x += 100)
+                {
+                    pixelColor = bitmapImage.GetPixel(x, y);
+                    if (pixelColor.R == 245 && pixelColor.G == 245 && pixelColor.B == 220)
+                    {
+                        // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
+                        verdes.Add(new Point(x, y));
+                    }
+                }
+            }
+            return verdes;
         }
 
         public static bool pixel_es_de_un_color(Point Z, Bitmap bitmapImage,int R,int G,int B)

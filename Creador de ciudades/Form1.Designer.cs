@@ -1131,7 +1131,7 @@
             this.ui_pilar_cubico_med_max.Size = new System.Drawing.Size(54, 27);
             this.ui_pilar_cubico_med_max.TabIndex = 22;
             this.ui_pilar_cubico_med_max.Value = new decimal(new int[] {
-            60,
+            50,
             0,
             0,
             0});
@@ -1325,7 +1325,7 @@
             this.ui_pilar_cubico_med_min.Size = new System.Drawing.Size(54, 27);
             this.ui_pilar_cubico_med_min.TabIndex = 3;
             this.ui_pilar_cubico_med_min.Value = new decimal(new int[] {
-            40,
+            30,
             0,
             0,
             0});
@@ -2106,7 +2106,7 @@
             this.Probabilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Probabilidad.Size = new System.Drawing.Size(211, 45);
             this.Probabilidad.TabIndex = 3;
-            this.Probabilidad.Value = 2;
+            this.Probabilidad.Value = 3;
             // 
             // ui_forma_casa_deformada
             // 

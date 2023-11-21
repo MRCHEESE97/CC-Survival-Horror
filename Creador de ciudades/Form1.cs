@@ -663,12 +663,20 @@ namespace Creador_de_ciudades
                     });
                 }
 
+                //añadido 20/11/2023
+
+                if (interruptor)
+                {
+                    ubicacion_datos--;
+                    continue;
+                }
+
                 //Verificar si existe interseccion entre casas
                 //Esta verificación me deja una gran leccion 29/11/20 :)  
-             
+
                 if ( ui_montar_casas.Checked == false)  // añadí este if el 22/03/2023
                 {
-                    for (int x = lista_casas.Count - 1; x >= 0; x--)  // Inverso, para aumentar la velocidad 
+                    for (int x = lista_casas.Count - 1; x >= 0; x--)  // Empezando desde ultima casa, para aumentar la velocidad 
                     {
                         if (interruptor) //break cuando hay intersección en el bucle anterior 29/03/2023
                         {
@@ -828,7 +836,6 @@ namespace Creador_de_ciudades
 
                 barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
             }
-
 
 
             void superposicion_alternable(int recorrer, int i) 

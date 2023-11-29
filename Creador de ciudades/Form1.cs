@@ -33,6 +33,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -616,7 +617,8 @@ namespace Creador_de_ciudades
                  azar.Next(Convert.ToInt32(ui_vano_puerta_cant_min.Value), Convert.ToInt32(ui_vano_puerta_cant_max.Value)),
                  azar.Next(0, 99),
                  azar.Next(0, 99),
-                 azar.Next(1, 5)
+                 azar.Next(1, 5),
+                 ui_deformacion_alterada.Checked
                 );
 
                 nueva_casa.resp_alto_forma = nueva_casa.alto_forma;
@@ -752,6 +754,7 @@ namespace Creador_de_ciudades
            
 
             //FUNCIONES DE SUPERPOSICIONES
+            //Superposicion constante mantiene las mismas medidas, lo que no puede conservar es la misma forma 
 
             void superposicion_con(int recorrer, int i) //i es el iterado del piso, recorrer el iterador de una casa
             {
@@ -1179,20 +1182,33 @@ namespace Creador_de_ciudades
         private void guardarCiudadComoCarpetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            //En las siguientes lineas recolecto las imagenes de los TabControls para guardarlas         
-            for (int i = 0; i < TabControl.TabCount; i++)
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "( *.png) | *.png";
-                dialog.FileName = "Planta " + i;
+            //En las siguientes lineas recolecto las imagenes de los TabControls para guardarlas
+            
 
-                if (dialog.ShowDialog() == DialogResult.OK)
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Title = "Seleccionar carpeta";
+            dialog.Filter = "( *.png) | *.png";
+            dialog.FileName = "NuevaCiudad";
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+
+                string path = dialog.FileName;
+
+                for (int i = 0; i < TabControl.TabCount; i++)
                 {
-                    PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];             
-                    nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Png);
+                    string fileName = "Planta " + i + ".png";
+                    string fullPath = Path.Combine(path, fileName);
+                    PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];
+                    nueva_imagen.Image.Save(fullPath, System.Drawing.Imaging.ImageFormat.Png);
 
                 }
+
             }
+
+            MessageBox.Show("Elementos guardados.");
+
+               
         }
 
 
@@ -1320,6 +1336,19 @@ namespace Creador_de_ciudades
         {
             
         }
-        
+
+        private void ui_deformacion_alterada_CheckedChanged(object sender, EventArgs e)
+        {
+            if (ui_deformacion_alterada.Checked)
+            {
+                Probabilidad.Enabled = false;
+                Distancia.Enabled = false;
+            }
+            else 
+            {
+                Probabilidad.Enabled = true;
+                Distancia.Enabled = true;
+            }
+        }
     }
 }

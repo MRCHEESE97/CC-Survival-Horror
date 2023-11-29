@@ -334,7 +334,10 @@ namespace Creador_de_ciudades.Clases
             {
                 for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
-                    pixelColor = bitmapImage.GetPixel(x, y);
+                    try { pixelColor = bitmapImage.GetPixel(x, y); }
+                    catch (Exception e) { continue; }
+
+
                     if (pixelColor.R == 88 && pixelColor.G == 88 && pixelColor.B == 88)
                     {
                         // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
@@ -353,7 +356,8 @@ namespace Creador_de_ciudades.Clases
             {
                 for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
-                    pixelColor = bitmapImage.GetPixel(x, y);
+                    try { pixelColor = bitmapImage.GetPixel(x, y); }
+                    catch (Exception e) { continue; }
                     if (pixelColor.R == 255 && pixelColor.G == 255 && pixelColor.B == 255)
                     {
                         // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
@@ -372,7 +376,8 @@ namespace Creador_de_ciudades.Clases
             {
                 for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
-                    pixelColor = bitmapImage.GetPixel(x, y);
+                    try { pixelColor = bitmapImage.GetPixel(x, y); }
+                    catch (Exception e) { continue; }
                     if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 255)
                     {
                         // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
@@ -391,7 +396,8 @@ namespace Creador_de_ciudades.Clases
             {   
                 for (int x = inicio.X; x <= fin.X - 100; x += 100)
                 {
-                    pixelColor = bitmapImage.GetPixel(x, y);
+                    try { pixelColor = bitmapImage.GetPixel(x, y); }
+                    catch (Exception e) { continue; }
                     if (pixelColor.R == 245 && pixelColor.G == 245 && pixelColor.B == 220)
                     {
                         // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023

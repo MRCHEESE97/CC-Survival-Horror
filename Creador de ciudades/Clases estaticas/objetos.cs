@@ -61,7 +61,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
 
 
-                    if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
+                    if (nombre_objeto.Equals("ui_objetos_columna_cuadrada") && datos.ubicacion_pb == true)
                     {
                         columna_cuadrada(datos, lienzo);
                     }
@@ -437,7 +437,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
-            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/3; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
+            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
             int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*20; //Veces que se puede instancia una habitacion de 3 metros
             int cantidad_maxima = cantidad_limite; //azar.Next(cantidad_limite/2, cantidad_limite+2); 
 
@@ -448,20 +448,32 @@ namespace Creador_de_ciudades.Clases_estaticas
             for (int i = 0; i < cantidad_maxima; i++)
             {  
                 Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 200, informacion.a.X, informacion.a.Y);
-                int ancho_esta_div = azar.Next(3, tamaño_limite + 1);
-                int alto_esta_div = azar.Next(3, tamaño_limite + 1);
-             
-               
-               
-                Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, informacion.grosor_pared, origen_division, 3);
 
-                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 10);
-                List<Point> internos_verdes = Herramienta.obtener_coor_pixel_verde_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
-                List<Point> internos_rojos = Herramienta.obtener_coor_pixel_rojos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
-                List<Point> internos_grises = Herramienta.obtener_coor_pixel_grises_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
-                List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
-                List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
-                List<Point> internos_beige = Herramienta.obtener_coor_pixel_beige_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (ancho_esta_div * 100), origen_division.Y + (alto_esta_div * 100)));
+                int ancho_esta_div = 0;
+                int alto_esta_div = 0;
+
+                try // 
+                {
+                   ancho_esta_div = azar.Next(4, tamaño_limite + 1);
+                   alto_esta_div = azar.Next(4, tamaño_limite + 1);
+                }
+
+                catch (Exception e) { continue; }
+                TrackBar def = new TrackBar();
+                def.Value = 3;
+
+                TrackBar dis = new TrackBar();
+                def.Value = 3;
+
+                Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, informacion.grosor_pared, origen_division, 3, def,dis);
+
+                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 100);
+                List<Point> internos_verdes = Herramienta.obtener_coor_pixel_verde_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1+ancho_esta_div * 100), origen_division.Y + (1+alto_esta_div * 100)));
+                List<Point> internos_rojos = Herramienta.obtener_coor_pixel_rojos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1+ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
+                List<Point> internos_grises = Herramienta.obtener_coor_pixel_grises_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1 + ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
+                List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1 + ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
+                List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1 + ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
+                List<Point> internos_beige = Herramienta.obtener_coor_pixel_beige_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1 + ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
                 bool salir = false;
 
                 Parallel.For(0, div.Count - 1, (r, state) =>
@@ -541,8 +553,13 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
                 else
                 {
-                   
-                    
+
+
+                   // "ui_forma_casa_rectangular",
+                   // "ui_forma_casa_deformada",
+                   // "ui_forma_casa_deformada_chaflan"
+
+
                     Formas.forma("ui_forma_casa_rectangular", D, pintura);
 
                     //objetos. 1 puerta 

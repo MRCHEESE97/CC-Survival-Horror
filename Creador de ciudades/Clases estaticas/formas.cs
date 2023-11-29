@@ -154,7 +154,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             si es cero los vertices serán atraidos al centro 
              __________
             |        __|
-            |       |__   <--- "desplazar_al_centro = 0"
+            |       |__   <--- "ej: desplazar_al_centro = 0"
             |          |
             |__________|          
             */
@@ -170,6 +170,13 @@ namespace Creador_de_ciudades.Clases_estaticas
                 if (conteo == 0)
                 {
                     conteo = 1;
+                    // Deformacion alterada, otro añadido el 23/11/2023
+                    if (info.def_alt)
+                    {
+                        //distancia_des_alto = random.Next(1, 10);
+                        desplazar_al_centro = random.Next(0, 10);
+                    }
+                    //---------------------------------------------
                     random_profundidad = random.Next(1, distancia_des_ancho);
                     desplazar_al_centro = random.Next(0, info.posibilidad.Value);
                     if (conteo == info.distancia.Value)
@@ -236,6 +243,13 @@ namespace Creador_de_ciudades.Clases_estaticas
                 if (conteo == 0)
                 {
                     conteo = 1;
+                    // Deformacion alterada, otro añadido el 23/11/2023
+                    if (info.def_alt) 
+                    {
+                        //distancia_des_alto = random.Next(1, 10);
+                        desplazar_al_centro = random.Next(0, 10);
+                    }                    
+                    //---------------------------------------------
                     random_profundidad = random.Next(1, distancia_des_alto);
                     desplazar_al_centro = random.Next(0, info.posibilidad.Value);
                     if (conteo == info.distancia.Value)
@@ -292,6 +306,13 @@ namespace Creador_de_ciudades.Clases_estaticas
                 if (conteo == 0)
                 {
                     conteo = 1;
+                    // Deformacion alterada, otro añadido el 23/11/2023
+                    if (info.def_alt)
+                    {
+                        //distancia_des_alto = random.Next(1, 10);
+                        desplazar_al_centro = random.Next(0, 10);
+                    }
+                    //---------------------------------------------
                     random_profundidad = random.Next(1, distancia_des_alto);
                     desplazar_al_centro = random.Next(0, info.posibilidad.Value);
                     if (conteo == info.distancia.Value)
@@ -351,6 +372,13 @@ namespace Creador_de_ciudades.Clases_estaticas
                 if (conteo == 0)
                 {
                     conteo = 1;
+                    // Deformacion alterada, otro añadido el 23/11/2023
+                    if (info.def_alt)
+                    {
+                        //distancia_des_alto = random.Next(1, 10);
+                        desplazar_al_centro = random.Next(0, 10);
+                    }
+                    //---------------------------------------------
                     random_profundidad = random.Next(1, distancia_des_ancho);
                     desplazar_al_centro = random.Next(0, info.posibilidad.Value);
                     if (conteo == info.distancia.Value)

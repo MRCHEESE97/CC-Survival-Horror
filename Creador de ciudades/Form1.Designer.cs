@@ -161,6 +161,7 @@
             this.ui_pegar_casas = new System.Windows.Forms.RadioButton();
             this.ui_checkbox_girar = new System.Windows.Forms.CheckBox();
             this.ui_groupbox_forma_casas = new System.Windows.Forms.GroupBox();
+            this.ui_deformacion_alterada = new System.Windows.Forms.CheckBox();
             this.ui_forma_casa_combinar = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_hexagonal = new System.Windows.Forms.RadioButton();
             this.ui_forma_casa_deformada_chaflan = new System.Windows.Forms.RadioButton();
@@ -711,7 +712,7 @@
             this.ui_min_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_alto_casa.TabIndex = 5;
             this.ui_min_alto_casa.Value = new decimal(new int[] {
-            15,
+            8,
             0,
             0,
             0});
@@ -749,7 +750,7 @@
             this.ui_min_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_casa.TabIndex = 2;
             this.ui_min_ancho_casa.Value = new decimal(new int[] {
-            15,
+            8,
             0,
             0,
             0});
@@ -1490,12 +1491,10 @@
             // ui_distribucion_alternable
             // 
             this.ui_distribucion_alternable.AutoSize = true;
-            this.ui_distribucion_alternable.Checked = true;
             this.ui_distribucion_alternable.Location = new System.Drawing.Point(19, 106);
             this.ui_distribucion_alternable.Name = "ui_distribucion_alternable";
             this.ui_distribucion_alternable.Size = new System.Drawing.Size(167, 21);
             this.ui_distribucion_alternable.TabIndex = 4;
-            this.ui_distribucion_alternable.TabStop = true;
             this.ui_distribucion_alternable.Text = "Alternar filas y columnas";
             this.ui_distribucion_alternable.UseVisualStyleBackColor = true;
             this.ui_distribucion_alternable.CheckedChanged += new System.EventHandler(this.ui_distribucion_alternable_CheckedChanged);
@@ -1503,10 +1502,12 @@
             // ui_distribucion_columnas
             // 
             this.ui_distribucion_columnas.AutoSize = true;
+            this.ui_distribucion_columnas.Checked = true;
             this.ui_distribucion_columnas.Location = new System.Drawing.Point(18, 52);
             this.ui_distribucion_columnas.Name = "ui_distribucion_columnas";
             this.ui_distribucion_columnas.Size = new System.Drawing.Size(77, 21);
             this.ui_distribucion_columnas.TabIndex = 2;
+            this.ui_distribucion_columnas.TabStop = true;
             this.ui_distribucion_columnas.Text = "Columnas";
             this.ui_distribucion_columnas.UseVisualStyleBackColor = true;
             // 
@@ -2008,6 +2009,7 @@
             // 
             // ui_groupbox_forma_casas
             // 
+            this.ui_groupbox_forma_casas.Controls.Add(this.ui_deformacion_alterada);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_combinar);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_hexagonal);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada_chaflan);
@@ -2017,7 +2019,7 @@
             this.ui_groupbox_forma_casas.Controls.Add(this.Probabilidad);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_rectangular);
-            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(3, 513);
+            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(3, 516);
             this.ui_groupbox_forma_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_forma_casas.Name = "ui_groupbox_forma_casas";
             this.ui_groupbox_forma_casas.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -2026,11 +2028,24 @@
             this.ui_groupbox_forma_casas.TabStop = false;
             this.ui_groupbox_forma_casas.Text = "Formas/casas";
             // 
+            // ui_deformacion_alterada
+            // 
+            this.ui_deformacion_alterada.AutoSize = true;
+            this.ui_deformacion_alterada.Checked = true;
+            this.ui_deformacion_alterada.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_deformacion_alterada.Location = new System.Drawing.Point(16, 81);
+            this.ui_deformacion_alterada.Name = "ui_deformacion_alterada";
+            this.ui_deformacion_alterada.Size = new System.Drawing.Size(147, 21);
+            this.ui_deformacion_alterada.TabIndex = 10;
+            this.ui_deformacion_alterada.Text = "Deformacion Alterada";
+            this.ui_deformacion_alterada.UseVisualStyleBackColor = true;
+            this.ui_deformacion_alterada.CheckedChanged += new System.EventHandler(this.ui_deformacion_alterada_CheckedChanged);
+            // 
             // ui_forma_casa_combinar
             // 
             this.ui_forma_casa_combinar.AutoSize = true;
             this.ui_forma_casa_combinar.Checked = true;
-            this.ui_forma_casa_combinar.Location = new System.Drawing.Point(241, 78);
+            this.ui_forma_casa_combinar.Location = new System.Drawing.Point(241, 107);
             this.ui_forma_casa_combinar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_forma_casa_combinar.Name = "ui_forma_casa_combinar";
             this.ui_forma_casa_combinar.Size = new System.Drawing.Size(119, 21);
@@ -2064,7 +2079,7 @@
             // Distancia
             // 
             this.Distancia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Distancia.Location = new System.Drawing.Point(16, 166);
+            this.Distancia.Location = new System.Drawing.Point(12, 200);
             this.Distancia.Minimum = 1;
             this.Distancia.Name = "Distancia";
             this.Distancia.Size = new System.Drawing.Size(212, 45);
@@ -2074,7 +2089,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(32, 146);
+            this.label18.Location = new System.Drawing.Point(28, 180);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(176, 17);
             this.label18.TabIndex = 5;
@@ -2083,16 +2098,16 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(32, 78);
+            this.label17.Location = new System.Drawing.Point(28, 112);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(191, 17);
+            this.label17.Size = new System.Drawing.Size(171, 17);
             this.label17.TabIndex = 4;
-            this.label17.Text = "Probabilidad de deformación (%)";
+            this.label17.Text = "Probabilidad de deformación ";
             // 
             // Probabilidad
             // 
             this.Probabilidad.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Probabilidad.Location = new System.Drawing.Point(17, 107);
+            this.Probabilidad.Location = new System.Drawing.Point(13, 141);
             this.Probabilidad.Minimum = 1;
             this.Probabilidad.Name = "Probabilidad";
             this.Probabilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -2703,6 +2718,7 @@
         private System.Windows.Forms.CheckBox ui_objetos_puerta_zotano;
         private System.Windows.Forms.CheckBox ui_objetos_ascensor;
         private System.Windows.Forms.CheckBox ui_objetos_escalera;
+        private System.Windows.Forms.CheckBox ui_deformacion_alterada;
     }
 }
 

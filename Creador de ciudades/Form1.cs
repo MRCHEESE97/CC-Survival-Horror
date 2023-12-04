@@ -1207,8 +1207,7 @@ namespace Creador_de_ciudades
             }
 
             MessageBox.Show("Elementos guardados.");
-
-               
+             
         }
 
 

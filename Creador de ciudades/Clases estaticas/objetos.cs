@@ -438,7 +438,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
             int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
-            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*20; //Veces que se puede instancia una habitacion de 3 metros
+            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*15; //Veces que se puede instancia una habitacion de 3 metros
             int cantidad_maxima = cantidad_limite; //azar.Next(cantidad_limite/2, cantidad_limite+2); 
 
             //Faltaria dividir por area 
@@ -447,7 +447,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             
             for (int i = 0; i < cantidad_maxima; i++)
             {  
-                Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 200, informacion.a.X, informacion.a.Y);
+                Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 100, informacion.a.X, informacion.a.Y);
 
                 int ancho_esta_div = 0;
                 int alto_esta_div = 0;
@@ -467,13 +467,15 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, informacion.grosor_pared, origen_division, 3, def,dis);
 
-                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 100);
-                List<Point> internos_verdes = Herramienta.obtener_coor_pixel_verde_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1+ancho_esta_div * 100), origen_division.Y + (1+alto_esta_div * 100)));
-                List<Point> internos_rojos = Herramienta.obtener_coor_pixel_rojos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1+ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
-                List<Point> internos_grises = Herramienta.obtener_coor_pixel_grises_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1 + ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
-                List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1 + ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
-                List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1 + ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
-                List<Point> internos_beige = Herramienta.obtener_coor_pixel_beige_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + (1 + ancho_esta_div * 100), origen_division.Y + (1 + alto_esta_div * 100)));
+                int error = 4;
+
+                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 10);
+                List<Point> internos_verdes = Herramienta.obtener_coor_pixel_verde_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error+ancho_esta_div) * 100), origen_division.Y + ((error +alto_esta_div) * 100)));
+                List<Point> internos_rojos = Herramienta.obtener_coor_pixel_rojos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error+ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+                List<Point> internos_grises = Herramienta.obtener_coor_pixel_grises_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+                List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+                List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+                List<Point> internos_beige = Herramienta.obtener_coor_pixel_beige_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 bool salir = false;
 
                 Parallel.For(0, div.Count - 1, (r, state) =>

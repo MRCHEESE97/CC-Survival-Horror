@@ -1193,7 +1193,7 @@ namespace Creador_de_ciudades
             if (dialog.ShowDialog() == DialogResult.OK)
             {
 
-                string path = dialog.FileName;
+                string path = System.IO.Path.GetDirectoryName(dialog.FileName);
 
                 for (int i = 0; i < TabControl.TabCount; i++)
                 {

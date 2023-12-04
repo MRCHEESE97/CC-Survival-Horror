@@ -690,7 +690,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             int ale1 = 2;
             int ale2 = 3;
 
-            // Se cambio el 20 de noviembre segun la arquitectura de la comisaria en RE2
+            // Se cambió el 20 de noviembre segun la arquitectura de la comisaria en RE2
 
             int decision = azar.Next(1, 3);
             if (decision == 1)

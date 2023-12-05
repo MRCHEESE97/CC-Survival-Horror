@@ -23,6 +23,7 @@
 
 
 
+using Aspose.Svg.ImageVectorization;
 using Creador_de_ciudades.Clases;
 using Creador_de_ciudades.Clases_estaticas;
 using SkiaSharp;
@@ -37,6 +38,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using static System.Windows.Forms.AxHost;
 
 
@@ -1213,18 +1215,60 @@ namespace Creador_de_ciudades
 
         private void emfToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < TabControl.TabCount; i++)
-            {
-                SaveFileDialog dialog = new SaveFileDialog();
-                dialog.Filter = "( *.emf) | *.emf";
-                dialog.FileName = "Planta " + i;
 
-                if (dialog.ShowDialog() == DialogResult.OK)
+            //for (int i = 0; i < TabControl.TabCount; i++)
+            //{
+            //    SaveFileDialog dialog = new SaveFileDialog();
+            //    dialog.Filter = "( *.emf) | *.emf";
+            //    dialog.FileName = "Planta " + i;
+
+            //    if (dialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];
+            //        nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Emf);
+            //    }
+            //}
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Title = "Seleccionar carpeta";
+            dialog.Filter = "( *.png) | *.png";
+            dialog.FileName = "NuevaCiudad";
+
+            // Initialize an instance of the ImageVectorizer class
+            var vectorizer = new ImageVectorizer
+            {
+                //optionally set configuration
+                Configuration =
+                        {
+			                //optionally set path builder
+                            PathBuilder = new BezierPathBuilder {
+			                //optionally set trace smoother
+                            TraceSmoother = new ImageTraceSmoother(1),
+                                ErrorThreshold =  30,
+                                MaxIterations = 50
+                            },
+                            ColorsLimit = 25,
+                            LineWidth = 3
+                        }
+            };
+
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+
+                string path = System.IO.Path.GetDirectoryName(dialog.FileName);
+                for (int i = 0; i < 4; i++)
                 {
-                    PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];
-                    nueva_imagen.Image.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Emf);
+
+                    String nombre_png = "Planta " + i.ToString() + ".png";
+                    nombre_png = Path.Combine(path, nombre_png);
+                    String nombre_svg = "Planta_" + i.ToString() + ".svg";
+                    nombre_svg = Path.Combine(path, nombre_svg);
+                    // Vectorize image from the specified file
+                    var document = vectorizer.Vectorize(nombre_png);
+                    // Save vectorized image as SVG file 
+                    document.Save(nombre_svg);
                 }
             }
+
         }
 
         private void ui_quitar_todo_Click(object sender, EventArgs e)

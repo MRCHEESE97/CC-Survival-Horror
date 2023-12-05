@@ -409,36 +409,12 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             int numLines = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma); // Número de líneas a dibujar
 
-            //for (int i = 0; i < numLines; i++)
-            //{
-            //    // Generar posiciones aleatorias para las líneas
-            //    int x1 = azar.Next(informacion.po.X, informacion.po.X + 100 * informacion.ancho_forma);
-            //    int y1 = azar.Next(informacion.po.Y, informacion.po.Y + 100 * informacion.alto_forma);
-            //    int x2 = azar.Next(informacion.po.X, informacion.po.X + 100 * informacion.ancho_forma);
-            //    int y2 = azar.Next(informacion.po.Y, informacion.po.Y + 100 * informacion.alto_forma);
-            //    List<Point> div = Herramienta.obtener_puntos_internos(informacion.po, informacion.ancho_forma, informacion.alto_forma, 10);
-            //    List<Point> internos_verdes = Herramienta.obtener_coor_pixel_verde_interior((Bitmap)pintura.Image, informacion.po, new Point(informacion.po.X + (informacion.ancho_forma * 100), informacion.po.Y + (informacion.alto_forma * 100)));
-
-
-            //    // Dibujar una línea horizontal o vertical
-            //    if (azar.Next(2) == 0)
-            //    {
-            //        //Linea horizontal
-            //        informacion.g.DrawLine(myPen, x1, y1, x2, y1);
-            //    }
-            //    else
-            //    {
-            //        // Línea vertical
-            //        informacion.g.DrawLine(myPen, x1, y1, x1, y2);
-            //    }
-            //}
-
-            //
+            int montar = azar.Next(1, 3);
 
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
             int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
-            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*15; //Veces que se puede instancia una habitacion de 3 metros
+            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*(10*montar); //Veces que se puede instancia una habitacion de 3 metros
             int cantidad_maxima = cantidad_limite; //azar.Next(cantidad_limite/2, cantidad_limite+2); 
 
             //Faltaria dividir por area 
@@ -476,6 +452,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_beige = Herramienta.obtener_coor_pixel_beige_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+                List<Point> internos_negros = Herramienta.obtener_coor_pixel_negro_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 bool salir = false;
 
                 Parallel.For(0, div.Count - 1, (r, state) =>
@@ -539,6 +516,30 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     continue;
                 }
+
+
+                //Desmontar*
+
+                if (montar == 2)
+                {
+                    Parallel.For(0, div.Count - 1, (r, state) =>
+                    {
+                        if (internos_negros.Contains(div[r]))
+                        {
+                            salir = true; //Existe interseccion
+                            state.Break();
+                        }
+                    });
+                    if (salir)
+                    {
+                        continue;
+                    }
+                }
+               
+                //**********
+
+
+
                 Parallel.For(0, div.Count - 1, (r, state) =>
                 {
                     if (internos_azules.Contains(div[r]))
@@ -547,7 +548,6 @@ namespace Creador_de_ciudades.Clases_estaticas
                         state.Break();
                     }
                 });
-
                 if (salir)
                 {
                     

@@ -296,7 +296,7 @@
             // 
             this.emfToolStripMenuItem.Name = "emfToolStripMenuItem";
             this.emfToolStripMenuItem.Size = new System.Drawing.Size(285, 26);
-            this.emfToolStripMenuItem.Text = "Emf";
+            this.emfToolStripMenuItem.Text = "Vectorizar ciudad";
             this.emfToolStripMenuItem.Click += new System.EventHandler(this.emfToolStripMenuItem_Click);
             // 
             // perfilesToolStripMenuItem
@@ -673,7 +673,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            20,
+            25,
             0,
             0,
             0});
@@ -693,7 +693,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            20,
+            25,
             0,
             0,
             0});
@@ -2392,15 +2392,15 @@
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(258, 65);
+            this.label34.Location = new System.Drawing.Point(230, 64);
             this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(13, 17);
+            this.label34.Size = new System.Drawing.Size(59, 17);
             this.label34.TabIndex = 4;
-            this.label34.Text = "s";
+            this.label34.Text = "Segundos";
             // 
             // ui_tiempo_espera
             // 
-            this.ui_tiempo_espera.Location = new System.Drawing.Point(192, 62);
+            this.ui_tiempo_espera.Location = new System.Drawing.Point(175, 62);
             this.ui_tiempo_espera.Maximum = new decimal(new int[] {
             3000,
             0,
@@ -2412,10 +2412,10 @@
             0,
             0});
             this.ui_tiempo_espera.Name = "ui_tiempo_espera";
-            this.ui_tiempo_espera.Size = new System.Drawing.Size(60, 27);
+            this.ui_tiempo_espera.Size = new System.Drawing.Size(46, 27);
             this.ui_tiempo_espera.TabIndex = 3;
             this.ui_tiempo_espera.Value = new decimal(new int[] {
-            3000,
+            300,
             0,
             0,
             0});

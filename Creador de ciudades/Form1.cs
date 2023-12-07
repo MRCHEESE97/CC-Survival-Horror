@@ -448,7 +448,7 @@ namespace Creador_de_ciudades
                 if (cronometro.ElapsedMilliseconds >= Convert.ToInt32( ui_tiempo_espera.Value) * 1000)
                 {
                     MessageBox.Show("Superó el tiempo limite ", "Operación cancelada",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    return;
+                    break;
                 }
             
 
@@ -1162,7 +1162,7 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
                 nuevo_lienzo.Dock = DockStyle.Fill;
 
-                Bitmap bmp = new Bitmap(ancho, alto);  //Aqui como segundo parametro se puede cambia el Format           
+                Bitmap bmp = new Bitmap(ancho, alto);  //Aqui como segundo parametro puedo cambiar el Format           
                 nuevo_lienzo.Image = bmp;
 
                 TabControl.TabPages.Add(nueva_pagina);                
@@ -1184,8 +1184,8 @@ namespace Creador_de_ciudades
         private void guardarCiudadComoCarpetaToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            //En las siguientes lineas recolecto las imagenes de los TabControls para guardarlas
-            
+            // para guardarlas En las siguientes lineas recolecto las imagenes de los TabControls
+
 
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Title = "Seleccionar carpeta";

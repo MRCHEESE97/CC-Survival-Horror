@@ -496,7 +496,7 @@
             this.ui_cantidad_pisos.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_pisos.TabIndex = 1;
             this.ui_cantidad_pisos.Value = new decimal(new int[] {
-            5,
+            6,
             0,
             0,
             0});
@@ -544,7 +544,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            40,
+            10,
             0,
             0,
             0});
@@ -673,7 +673,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            25,
+            40,
             0,
             0,
             0});
@@ -693,7 +693,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            25,
+            40,
             0,
             0,
             0});
@@ -712,7 +712,7 @@
             this.ui_min_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_alto_casa.TabIndex = 5;
             this.ui_min_alto_casa.Value = new decimal(new int[] {
-            8,
+            20,
             0,
             0,
             0});
@@ -750,7 +750,7 @@
             this.ui_min_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_casa.TabIndex = 2;
             this.ui_min_ancho_casa.Value = new decimal(new int[] {
-            8,
+            20,
             0,
             0,
             0});
@@ -912,22 +912,22 @@
             // ui_poblacion_objetos_alta
             // 
             this.ui_poblacion_objetos_alta.AutoSize = true;
+            this.ui_poblacion_objetos_alta.Checked = true;
             this.ui_poblacion_objetos_alta.Location = new System.Drawing.Point(11, 80);
             this.ui_poblacion_objetos_alta.Name = "ui_poblacion_objetos_alta";
             this.ui_poblacion_objetos_alta.Size = new System.Drawing.Size(103, 21);
             this.ui_poblacion_objetos_alta.TabIndex = 35;
+            this.ui_poblacion_objetos_alta.TabStop = true;
             this.ui_poblacion_objetos_alta.Text = "Poblacion alta";
             this.ui_poblacion_objetos_alta.UseVisualStyleBackColor = true;
             // 
             // ui_poblacion_objetos_media
             // 
             this.ui_poblacion_objetos_media.AutoSize = true;
-            this.ui_poblacion_objetos_media.Checked = true;
             this.ui_poblacion_objetos_media.Location = new System.Drawing.Point(11, 53);
             this.ui_poblacion_objetos_media.Name = "ui_poblacion_objetos_media";
             this.ui_poblacion_objetos_media.Size = new System.Drawing.Size(114, 21);
             this.ui_poblacion_objetos_media.TabIndex = 34;
-            this.ui_poblacion_objetos_media.TabStop = true;
             this.ui_poblacion_objetos_media.Text = "Poblacion media";
             this.ui_poblacion_objetos_media.UseVisualStyleBackColor = true;
             // 
@@ -1032,7 +1032,7 @@
             this.ui_pilar_prox_max.Location = new System.Drawing.Point(325, 85);
             this.ui_pilar_prox_max.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_pilar_prox_max.Maximum = new decimal(new int[] {
-            4,
+            10,
             0,
             0,
             0});
@@ -1045,7 +1045,7 @@
             this.ui_pilar_prox_max.Size = new System.Drawing.Size(54, 27);
             this.ui_pilar_prox_max.TabIndex = 26;
             this.ui_pilar_prox_max.Value = new decimal(new int[] {
-            4,
+            8,
             0,
             0,
             0});
@@ -1068,7 +1068,7 @@
             this.ui_pilar_prox_min.Size = new System.Drawing.Size(54, 27);
             this.ui_pilar_prox_min.TabIndex = 24;
             this.ui_pilar_prox_min.Value = new decimal(new int[] {
-            2,
+            3,
             0,
             0,
             0});
@@ -1213,9 +1213,9 @@
             this.label21.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label21.Location = new System.Drawing.Point(282, 22);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(79, 17);
+            this.label21.Size = new System.Drawing.Size(53, 17);
             this.label21.TabIndex = 14;
-            this.label21.Text = "Proximidad";
+            this.label21.Text = "Lejanía";
             // 
             // label9
             // 
@@ -1925,7 +1925,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            80,
+            70,
             0,
             0,
             0});
@@ -2211,12 +2211,10 @@
             // ui_solo_pares
             // 
             this.ui_solo_pares.AutoSize = true;
-            this.ui_solo_pares.Checked = true;
             this.ui_solo_pares.Location = new System.Drawing.Point(22, 86);
             this.ui_solo_pares.Name = "ui_solo_pares";
             this.ui_solo_pares.Size = new System.Drawing.Size(83, 21);
             this.ui_solo_pares.TabIndex = 8;
-            this.ui_solo_pares.TabStop = true;
             this.ui_solo_pares.Text = "Solo pares";
             this.ui_solo_pares.UseVisualStyleBackColor = true;
             // 
@@ -2246,6 +2244,8 @@
             // ui_quitar_calles
             // 
             this.ui_quitar_calles.AutoSize = true;
+            this.ui_quitar_calles.Checked = true;
+            this.ui_quitar_calles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_quitar_calles.Location = new System.Drawing.Point(12, 15);
             this.ui_quitar_calles.Name = "ui_quitar_calles";
             this.ui_quitar_calles.Size = new System.Drawing.Size(96, 21);
@@ -2400,7 +2400,7 @@
             // 
             // ui_tiempo_espera
             // 
-            this.ui_tiempo_espera.Location = new System.Drawing.Point(175, 62);
+            this.ui_tiempo_espera.Location = new System.Drawing.Point(169, 62);
             this.ui_tiempo_espera.Maximum = new decimal(new int[] {
             3000,
             0,
@@ -2412,10 +2412,10 @@
             0,
             0});
             this.ui_tiempo_espera.Name = "ui_tiempo_espera";
-            this.ui_tiempo_espera.Size = new System.Drawing.Size(46, 27);
+            this.ui_tiempo_espera.Size = new System.Drawing.Size(52, 27);
             this.ui_tiempo_espera.TabIndex = 3;
             this.ui_tiempo_espera.Value = new decimal(new int[] {
-            300,
+            2000,
             0,
             0,
             0});

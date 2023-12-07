@@ -108,7 +108,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                         {
                             if (datos.vano_ventana.Equals("ui_objetos_ventana_ale"))
                             {
-                                ventanas(datos, lienzo);
+                                ventanas_aleatorias(datos, lienzo);
                             }
                             else if (datos.vano_ventana.Equals("ui_objetos_ventana_binaria"))
                             {
@@ -121,10 +121,9 @@ namespace Creador_de_ciudades.Clases_estaticas
                             else if (datos.vano_ventana.Equals("ui_objetos_ventana_todos"))
                             {
                                 int s = azar.Next(0, 3);
-                                if (s == 0)
+                                if (s == 0 || s ==1 )
                                 { ventanas_binarias(datos, lienzo); }
-                                else if (s == 1)
-                                { ventanas_binarias(datos, lienzo); }
+                               
                                 else if (s == 2)
                                 { ventanas_totales(datos, lienzo); }
                             }
@@ -307,7 +306,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             }
         }
 
-        private static void ventanas(Info_forma informacion, PictureBox pintura)
+        private static void ventanas_aleatorias(Info_forma informacion, PictureBox pintura)
         {
 
             Pen ventana = new Pen(Color.Blue, informacion.grosor_pared);
@@ -316,10 +315,10 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)
             {
-                int x = azar.Next(0,2);
-                if (x == 0)
+                int x = azar.Next(0,6);
+                if (x != 1 )
                 { marcar.Add(false); }
-                else if (x == 1)
+                else //si es 1
                 { marcar.Add(true); }        
             }
 
@@ -409,12 +408,14 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             int numLines = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma); // Número de líneas a dibujar
 
-            int montar = azar.Next(1, 3);
+           
+            int mult = azar.Next(2,4);
 
+            
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
             int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
-            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*(10*montar); //Veces que se puede instancia una habitacion de 3 metros
+            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*(7*mult); //Veces que se puede instancia una habitacion de 3 metros
             int cantidad_maxima = cantidad_limite; //azar.Next(cantidad_limite/2, cantidad_limite+2); 
 
             //Faltaria dividir por area 
@@ -423,7 +424,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             
             for (int i = 0; i < cantidad_maxima; i++)
             {  
-                Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 100, informacion.a.X, informacion.a.Y);
+                Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 200, informacion.a.X, informacion.a.Y);
 
                 int ancho_esta_div = 0;
                 int alto_esta_div = 0;
@@ -445,15 +446,37 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 int error = 4;
 
-                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 10);
+                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 100);
                 List<Point> internos_verdes = Herramienta.obtener_coor_pixel_verde_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error+ancho_esta_div) * 100), origen_division.Y + ((error +alto_esta_div) * 100)));
                 List<Point> internos_rojos = Herramienta.obtener_coor_pixel_rojos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error+ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_grises = Herramienta.obtener_coor_pixel_grises_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_beige = Herramienta.obtener_coor_pixel_beige_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
-                List<Point> internos_negros = Herramienta.obtener_coor_pixel_negro_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+                //List<Point> internos_negros = Herramienta.obtener_coor_pixel_negro_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 bool salir = false;
+
+
+                ////Desmontar*
+
+                //if (montar == 1)
+                //{
+                //    Parallel.For(0, div.Count - 1, (r, state) =>
+                //    {
+                //        if (internos_negros.Contains(div[r]))
+                //        {
+                //            salir = true; //Existe interseccion
+                //            state.Break();
+                //        }
+                //    });
+                //    if (salir)
+                //    {
+                //        continue;
+                //    }
+                //}
+
+                ////**********
+
 
                 Parallel.For(0, div.Count - 1, (r, state) =>
                 {
@@ -518,25 +541,6 @@ namespace Creador_de_ciudades.Clases_estaticas
                 }
 
 
-                //Desmontar*
-
-                if (montar == 2)
-                {
-                    Parallel.For(0, div.Count - 1, (r, state) =>
-                    {
-                        if (internos_negros.Contains(div[r]))
-                        {
-                            salir = true; //Existe interseccion
-                            state.Break();
-                        }
-                    });
-                    if (salir)
-                    {
-                        continue;
-                    }
-                }
-               
-                //**********
 
 
 

@@ -155,6 +155,20 @@ namespace Creador_de_ciudades
                     anchos.Add(anchito);
                     altos.Add(altito);
                 }
+                else if(ui_normal.Checked)
+                {   
+                    // 11/12/2023
+                    int anchito = 0, altito = 0;
+                    do
+                    {
+                        anchito = azar.Next(Convert.ToInt32(ui_min_ancho_casa.Value), Convert.ToInt32(ui_max_ancho_casa.Value) + 1);
+                        altito = azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1);
+                    }
+                    while (Math.Abs(anchito - altito) <= ui_dis_anch_alt.Value);
+                    anchos.Add(anchito);
+                    altos.Add(altito);
+
+                }     
             }
 
 

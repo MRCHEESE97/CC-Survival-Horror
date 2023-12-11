@@ -164,26 +164,33 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 if (nombre_objeto.Equals("ui_objetos_escalera")) // siempre y todos los pisos 
                 {
-                    if (datos.ubicacion_pb)
+                    double cal_veces = Herramienta.retornar_mayor(datos.ancho_forma, datos.alto_forma) / 10;
+                    int veces = Convert.ToInt32(Math.Truncate(cal_veces));
+
+                    while (veces > 0)
                     {
-                       
-
-                        datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 100, datos.a.X, datos.a.Y); // el mismo origen
-
-                        // ajustar la ubicacion para no salir de la forma en planta baja 
-
-                        if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y <= datos.punto_medio.Y)   //der arriba
+                        if (datos.ubicacion_pb)
                         {
-                            datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
-                        }
-                        else if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y >= datos.punto_medio.Y)   //der abajo
-                        {
-                            datos.origen_esc.Y = datos.origen_esc.Y - (3 * 100);
-                            datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
-                        }
-                    }
 
-                    pozo_escalera(datos, lienzo);
+
+                            datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 100, datos.a.X, datos.a.Y); // el mismo origen
+
+                            // ajustar la ubicacion para no salir de la forma en planta baja 
+
+                            if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y <= datos.punto_medio.Y)   //der arriba
+                            {
+                                datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
+                            }
+                            else if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y >= datos.punto_medio.Y)   //der abajo
+                            {
+                                datos.origen_esc.Y = datos.origen_esc.Y - (3 * 100);
+                                datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
+                            }
+                        }
+
+                        pozo_escalera(datos, lienzo);
+                        veces = veces - 1;
+                    } 
 
                 }
 
@@ -415,7 +422,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
 
             int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)/2; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
-            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*(7*mult); //Veces que se puede instancia una habitacion de 3 metros
+            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma)*(5*mult); //Veces que se puede instancia una habitacion de 3 metros
             int cantidad_maxima = cantidad_limite; //azar.Next(cantidad_limite/2, cantidad_limite+2); 
 
             //Faltaria dividir por area 

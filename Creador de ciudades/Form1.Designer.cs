@@ -102,7 +102,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.ui_objetos_elevador = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.ui_pilar_round_med_min = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
@@ -125,6 +124,7 @@
             this.ui_distribucion_filas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_aleatoria = new System.Windows.Forms.RadioButton();
             this.ui_groupBox_calles = new System.Windows.Forms.GroupBox();
+            this.ui_calle_incompleta_diags = new System.Windows.Forms.RadioButton();
             this.ui_calle_incompleta_v2 = new System.Windows.Forms.RadioButton();
             this.ui_calle_diagonal = new System.Windows.Forms.CheckBox();
             this.ui_max_ancho_ver = new System.Windows.Forms.NumericUpDown();
@@ -173,6 +173,9 @@
             this.ui_forma_casa_rectangular = new System.Windows.Forms.RadioButton();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label50 = new System.Windows.Forms.Label();
+            this.ui_dis_anch_alt = new System.Windows.Forms.NumericUpDown();
+            this.ui_normal = new System.Windows.Forms.RadioButton();
             this.ui_multiplo_valor = new System.Windows.Forms.NumericUpDown();
             this.ui_multiplo_de = new System.Windows.Forms.RadioButton();
             this.ui_solo_impares = new System.Windows.Forms.RadioButton();
@@ -197,9 +200,6 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ui_normal = new System.Windows.Forms.RadioButton();
-            this.ui_dis_anch_alt = new System.Windows.Forms.NumericUpDown();
-            this.label50 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -246,6 +246,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.Probabilidad)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_dis_anch_alt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).BeginInit();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -255,7 +256,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_dis_anch_alt)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -548,7 +548,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -677,7 +677,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            40,
+            20,
             0,
             0,
             0});
@@ -697,7 +697,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            40,
+            20,
             0,
             0,
             0});
@@ -716,7 +716,7 @@
             this.ui_min_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_alto_casa.TabIndex = 5;
             this.ui_min_alto_casa.Value = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});
@@ -754,7 +754,7 @@
             this.ui_min_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_casa.TabIndex = 2;
             this.ui_min_ancho_casa.Value = new decimal(new int[] {
-            20,
+            10,
             0,
             0,
             0});
@@ -816,7 +816,6 @@
             this.ui_groupbox_objetos.Controls.Add(this.label21);
             this.ui_groupbox_objetos.Controls.Add(this.label9);
             this.ui_groupbox_objetos.Controls.Add(this.label20);
-            this.ui_groupbox_objetos.Controls.Add(this.ui_objetos_elevador);
             this.ui_groupbox_objetos.Controls.Add(this.label14);
             this.ui_groupbox_objetos.Controls.Add(this.ui_pilar_round_med_min);
             this.ui_groupbox_objetos.Controls.Add(this.label13);
@@ -1240,19 +1239,6 @@
             this.label20.TabIndex = 13;
             this.label20.Text = "Medidas";
             // 
-            // ui_objetos_elevador
-            // 
-            this.ui_objetos_elevador.AutoSize = true;
-            this.ui_objetos_elevador.Checked = true;
-            this.ui_objetos_elevador.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ui_objetos_elevador.Location = new System.Drawing.Point(11, 201);
-            this.ui_objetos_elevador.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_objetos_elevador.Name = "ui_objetos_elevador";
-            this.ui_objetos_elevador.Size = new System.Drawing.Size(73, 21);
-            this.ui_objetos_elevador.TabIndex = 7;
-            this.ui_objetos_elevador.Text = "Elevador";
-            this.ui_objetos_elevador.UseVisualStyleBackColor = true;
-            // 
             // label14
             // 
             this.label14.AutoSize = true;
@@ -1537,6 +1523,7 @@
             // 
             // ui_groupBox_calles
             // 
+            this.ui_groupBox_calles.Controls.Add(this.ui_calle_incompleta_diags);
             this.ui_groupBox_calles.Controls.Add(this.ui_calle_incompleta_v2);
             this.ui_groupBox_calles.Controls.Add(this.ui_calle_diagonal);
             this.ui_groupBox_calles.Controls.Add(this.ui_max_ancho_ver);
@@ -1557,20 +1544,30 @@
             this.ui_groupBox_calles.Controls.Add(this.groupBox8);
             this.ui_groupBox_calles.Location = new System.Drawing.Point(6, 245);
             this.ui_groupBox_calles.Name = "ui_groupBox_calles";
-            this.ui_groupBox_calles.Size = new System.Drawing.Size(399, 266);
+            this.ui_groupBox_calles.Size = new System.Drawing.Size(399, 297);
             this.ui_groupBox_calles.TabIndex = 15;
             this.ui_groupBox_calles.TabStop = false;
             this.ui_groupBox_calles.Text = "Red de calles (En desarrollo)";
             // 
+            // ui_calle_incompleta_diags
+            // 
+            this.ui_calle_incompleta_diags.AutoSize = true;
+            this.ui_calle_incompleta_diags.Checked = true;
+            this.ui_calle_incompleta_diags.Location = new System.Drawing.Point(6, 97);
+            this.ui_calle_incompleta_diags.Name = "ui_calle_incompleta_diags";
+            this.ui_calle_incompleta_diags.Size = new System.Drawing.Size(170, 21);
+            this.ui_calle_incompleta_diags.TabIndex = 48;
+            this.ui_calle_incompleta_diags.TabStop = true;
+            this.ui_calle_incompleta_diags.Text = "Cuadricula inc... V2 diags";
+            this.ui_calle_incompleta_diags.UseVisualStyleBackColor = true;
+            // 
             // ui_calle_incompleta_v2
             // 
             this.ui_calle_incompleta_v2.AutoSize = true;
-            this.ui_calle_incompleta_v2.Checked = true;
             this.ui_calle_incompleta_v2.Location = new System.Drawing.Point(6, 70);
             this.ui_calle_incompleta_v2.Name = "ui_calle_incompleta_v2";
             this.ui_calle_incompleta_v2.Size = new System.Drawing.Size(169, 21);
             this.ui_calle_incompleta_v2.TabIndex = 47;
-            this.ui_calle_incompleta_v2.TabStop = true;
             this.ui_calle_incompleta_v2.Text = "Cuadricula incompleta V2";
             this.ui_calle_incompleta_v2.UseVisualStyleBackColor = true;
             // 
@@ -1591,7 +1588,7 @@
             0,
             0,
             0});
-            this.ui_max_ancho_ver.Location = new System.Drawing.Point(284, 225);
+            this.ui_max_ancho_ver.Location = new System.Drawing.Point(284, 258);
             this.ui_max_ancho_ver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_max_ancho_ver.Maximum = new decimal(new int[] {
             20,
@@ -1614,7 +1611,7 @@
             // 
             // ui_max_ancho_calle
             // 
-            this.ui_max_ancho_calle.Location = new System.Drawing.Point(284, 192);
+            this.ui_max_ancho_calle.Location = new System.Drawing.Point(284, 225);
             this.ui_max_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_max_ancho_calle.Maximum = new decimal(new int[] {
             20,
@@ -1642,7 +1639,7 @@
             0,
             0,
             0});
-            this.ui_min_ancho_ver.Location = new System.Drawing.Point(174, 223);
+            this.ui_min_ancho_ver.Location = new System.Drawing.Point(174, 256);
             this.ui_min_ancho_ver.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_min_ancho_ver.Maximum = new decimal(new int[] {
             4,
@@ -1665,7 +1662,7 @@
             // 
             // ui_min_ancho_calle
             // 
-            this.ui_min_ancho_calle.Location = new System.Drawing.Point(174, 192);
+            this.ui_min_ancho_calle.Location = new System.Drawing.Point(174, 225);
             this.ui_min_ancho_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_min_ancho_calle.Maximum = new decimal(new int[] {
             10,
@@ -1690,7 +1687,7 @@
             // 
             this.label40.AutoSize = true;
             this.label40.ForeColor = System.Drawing.SystemColors.AppWorkspace;
-            this.label40.Location = new System.Drawing.Point(22, 139);
+            this.label40.Location = new System.Drawing.Point(22, 182);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(343, 17);
             this.label40.TabIndex = 39;
@@ -1699,7 +1696,7 @@
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(32, 225);
+            this.label38.Location = new System.Drawing.Point(32, 258);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(111, 17);
             this.label38.TabIndex = 19;
@@ -1719,7 +1716,7 @@
             // 
             this.label36.AutoSize = true;
             this.label36.Font = new System.Drawing.Font("MV Boli", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label36.Location = new System.Drawing.Point(281, 171);
+            this.label36.Location = new System.Drawing.Point(281, 204);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(56, 17);
             this.label36.TabIndex = 14;
@@ -1728,7 +1725,7 @@
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(32, 194);
+            this.label35.Location = new System.Drawing.Point(32, 227);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(98, 17);
             this.label35.TabIndex = 17;
@@ -1737,7 +1734,7 @@
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(178, 171);
+            this.label37.Location = new System.Drawing.Point(178, 204);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(48, 17);
             this.label37.TabIndex = 13;
@@ -1746,7 +1743,7 @@
             // ui_calle_callejones
             // 
             this.ui_calle_callejones.AutoSize = true;
-            this.ui_calle_callejones.Location = new System.Drawing.Point(6, 121);
+            this.ui_calle_callejones.Location = new System.Drawing.Point(6, 151);
             this.ui_calle_callejones.Name = "ui_calle_callejones";
             this.ui_calle_callejones.Size = new System.Drawing.Size(150, 21);
             this.ui_calle_callejones.TabIndex = 16;
@@ -1756,7 +1753,7 @@
             // ui_calle_curvilineal
             // 
             this.ui_calle_curvilineal.AutoSize = true;
-            this.ui_calle_curvilineal.Location = new System.Drawing.Point(6, 94);
+            this.ui_calle_curvilineal.Location = new System.Drawing.Point(6, 124);
             this.ui_calle_curvilineal.Name = "ui_calle_curvilineal";
             this.ui_calle_curvilineal.Size = new System.Drawing.Size(82, 21);
             this.ui_calle_curvilineal.TabIndex = 15;
@@ -2023,7 +2020,7 @@
             this.ui_groupbox_forma_casas.Controls.Add(this.Probabilidad);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_deformada);
             this.ui_groupbox_forma_casas.Controls.Add(this.ui_forma_casa_rectangular);
-            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(3, 516);
+            this.ui_groupbox_forma_casas.Location = new System.Drawing.Point(3, 549);
             this.ui_groupbox_forma_casas.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_groupbox_forma_casas.Name = "ui_groupbox_forma_casas";
             this.ui_groupbox_forma_casas.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -2171,6 +2168,42 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Filtro de medidas";
             // 
+            // label50
+            // 
+            this.label50.AutoSize = true;
+            this.label50.Location = new System.Drawing.Point(62, 146);
+            this.label50.Name = "label50";
+            this.label50.Size = new System.Drawing.Size(87, 17);
+            this.label50.TabIndex = 17;
+            this.label50.Text = "Min Dif a x b";
+            // 
+            // ui_dis_anch_alt
+            // 
+            this.ui_dis_anch_alt.Location = new System.Drawing.Point(21, 142);
+            this.ui_dis_anch_alt.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.ui_dis_anch_alt.Name = "ui_dis_anch_alt";
+            this.ui_dis_anch_alt.Size = new System.Drawing.Size(41, 27);
+            this.ui_dis_anch_alt.TabIndex = 16;
+            this.ui_dis_anch_alt.Value = new decimal(new int[] {
+            15,
+            0,
+            0,
+            0});
+            // 
+            // ui_normal
+            // 
+            this.ui_normal.AutoSize = true;
+            this.ui_normal.Location = new System.Drawing.Point(21, 114);
+            this.ui_normal.Name = "ui_normal";
+            this.ui_normal.Size = new System.Drawing.Size(65, 21);
+            this.ui_normal.TabIndex = 15;
+            this.ui_normal.Text = "Normal";
+            this.ui_normal.UseVisualStyleBackColor = true;
+            // 
             // ui_multiplo_valor
             // 
             this.ui_multiplo_valor.Increment = new decimal(new int[] {
@@ -2211,17 +2244,18 @@
             this.ui_solo_impares.Name = "ui_solo_impares";
             this.ui_solo_impares.Size = new System.Drawing.Size(96, 21);
             this.ui_solo_impares.TabIndex = 9;
-            this.ui_solo_impares.TabStop = true;
             this.ui_solo_impares.Text = "Solo impares";
             this.ui_solo_impares.UseVisualStyleBackColor = true;
             // 
             // ui_solo_pares
             // 
             this.ui_solo_pares.AutoSize = true;
+            this.ui_solo_pares.Checked = true;
             this.ui_solo_pares.Location = new System.Drawing.Point(21, 67);
             this.ui_solo_pares.Name = "ui_solo_pares";
             this.ui_solo_pares.Size = new System.Drawing.Size(83, 21);
             this.ui_solo_pares.TabIndex = 8;
+            this.ui_solo_pares.TabStop = true;
             this.ui_solo_pares.Text = "Solo pares";
             this.ui_solo_pares.UseVisualStyleBackColor = true;
             // 
@@ -2251,8 +2285,6 @@
             // ui_quitar_calles
             // 
             this.ui_quitar_calles.AutoSize = true;
-            this.ui_quitar_calles.Checked = true;
-            this.ui_quitar_calles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_quitar_calles.Location = new System.Drawing.Point(12, 15);
             this.ui_quitar_calles.Name = "ui_quitar_calles";
             this.ui_quitar_calles.Size = new System.Drawing.Size(96, 21);
@@ -2460,44 +2492,6 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // ui_normal
-            // 
-            this.ui_normal.AutoSize = true;
-            this.ui_normal.Checked = true;
-            this.ui_normal.Location = new System.Drawing.Point(21, 114);
-            this.ui_normal.Name = "ui_normal";
-            this.ui_normal.Size = new System.Drawing.Size(65, 21);
-            this.ui_normal.TabIndex = 15;
-            this.ui_normal.TabStop = true;
-            this.ui_normal.Text = "Normal";
-            this.ui_normal.UseVisualStyleBackColor = true;
-            // 
-            // ui_dis_anch_alt
-            // 
-            this.ui_dis_anch_alt.Location = new System.Drawing.Point(21, 142);
-            this.ui_dis_anch_alt.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.ui_dis_anch_alt.Name = "ui_dis_anch_alt";
-            this.ui_dis_anch_alt.Size = new System.Drawing.Size(41, 27);
-            this.ui_dis_anch_alt.TabIndex = 16;
-            this.ui_dis_anch_alt.Value = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            // 
-            // label50
-            // 
-            this.label50.AutoSize = true;
-            this.label50.Location = new System.Drawing.Point(62, 146);
-            this.label50.Name = "label50";
-            this.label50.Size = new System.Drawing.Size(87, 17);
-            this.label50.TabIndex = 17;
-            this.label50.Text = "Min Dif a x b";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2578,6 +2572,7 @@
             this.tabPage2.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_dis_anch_alt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).EndInit();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
@@ -2589,7 +2584,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_dis_anch_alt)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2637,7 +2631,6 @@
         private System.Windows.Forms.NumericUpDown ui_pilar_round_med_min;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.NumericUpDown ui_pilar_cubico_med_min;
-        private System.Windows.Forms.CheckBox ui_objetos_elevador;
         private System.Windows.Forms.TabControl tabControlProp;
         private System.Windows.Forms.TabPage tabcontrol_propiedades;
         private System.Windows.Forms.TabPage tabPage3;
@@ -2768,6 +2761,7 @@
         private System.Windows.Forms.Label label50;
         private System.Windows.Forms.NumericUpDown ui_dis_anch_alt;
         private System.Windows.Forms.RadioButton ui_normal;
+        private System.Windows.Forms.RadioButton ui_calle_incompleta_diags;
     }
 }
 

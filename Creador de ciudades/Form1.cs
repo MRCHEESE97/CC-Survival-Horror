@@ -326,7 +326,7 @@ namespace Creador_de_ciudades
                                 ini = new Point(azar.Next(0, ancho_lienzo), y + desplz_diagonal[desplz_diagonal.Count - 1 ].X);
                                 fin = new Point(azar.Next(0, ancho_lienzo), y + desplz_diagonal[desplz_diagonal.Count - 1].Y);
 
-                            } while (Math.Abs(ini.X - fin.X)<dist_entre_cll * 2);
+                               } while (Math.Abs(ini.X - fin.X)<dist_entre_cll * 2);
 
                             lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), ini, fin));
                         }
@@ -363,6 +363,103 @@ namespace Creador_de_ciudades
                             //fondo.DrawLine(dash_street, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
                             primer_nivel.Refresh();
                         }
+                    }
+                    else if (ui_calle_incompleta_diags.Checked == true)
+                    {
+                        //20/12/2023
+                       
+                        //FILAS
+                        for (int y = dist_entre_cll; y <= alto_lienzo; y += dist_entre_cll)
+                        {
+                            int ancho_calle = 0;
+                            int ancho_vereda = 0;
+                            do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
+                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
+                            if (ui_autoajustar_dist_calles.Checked == false)
+                            {
+                                dist_entre_cll = (Herramienta.cambiar_distancia_calle((int)ui_espacio_calles_minimo.Value, (int)ui_espacio_calles_maximo.Value)) * 200;
+                            }
+
+
+                            for (int x = dist_entre_cll; x <= ancho_lienzo; x += dist_entre_cll)
+                            {
+                                int poblacion = 70;
+                                int numerin = azar.Next(0, 99);
+                                if (numerin <= poblacion)
+                                {
+                                    int poblacion_diags = 30;
+                                    int numerin_Az = azar.Next(0, 99);
+
+                                    if (numerin_Az <= poblacion_diags) //30% probabilidad de calle diagonal
+                                    {
+                   
+                                        Point ini, fin;
+
+                                        if (azar.Next(0, 2) == 1)
+                                        {
+                                            ini = new Point(x + ancho_calle * 40 - ( (dist_entre_cll) + (ancho_calle * 100) / 2), y);
+                                            fin = new Point(x - ancho_calle * 75, y - dist_entre_cll);
+                                        }
+                                        else
+                                        {
+                                            ini = new Point(x + ancho_calle * 75 - ( (dist_entre_cll) + (ancho_calle * 100) / 2), y - dist_entre_cll);
+                                            fin = new Point(x - ancho_calle * 40 + (ancho_calle * 100) / 2, y );
+                                        }
+
+                                      
+
+                                      //longitud máxima 
+                                        lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), ini, fin));
+                                    }
+                                    else
+                                    {
+                                        lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x - (100 + (dist_entre_cll) + (ancho_calle * 100) / 2), y), new Point(x + 200 + (ancho_calle * 100) / 2, y)));
+                                    }
+                                                                                                       
+                                }
+                            }
+                        }
+                        //COLUMNAS
+                        for (int x = dist_entre_cll; x <= ancho_lienzo; x += dist_entre_cll)
+                        {
+                            int ancho_calle = 0;
+                            int ancho_vereda = 0;
+                            do { ancho_calle = azar.Next(Convert.ToInt32(ui_min_ancho_calle.Value), Convert.ToInt32(ui_max_ancho_calle.Value) + 1); } while (ancho_calle % 2 != 0);
+                            do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
+
+                            if (ui_autoajustar_dist_calles.Checked == false)
+                            {
+                                dist_entre_cll = (Herramienta.cambiar_distancia_calle((int)ui_espacio_calles_minimo.Value, (int)ui_espacio_calles_maximo.Value)) * 100;
+                            }
+
+                            for (int y = dist_entre_cll; y <= alto_lienzo; y += dist_entre_cll)
+                            {
+                                int poblacion = 70;
+                                int numerin = azar.Next(0, 99);
+                                if (numerin <= poblacion)
+                                {
+                                    lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x, y - (100 + (dist_entre_cll) + (ancho_calle * 100) / 2)), new Point(x, y + 200 + (ancho_calle * 100) / 2)));
+                                }
+                            }
+                        }
+
+                        //Se dibujan las veredas (Calle base)
+
+                        for (int i = 0; i < lista_comp_calles.Count; i++)
+                        {
+                            fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                        }
+
+                        //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de las lineas blancas"
+                        lista_puntos_calles = Herramienta.obtener_coor_pixel_blancos((Bitmap)primer_nivel.Image);
+
+                        //Se dibujan las calles
+                        for (int i = 0; i < lista_comp_calles.Count; i++)
+                        {
+
+                            fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                        }
+                        primer_nivel.Refresh();
                     }
                     else if (ui_calle_incompleta_v2.Checked == true)
                     {
@@ -431,6 +528,7 @@ namespace Creador_de_ciudades
                         }
                         primer_nivel.Refresh();
                     }
+                   
                     else if (ui_calle_curvilineal.Checked == true)
                     {
 
@@ -725,19 +823,19 @@ namespace Creador_de_ciudades
                     //nueva_casa.area_post();
                     lista_casas.Add(nueva_casa);
 
-                    if (ui_objetos_elevador.Checked == true)
-                    {
-                        //Valida que el elevador este dentro del espacio de la forma
-                        bool encontrado = false;
-                        do
-                        {
-                            nueva_casa.origen_elevador = Herramienta.seleccionar_punto_cuadricula(nueva_casa.po.X + nueva_casa.ancho_forma * 100, nueva_casa.po.Y + nueva_casa.alto_forma * 100, 100, nueva_casa.po.X, nueva_casa.po.Y);
-                            nueva_casa.espacio_elevador = new Rectangle(nueva_casa.origen_elevador.X, nueva_casa.origen_elevador.Y, 2 * 100, 2 * 100);
-                            Rectangle resultado = Rectangle.Intersect(nueva_casa.espacio_elevador, nueva_casa.espacio_forma);
-                            if (resultado == nueva_casa.espacio_elevador)
-                            { encontrado = true; }
-                        } while (encontrado == false);
-                    }
+                    //if (ui_objetos_elevador.Checked == true)
+                    //{
+                    //    //Valida que el elevador este dentro del espacio de la forma
+                    //    bool encontrado = false;
+                    //    do
+                    //    {
+                    //        nueva_casa.origen_elevador = Herramienta.seleccionar_punto_cuadricula(nueva_casa.po.X + nueva_casa.ancho_forma * 100, nueva_casa.po.Y + nueva_casa.alto_forma * 100, 100, nueva_casa.po.X, nueva_casa.po.Y);
+                    //        nueva_casa.espacio_elevador = new Rectangle(nueva_casa.origen_elevador.X, nueva_casa.origen_elevador.Y, 2 * 100, 2 * 100);
+                    //        Rectangle resultado = Rectangle.Intersect(nueva_casa.espacio_elevador, nueva_casa.espacio_forma);
+                    //        if (resultado == nueva_casa.espacio_elevador)
+                    //        { encontrado = true; }
+                    //    } while (encontrado == false);
+                    //}
 
                 }
             }
@@ -919,7 +1017,7 @@ namespace Creador_de_ciudades
                 }
                 //Actualización del progress bar #1
 
-                barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
+                //barra.Value = (int)cronometro_proceso.Elapsed.TotalSeconds;
 
             }
 
@@ -1089,7 +1187,7 @@ namespace Creador_de_ciudades
                                     superposicion_alternable(recorrer, i); ;
                                 }
                                 break;
-                            //case 4: //superposicion ascendente no lo considero coherente y solo lo es para la combinacion
+                            //case 4: //superposicion ascendente... no lo considero coherente y solo lo es para la combinacion
                             //    if (ui_quitar_algunos_pisos.Checked)
                             //    {
                             //        if (lista_casas[recorrer].pisos_reales > 0)

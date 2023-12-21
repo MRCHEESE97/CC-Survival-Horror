@@ -73,8 +73,11 @@ namespace Creador_de_ciudades.Clases
         public int Lado_asc;
         public bool def_alt;
 
+        //Si estas variables son inestables es porque están fuera 
+
         public Point origen_asc = new Point();
         public Point origen_esc = new Point();
+        public Point origen_esc_2 = new Point();
 
 
 

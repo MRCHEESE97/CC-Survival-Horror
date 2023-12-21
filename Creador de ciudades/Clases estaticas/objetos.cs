@@ -167,28 +167,29 @@ namespace Creador_de_ciudades.Clases_estaticas
                     double cal_veces = Herramienta.retornar_mayor(datos.ancho_forma, datos.alto_forma) / 10;
                     int veces = Convert.ToInt32(Math.Truncate(cal_veces));
 
+                   
+                    if (datos.ubicacion_pb)
+                    {
+
+
+                        datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 10, datos.a.X, datos.a.Y); // el mismo origen
+                        datos.origen_esc_2 = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 10, datos.a.X, datos.a.Y); // el mismo origen
+                        // ajustar la ubicacion para no salir de la forma en planta baja 
+
+                        if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y <= datos.punto_medio.Y)   //der arriba
+                        {
+                            datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
+                        }
+                        else if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y >= datos.punto_medio.Y)   //der abajo
+                        {
+                            datos.origen_esc.Y = datos.origen_esc.Y - (3 * 100);
+                            datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
+                        }
+                    }
+
                     while (veces > 0)
                     {
-                        if (datos.ubicacion_pb)
-                        {
-
-
-                            datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 100, datos.a.X, datos.a.Y); // el mismo origen
-
-                            // ajustar la ubicacion para no salir de la forma en planta baja 
-
-                            if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y <= datos.punto_medio.Y)   //der arriba
-                            {
-                                datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
-                            }
-                            else if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y >= datos.punto_medio.Y)   //der abajo
-                            {
-                                datos.origen_esc.Y = datos.origen_esc.Y - (3 * 100);
-                                datos.origen_esc.X = datos.origen_esc.X - (3 * 100);
-                            }
-                        }
-
-                        pozo_escalera(datos, lienzo);
+                        pozo_escalera(datos, lienzo,veces);
                         veces = veces - 1;
                     } 
 
@@ -690,11 +691,20 @@ namespace Creador_de_ciudades.Clases_estaticas
             }
 
         }
-        private static void pozo_escalera(Info_forma informacion, PictureBox pintura)
+        private static void pozo_escalera(Info_forma informacion, PictureBox pintura, int c)
         {
             //Se dibuja la pared
             Pen borde = new Pen(Color.Black, informacion.grosor_pared);
-            Point origen_zotano = informacion.origen_esc;
+            Point origen = new Point();
+            if (c>1)
+            {
+                origen = informacion.origen_esc;
+            }
+            else
+            {
+                origen = informacion.origen_esc_2;
+            }
+           
             SolidBrush Transparencia = new SolidBrush(Color.DarkGreen);
             List<Point> rectangulo = new List<Point>();
 
@@ -703,31 +713,31 @@ namespace Creador_de_ciudades.Clases_estaticas
             int ale1 = 2;
             int ale2 = 3;
 
-            // Se cambió el 20 de noviembre segun la arquitectura de la comisaria en RE2
+            // Se cambió el 20 de noviembre similar a la arquitectura de la comisaria en RE2
 
             int decision = azar.Next(1, 3);
             if (decision == 1)
             {
 
                 // Se usan 4 listas para cada lado
-              lado_superior = Herramienta.calcular_lado(origen_zotano, ale2, "x");
-              lado_inferior = Herramienta.calcular_lado(new Point(origen_zotano.X, origen_zotano.Y + ale1 * 100), ale2, "x");
+              lado_superior = Herramienta.calcular_lado(origen, ale2, "x");
+              lado_inferior = Herramienta.calcular_lado(new Point(origen.X, origen.Y + ale1 * 100), ale2, "x");
 
 
-              lado_izquierdo = Herramienta.calcular_lado(origen_zotano, ale1, "y");
-              lado_derecho = Herramienta.calcular_lado(new Point(origen_zotano.X + ale2 * 100, origen_zotano.Y), ale1, "y");
+              lado_izquierdo = Herramienta.calcular_lado(origen, ale1, "y");
+              lado_derecho = Herramienta.calcular_lado(new Point(origen.X + ale2 * 100, origen.Y), ale1, "y");
             }
             else 
             
             {
 
                 // Se usan 4 listas para cada lado
-               lado_superior = Herramienta.calcular_lado(origen_zotano, ale1, "x");
-               lado_inferior = Herramienta.calcular_lado(new Point(origen_zotano.X, origen_zotano.Y + ale2 * 100), ale1, "x");
+               lado_superior = Herramienta.calcular_lado(origen, ale1, "x");
+               lado_inferior = Herramienta.calcular_lado(new Point(origen.X, origen.Y + ale2 * 100), ale1, "x");
 
 
-               lado_izquierdo = Herramienta.calcular_lado(origen_zotano, ale2, "y");
-               lado_derecho = Herramienta.calcular_lado(new Point(origen_zotano.X + ale1 * 100, origen_zotano.Y), ale2, "y");
+               lado_izquierdo = Herramienta.calcular_lado(origen, ale2, "y");
+               lado_derecho = Herramienta.calcular_lado(new Point(origen.X + ale1 * 100, origen.Y), ale2, "y");
 
             }
 

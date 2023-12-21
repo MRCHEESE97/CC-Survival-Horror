@@ -258,7 +258,7 @@ namespace Creador_de_ciudades
                     }
                     else
                     {
-                        dist_entre_cll = Convert.ToInt32(Herramienta.retornar_mayor((int)ui_max_ancho_casa.Value, (int)ui_max_alto_casa.Value)) * 100;
+                        dist_entre_cll = Convert.ToInt32(Herramienta.retornar_mayor((int)ui_max_ancho_casa.Value, (int)ui_max_alto_casa.Value)) * 200;
                     }
 
 
@@ -377,7 +377,7 @@ namespace Creador_de_ciudades
                             do { ancho_vereda = azar.Next(Convert.ToInt32(ui_min_ancho_ver.Value), Convert.ToInt32(ui_max_ancho_ver.Value) + 1) * 2; } while (ancho_vereda % 2 != 0);
                             if (ui_autoajustar_dist_calles.Checked == false)
                             {
-                                dist_entre_cll = (Herramienta.cambiar_distancia_calle((int)ui_espacio_calles_minimo.Value, (int)ui_espacio_calles_maximo.Value)) * 200;
+                                dist_entre_cll = (Herramienta.cambiar_distancia_calle((int)ui_espacio_calles_minimo.Value, (int)ui_espacio_calles_maximo.Value)) * 100;
                             }
 
 

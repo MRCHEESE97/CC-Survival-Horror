@@ -1492,22 +1492,22 @@
             // ui_distribucion_columnas
             // 
             this.ui_distribucion_columnas.AutoSize = true;
-            this.ui_distribucion_columnas.Checked = true;
             this.ui_distribucion_columnas.Location = new System.Drawing.Point(18, 52);
             this.ui_distribucion_columnas.Name = "ui_distribucion_columnas";
             this.ui_distribucion_columnas.Size = new System.Drawing.Size(77, 21);
             this.ui_distribucion_columnas.TabIndex = 2;
-            this.ui_distribucion_columnas.TabStop = true;
             this.ui_distribucion_columnas.Text = "Columnas";
             this.ui_distribucion_columnas.UseVisualStyleBackColor = true;
             // 
             // ui_distribucion_filas
             // 
             this.ui_distribucion_filas.AutoSize = true;
+            this.ui_distribucion_filas.Checked = true;
             this.ui_distribucion_filas.Location = new System.Drawing.Point(19, 79);
             this.ui_distribucion_filas.Name = "ui_distribucion_filas";
             this.ui_distribucion_filas.Size = new System.Drawing.Size(50, 21);
             this.ui_distribucion_filas.TabIndex = 1;
+            this.ui_distribucion_filas.TabStop = true;
             this.ui_distribucion_filas.Text = "Filas";
             this.ui_distribucion_filas.UseVisualStyleBackColor = true;
             // 
@@ -1821,7 +1821,7 @@
             this.ui_espacio_calles_maximo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_maximo.TabIndex = 44;
             this.ui_espacio_calles_maximo.Value = new decimal(new int[] {
-            60,
+            50,
             0,
             0,
             0});
@@ -1838,8 +1838,6 @@
             // ui_autoajustar_dist_calles
             // 
             this.ui_autoajustar_dist_calles.AutoSize = true;
-            this.ui_autoajustar_dist_calles.Checked = true;
-            this.ui_autoajustar_dist_calles.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_autoajustar_dist_calles.Location = new System.Drawing.Point(27, 24);
             this.ui_autoajustar_dist_calles.Name = "ui_autoajustar_dist_calles";
             this.ui_autoajustar_dist_calles.Size = new System.Drawing.Size(92, 21);
@@ -1865,7 +1863,7 @@
             this.ui_espacio_calles_minimo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_minimo.TabIndex = 21;
             this.ui_espacio_calles_minimo.Value = new decimal(new int[] {
-            20,
+            50,
             0,
             0,
             0});
@@ -2454,7 +2452,7 @@
             this.ui_tiempo_espera.Size = new System.Drawing.Size(52, 27);
             this.ui_tiempo_espera.TabIndex = 3;
             this.ui_tiempo_espera.Value = new decimal(new int[] {
-            2000,
+            1000,
             0,
             0,
             0});

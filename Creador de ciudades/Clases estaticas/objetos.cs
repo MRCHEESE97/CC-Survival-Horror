@@ -443,7 +443,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                     { ancho_esta_div = azar.Next(6, tamaño_limite + 1); }
                     while (ancho_esta_div % 3 != 0);
                     do
-                    { alto_esta_div = azar.Next(3, tamaño_limite + 1); }
+                    { alto_esta_div = azar.Next(6, tamaño_limite + 1); }
                     while (alto_esta_div % 3 != 0);                
                 }
 

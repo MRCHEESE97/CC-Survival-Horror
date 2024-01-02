@@ -475,7 +475,7 @@ namespace Creador_de_ciudades
 
 
                             //vereda central
-                            if (azar.Next(0, 2) == 1 && lista_comp_calles[i].calle_base.Width >1000)
+                            if (azar.Next(0, 2) == 1 && lista_comp_calles[i].calle_base.Width >1200)
                             {
                                 int ajs = (int)(lista_comp_calles[i].calle_base.Width );
 

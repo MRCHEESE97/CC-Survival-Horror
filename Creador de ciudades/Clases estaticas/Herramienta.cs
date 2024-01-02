@@ -403,7 +403,7 @@ namespace Creador_de_ciudades.Clases
             return verdes;
         }
 
-        public static List<Point> obtener_coor_pixel_beige_interior(Bitmap bitmapImage, Point inicio, Point fin)
+        public static List<Point> obtener_coor_pixel_transp_interior(Bitmap bitmapImage, Point inicio, Point fin)
         {
             Color pixelColor;
             List<Point> verdes = new List<Point>();
@@ -417,7 +417,7 @@ namespace Creador_de_ciudades.Clases
                         break;
                     }
                     pixelColor = bitmapImage.GetPixel(x, y); 
-                    if (pixelColor.R == 245 && pixelColor.G == 245 && pixelColor.B == 220)
+                    if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 0)
                     {
                         // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
                         verdes.Add(new Point(x, y));
@@ -478,6 +478,25 @@ namespace Creador_de_ciudades.Clases
             Random azar = new Random();
             return azar.Next(minimo, maximo + 1);
         }
+
+        public static string orientacion_linea(Point p1, Point p2)
+        {
+            if (p1.X == p2.X)
+            {
+                return "Vertical";
+            }
+            else if (p1.Y == p2.Y)
+            {
+                return "Horizontal";
+            }
+            else
+            {
+                return "Otra";
+            }
+
+        }
+
+
 
     }
 }

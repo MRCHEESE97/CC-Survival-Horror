@@ -1924,7 +1924,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            70,
+            75,
             0,
             0,
             0});

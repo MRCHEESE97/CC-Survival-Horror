@@ -61,7 +61,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
 
 
-                    if (nombre_objeto.Equals("ui_objetos_columna_cuadrada") && datos.ubicacion_pb == true)
+                    if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
                     {
                         columna_cuadrada(datos, lienzo);
                     }
@@ -432,18 +432,23 @@ namespace Creador_de_ciudades.Clases_estaticas
             
             for (int i = 0; i < cantidad_maxima; i++)
             {  
-                Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 200, informacion.a.X, informacion.a.Y);
+                Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.d.X, informacion.d.Y, 300, informacion.a.X, informacion.a.Y);
 
                 int ancho_esta_div = 0;
                 int alto_esta_div = 0;
 
                 try // 
                 {
-                   ancho_esta_div = azar.Next(4, tamaño_limite + 1);
-                   alto_esta_div = azar.Next(4, tamaño_limite + 1);
+                    do
+                    { ancho_esta_div = azar.Next(4, tamaño_limite + 1); }
+                    while (ancho_esta_div % 3 != 0);
+                    do
+                    { alto_esta_div = azar.Next(4, tamaño_limite + 1); }
+                    while (alto_esta_div % 3 != 0);                
                 }
 
                 catch (Exception e) { continue; }
+
                 TrackBar def = new TrackBar();
                 def.Value = 3;
 
@@ -460,7 +465,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 List<Point> internos_grises = Herramienta.obtener_coor_pixel_grises_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
-                List<Point> internos_beige = Herramienta.obtener_coor_pixel_beige_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+                List<Point> internos_transp = Herramienta.obtener_coor_pixel_transp_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 //List<Point> internos_negros = Herramienta.obtener_coor_pixel_negro_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 bool salir = false;
 
@@ -488,7 +493,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 Parallel.For(0, div.Count - 1, (r, state) =>
                 {
-                    if (internos_beige.Contains(div[r]))
+                    if (internos_transp.Contains(div[r]))
                     {
                         salir = true; //Existe interseccion
                         state.Break();

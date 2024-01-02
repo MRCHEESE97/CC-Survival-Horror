@@ -32,6 +32,7 @@ using System;
 using System.Collections;   
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -414,6 +415,8 @@ namespace Creador_de_ciudades
                                     else
                                     {
                                         lista_comp_calles.Add(new Composicion_calle(new Pen(Color.White, (ancho_calle + ancho_vereda) * 100 + 1), new Pen(Color.FromArgb(88, 88, 88), ancho_calle * 100), new Point(x - (100 + (dist_entre_cll) + (ancho_calle * 100) / 2), y), new Point(x + 200 + (ancho_calle * 100) / 2, y)));
+                                    
+                                    
                                     }
                                                                                                        
                                 }
@@ -448,6 +451,10 @@ namespace Creador_de_ciudades
                         for (int i = 0; i < lista_comp_calles.Count; i++)
                         {
                             fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+
+
+                   
+
                         }
 
                         //Subsistema # 2.1 Deteccion de pixeles blancos "Pixeles de las lineas blancas"
@@ -459,6 +466,38 @@ namespace Creador_de_ciudades
 
                             fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
                         }
+
+                        //Se dibujan la vereda central 
+
+                        for (int i = 0; i < lista_comp_calles.Count; i++)
+                        {
+                          
+
+
+                            //vereda central
+                            if (azar.Next(0, 2) == 1 && lista_comp_calles[i].calle_base.Width >1000)
+                            {
+                                int ajs = (int)(lista_comp_calles[i].calle_base.Width );
+
+                                if (Herramienta.orientacion_linea(lista_comp_calles[i].inicio, lista_comp_calles[i].fin) == "Vertical")
+                                {
+                                    lista_comp_calles[i].inicio.Y = lista_comp_calles[i].inicio.Y + ajs;
+                                    lista_comp_calles[i].fin.Y = lista_comp_calles[i].fin.Y - ajs;
+                                }
+                                else if (Herramienta.orientacion_linea(lista_comp_calles[i].inicio, lista_comp_calles[i].fin) == "Horizontal")
+                                {                              
+                                    lista_comp_calles[i].inicio.X = lista_comp_calles[i].inicio.X + ajs;
+                                    lista_comp_calles[i].fin.X = lista_comp_calles[i].fin.X - ajs;
+                                }
+
+                                lista_comp_calles[i].calle_base.Width = 100;
+
+                                fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
+                            }
+
+                        }
+
+
                         primer_nivel.Refresh();
                     }
                     else if (ui_calle_incompleta_v2.Checked == true)
@@ -1273,8 +1312,9 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.Size = new System.Drawing.Size(tabPage1.Size.Width, tabPage1.Size.Height);
                 nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
                 nuevo_lienzo.Dock = DockStyle.Fill;
-
-                Bitmap bmp = new Bitmap(ancho, alto);  //Aqui como segundo parametro puedo cambiar el Format           
+               
+                Bitmap bmp = new Bitmap(ancho, alto); 
+                
                 nuevo_lienzo.Image = bmp;
 
                 TabControl.TabPages.Add(nueva_pagina);                

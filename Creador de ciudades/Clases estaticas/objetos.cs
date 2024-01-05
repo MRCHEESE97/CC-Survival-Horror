@@ -317,8 +317,8 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void ventanas_aleatorias(Info_forma informacion, PictureBox pintura)
         {
 
-            Pen ventana = new Pen(Color.Blue, informacion.grosor_pared);
-            Pen ensamble = new Pen(Color.Blue, informacion.grosor_pared/2);
+            Pen ventana = new Pen(Color.Aqua, informacion.grosor_pared);
+            Pen ensamble = new Pen(Color.Aqua, informacion.grosor_pared/2);
             List<bool> marcar = new List<bool>();
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)
@@ -360,7 +360,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void ventanas_binarias(Info_forma informacion, PictureBox pintura)
         {
 
-            Pen ventana = new Pen(Color.Blue, informacion.grosor_pared);
+            Pen ventana = new Pen(Color.Aqua, informacion.grosor_pared);
             List<bool> marcar = new List<bool>();
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)
@@ -382,7 +382,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void ventanas_totales(Info_forma informacion, PictureBox pintura)
         {
 
-            Pen ventana = new Pen(Color.Blue, informacion.grosor_pared);
+            Pen ventana = new Pen(Color.Aqua, informacion.grosor_pared);
             List<bool> marcar = new List<bool>();
 
             for (int i = 0; i < informacion.contorno.Count - 1; i++)

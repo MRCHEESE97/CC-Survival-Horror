@@ -403,30 +403,6 @@ namespace Creador_de_ciudades.Clases
             return verdes;
         }
 
-        public static List<Point> obtener_coor_pixel_transp_interior(Bitmap bitmapImage, Point inicio, Point fin)
-        {
-            Color pixelColor;
-            List<Point> verdes = new List<Point>();
-            for (int y = inicio.Y; y <= fin.Y - 100; y += 100)
-            {   
-                for (int x = inicio.X; x <= fin.X - 100; x += 100)
-                {
-                    if (fin.X > bitmapImage.Width || fin.Y > bitmapImage.Height)
-                    {
-                        verdes.Add(new Point(x, y));
-                        break;
-                    }
-                    pixelColor = bitmapImage.GetPixel(x, y); 
-                    if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 0)
-                    {
-                        // bitmapImage.SetPixel(x, y, Color.Red);   //comentado 17/09/2023
-                        verdes.Add(new Point(x, y));
-                    }
-                }
-            }
-            return verdes;
-        }
-
         public static List<Point> obtener_coor_pixel_negro_interior(Bitmap bitmapImage, Point inicio, Point fin)
         {
             Color pixelColor;

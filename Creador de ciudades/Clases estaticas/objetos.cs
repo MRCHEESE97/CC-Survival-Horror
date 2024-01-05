@@ -417,7 +417,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             int numLines = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma); // Número de líneas a dibujar
 
            
-            int mult = azar.Next(2,4);
+            int mult = azar.Next(2,4); //antes 2,4
 
             
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
@@ -465,7 +465,7 @@ namespace Creador_de_ciudades.Clases_estaticas
                 List<Point> internos_grises = Herramienta.obtener_coor_pixel_grises_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_blancos = Herramienta.obtener_coor_pixel_blancos_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 List<Point> internos_azules = Herramienta.obtener_coor_pixel_azules_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
-                List<Point> internos_transp = Herramienta.obtener_coor_pixel_transp_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+             
                 //List<Point> internos_negros = Herramienta.obtener_coor_pixel_negro_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
                 bool salir = false;
 
@@ -491,18 +491,6 @@ namespace Creador_de_ciudades.Clases_estaticas
                 ////**********
 
 
-                Parallel.For(0, div.Count - 1, (r, state) =>
-                {
-                    if (internos_transp.Contains(div[r]))
-                    {
-                        salir = true; //Existe interseccion
-                        state.Break();
-                    }
-                });
-                if (salir)
-                {
-                    continue;
-                }
 
                 Parallel.For(0, div.Count - 1, (r, state) =>
                 {

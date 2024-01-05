@@ -1313,8 +1313,15 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
                 nuevo_lienzo.Dock = DockStyle.Fill;
                
-                Bitmap bmp = new Bitmap(ancho, alto); 
-                
+                Bitmap bmp = new Bitmap(ancho, alto);
+
+                //Añadido 05/01/2024
+                Graphics fondo = Graphics.FromImage(bmp);
+                Brush brocha_fondo = new SolidBrush(Color.White);
+                fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0, 0), new Size(ancho, alto)));
+                //*****************************************
+
+
                 nuevo_lienzo.Image = bmp;
 
                 TabControl.TabPages.Add(nueva_pagina);                

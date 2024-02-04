@@ -257,21 +257,21 @@ namespace Creador_de_ciudades.Clases_estaticas
                 informacion.g.DrawLine(puerta, punto_inicio, punto_fin);
                 Point a, b;
 
-                // Ensamble 16/09/2023 al tener el problema de la abertura se me ocurrio emplear una tecnica del ensamble de madera
-                bool orientacion = (punto_inicio.X == punto_fin.X) ? false : true;
-                if (orientacion)
-                {
+                //// Ensamble 16/09/2023 al tener el problema de la abertura se me ocurrio emplear una tecnica del ensamble de madera
+                //bool orientacion = (punto_inicio.X == punto_fin.X) ? false : true;
+                //if (orientacion)
+                //{
 
-                    a = new Point(punto_inicio.X - informacion.grosor_pared / 4, punto_inicio.Y + informacion.grosor_pared / 32);
-                    b = new Point(punto_fin.X + informacion.grosor_pared / 4, punto_fin.Y + informacion.grosor_pared / 32);
-                }
-                else 
-                {
-                    a = new Point(punto_inicio.X + informacion.grosor_pared / 32, punto_inicio.Y - informacion.grosor_pared / 4);
-                    b = new Point(punto_fin.X + informacion.grosor_pared / 32, punto_fin.Y + informacion.grosor_pared / 4);
-                }
+                //    a = new Point(punto_inicio.X - informacion.grosor_pared / 4, punto_inicio.Y + informacion.grosor_pared / 32);
+                //    b = new Point(punto_fin.X + informacion.grosor_pared / 4, punto_fin.Y + informacion.grosor_pared / 32);
+                //}
+                //else 
+                //{
+                //    a = new Point(punto_inicio.X + informacion.grosor_pared / 32, punto_inicio.Y - informacion.grosor_pared / 4);
+                //    b = new Point(punto_fin.X + informacion.grosor_pared / 32, punto_fin.Y + informacion.grosor_pared / 4);
+                //}
 
-                informacion.g.DrawLine(ensamble, a, b);
+                //informacion.g.DrawLine(ensamble, a, b);
 
 
 
@@ -336,22 +336,22 @@ namespace Creador_de_ciudades.Clases_estaticas
                 {
                     informacion.g.DrawLine(ventana, informacion.contorno[i], informacion.contorno[i+1]);
 
-                    Point a, b;
-                    // Ensamble 16/09/2023 al tener el problema de la abertura se me ocurrio emplear la tecnica del ensamble de madera
-                    bool orientacion = (informacion.contorno[i].X == informacion.contorno[i + 1].X) ? false : true;
-                    if (orientacion)
-                    {
+                    //Point a, b;
+                    //// Ensamble 16/09/2023 al tener el problema de la abertura se me ocurrio emplear la tecnica del ensamble de madera
+                    //bool orientacion = (informacion.contorno[i].X == informacion.contorno[i + 1].X) ? false : true;
+                    //if (orientacion)
+                    //{
 
-                        a = new Point(informacion.contorno[i].X - informacion.grosor_pared / 4, informacion.contorno[i].Y + informacion.grosor_pared / 32);
-                        b = new Point(informacion.contorno[i + 1].X + informacion.grosor_pared / 4, informacion.contorno[i + 1].Y + informacion.grosor_pared / 32);
-                    }
-                    else
-                    {
-                        a = new Point(informacion.contorno[i].X + informacion.grosor_pared / 32, informacion.contorno[i].Y - informacion.grosor_pared / 4);
-                        b = new Point(informacion.contorno[i + 1].X + informacion.grosor_pared / 32, informacion.contorno[i + 1].Y + informacion.grosor_pared / 4);
-                    }
+                    //    a = new Point(informacion.contorno[i].X - informacion.grosor_pared / 4, informacion.contorno[i].Y + informacion.grosor_pared / 32);
+                    //    b = new Point(informacion.contorno[i + 1].X + informacion.grosor_pared / 4, informacion.contorno[i + 1].Y + informacion.grosor_pared / 32);
+                    //}
+                    //else
+                    //{
+                    //    a = new Point(informacion.contorno[i].X + informacion.grosor_pared / 32, informacion.contorno[i].Y - informacion.grosor_pared / 4);
+                    //    b = new Point(informacion.contorno[i + 1].X + informacion.grosor_pared / 32, informacion.contorno[i + 1].Y + informacion.grosor_pared / 4);
+                    //}
 
-                    informacion.g.DrawLine(ensamble, a, b);
+                    //informacion.g.DrawLine(ensamble, a, b);
                    
 
                 }       

@@ -365,6 +365,7 @@ namespace Creador_de_ciudades
                             primer_nivel.Refresh();
                         }
                     }
+                    //EL MAS IMPORTANTE
                     else if (ui_calle_incompleta_diags.Checked == true)
                     {
                         //20/12/2023
@@ -391,7 +392,7 @@ namespace Creador_de_ciudades
                                     int poblacion_diags = 30;
                                     int numerin_Az = azar.Next(0, 99);
 
-                                    if (numerin_Az <= poblacion_diags) //30% probabilidad de calle diagonal
+                                    if (numerin_Az <= poblacion_diags) //30% probabilidad de que calle sea diagonal
                                     {
                    
                                         Point ini, fin;
@@ -467,7 +468,7 @@ namespace Creador_de_ciudades
                             fondo.DrawLine(lista_comp_calles[i].calle, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
                         }
 
-                        //Se dibujan la vereda central 
+                        //Se dibujan las vereda central 
 
                         for (int i = 0; i < lista_comp_calles.Count; i++)
                         {
@@ -475,7 +476,7 @@ namespace Creador_de_ciudades
 
 
                             //vereda central
-                            if (azar.Next(0, 2) == 1 && lista_comp_calles[i].calle_base.Width >1500)
+                            if (azar.Next(0, 2) == 1 && lista_comp_calles[i].calle_base.Width > Convert.ToInt32(ui_vereda_central_valor.Value * 100))
                             {
                                 int ajs = (int)(lista_comp_calles[i].calle_base.Width );
 
@@ -490,7 +491,7 @@ namespace Creador_de_ciudades
                                     lista_comp_calles[i].fin.X = lista_comp_calles[i].fin.X - ajs;
                                 }
 
-                                lista_comp_calles[i].calle_base.Width = 100;
+                                lista_comp_calles[i].calle_base.Width = Convert.ToInt32(ui_ancho_vereda_central.Value);
 
                                 fondo.DrawLine(lista_comp_calles[i].calle_base, lista_comp_calles[i].inicio, lista_comp_calles[i].fin);
                             }

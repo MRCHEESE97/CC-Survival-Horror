@@ -1313,19 +1313,32 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.Size = new System.Drawing.Size(tabPage1.Size.Width, tabPage1.Size.Height);
                 nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
                 nuevo_lienzo.Dock = DockStyle.Fill;
-               
-                Bitmap bmp = new Bitmap(ancho, alto,PixelFormat.Format16bppRgb555); 
 
-                //Añadido 05/01/2024
-                Graphics fondo = Graphics.FromImage(bmp);
-                Brush brocha_fondo = new SolidBrush(Color.White);
-                fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0, 0), new Size(ancho, alto)));
-                //*****************************************
+                
+
+                try
+                {
+                   Bitmap bmp = new Bitmap(ancho, alto, PixelFormat.Format16bppRgb555);
+
+                    //Añadido 05/01/2024
+                    Graphics fondo = Graphics.FromImage(bmp);
+                    Brush brocha_fondo = new SolidBrush(Color.White);
+                    fondo.FillRectangle(brocha_fondo, new Rectangle(new Point(0, 0), new Size(ancho, alto)));
+                    //*****************************************
 
 
-                nuevo_lienzo.Image = bmp;
+                    nuevo_lienzo.Image = bmp;
 
-                TabControl.TabPages.Add(nueva_pagina);                
+                    TabControl.TabPages.Add(nueva_pagina);
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Tamaño de imagen ha superado el limite de memoria RAM, libere memoria o disminuya los parametros.");
+                    return;
+                }
+
+                
+            
               
             }
 

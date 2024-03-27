@@ -556,7 +556,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            50,
+            20,
             0,
             0,
             0});
@@ -1618,7 +1618,7 @@
             this.ui_max_ancho_ver.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_ver.TabIndex = 44;
             this.ui_max_ancho_ver.Value = new decimal(new int[] {
-            5,
+            4,
             0,
             0,
             0});
@@ -1641,7 +1641,7 @@
             this.ui_max_ancho_calle.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_calle.TabIndex = 43;
             this.ui_max_ancho_calle.Value = new decimal(new int[] {
-            16,
+            15,
             0,
             0,
             0});
@@ -1835,7 +1835,7 @@
             this.ui_espacio_calles_maximo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_maximo.TabIndex = 44;
             this.ui_espacio_calles_maximo.Value = new decimal(new int[] {
-            50,
+            100,
             0,
             0,
             0});
@@ -1877,7 +1877,7 @@
             this.ui_espacio_calles_minimo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_minimo.TabIndex = 21;
             this.ui_espacio_calles_minimo.Value = new decimal(new int[] {
-            50,
+            100,
             0,
             0,
             0});
@@ -1938,7 +1938,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            90,
+            85,
             0,
             0,
             0});

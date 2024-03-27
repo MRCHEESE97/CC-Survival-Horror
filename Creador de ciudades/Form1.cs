@@ -1313,7 +1313,7 @@ namespace Creador_de_ciudades
                 nuevo_lienzo.SizeMode = PictureBoxSizeMode.StretchImage;
                 nuevo_lienzo.Dock = DockStyle.Fill;
                
-                Bitmap bmp = new Bitmap(ancho, alto);
+                Bitmap bmp = new Bitmap(ancho, alto,PixelFormat.Format16bppRgb555); 
 
                 //Añadido 05/01/2024
                 Graphics fondo = Graphics.FromImage(bmp);

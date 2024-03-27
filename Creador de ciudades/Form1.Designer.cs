@@ -556,7 +556,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            30,
+            50,
             0,
             0,
             0});
@@ -685,7 +685,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            30,
+            45,
             0,
             0,
             0});
@@ -705,7 +705,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            30,
+            45,
             0,
             0,
             0});
@@ -1510,22 +1510,22 @@
             // ui_distribucion_filas
             // 
             this.ui_distribucion_filas.AutoSize = true;
-            this.ui_distribucion_filas.Checked = true;
             this.ui_distribucion_filas.Location = new System.Drawing.Point(19, 79);
             this.ui_distribucion_filas.Name = "ui_distribucion_filas";
             this.ui_distribucion_filas.Size = new System.Drawing.Size(50, 21);
             this.ui_distribucion_filas.TabIndex = 1;
-            this.ui_distribucion_filas.TabStop = true;
             this.ui_distribucion_filas.Text = "Filas";
             this.ui_distribucion_filas.UseVisualStyleBackColor = true;
             // 
             // ui_distribucion_aleatoria
             // 
             this.ui_distribucion_aleatoria.AutoSize = true;
+            this.ui_distribucion_aleatoria.Checked = true;
             this.ui_distribucion_aleatoria.Location = new System.Drawing.Point(18, 25);
             this.ui_distribucion_aleatoria.Name = "ui_distribucion_aleatoria";
             this.ui_distribucion_aleatoria.Size = new System.Drawing.Size(75, 21);
             this.ui_distribucion_aleatoria.TabIndex = 0;
+            this.ui_distribucion_aleatoria.TabStop = true;
             this.ui_distribucion_aleatoria.Text = "Aleatoria";
             this.ui_distribucion_aleatoria.UseVisualStyleBackColor = true;
             // 
@@ -1938,7 +1938,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            75,
+            90,
             0,
             0,
             0});

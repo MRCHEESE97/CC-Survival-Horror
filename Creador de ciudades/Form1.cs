@@ -34,6 +34,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
@@ -577,6 +578,10 @@ namespace Creador_de_ciudades
                     {
 
                     }
+
+
+                
+
                 } while (MessageBox.Show("¿Desea volver a generar calles?", "Sistema", MessageBoxButtons.YesNo) == DialogResult.Yes);
 
             }
@@ -905,10 +910,13 @@ namespace Creador_de_ciudades
 
             String forma_seleccionada = ui_groupbox_forma_casas.Controls.OfType<RadioButton>().FirstOrDefault(r => r.Checked).Name;
 
+            //VARIABLE PARA RECOGER LOS PILARES 
+
+            List<Rectangle> pilares = new List<Rectangle>();
            
 
             //FUNCIONES DE SUPERPOSICIONES
-            //Superposicion constante mantiene las mismas medidas, lo que no puede conservar es la misma forma 
+            //Superposicion constante mantiene las mismas medidas, y no puede conservar la misma forma 
 
             void superposicion_con(int recorrer, int i) //i es el iterado del piso, recorrer el iterador de una casa
             {
@@ -928,8 +936,8 @@ namespace Creador_de_ciudades
               
 
                 //Después de pintar las casas, se pintan los objetos
-                Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0],Poblacion_objetos, true);
-                Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
+                Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0],Poblacion_objetos, true,pilares);
+                Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true, pilares);
                 //Esta variable es modificada una vez que PB se haya dibujado
                 lista_casas[recorrer].ubicacion_pb = false;
 
@@ -983,8 +991,8 @@ namespace Creador_de_ciudades
 
              
                     
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
-                    Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true, pilares);
+                    Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true, pilares);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -1049,8 +1057,8 @@ namespace Creador_de_ciudades
                     //Primero se guardan los nombre de los checkbox activo es una lista
 
                     
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
-                    Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true, pilares);
+                    Objetos.seleccionados_primer_plano(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true, pilares);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -1061,7 +1069,7 @@ namespace Creador_de_ciudades
 
             }
 
-            void superposicion_ascendente(int recorrer, int i)  // esta funcion es lo opuesto a piramidal 
+            void superposicion_ascendente(int recorrer, int i)  // esta funcion es lo opuesto a piramidal y no es tan coherente
             {
                 if (i > 0)
                 {
@@ -1100,7 +1108,7 @@ namespace Creador_de_ciudades
                     {
                         if (c.Checked == true) { nombres_checkbox.Add(c.Name); }
                     }
-                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true);
+                    Objetos.seleccionados(nombres_checkbox, lista_casas[recorrer], (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0], Poblacion_objetos, true, pilares);
 
                     //Esta variable es modificada una vez que PB se haya dibujado
                     lista_casas[recorrer].ubicacion_pb = false;
@@ -1113,7 +1121,7 @@ namespace Creador_de_ciudades
 
 
 
-            //4.2 Pintar lienzos con los datos almacenados, dependiedo de la superposicion
+            //4.2 Pintar sobre lienzos con los datos almacenados, dependiedo de la superposicion
 
 
             for (int i = 0; i < ui_cantidad_pisos.Value; i++)
@@ -1138,7 +1146,7 @@ namespace Creador_de_ciudades
                             superposicion_con(recorrer, i);
                         }
                     }
-                    if (ui_superposicion_piramidal.Checked == true) //este modo puede hacer parecer que "quitar algunos pisos" parezca activo
+                    if (ui_superposicion_piramidal.Checked == true) //este modo puede hacer que "quitar algunos pisos" parezca activo
                     {
                         if (ui_quitar_algunos_pisos.Checked)
                         {
@@ -1251,10 +1259,29 @@ namespace Creador_de_ciudades
                     //4.1 QUITA PISOS ALEATORIAMENTE EN LAS DISTINTAS CASAS
                 }
             }
-            
-            
-           
-            MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //Dibuja pilares 09/04/2024
+
+
+            for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+            {
+                string nombre_page = "Planta " + i;
+                PictureBox pictureBox = (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0];
+                Brush dibujar_pilar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+
+                Graphics p = Graphics.FromImage((Bitmap)pictureBox.Image);
+             
+
+                foreach (var pilar in pilares)
+                {
+                    p.FillRectangle(dibujar_pilar, pilar);
+                }
+                
+            }
+
+
+
+                MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             barra.Value = 0;
            
         }

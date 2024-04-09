@@ -124,6 +124,12 @@
             this.ui_distribucion_filas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_aleatoria = new System.Windows.Forms.RadioButton();
             this.ui_groupBox_calles = new System.Windows.Forms.GroupBox();
+            this.label54 = new System.Windows.Forms.Label();
+            this.label53 = new System.Windows.Forms.Label();
+            this.ui_ancho_vereda_central = new System.Windows.Forms.NumericUpDown();
+            this.label52 = new System.Windows.Forms.Label();
+            this.label51 = new System.Windows.Forms.Label();
+            this.ui_vereda_central_valor = new System.Windows.Forms.NumericUpDown();
             this.ui_calle_incompleta_diags = new System.Windows.Forms.RadioButton();
             this.ui_calle_incompleta_v2 = new System.Windows.Forms.RadioButton();
             this.ui_calle_diagonal = new System.Windows.Forms.CheckBox();
@@ -200,12 +206,6 @@
             this.ui_label_m2 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.contextMenuStrip3 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.ui_vereda_central_valor = new System.Windows.Forms.NumericUpDown();
-            this.label51 = new System.Windows.Forms.Label();
-            this.label52 = new System.Windows.Forms.Label();
-            this.ui_ancho_vereda_central = new System.Windows.Forms.NumericUpDown();
-            this.label53 = new System.Windows.Forms.Label();
-            this.label54 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.TabControl.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -236,6 +236,8 @@
             this.tabPage3.SuspendLayout();
             this.ui_group_box_distribucion.SuspendLayout();
             this.ui_groupBox_calles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_ancho_vereda_central)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vereda_central_valor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_calle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_ver)).BeginInit();
@@ -262,8 +264,6 @@
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vereda_central_valor)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_ancho_vereda_central)).BeginInit();
             this.SuspendLayout();
             // 
             // contextMenuStrip1
@@ -442,7 +442,7 @@
             this.ui_superposicion_valor_fijo.Size = new System.Drawing.Size(42, 27);
             this.ui_superposicion_valor_fijo.TabIndex = 4;
             this.ui_superposicion_valor_fijo.Value = new decimal(new int[] {
-            2,
+            6,
             0,
             0,
             0});
@@ -762,7 +762,7 @@
             this.ui_min_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_casa.TabIndex = 2;
             this.ui_min_ancho_casa.Value = new decimal(new int[] {
-            10,
+            15,
             0,
             0,
             0});
@@ -1079,7 +1079,7 @@
             this.ui_pilar_prox_min.Size = new System.Drawing.Size(54, 27);
             this.ui_pilar_prox_min.TabIndex = 24;
             this.ui_pilar_prox_min.Value = new decimal(new int[] {
-            3,
+            4,
             0,
             0,
             0});
@@ -1563,6 +1563,83 @@
             this.ui_groupBox_calles.TabStop = false;
             this.ui_groupBox_calles.Text = "Red de calles (En desarrollo)";
             // 
+            // label54
+            // 
+            this.label54.AutoSize = true;
+            this.label54.Location = new System.Drawing.Point(376, 180);
+            this.label54.Name = "label54";
+            this.label54.Size = new System.Drawing.Size(23, 17);
+            this.label54.TabIndex = 52;
+            this.label54.Text = "cm";
+            // 
+            // label53
+            // 
+            this.label53.AutoSize = true;
+            this.label53.Location = new System.Drawing.Point(170, 180);
+            this.label53.Name = "label53";
+            this.label53.Size = new System.Drawing.Size(133, 17);
+            this.label53.TabIndex = 51;
+            this.label53.Text = "Grosor vereda central:";
+            // 
+            // ui_ancho_vereda_central
+            // 
+            this.ui_ancho_vereda_central.Location = new System.Drawing.Point(320, 178);
+            this.ui_ancho_vereda_central.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_ancho_vereda_central.Maximum = new decimal(new int[] {
+            300,
+            0,
+            0,
+            0});
+            this.ui_ancho_vereda_central.Minimum = new decimal(new int[] {
+            120,
+            0,
+            0,
+            0});
+            this.ui_ancho_vereda_central.Name = "ui_ancho_vereda_central";
+            this.ui_ancho_vereda_central.Size = new System.Drawing.Size(54, 27);
+            this.ui_ancho_vereda_central.TabIndex = 50;
+            this.ui_ancho_vereda_central.Value = new decimal(new int[] {
+            200,
+            0,
+            0,
+            0});
+            // 
+            // label52
+            // 
+            this.label52.AutoSize = true;
+            this.label52.Location = new System.Drawing.Point(377, 150);
+            this.label52.Name = "label52";
+            this.label52.Size = new System.Drawing.Size(18, 17);
+            this.label52.TabIndex = 45;
+            this.label52.Text = "m";
+            // 
+            // label51
+            // 
+            this.label51.AutoSize = true;
+            this.label51.Location = new System.Drawing.Point(171, 152);
+            this.label51.Name = "label51";
+            this.label51.Size = new System.Drawing.Size(149, 17);
+            this.label51.TabIndex = 49;
+            this.label51.Text = "Calle min vereda central:";
+            // 
+            // ui_vereda_central_valor
+            // 
+            this.ui_vereda_central_valor.Location = new System.Drawing.Point(320, 148);
+            this.ui_vereda_central_valor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ui_vereda_central_valor.Maximum = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            this.ui_vereda_central_valor.Name = "ui_vereda_central_valor";
+            this.ui_vereda_central_valor.Size = new System.Drawing.Size(54, 27);
+            this.ui_vereda_central_valor.TabIndex = 45;
+            this.ui_vereda_central_valor.Value = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            // 
             // ui_calle_incompleta_diags
             // 
             this.ui_calle_incompleta_diags.AutoSize = true;
@@ -2044,8 +2121,6 @@
             // ui_deformacion_alterada
             // 
             this.ui_deformacion_alterada.AutoSize = true;
-            this.ui_deformacion_alterada.Checked = true;
-            this.ui_deformacion_alterada.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ui_deformacion_alterada.Location = new System.Drawing.Point(16, 81);
             this.ui_deformacion_alterada.Name = "ui_deformacion_alterada";
             this.ui_deformacion_alterada.Size = new System.Drawing.Size(147, 21);
@@ -2092,12 +2167,12 @@
             // Distancia
             // 
             this.Distancia.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Distancia.Location = new System.Drawing.Point(12, 200);
+            this.Distancia.Location = new System.Drawing.Point(129, 174);
             this.Distancia.Minimum = 1;
             this.Distancia.Name = "Distancia";
             this.Distancia.Size = new System.Drawing.Size(212, 45);
             this.Distancia.TabIndex = 6;
-            this.Distancia.Value = 10;
+            this.Distancia.Value = 6;
             // 
             // label18
             // 
@@ -2126,7 +2201,7 @@
             this.Probabilidad.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.Probabilidad.Size = new System.Drawing.Size(211, 45);
             this.Probabilidad.TabIndex = 3;
-            this.Probabilidad.Value = 3;
+            this.Probabilidad.Value = 6;
             // 
             // ui_forma_casa_deformada
             // 
@@ -2278,7 +2353,7 @@
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.tabPage4.Size = new System.Drawing.Size(399, 295);
+            this.tabPage4.Size = new System.Drawing.Size(396, 419);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Interiores";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -2288,8 +2363,8 @@
             this.tabPage5.Controls.Add(this.ui_quitar_calles);
             this.tabPage5.Location = new System.Drawing.Point(4, 26);
             this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.tabPage5.Size = new System.Drawing.Size(399, 295);
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(396, 419);
             this.tabPage5.TabIndex = 4;
             this.tabPage5.Text = "Experimental";
             this.tabPage5.UseVisualStyleBackColor = true;
@@ -2504,83 +2579,6 @@
             this.contextMenuStrip3.Name = "contextMenuStrip3";
             this.contextMenuStrip3.Size = new System.Drawing.Size(61, 4);
             // 
-            // ui_vereda_central_valor
-            // 
-            this.ui_vereda_central_valor.Location = new System.Drawing.Point(320, 148);
-            this.ui_vereda_central_valor.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_vereda_central_valor.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.ui_vereda_central_valor.Name = "ui_vereda_central_valor";
-            this.ui_vereda_central_valor.Size = new System.Drawing.Size(54, 27);
-            this.ui_vereda_central_valor.TabIndex = 45;
-            this.ui_vereda_central_valor.Value = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            // 
-            // label51
-            // 
-            this.label51.AutoSize = true;
-            this.label51.Location = new System.Drawing.Point(171, 152);
-            this.label51.Name = "label51";
-            this.label51.Size = new System.Drawing.Size(149, 17);
-            this.label51.TabIndex = 49;
-            this.label51.Text = "Calle min vereda central:";
-            // 
-            // label52
-            // 
-            this.label52.AutoSize = true;
-            this.label52.Location = new System.Drawing.Point(377, 150);
-            this.label52.Name = "label52";
-            this.label52.Size = new System.Drawing.Size(18, 17);
-            this.label52.TabIndex = 45;
-            this.label52.Text = "m";
-            // 
-            // ui_ancho_vereda_central
-            // 
-            this.ui_ancho_vereda_central.Location = new System.Drawing.Point(320, 178);
-            this.ui_ancho_vereda_central.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.ui_ancho_vereda_central.Maximum = new decimal(new int[] {
-            300,
-            0,
-            0,
-            0});
-            this.ui_ancho_vereda_central.Minimum = new decimal(new int[] {
-            120,
-            0,
-            0,
-            0});
-            this.ui_ancho_vereda_central.Name = "ui_ancho_vereda_central";
-            this.ui_ancho_vereda_central.Size = new System.Drawing.Size(54, 27);
-            this.ui_ancho_vereda_central.TabIndex = 50;
-            this.ui_ancho_vereda_central.Value = new decimal(new int[] {
-            200,
-            0,
-            0,
-            0});
-            // 
-            // label53
-            // 
-            this.label53.AutoSize = true;
-            this.label53.Location = new System.Drawing.Point(170, 180);
-            this.label53.Name = "label53";
-            this.label53.Size = new System.Drawing.Size(133, 17);
-            this.label53.TabIndex = 51;
-            this.label53.Text = "Grosor vereda central:";
-            // 
-            // label54
-            // 
-            this.label54.AutoSize = true;
-            this.label54.Location = new System.Drawing.Point(376, 180);
-            this.label54.Name = "label54";
-            this.label54.Size = new System.Drawing.Size(23, 17);
-            this.label54.TabIndex = 52;
-            this.label54.Text = "cm";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -2640,6 +2638,8 @@
             this.ui_group_box_distribucion.PerformLayout();
             this.ui_groupBox_calles.ResumeLayout(false);
             this.ui_groupBox_calles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_ancho_vereda_central)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ui_vereda_central_valor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_calle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_min_ancho_ver)).EndInit();
@@ -2673,8 +2673,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_tiempo_espera)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_vereda_central_valor)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ui_ancho_vereda_central)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

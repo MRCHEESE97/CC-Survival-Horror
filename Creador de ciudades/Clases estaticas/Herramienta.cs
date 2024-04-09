@@ -273,7 +273,7 @@ namespace Creador_de_ciudades.Clases
         }
 
 
-        public static List<Point> obtener_coor_pixel_amarillo_interior(Bitmap bitmapImage, Point inicio, Point fin)
+        public static List<Point> obtener_pixel_forma_por_color(Bitmap bitmapImage, Point inicio, Point fin)
         {
             Color pixelColor;
             List<Point> amarillos = new List<Point>();
@@ -295,7 +295,17 @@ namespace Creador_de_ciudades.Clases
                         // bitmapImage.SetPixel(x, y, Color.Red);  // comentado 17/09/2023
                         amarillos.Add(new Point(x, y));
                     }
-                                   
+                    if (pixelColor.R == 0 && pixelColor.G == 0 && pixelColor.B == 0)
+                    {
+                        // bitmapImage.SetPixel(x, y, Color.Red);  // comentado 17/09/2023
+                        amarillos.Add(new Point(x, y));
+                    }
+                    if (pixelColor.R == 255 && pixelColor.G == 0 && pixelColor.B == 0)
+                    {
+                        // bitmapImage.SetPixel(x, y, Color.Red);  // comentado 17/09/2023
+                        amarillos.Add(new Point(x, y));
+                    }
+                  
                 }
             }
             return amarillos;

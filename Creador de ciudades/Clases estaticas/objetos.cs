@@ -18,6 +18,7 @@ using Creador_de_ciudades.Clases;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
         public static Random azar = new Random();
 
-        public static void seleccionados_primer_plano(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division)
+        public static void seleccionados_primer_plano(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division, List<Rectangle> pilares)
         {
 
             //Lama a objetos exteriores: 
@@ -63,7 +64,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                     if (nombre_objeto.Equals("ui_objetos_columna_cuadrada"))
                     {
-                        columna_cuadrada(datos, lienzo);
+                        columna_cuadrada(datos, lienzo, pilares);
                     }
 
                 }
@@ -78,7 +79,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         }
 
 
-        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division)
+        public static void seleccionados(List<String> seleccion_objeto, Info_forma datos, PictureBox lienzo, int poblacion, bool division,List<Rectangle> pilares)
         {
 
             //Lama a objetos exteriores: 
@@ -286,7 +287,9 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             informacion.contorno = informacion.contorno.Except(borrador).ToList();
         }
-        private static void columna_cuadrada(Info_forma info, PictureBox pintura)
+
+       
+        private static void columna_cuadrada(Info_forma info, PictureBox pintura, List<Rectangle> pilares)
         {
 
             Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
@@ -297,6 +300,9 @@ namespace Creador_de_ciudades.Clases_estaticas
                 Point origen_columna = new Point(info.contorno[i].X - mitad_col, info.contorno[i].Y - mitad_col);
                 Rectangle columna = new Rectangle(origen_columna,new Size(info.columna_cuadrada_med,info.columna_cuadrada_med));
                 info.g.FillRectangle(dibujar,columna);
+
+                
+                pilares.Add(columna);   
             }
            
         }
@@ -417,7 +423,7 @@ namespace Creador_de_ciudades.Clases_estaticas
             int numLines = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma); // Número de líneas a dibujar
 
            
-            int mult = azar.Next(4,9); //antes 2,4
+            int mult = azar.Next(2,4); //antes 2,4
 
             
             Pen pared = new Pen(Color.Black, informacion.grosor_pared+2);
@@ -440,11 +446,11 @@ namespace Creador_de_ciudades.Clases_estaticas
                 try // 
                 {
                     do
-                    { ancho_esta_div = azar.Next(6, tamaño_limite + 1); }
-                    while (ancho_esta_div % 3 != 0);
+                    { ancho_esta_div = azar.Next(8, tamaño_limite + 1); }
+                    while (ancho_esta_div % 2 != 0);
                     do
-                    { alto_esta_div = azar.Next(6, tamaño_limite + 1); }
-                    while (alto_esta_div % 3 != 0);                
+                    { alto_esta_div = azar.Next(8, tamaño_limite + 1); }
+                    while (alto_esta_div % 2 != 0);                
                 }
 
                 catch (Exception e) { continue; }
@@ -459,9 +465,9 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 int error = 4;
 
-                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 100);
-                List<Point> internos_amarillos = Herramienta.obtener_coor_pixel_amarillo_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error+ancho_esta_div) * 100), origen_division.Y + ((error +alto_esta_div) * 100)));
-                List<Point> internos_negros = Herramienta.obtener_coor_pixel_negro_interior((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 200);
+                List<Point> internos_amarillos = Herramienta.obtener_pixel_forma_por_color((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error+ancho_esta_div) * 100), origen_division.Y + ((error +alto_esta_div) * 100)));
+              
                 bool salir = false;
 
 
@@ -471,7 +477,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 Parallel.For(0, div.Count - 1, (r, state) =>
                 {
-                    if (internos_amarillos.Contains(div[r]) == false || internos_negros.Contains(div[r]))
+                    if (internos_amarillos.Contains(div[r]) == false)
                     {
                         salir = true; //Existe interseccion
                         state.Break();
@@ -494,7 +500,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                     //objetos. 1 puerta 
                     List<string> seleccion_objeto = new List<string> { "ui_objetos_puerta" };
-                    seleccionados(seleccion_objeto, D, pintura, 99,false);
+                    seleccionados(seleccion_objeto, D, pintura, 99,false, null);
                     //objetos. 1 columna
                     //seleccion_objeto = new List<string> { "ui_objetos_columna_cuadrada" };
                     //Objetos.seleccionados(seleccion_objeto, D, pintura, 75);

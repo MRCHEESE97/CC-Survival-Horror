@@ -72,6 +72,7 @@ namespace Creador_de_ciudades.Clases
         public int prob_zot;
         public int Lado_asc;
         public bool def_alt;
+        public bool des_subdivision = true;
 
         //Si estas variables son inestables es porque están fuera 
 
@@ -81,7 +82,7 @@ namespace Creador_de_ciudades.Clases
 
 
 
-        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas, string Vano_ventana, String Forma, int Col_prox, int Cant_puerta, int Prob_asc, int Prob_zot, int lado_asc, bool Def_alt) 
+        public Info_forma(int Ancho_lienzo, int Alto_Lienzo, int Ancho_forma, int Alto_forma, int Grosor_pared, Point Punto_origen, Point Nuevo_origen, int Columna_cuadrada_valor, int Columna_redonda_valor, int Pisos_reales, int Grados, float Distancia_entre_columnas, int Mover_ascensor, bool Rotar, TrackBar Posibilidad, TrackBar Distancia, bool Pegar_casas, string Vano_ventana, String Forma, int Col_prox, int Cant_puerta, int Prob_asc, int Prob_zot, int lado_asc, bool Def_alt, bool desc_sub) 
         {
             ancho_lienzo = Ancho_lienzo;
             alto_lienzo = Alto_Lienzo;
@@ -115,6 +116,7 @@ namespace Creador_de_ciudades.Clases
             prob_zot = Prob_zot;
             Lado_asc = lado_asc;
             def_alt = Def_alt;
+            des_subdivision = desc_sub; 
         }
 
         public Info_forma( int Ancho_forma, int Alto_forma, int Grados, int Grosor_pared, Point Punto_origen, int Cant_puerta, TrackBar Posibilidad, TrackBar Distancia)

@@ -53,11 +53,49 @@ namespace Creador_de_ciudades.Clases_estaticas
             {
                 combinar(datos, lienzo);
             }
-           
+            else if (seleccion_forma.Equals("altura_doble"))
+            {
+                rectangulo_verde(datos, lienzo);
+            }
+
+        }
+
+        private static void rectangulo_verde(Info_forma inf, PictureBox pintura)
+        {
+            SolidBrush Brochita = new SolidBrush(Color.Green);
+            inf.g = Graphics.FromImage((Bitmap)pintura.Image);
+            List<Point> rectangulo = new List<Point>();
+
+            // Se usan 4 listas para cada lado
+            List<Point> lado_superior = Herramienta.calcular_lado(inf.po, inf.ancho_forma, "x");
+            List<Point> lado_izquierdo = Herramienta.calcular_lado(inf.po, inf.alto_forma, "y");
+            List<Point> lado_derecho = Herramienta.calcular_lado(new Point(inf.po.X + inf.ancho_forma * 100, inf.po.Y), inf.alto_forma, "y");
+            List<Point> lado_inferior = Herramienta.calcular_lado(new Point(inf.po.X, inf.po.Y + inf.alto_forma * 100), inf.ancho_forma, "x");
+
+            rectangulo.AddRange(lado_superior);
+            rectangulo.AddRange(lado_derecho);
+            lado_inferior.Reverse();
+            rectangulo.AddRange(lado_inferior);
+            lado_izquierdo.Reverse();
+            rectangulo.AddRange(lado_izquierdo);
+
+            //Elimino los puntos repetidos
+            rectangulo = rectangulo.Distinct().ToList();
+
+
+
+            rectangulo = Herramienta.rotar_puntos_figuras(rectangulo, 0, inf.punto_medio);
+
+            //Despues de rotar guardo los puntos en el objeto
+            inf.contorno = rectangulo;
+
+            inf.g.FillPolygon(Brochita, rectangulo.ToArray());
+          
+
+            pintura.Refresh();
         }
 
 
-      
 
         private static void combinar(Info_forma informacion, PictureBox pintura)
         {   

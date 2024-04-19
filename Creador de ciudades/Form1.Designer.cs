@@ -187,6 +187,7 @@
             this.ui_solo_impares = new System.Windows.Forms.RadioButton();
             this.ui_solo_pares = new System.Windows.Forms.RadioButton();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.ui_desactivar_subdivision = new System.Windows.Forms.CheckBox();
             this.tabPage5 = new System.Windows.Forms.TabPage();
             this.ui_quitar_calles = new System.Windows.Forms.CheckBox();
             this.ui_construir = new System.Windows.Forms.Button();
@@ -256,6 +257,7 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_dis_anch_alt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).BeginInit();
+            this.tabPage4.SuspendLayout();
             this.tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -556,7 +558,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            20,
+            35,
             0,
             0,
             0});
@@ -579,7 +581,7 @@
             this.ui_min_grosor_pared.Size = new System.Drawing.Size(54, 27);
             this.ui_min_grosor_pared.TabIndex = 2;
             this.ui_min_grosor_pared.Value = new decimal(new int[] {
-            20,
+            15,
             0,
             0,
             0});
@@ -647,7 +649,7 @@
             this.ui_max_grosor_pared.Size = new System.Drawing.Size(54, 27);
             this.ui_max_grosor_pared.TabIndex = 11;
             this.ui_max_grosor_pared.Value = new decimal(new int[] {
-            30,
+            15,
             0,
             0,
             0});
@@ -1912,7 +1914,7 @@
             this.ui_espacio_calles_maximo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_maximo.TabIndex = 44;
             this.ui_espacio_calles_maximo.Value = new decimal(new int[] {
-            100,
+            85,
             0,
             0,
             0});
@@ -1954,7 +1956,7 @@
             this.ui_espacio_calles_minimo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_minimo.TabIndex = 21;
             this.ui_espacio_calles_minimo.Value = new decimal(new int[] {
-            100,
+            85,
             0,
             0,
             0});
@@ -2015,7 +2017,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            85,
+            70,
             0,
             0,
             0});
@@ -2349,6 +2351,7 @@
             // tabPage4
             // 
             this.tabPage4.AutoScroll = true;
+            this.tabPage4.Controls.Add(this.ui_desactivar_subdivision);
             this.tabPage4.Location = new System.Drawing.Point(4, 26);
             this.tabPage4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.tabPage4.Name = "tabPage4";
@@ -2357,6 +2360,18 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Interiores";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // ui_desactivar_subdivision
+            // 
+            this.ui_desactivar_subdivision.AutoSize = true;
+            this.ui_desactivar_subdivision.Checked = true;
+            this.ui_desactivar_subdivision.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ui_desactivar_subdivision.Location = new System.Drawing.Point(9, 7);
+            this.ui_desactivar_subdivision.Name = "ui_desactivar_subdivision";
+            this.ui_desactivar_subdivision.Size = new System.Drawing.Size(158, 21);
+            this.ui_desactivar_subdivision.TabIndex = 0;
+            this.ui_desactivar_subdivision.Text = "Desactivar subdivisiones";
+            this.ui_desactivar_subdivision.UseVisualStyleBackColor = true;
             // 
             // tabPage5
             // 
@@ -2663,6 +2678,8 @@
             this.groupBox6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ui_dis_anch_alt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_multiplo_valor)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            this.tabPage4.PerformLayout();
             this.tabPage5.ResumeLayout(false);
             this.tabPage5.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -2857,6 +2874,7 @@
         private System.Windows.Forms.Label label54;
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.NumericUpDown ui_ancho_vereda_central;
+        private System.Windows.Forms.CheckBox ui_desactivar_subdivision;
     }
 }
 

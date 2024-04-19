@@ -220,15 +220,21 @@ namespace Creador_de_ciudades.Clases_estaticas
                 
             }
 
+            if (datos.ubicacion_pb == false)
+            {
+                altura_doble(datos, lienzo);
+            }
+
+            //variable subdivision ya no se usa 
             //esto estaba antes del for anterior
-            if (division)
+            if (datos.des_subdivision == false)
             {
                 //Son las habitaciones
                 divisiones(datos, lienzo);
 
             }
 
-
+           
 
         }
         private static void puerta(Info_forma informacion, PictureBox pintura)
@@ -292,7 +298,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void columna_cuadrada(Info_forma info, PictureBox pintura, List<Rectangle> pilares)
         {
 
-            Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(255,35,1));
             int mitad_col = info.columna_cuadrada_med / 2;
 
             for (int i = 0; i < info.contorno.Count - info.col_prox; i+=info.col_prox)
@@ -516,7 +522,111 @@ namespace Creador_de_ciudades.Clases_estaticas
             }
 
         }
-       
+
+        private static void altura_doble(Info_forma informacion, PictureBox pintura)
+        {
+
+            Pen myPen = new Pen(Color.Beige);
+            myPen.Width = 100;
+
+
+            int numLines = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma); // Número de líneas a dibujar
+
+
+            int mult = azar.Next(1,3); //antes 2,4
+
+
+            Pen pared = new Pen(Color.Black, informacion.grosor_pared + 2);
+
+            int tamaño_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) / 2; //Una habitación solo tendrá un tamaño maximo de un cuarto de la casa
+            int cantidad_limite = Herramienta.retornar_mayor(informacion.ancho_forma, informacion.alto_forma) * (5 * mult); //Veces que se puede instancia una habitacion de 3 metros
+            int cantidad_maxima = cantidad_limite; //azar.Next(cantidad_limite/2, cantidad_limite+2); 
+
+            //Faltaria dividir por area 
+
+            int maxima_reales = 0;
+
+            for (int i = 0; i < cantidad_maxima; i++)
+            {
+                Point origen_division = Herramienta.seleccionar_punto_cuadricula(informacion.a.X + 200, informacion.a.Y + 200, 200, informacion.d.X - 200, informacion.d.Y - 200);
+
+                int ancho_esta_div = 0;
+                int alto_esta_div = 0;
+
+                try // 
+                {
+                    do
+                    { ancho_esta_div = azar.Next(4, tamaño_limite + 1); }
+                    while (ancho_esta_div % 2 != 0);
+                    do
+                    { alto_esta_div = azar.Next(4, tamaño_limite + 1); }
+                    while (alto_esta_div % 2 != 0);
+                }
+
+                catch (Exception e) { continue; }
+
+                TrackBar def = new TrackBar();
+                def.Value = 3;
+
+                TrackBar dis = new TrackBar();
+                def.Value = 3;
+
+                Info_forma D = new Info_forma(ancho_esta_div, alto_esta_div, 0, informacion.grosor_pared, origen_division, 3, def, dis);
+
+                int error = 4;
+
+                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 200);
+                List<Point> internos_amarillos = Herramienta.obtener_pixel_forma_por_color((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
+
+                bool salir = false;
+
+
+
+
+
+
+                Parallel.For(0, div.Count - 1, (r, state) =>
+                {
+                    if (internos_amarillos.Contains(div[r]) == false)
+                    {
+                        salir = true; //Existe interseccion
+                        state.Break();
+                    }
+                });
+                if (salir)
+                {
+                    continue;
+                }
+                else
+                {
+
+
+                    // "ui_forma_casa_rectangular",
+                    // "ui_forma_casa_deformada",
+                    // "ui_forma_casa_deformada_chaflan"
+
+
+                    Formas.forma("altura_doble", D, pintura);
+
+                    //objetos. 1 puerta 
+                    List<string> seleccion_objeto = new List<string> { "ui_objetos_puerta" };
+                    seleccionados(seleccion_objeto, D, pintura, 99, false, null);
+                    //objetos. 1 columna
+                    //seleccion_objeto = new List<string> { "ui_objetos_columna_cuadrada" };
+                    //Objetos.seleccionados(seleccion_objeto, D, pintura, 75);
+
+                    maxima_reales++;
+                    if (maxima_reales > 10)
+                    {
+                        break;
+                    }
+
+                }
+
+            }
+
+        }
+
         private static void data(Info_forma informacion, PictureBox pintura)
         {
 

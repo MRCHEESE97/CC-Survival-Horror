@@ -666,7 +666,7 @@ namespace Creador_de_ciudades
 
                 //actualizacion de label info ubicaciones
 
-                label45.Text = ubicacion_datos.ToString()+" de "+ui_cantidad_casas.Value.ToString();
+                label45.Text = (1+ubicacion_datos).ToString()+" de "+ui_cantidad_casas.Value.ToString();
                 label45.Refresh();
 
                 //Subsistema 3.1 seleccion de punto origen segun la distribución
@@ -777,7 +777,9 @@ namespace Creador_de_ciudades
                  azar.Next(0, 99),
                  azar.Next(0, 99),
                  azar.Next(1, 5),
-                 ui_deformacion_alterada.Checked
+                 ui_deformacion_alterada.Checked,
+                 ui_desactivar_subdivision.Checked
+                
                 );
 
                 nueva_casa.resp_alto_forma = nueva_casa.alto_forma;
@@ -1124,7 +1126,7 @@ namespace Creador_de_ciudades
             //4.2 Pintar sobre lienzos con los datos almacenados, dependiedo de la superposicion
 
 
-            for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+            for (int i = 0; i < ui_cantidad_pisos.Value -1; i++)
             {
                 for (int recorrer = 0; recorrer < ui_cantidad_casas.Value; recorrer++)
                 {
@@ -1260,28 +1262,28 @@ namespace Creador_de_ciudades
                 }
             }
 
-            //Dibuja pilares 09/04/2024
+            //Dibuja pilares 09 / 04 / 2024 NO ME CONVENCE,SERÁ MEJOR PINTARLOS DE OTRO COLOR 
 
 
-            for (int i = 0; i < ui_cantidad_pisos.Value; i++)
-            {
-                string nombre_page = "Planta " + i;
-                PictureBox pictureBox = (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0];
-                Brush dibujar_pilar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
+            //for (int i = 0; i < ui_cantidad_pisos.Value; i++)
+            //{
+            //    string nombre_page = "Planta " + i;
+            //    PictureBox pictureBox = (PictureBox)TabControl.TabPages[i].Controls.Find(nombre_page, true)[0];
+            //    Brush dibujar_pilar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
 
-                Graphics p = Graphics.FromImage((Bitmap)pictureBox.Image);
-             
-
-                foreach (var pilar in pilares)
-                {
-                    p.FillRectangle(dibujar_pilar, pilar);
-                }
-                
-            }
+            //    Graphics p = Graphics.FromImage((Bitmap)pictureBox.Image);
 
 
+            //    foreach (var pilar in pilares)
+            //    {
+            //        p.FillRectangle(dibujar_pilar, pilar);
+            //    }
 
-                MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            //}
+
+
+
+            MessageBox.Show("Completado exitosamente", "Información", MessageBoxButtons.OK, MessageBoxIcon.Information);
             barra.Value = 0;
            
         }

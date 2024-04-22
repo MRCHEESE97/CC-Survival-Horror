@@ -124,6 +124,8 @@
             this.ui_distribucion_filas = new System.Windows.Forms.RadioButton();
             this.ui_distribucion_aleatoria = new System.Windows.Forms.RadioButton();
             this.ui_groupBox_calles = new System.Windows.Forms.GroupBox();
+            this.label55 = new System.Windows.Forms.Label();
+            this.veces_calle = new System.Windows.Forms.NumericUpDown();
             this.label54 = new System.Windows.Forms.Label();
             this.label53 = new System.Windows.Forms.Label();
             this.ui_ancho_vereda_central = new System.Windows.Forms.NumericUpDown();
@@ -237,6 +239,7 @@
             this.tabPage3.SuspendLayout();
             this.ui_group_box_distribucion.SuspendLayout();
             this.ui_groupBox_calles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.veces_calle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_ancho_vereda_central)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vereda_central_valor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).BeginInit();
@@ -510,7 +513,7 @@
             this.ui_cantidad_pisos.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_pisos.TabIndex = 1;
             this.ui_cantidad_pisos.Value = new decimal(new int[] {
-            6,
+            4,
             0,
             0,
             0});
@@ -1533,6 +1536,8 @@
             // 
             // ui_groupBox_calles
             // 
+            this.ui_groupBox_calles.Controls.Add(this.label55);
+            this.ui_groupBox_calles.Controls.Add(this.veces_calle);
             this.ui_groupBox_calles.Controls.Add(this.label54);
             this.ui_groupBox_calles.Controls.Add(this.label53);
             this.ui_groupBox_calles.Controls.Add(this.ui_ancho_vereda_central);
@@ -1564,6 +1569,28 @@
             this.ui_groupBox_calles.TabIndex = 15;
             this.ui_groupBox_calles.TabStop = false;
             this.ui_groupBox_calles.Text = "Red de calles (En desarrollo)";
+            // 
+            // label55
+            // 
+            this.label55.AutoSize = true;
+            this.label55.Location = new System.Drawing.Point(36, 182);
+            this.label55.Name = "label55";
+            this.label55.Size = new System.Drawing.Size(42, 17);
+            this.label55.TabIndex = 53;
+            this.label55.Text = "Veces:";
+            // 
+            // veces_calle
+            // 
+            this.veces_calle.Location = new System.Drawing.Point(84, 180);
+            this.veces_calle.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.veces_calle.Name = "veces_calle";
+            this.veces_calle.Size = new System.Drawing.Size(54, 27);
+            this.veces_calle.TabIndex = 45;
+            this.veces_calle.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
             // 
             // label54
             // 
@@ -1601,7 +1628,7 @@
             this.ui_ancho_vereda_central.Size = new System.Drawing.Size(54, 27);
             this.ui_ancho_vereda_central.TabIndex = 50;
             this.ui_ancho_vereda_central.Value = new decimal(new int[] {
-            200,
+            150,
             0,
             0,
             0});
@@ -1637,7 +1664,7 @@
             this.ui_vereda_central_valor.Size = new System.Drawing.Size(54, 27);
             this.ui_vereda_central_valor.TabIndex = 45;
             this.ui_vereda_central_valor.Value = new decimal(new int[] {
-            20,
+            30,
             0,
             0,
             0});
@@ -1720,7 +1747,7 @@
             this.ui_max_ancho_calle.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_calle.TabIndex = 43;
             this.ui_max_ancho_calle.Value = new decimal(new int[] {
-            15,
+            14,
             0,
             0,
             0});
@@ -1771,7 +1798,7 @@
             this.ui_min_ancho_calle.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_calle.TabIndex = 41;
             this.ui_min_ancho_calle.Value = new decimal(new int[] {
-            8,
+            7,
             0,
             0,
             0});
@@ -1914,7 +1941,7 @@
             this.ui_espacio_calles_maximo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_maximo.TabIndex = 44;
             this.ui_espacio_calles_maximo.Value = new decimal(new int[] {
-            85,
+            90,
             0,
             0,
             0});
@@ -1956,7 +1983,7 @@
             this.ui_espacio_calles_minimo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_minimo.TabIndex = 21;
             this.ui_espacio_calles_minimo.Value = new decimal(new int[] {
-            85,
+            90,
             0,
             0,
             0});
@@ -2017,7 +2044,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            70,
+            65,
             0,
             0,
             0});
@@ -2653,6 +2680,7 @@
             this.ui_group_box_distribucion.PerformLayout();
             this.ui_groupBox_calles.ResumeLayout(false);
             this.ui_groupBox_calles.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.veces_calle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_ancho_vereda_central)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_vereda_central_valor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ui_max_ancho_ver)).EndInit();
@@ -2875,6 +2903,8 @@
         private System.Windows.Forms.Label label53;
         private System.Windows.Forms.NumericUpDown ui_ancho_vereda_central;
         private System.Windows.Forms.CheckBox ui_desactivar_subdivision;
+        private System.Windows.Forms.NumericUpDown veces_calle;
+        private System.Windows.Forms.Label label55;
     }
 }
 

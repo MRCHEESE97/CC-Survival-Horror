@@ -147,7 +147,13 @@ namespace Creador_de_ciudades.Clases_estaticas
                     }
 
             }
-            
+
+
+            if (datos.ubicacion_pb == false)
+            {
+                altura_doble(datos, lienzo);
+            }
+
 
             //Lama a objetos zot, asc, esc: 
 
@@ -171,10 +177,11 @@ namespace Creador_de_ciudades.Clases_estaticas
                    
                     if (datos.ubicacion_pb)
                     {
+                        
+                        //aqui pueden ajustarse los origenes 
 
-
-                        datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 10, datos.a.X, datos.a.Y); // el mismo origen
-                        datos.origen_esc_2 = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 10, datos.a.X, datos.a.Y); // el mismo origen
+                        datos.origen_esc = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 100, datos.a.X, datos.a.Y); // el mismo origen
+                        datos.origen_esc_2 = Herramienta.seleccionar_punto_cuadricula(datos.d.X, datos.d.Y, 300, datos.a.X, datos.a.Y); // el mismo origen
                         // ajustar la ubicacion para no salir de la forma en planta baja 
 
                         if (datos.origen_esc.X >= datos.punto_medio.X && datos.origen_esc.Y <= datos.punto_medio.Y)   //der arriba
@@ -220,10 +227,6 @@ namespace Creador_de_ciudades.Clases_estaticas
                 
             }
 
-            if (datos.ubicacion_pb == false)
-            {
-                altura_doble(datos, lienzo);
-            }
 
             //variable subdivision ya no se usa 
             //esto estaba antes del for anterior
@@ -662,7 +665,6 @@ namespace Creador_de_ciudades.Clases_estaticas
 
             informacion.g.FillPolygon(Transparencia, rectangulo.ToArray());
             //pintura.Refresh();
-
         }
         private static void ascensor(Info_forma informacion, PictureBox pintura)
         {

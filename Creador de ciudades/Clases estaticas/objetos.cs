@@ -611,13 +611,6 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                     Formas.forma("altura_doble", D, pintura);
 
-                    //objetos. 1 puerta 
-                    List<string> seleccion_objeto = new List<string> { "ui_objetos_puerta" };
-                    seleccionados(seleccion_objeto, D, pintura, 99, false, null);
-                    //objetos. 1 columna
-                    //seleccion_objeto = new List<string> { "ui_objetos_columna_cuadrada" };
-                    //Objetos.seleccionados(seleccion_objeto, D, pintura, 75);
-
                     maxima_reales++;
                     if (maxima_reales > 10)
                     {

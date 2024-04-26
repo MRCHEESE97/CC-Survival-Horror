@@ -561,7 +561,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            35,
+            40,
             0,
             0,
             0});
@@ -690,7 +690,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            40,
+            30,
             0,
             0,
             0});
@@ -710,7 +710,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            40,
+            30,
             0,
             0,
             0});
@@ -767,7 +767,7 @@
             this.ui_min_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_min_ancho_casa.TabIndex = 2;
             this.ui_min_ancho_casa.Value = new decimal(new int[] {
-            15,
+            10,
             0,
             0,
             0});
@@ -1505,10 +1505,12 @@
             // ui_distribucion_columnas
             // 
             this.ui_distribucion_columnas.AutoSize = true;
+            this.ui_distribucion_columnas.Checked = true;
             this.ui_distribucion_columnas.Location = new System.Drawing.Point(18, 52);
             this.ui_distribucion_columnas.Name = "ui_distribucion_columnas";
             this.ui_distribucion_columnas.Size = new System.Drawing.Size(77, 21);
             this.ui_distribucion_columnas.TabIndex = 2;
+            this.ui_distribucion_columnas.TabStop = true;
             this.ui_distribucion_columnas.Text = "Columnas";
             this.ui_distribucion_columnas.UseVisualStyleBackColor = true;
             // 
@@ -1525,12 +1527,10 @@
             // ui_distribucion_aleatoria
             // 
             this.ui_distribucion_aleatoria.AutoSize = true;
-            this.ui_distribucion_aleatoria.Checked = true;
             this.ui_distribucion_aleatoria.Location = new System.Drawing.Point(18, 25);
             this.ui_distribucion_aleatoria.Name = "ui_distribucion_aleatoria";
             this.ui_distribucion_aleatoria.Size = new System.Drawing.Size(75, 21);
             this.ui_distribucion_aleatoria.TabIndex = 0;
-            this.ui_distribucion_aleatoria.TabStop = true;
             this.ui_distribucion_aleatoria.Text = "Aleatoria";
             this.ui_distribucion_aleatoria.UseVisualStyleBackColor = true;
             // 
@@ -1587,7 +1587,7 @@
             this.veces_calle.Size = new System.Drawing.Size(54, 27);
             this.veces_calle.TabIndex = 45;
             this.veces_calle.Value = new decimal(new int[] {
-            2,
+            1,
             0,
             0,
             0});
@@ -1941,7 +1941,7 @@
             this.ui_espacio_calles_maximo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_maximo.TabIndex = 44;
             this.ui_espacio_calles_maximo.Value = new decimal(new int[] {
-            90,
+            65,
             0,
             0,
             0});
@@ -1983,7 +1983,7 @@
             this.ui_espacio_calles_minimo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_minimo.TabIndex = 21;
             this.ui_espacio_calles_minimo.Value = new decimal(new int[] {
-            90,
+            65,
             0,
             0,
             0});
@@ -2044,7 +2044,7 @@
             this.ui_porcentaje_sin_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_porcentaje_sin_casas.TabIndex = 10;
             this.ui_porcentaje_sin_casas.Value = new decimal(new int[] {
-            65,
+            55,
             0,
             0,
             0});
@@ -2096,22 +2096,22 @@
             // ui_aislar_casas
             // 
             this.ui_aislar_casas.AutoSize = true;
+            this.ui_aislar_casas.Checked = true;
             this.ui_aislar_casas.Location = new System.Drawing.Point(17, 41);
             this.ui_aislar_casas.Name = "ui_aislar_casas";
             this.ui_aislar_casas.Size = new System.Drawing.Size(101, 21);
             this.ui_aislar_casas.TabIndex = 1;
+            this.ui_aislar_casas.TabStop = true;
             this.ui_aislar_casas.Text = "Separar casas";
             this.ui_aislar_casas.UseVisualStyleBackColor = true;
             // 
             // ui_pegar_casas
             // 
             this.ui_pegar_casas.AutoSize = true;
-            this.ui_pegar_casas.Checked = true;
             this.ui_pegar_casas.Location = new System.Drawing.Point(17, 19);
             this.ui_pegar_casas.Name = "ui_pegar_casas";
             this.ui_pegar_casas.Size = new System.Drawing.Size(82, 21);
             this.ui_pegar_casas.TabIndex = 0;
-            this.ui_pegar_casas.TabStop = true;
             this.ui_pegar_casas.Text = "Unir casas";
             this.ui_pegar_casas.UseVisualStyleBackColor = true;
             // 
@@ -2583,7 +2583,7 @@
             this.ui_tiempo_espera.Size = new System.Drawing.Size(52, 27);
             this.ui_tiempo_espera.TabIndex = 3;
             this.ui_tiempo_espera.Value = new decimal(new int[] {
-            100,
+            1000,
             0,
             0,
             0});

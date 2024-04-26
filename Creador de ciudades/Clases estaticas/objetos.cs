@@ -301,7 +301,7 @@ namespace Creador_de_ciudades.Clases_estaticas
         private static void columna_cuadrada(Info_forma info, PictureBox pintura, List<Rectangle> pilares)
         {
 
-            Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.FromArgb(255,35,1));
+            Brush dibujar = new System.Drawing.SolidBrush(System.Drawing.Color.Black);
             int mitad_col = info.columna_cuadrada_med / 2;
 
             for (int i = 0; i < info.contorno.Count - info.col_prox; i+=info.col_prox)

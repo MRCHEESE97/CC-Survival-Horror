@@ -203,6 +203,7 @@ namespace Creador_de_ciudades
 
             crear_pages_area_casas(ancho_lienzo, alto_lienzo);
 
+
             //Pintado en el fondo del picture box
 
             PictureBox primer_nivel = (PictureBox)TabControl.TabPages[0].Controls.Find("Planta 0", true)[0];
@@ -816,7 +817,7 @@ namespace Creador_de_ciudades
                     }
                 }
 
-               
+
 
                 //Verifica si existe interseccion entre casas y calles
                 bool interruptor = false;
@@ -845,7 +846,7 @@ namespace Creador_de_ciudades
                 //Verificar si existe interseccion entre casas
                 //Esta verificación me deja una gran leccion 29/11/20 :)  
 
-                if ( ui_montar_casas.Checked == false)  // añadí este if el 22/03/2023
+                if (ui_montar_casas.Checked == false)  // añadí este if el 22/03/2023
                 {
                     for (int x = lista_casas.Count - 1; x >= 0; x--)  // Empezando desde ultima casa, para aumentar la velocidad 
                     {
@@ -853,25 +854,26 @@ namespace Creador_de_ciudades
                         {
                             break;
                         }
-                        
-                        Parallel.For(0, nueva_casa.area_puntos.Count - 1, (i,state) =>
+
+                        Parallel.For(0, nueva_casa.area_puntos.Count - 1, (i, state) =>
                         {
                             if (lista_casas[x].area_puntos.Contains(nueva_casa.area_puntos[i]))
                             {
                                 //Existe interseccion
                                 interruptor = true;
-                                state.Break();                              
+                                state.Break();
                             }
                         });
                     }
                 }
-                             
+
 
                 if (interruptor)
                 {
                     ubicacion_datos--;
                     continue;
                 }
+
                 else
                 {
                     // Si no se encontraron intersecciones agrega la info de forma
@@ -1355,7 +1357,8 @@ namespace Creador_de_ciudades
 
                 try
                 {
-                   Bitmap bmp = new Bitmap(ancho, alto, PixelFormat.Format16bppRgb555);
+                    //Se produce un error si se alter el nombre del primer archivo
+                    Bitmap bmp = new Bitmap(ancho, alto);
 
                     //Añadido 05/01/2024
                     Graphics fondo = Graphics.FromImage(bmp);
@@ -1370,12 +1373,11 @@ namespace Creador_de_ciudades
                 }
                 catch (Exception)
                 {
-                    MessageBox.Show("Tamaño de imagen ha superado el limite de memoria RAM, libere memoria o disminuya los parametros.");
-                    break;
+                    MessageBox.Show("Tamaño de imagen ha superado el limite, de espacio, disminuya los parametros.");
+                    return;
                 }
 
-                
-            
+                   
               
             }
 
@@ -1401,6 +1403,7 @@ namespace Creador_de_ciudades
             dialog.Title = "Seleccionar carpeta";
             dialog.Filter = "( *.png) | *.png";
             dialog.FileName = "NuevaCiudad";
+      
 
             if (dialog.ShowDialog() == DialogResult.OK)
             {
@@ -1412,6 +1415,12 @@ namespace Creador_de_ciudades
                     string fileName = "Planta " + i + ".png";
                     string fullPath = Path.Combine(path, fileName);
                     PictureBox nueva_imagen = (PictureBox)TabControl.TabPages[i].Controls.Find("Planta " + i, true)[0];
+
+                    //// Redefine el tamaño de imagen
+                    //Size nuevoTamaño = new Size(20000, 20000);
+                    //Bitmap imagenRedimensionada = new Bitmap(nueva_imagen.Image, nuevoTamaño);
+                    //nueva_imagen.Image = imagenRedimensionada;
+
                     nueva_imagen.Image.Save(fullPath, System.Drawing.Imaging.ImageFormat.Png);
 
                 }

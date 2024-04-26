@@ -311,6 +311,34 @@ namespace Creador_de_ciudades.Clases
             return amarillos;
         }
 
+        public static List<Point> obtener_pixel_forma_verde(Bitmap bitmapImage, Point inicio, Point fin)
+        {
+            Color pixelColor;
+            List<Point> amarillos = new List<Point>();
+            for (int y = inicio.Y; y < fin.Y; y += 100)
+            {
+                for (int x = inicio.X; x < fin.X; x += 100)
+                {
+
+                    if (fin.X > bitmapImage.Width || fin.Y > bitmapImage.Height)
+                    {
+                        amarillos.Add(new Point(x, y));
+                        break;
+                    }
+
+
+                    pixelColor = bitmapImage.GetPixel(x, y);
+                    if (pixelColor.R == 0 && pixelColor.G == 101 && pixelColor.B == 0)
+                    {
+                        //bitmapImage.SetPixel(x, y, Color.Red);  // comentado 17/09/2023
+                        amarillos.Add(new Point(x, y));
+                    }
+               
+                }
+            }
+            return amarillos;
+        }
+
         public static List<Point> obtener_coor_pixel_negro_interior(Bitmap bitmapImage, Point inicio, Point fin)
         {
             Color pixelColor;
@@ -334,20 +362,7 @@ namespace Creador_de_ciudades.Clases
             return verdes;
         }
 
-        public static bool pixel_es_de_un_color(Point Z, Bitmap bitmapImage,int R,int G,int B)
-        {
-           
-            Color color = bitmapImage.GetPixel(Z.X, Math.Abs(Z.Y));
-            if (color.R == R && color.G == G && color.B == B)
-            {
-                return true;
-            }
-            else 
-            {
-                return false;
-            }
-           
-        }
+
 
         public static int retornar_mayor(int a, int b)
         {

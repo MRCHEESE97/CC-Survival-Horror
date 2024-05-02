@@ -584,7 +584,7 @@
             this.ui_min_grosor_pared.Size = new System.Drawing.Size(54, 27);
             this.ui_min_grosor_pared.TabIndex = 2;
             this.ui_min_grosor_pared.Value = new decimal(new int[] {
-            15,
+            10,
             0,
             0,
             0});
@@ -652,7 +652,7 @@
             this.ui_max_grosor_pared.Size = new System.Drawing.Size(54, 27);
             this.ui_max_grosor_pared.TabIndex = 11;
             this.ui_max_grosor_pared.Value = new decimal(new int[] {
-            15,
+            10,
             0,
             0,
             0});

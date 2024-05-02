@@ -150,38 +150,33 @@ namespace Creador_de_ciudades.Clases
         {
             List<Point> recolector = new List<Point>();
           
-            recolector.AddRange(Herramienta.rotar_area_puntos(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma,100), grados, punto_medio));
+            recolector.AddRange(Herramienta.rotar_area_puntos(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma,100, !pegar_casas), grados, punto_medio));
                        
             return recolector;
         }
         public void area_post()
         {
             area_puntos.Clear();
-            area_puntos.AddRange(Herramienta.rotar_area_puntos(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma,100), grados, punto_medio));        
+            area_puntos.AddRange(Herramienta.rotar_area_puntos(Herramienta.obtener_puntos_internos(po, ancho_forma, alto_forma,100,!pegar_casas), grados, punto_medio));        
         }
         private Point A()
         {
-            Point a = po;
-            if (pegar_casas) { a.X = a.X + 2; a.Y = a.Y + 2;}
+            Point a = po;                   
             return Herramienta.rotarpunto_area(a, punto_medio, grados);
         }
         private Point B()
         {   
-            Point b = new Point(po.X + ancho_forma * 100, po.Y);
-            if (pegar_casas) { b.X = b.X - 2; b.Y = b.Y + 2; }
+            Point b = new Point(po.X + ancho_forma * 100, po.Y);         
             return Herramienta.rotarpunto_area(b,punto_medio,grados);
         }
         private Point C()
         {
             Point c = new Point(po.X, po.Y + alto_forma * 100);
-            if (pegar_casas) { c.X = c.X + 2; c.Y = c.Y - 2;}
-           
             return Herramienta.rotarpunto_area(c, punto_medio, grados);
         }
         private Point D()
         {
-            Point d = new Point(po.X + ancho_forma * 100, po.Y + alto_forma * 100);
-            if (pegar_casas) { d.X = d.X - 2; d.Y = d.Y - 2; }
+            Point d = new Point(po.X + ancho_forma * 100, po.Y + alto_forma * 100);      
             return Herramienta.rotarpunto_area(d, punto_medio, grados);
         }
         private Point centro()

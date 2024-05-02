@@ -183,37 +183,22 @@ namespace Creador_de_ciudades.Clases
             }
         }
         
-        
-        // NO SE USA, QUIZA EN EL FUTURO SI
-        public static List<PointF> calcular_ladoF(PointF inicio, float longitud, string eje)
-        {
-            List<PointF> puntos = new List<PointF>();
-            if (eje == "x")
-            {
-                for (float i = inicio.X; i <= inicio.X + (longitud *100); i += 100)
-                {
-                    puntos.Add(new PointF(i, inicio.Y));
-                }
-                return puntos;
-            }
-            else
-            {
-                for (float i = inicio.Y; i <= inicio.Y + (longitud * 100); i += 100)
-                {
-                    puntos.Add(new PointF(inicio.X, i));
-                }
-                return puntos;
-            }
-        }
 
-        public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto, int avance) // 1m = 10 avance
+        public static List<Point> obtener_puntos_internos(Point po, int ancho, int alto, int avance, bool separar_casas) // 1m = 10 avance
         {
+            Random azar = new Random();
+            int dist = 0;
+
+            if (separar_casas)
+            {
+               dist = azar.Next(1, 5);
+            }
 
             List<Point> puntos = new List<Point>();
 
-            for (int i = po.X; i <= po.X + (ancho)  * 100; i += avance)
+            for (int i = po.X; i <= po.X + (ancho + dist)  * 100; i += avance)
             {
-                for (int j = po.Y; j <= po.Y + (alto) * 100; j += avance)
+                for (int j = po.Y; j <= po.Y + (alto + dist) * 100; j += avance)
                 {
                     puntos.Add(new Point(i, j));
                 }

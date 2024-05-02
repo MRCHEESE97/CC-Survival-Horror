@@ -474,7 +474,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 int error = 4;
 
-                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 200);
+                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 200,false);
                 List<Point> internos_amarillos = Herramienta.obtener_pixel_forma_por_color((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error+ancho_esta_div) * 100), origen_division.Y + ((error +alto_esta_div) * 100)));
               
                 bool salir = false;
@@ -578,7 +578,7 @@ namespace Creador_de_ciudades.Clases_estaticas
 
                 int error = 4;
 
-                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 200);
+                List<Point> div = Herramienta.obtener_puntos_internos(origen_division, ancho_esta_div, alto_esta_div, 200, false);
                 List<Point> internos_amarillos = Herramienta.obtener_pixel_forma_por_color((Bitmap)pintura.Image, origen_division, new Point(origen_division.X + ((error + ancho_esta_div) * 100), origen_division.Y + ((error + alto_esta_div) * 100)));
 
                 bool salir = false;

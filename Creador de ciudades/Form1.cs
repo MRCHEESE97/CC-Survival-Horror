@@ -691,7 +691,7 @@ namespace Creador_de_ciudades
                         //100 es el multiplo
                         break;
                     case "ui_distribucion_columnas":
-                        if (y_ori >= (alto_lienzo - (Convert.ToInt32(ui_max_alto_casa.Value) * 100)))  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
+                        if (y_ori >= (alto_lienzo - (Convert.ToInt32(ui_max_alto_casa.Value) * 150)))  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
                         {
                             x_ori = x_ori + avance_en_x;
                             y_ori = Convert.ToInt32(ui_min_alto_casa.Value) * 100;
@@ -705,9 +705,9 @@ namespace Creador_de_ciudades
                             x_ori = Convert.ToInt32(ui_min_ancho_casa.Value) * 100;
                             y_ori = y_ori + avance_en_y;
 
-                            if (y_ori >= (alto_lienzo - (Convert.ToInt32(ui_max_alto_casa.Value) * 100)))  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
+                            if (y_ori >= (alto_lienzo - (Convert.ToInt32(ui_max_alto_casa.Value) * 150)))  // SI LLEGA A LOS LIMITES DE Y POR ESO EL >= EJ 20000
                             {
-                             // MessageBox.Show(("ha alcanzado el limite" + ubicacion_datos.ToString()));
+                             // CUANDO LLEGA AL LIMITE, SOLO LO HICE EN ESTA FUNCION
                                 x_ori = 100;
                                 y_ori = 100;
 
@@ -720,8 +720,10 @@ namespace Creador_de_ciudades
                                     altos.Add (azar.Next(Convert.ToInt32(ui_min_alto_casa.Value), Convert.ToInt32(ui_max_alto_casa.Value) + 1));
                                 }
 
-                                label48.Text = "Más de una";
-                                
+                                label48.Text = "Más de una, decide detener";
+
+                                break;
+
                             }
                         }
                         origen = new Point(x_ori, y_ori);

@@ -561,7 +561,7 @@
             this.ui_cantidad_casas.Size = new System.Drawing.Size(54, 27);
             this.ui_cantidad_casas.TabIndex = 1;
             this.ui_cantidad_casas.Value = new decimal(new int[] {
-            25,
+            40,
             0,
             0,
             0});
@@ -690,7 +690,7 @@
             this.ui_max_alto_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_alto_casa.TabIndex = 7;
             this.ui_max_alto_casa.Value = new decimal(new int[] {
-            30,
+            25,
             0,
             0,
             0});
@@ -710,7 +710,7 @@
             this.ui_max_ancho_casa.Size = new System.Drawing.Size(54, 27);
             this.ui_max_ancho_casa.TabIndex = 6;
             this.ui_max_ancho_casa.Value = new decimal(new int[] {
-            30,
+            25,
             0,
             0,
             0});
@@ -1505,22 +1505,22 @@
             // ui_distribucion_columnas
             // 
             this.ui_distribucion_columnas.AutoSize = true;
-            this.ui_distribucion_columnas.Checked = true;
             this.ui_distribucion_columnas.Location = new System.Drawing.Point(18, 52);
             this.ui_distribucion_columnas.Name = "ui_distribucion_columnas";
             this.ui_distribucion_columnas.Size = new System.Drawing.Size(77, 21);
             this.ui_distribucion_columnas.TabIndex = 2;
-            this.ui_distribucion_columnas.TabStop = true;
             this.ui_distribucion_columnas.Text = "Columnas";
             this.ui_distribucion_columnas.UseVisualStyleBackColor = true;
             // 
             // ui_distribucion_filas
             // 
             this.ui_distribucion_filas.AutoSize = true;
+            this.ui_distribucion_filas.Checked = true;
             this.ui_distribucion_filas.Location = new System.Drawing.Point(19, 79);
             this.ui_distribucion_filas.Name = "ui_distribucion_filas";
             this.ui_distribucion_filas.Size = new System.Drawing.Size(50, 21);
             this.ui_distribucion_filas.TabIndex = 1;
+            this.ui_distribucion_filas.TabStop = true;
             this.ui_distribucion_filas.Text = "Filas";
             this.ui_distribucion_filas.UseVisualStyleBackColor = true;
             // 
@@ -1941,7 +1941,7 @@
             this.ui_espacio_calles_maximo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_maximo.TabIndex = 44;
             this.ui_espacio_calles_maximo.Value = new decimal(new int[] {
-            60,
+            55,
             0,
             0,
             0});
@@ -1983,7 +1983,7 @@
             this.ui_espacio_calles_minimo.Size = new System.Drawing.Size(54, 27);
             this.ui_espacio_calles_minimo.TabIndex = 21;
             this.ui_espacio_calles_minimo.Value = new decimal(new int[] {
-            60,
+            55,
             0,
             0,
             0});

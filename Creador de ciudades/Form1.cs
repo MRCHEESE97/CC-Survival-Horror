@@ -1198,10 +1198,10 @@ namespace Creador_de_ciudades
                     }
                     if (ui_superposicion_combinar.Checked == true)
                     {
-                        int x = azar.Next(1, 4);
+                        int x = azar.Next(1, 9); //1-8  3-8 60%
                         switch(x)
                         {
-                          case 1:
+                          default:
                                 if (ui_quitar_algunos_pisos.Checked)
                                 {
                                     if (lista_casas[recorrer].pisos_reales > 0)
@@ -1217,7 +1217,7 @@ namespace Creador_de_ciudades
                                     superposicion_con(recorrer, i);
                                 }
                                 break;
-                          case 2:
+                          case 1:
                                 if (ui_quitar_algunos_pisos.Checked)
                                 {
                                     if (lista_casas[recorrer].pisos_reales > 0)
@@ -1233,7 +1233,7 @@ namespace Creador_de_ciudades
                                     superposicion_pir(recorrer, i); ;
                                 }
                                 break;
-                           case 3:
+                           case 2:
                                 if (ui_quitar_algunos_pisos.Checked)
                                 {
                                     if (lista_casas[recorrer].pisos_reales > 0)

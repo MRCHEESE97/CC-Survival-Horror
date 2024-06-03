@@ -150,8 +150,14 @@ namespace Creador_de_ciudades.Clases_estaticas
 
 
             if (datos.ubicacion_pb == false)
-            {
-                altura_doble(datos, lienzo);
+            {   
+                int aleatorio = azar.Next(1, 101);    
+                
+                if (aleatorio <= 20) //%20
+                {
+                    altura_doble(datos, lienzo);
+                }
+               
             }
 
 

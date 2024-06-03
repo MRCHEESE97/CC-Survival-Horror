@@ -382,10 +382,10 @@
             this.ui_superposicion_combinar.Location = new System.Drawing.Point(18, 118);
             this.ui_superposicion_combinar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ui_superposicion_combinar.Name = "ui_superposicion_combinar";
-            this.ui_superposicion_combinar.Size = new System.Drawing.Size(167, 21);
+            this.ui_superposicion_combinar.Size = new System.Drawing.Size(86, 21);
             this.ui_superposicion_combinar.TabIndex = 4;
             this.ui_superposicion_combinar.TabStop = true;
-            this.ui_superposicion_combinar.Text = "Usar todas las anteriores";
+            this.ui_superposicion_combinar.Text = "Usar todas";
             this.ui_superposicion_combinar.UseVisualStyleBackColor = true;
             // 
             // ui_groupBox_superposicion_modo
